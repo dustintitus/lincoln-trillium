@@ -1,0 +1,37 @@
+.btn {
+	letter-spacing: 0.11em;
+	text-transform: uppercase;
+	transition: 0.3s;
+}
+.btn-info {
+	background-color: $c-red;
+	color: $c-white;
+	border-color: $c-red;
+	&:hover, &:active, &:focus {
+		color: $c-white !important;
+		background-color: darken($c-red, 10%) !important;
+		border-color: darken($c-red, 20%) !important;
+	}
+}
+
+.btn-lg{
+	max-width: 200px;
+	padding: 10px;
+	font-size: em(14);
+	border-radius: 0;
+}
+
+.btn-md {
+	border-radius: 0;
+	padding: 10px;
+	font-size: em(14);
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+use Drupal\block\Entity\Block;
+
+function trilliumlincoln_preprocess_page(&$variables) {
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+}
+
+function trilliumlincoln_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['#id']) && !empty($variables['elements']['#id'])) {
+    $block = Block::load($variables['elements']['#id']);
+    $suggestions[] = 'block__' . $block->getRegion();
+    $suggestions[] = 'block__' . $block->getRegion() . '__' . $variables['elements']['#id'];
+  } else if (isset($variables['elements']['#configuration']['region'])) {
+    $suggestions[] = 'block__page_' . $variables['elements']['#configuration']['region'];
+    $suggestions[] = 'block__page_' . $variables['elements']['#configuration']['region'] . '__' . end(explode(':', $variables['elements']['#plugin_id']));
+  }
+
+  $block = $variables['elements'];
+  $blockType = $block['#configuration']['provider'];
+  
+  if ($blockType == "block_content") {
+    $bundle = $block['content']['#block_content']->bundle();
+    $suggestions[] = 'block__' . $bundle;
+  }
+
+  return $suggestions;
+}
+
+function trilliumlincoln_preprocess_html(&$variables) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  $variables['current_path'] = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+}
+
+function trilliumlincoln_page_attachments_alter(array &$page) {
+  $viewport = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+    ),
+  );
+  $page['#attached']['html_head'][] = [$viewport, 'viewport'];
+}

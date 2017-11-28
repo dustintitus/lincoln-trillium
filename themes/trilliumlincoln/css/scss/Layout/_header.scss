@@ -1,0 +1,10 @@
+.header {
+	.region-header {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		@include respond($sm){
+			padding-top: 37px;
+			padding-bottom: 21px;
+		}
+	}
+}

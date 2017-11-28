@@ -1,0 +1,28 @@
+%sr_only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+@include respond($sm){
+	.col-sm-push-05 {
+		left: percentage((0.5 / $grid-columns));
+	}
+	.col-sm-offset-05 {
+		margin-left: percentage((0.5 / $grid-columns));
+	}
+	.text-sm-center {
+		text-align: center;
+	}
+	.text-sm-left {
+		text-align: left;
+	}
+	.text-sm-right {
+		text-align: right;
+	}
+}

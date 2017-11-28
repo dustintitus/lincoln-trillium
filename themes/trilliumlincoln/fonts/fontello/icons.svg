@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2017 by original authors @ fontello.com</metadata>
+<defs>
+<font id="icons" horiz-adv-x="1000" >
+<font-face font-family="icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="print" unicode="&#xe802;" d="M668 256a30 30 0 0 1-31 32h-315a30 30 0 0 1-31-32m314-157h-252v126h252v-126z m-252 503h252v-157h-252v157z m408-63h-94v94a30 30 0 0 1-31 31h-314a30 30 0 0 1-31-31v-94h-94a30 30 0 0 1-32-32v-314a30 30 0 0 1 32-31h94v-94a30 30 0 0 1 31-31h314a30 30 0 0 1 31 31v94h94a30 30 0 0 1 32 31v315a30 30 0 0 1-32 32" horiz-adv-x="959" />
+
+<glyph glyph-name="phone2" unicode="&#xe803;" d="M580 428c-20 22-32 45-18 63 29 39 88 150 139 86 23-28 48-65 48-65a43 43 0 0 0 12-37c-4-176-300-404-470-369a56 56 0 0 0-32 21s-29 34-50 63c-49 66 74 95 117 113 19 10 41-6 56-31 37-59 244 103 197 154" horiz-adv-x="959" />
+
+<glyph glyph-name="mail2" unicode="&#xe804;" d="M174-61a85 85 0 0 0-38 9l402 391 217-177 217 177 401-391a85 85 0 0 0-37-10h-1162z m-81 61a85 85 0 0 0-4 24v652a85 85 0 0 0 5 27l391-321z m1242 763a85 85 0 0 0 35-8l-616-504-615 504a85 85 0 0 0 35 8h1161z m-311-378l391 320a85 85 0 0 0 4-27v-653a85 85 0 0 0-3-23z m311 446h-1161a153 153 0 0 1-153-153v-653a153 153 0 0 1 153-152h1161a153 153 0 0 1 153 152v651a153 153 0 0 1-153 152m-1161-889a85 85 0 0 0-38 9l402 391 217-177 217 177 401-391a85 85 0 0 0-37-10h-1162z m-81 61a85 85 0 0 0-4 24v652a85 85 0 0 0 5 27l391-321z m1242 763a85 85 0 0 0 35-8l-616-504-615 504a85 85 0 0 0 35 8h1161z m-311-378l391 320a85 85 0 0 0 4-27v-653a85 85 0 0 0-3-23z m311 446h-1161a153 153 0 0 1-153-153v-653a153 153 0 0 1 153-152h1161a153 153 0 0 1 153 152v651a153 153 0 0 1-153 153z" horiz-adv-x="1509" />
+
+<glyph glyph-name="fb" unicode="&#xe805;" d="M309 550v81a42 42 0 0 0 44 48h112v171h-155c-172 0-209-127-209-209v-90h-100v-200h101v-501h200v501h149l6 78 12 122h-159z" horiz-adv-x="468" />
+</font>
+</defs>
+</svg>

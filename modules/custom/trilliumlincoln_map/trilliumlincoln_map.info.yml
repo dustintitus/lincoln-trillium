@@ -1,0 +1,8 @@
+name: Trilliumlincoln Map
+type: module
+package: Custom
+# Information added by Drupal.org packaging script on 2016-06-10
+version: '8.x-1.0'
+core: '8.x'
+dependencies:
+  - block

@@ -1,0 +1,17 @@
+#map {
+	height: 300px;
+	width: 100%;
+}
+.trilliumlincoln_map-message {
+	font-size: 1em;
+	margin-bottom: 20px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+.trilliumlincoln_map-button-wrapper{
+	text-align: center;
+	margin-top: 28px;
+}
+.trilliumlincoln_map-button-wrapper	.btn {
+	display: inline-block;;
+}

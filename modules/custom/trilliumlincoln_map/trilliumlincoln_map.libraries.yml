@@ -1,0 +1,12 @@
+trilliumlincoln_map:
+  version: 1.x
+  css:
+    theme:
+      css/trilliumlincoln_map.css: {}
+  js:
+    //maps.googleapis.com/maps/api/js?key=AIzaSyDWkVEHcUvPPRUP3MmM-pn7VgcZ7uDTAlI&language=en&region=CA: { type: external}
+    js/trilliumlincoln_map.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

@@ -1,0 +1,113 @@
+.form-contact.block {
+	margin-top: 20px;
+	background-color: $c-brown;
+	padding-bottom: 20px;
+	@include respond($sm){
+		padding-bottom: 75px;
+	}
+	.block-title {
+		color: $c-white;
+		margin-top: 27px;
+		margin-bottom: 15px;
+	}
+	.webform-submission-form {
+		max-width: 660px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin: 0 auto;
+		position: relative;
+		.alert{
+			max-width: 444px;
+		}
+	}
+	
+	.form-item {
+		margin-bottom: 8px;
+		.form-control {
+			border-radius: 0;
+			font-size: em(14);
+			padding: 10px 5px;
+		}
+
+	}
+	.form-item-full-name, .form-item-email-address{
+		@include respond($sm){
+			width: 218px;
+			float: left;
+			margin-right: 9px;
+		}
+	}
+	.form-item-message {
+		@include respond($sm){
+			width: 445px;
+		}
+	}
+	.form-type-processed-text {
+		display: none;
+		position: absolute;
+		right: 0;
+		top: 0;
+		left: 455px;		
+		padding: 0 10px;
+		color: $c-white;
+		@include respond($sm){
+			display: block;
+		}
+		@include respond($md){
+			
+		}
+	}
+	.form-actions {
+		text-align: right;		
+		.btn {
+		    padding: 10px 20px;
+			margin: 0;
+		}
+		@include respond($sm){
+			position: absolute;
+			left: 455px;
+			bottom: 0;
+			margin: 0;
+			padding-left: 10px;
+		}
+	}
+	.form-item-communication {		
+		left: 0;
+		padding-left: 27px;
+		padding-right: 10px;
+		@include respond($sm){
+			position: absolute;
+			margin: 0;
+			bottom: -52px;
+			max-width: 600px;
+			padding-left: 37px;
+		}
+		.form-checkbox {
+			visibility: hidden;
+			&:checked ~ .control-label::before{
+				background-color: $c-red;
+			}
+		}			
+		.control-label {
+			font-size: em(12);
+			color: $c-white;
+			padding: 0;
+			position: relative;
+			&::before {
+				content: "";
+				display: inline-block;
+
+				width: 15px;
+				height: 15px;
+				position: absolute;
+				top: 4px;
+				left: -26px;
+
+				border: 1px solid #cccccc;
+				border-radius: 50%;
+				background-color: #fff;
+				transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+			}			
+		}
+	}	
+}

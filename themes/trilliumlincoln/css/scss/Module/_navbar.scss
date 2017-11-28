@@ -1,0 +1,138 @@
+.navbar {
+	margin: 0;
+	padding: 0;
+	background-color: $c-brown;
+	clear: both;
+	border: none;
+	border-radius: 0;	
+	.block-system-branding-block {
+		.logo {
+			margin: 0 0 0 -10px;
+			padding-top: 9px;	
+			img {
+				max-width: 211px;
+				width: 100%;
+			}
+
+		}
+	}
+
+	.navbar-header {
+		position: relative;
+		z-index: 201;
+		.navbar-toggle {
+			margin: 0;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			border: none;
+			background: none;
+			margin-right: 0;
+			padding: 0;
+			&:hover{
+				background: none;
+			}
+			.icon-bar{
+				background: $c-red;
+				transition: all 0.2s;
+			}
+			.top-bar{
+				transform: rotate(45deg);
+				transform-origin: 10% 10%;
+			}
+			.middle-bar{
+				opacity: 0;
+			}
+			.bottom-bar{
+				transform: rotate(-45deg);
+				transform-origin: 10% 90%;
+			}
+			&.collapsed{
+				.top-bar{
+					transform: rotate(0);
+				}
+				.middle-bar{
+					opacity: 1;
+				}
+				.bottom-bar{
+					transform: rotate(0);
+				}
+			}
+		}
+	}
+
+	.navbar-collapse {
+
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		z-index: 200;
+
+		background-color: $c-brown;
+
+
+		.menu {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			@include respond($sm){
+				height: 66px;			
+				
+			}
+			li {
+				height: 100%;
+				text-align: center;
+				@include respond($sm){
+					float: left;
+					border-left: 1px solid $c-brown-l;
+					&:last-child {
+						border-right: 1px solid $c-brown-l;
+					}					
+				}
+				
+				a {
+					display: inline-block;					
+					height: 100%;
+					color: $c-white;
+					font-size: em(14);					
+					text-align: center;					
+					vertical-align: bottom;
+					
+					border-bottom: 2px solid transparent;
+					text-transform: uppercase;					
+					padding-left: 10px;
+					padding-right: 10px;
+					padding-top: 12px;
+					&.is-active{
+						border-bottom-color: $c-red;
+					}
+					&:hover {
+						background-color: transparent;
+						border-bottom-color: $c-red;
+					}
+					@include respond($sm){
+						line-height: 66px;
+						min-width: 90px;
+						border-bottom-width: 5px;
+						display: block;
+					}
+				}
+			}
+			.mail {
+				text-indent: -9999px;
+				background: {
+					image: url("../images/mail.svg");
+					repeat: no-repeat;
+					size: 100% 14px;
+					position: center 8px;
+
+				}
+				min-width: 40px;
+				@include respond($sm){
+					background-position: center 38px;
+				}
+			}
+		}
+	}
+}

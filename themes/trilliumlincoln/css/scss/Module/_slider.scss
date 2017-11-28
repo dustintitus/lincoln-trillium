@@ -1,0 +1,108 @@
+.slider {
+	position: relative;
+	overflow: hidden;
+	h3 {
+		margin: 0;
+	}
+	.item {
+		// width: 100%;
+		right: 0;
+		bottom: 0;
+		overflow: hidden;
+		img {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			max-width: none;
+		}
+		.list {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: 0;
+			padding: 15px;
+			list-style: none;
+			/* default fallback */
+			background: rgb(255, 255, 255) transparent;
+			/* nice browsers */
+			background: rgba(255, 255, 255, 0.6);
+			/* IE 6/7 */
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF);
+			/* IE8 */    
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
+			@include respond($sm){
+				top: 50%;
+				bottom: 0;
+				background: none;
+				padding: 0 0 0 20px;
+			}	
+			.views-field {
+				max-width: 430px;
+				margin-left: auto;
+			}
+		}
+
+		.views-field-field-slider-headline {
+			font-family: $font-family-miller;
+			font-size: em(40/2);
+			
+			line-height: (132/110);
+			color: $c-brown;
+			font-weight: bolder;
+			@include respond($sm){
+				font-size: em(60/2);
+			}	
+			@include respond($md){
+				font-size: em(80/2);
+			}		
+			@include respond($lg){
+				font-size: em(110/2);
+			}
+
+		}
+		.views-field-body {
+			font-family: $font-family-miller;
+			font-size: 1em;
+			color: $c-brown-l;
+			font-style: italic;
+			padding-bottom: 5px;
+			@include respond($sm){
+				font-size: em(46/2);
+			}	
+			@include respond($md){
+				font-size: em(60/2);
+			}		
+			@include respond($lg){
+				font-size: em(70/2);
+			}
+
+		}
+		.views-field-field-button{
+			margin-top: 4px;
+		} 
+	}
+	.slider-control {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);		
+		z-index: 200;
+		font-size: em(25);		
+		color: $c-red;
+		&.prev {
+			left: 3px;
+		}
+		&.next {
+			right: 3px;
+		}
+		@include respond($sm){
+			font-size: em(35);
+			&.prev {
+				left: 40px;
+			}
+			&.next {
+				right: 40px;
+			}
+		}
+	}
+}

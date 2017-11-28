@@ -1,0 +1,75 @@
+.contact-us-block {
+	// margin-top: 45px;
+	// margin-bottom: 36px;
+
+	padding-top: 0px;
+	padding-bottom: 30px;
+	.block-title {
+		margin-bottom: 31px;
+		margin-top: 29px;
+	}
+	.paragraph--type--text-callout {
+		.field--name-field-item {
+			@extend .row;
+			> .field--item {
+				text-align: center;
+				white-space: nowrap;
+				padding-bottom: 13px;
+				&:nth-child(odd){
+					@include make-col(12, 12, 3);
+					@extend %col-sm-offset-2;
+				}
+				&:nth-child(even){
+					@include make-col(12, 12, 5);
+					@extend .col-sm-offset-05;
+				}
+
+				.field--name-field-label,.field--name-field-description{					
+					letter-spacing: 0.04em;
+					font-size: em(20);
+				}
+				.field--name-field-label{
+					font-weight: bold;
+					color: $c-red;
+				}
+				.field--name-field-description {
+					a {
+						color: $c-brown;
+					}
+
+				}
+
+			}
+		}
+	}
+}
+
+.context-assistance {
+	.contact-us-block {
+		.block-title {
+			display: none;
+		}
+	}
+}
+
+.context-about {
+	.contact-us-block {
+		background-color: $c-brown;
+		.block-title {
+			color: $c-white;
+		}
+		.paragraph--type--text-callout {
+			.field--name-field-item {
+				> .field--item {
+					.field--name-field-description {
+						color: $c-white;
+						a {
+							color: $c-white;
+						}
+					}
+
+				}
+			}
+		}
+	}
+}

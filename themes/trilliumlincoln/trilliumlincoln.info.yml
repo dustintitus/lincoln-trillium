@@ -1,0 +1,25 @@
+core: 8.x
+type: theme
+base theme: bootstrap
+
+name: 'Trillium Lincoln'
+description: Drupal 8 theme for "Trillium Lincoln"
+package: 'Bootstrap'
+
+regions:
+  header: 'Top Bar'
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'  
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content_top: 'Content Top'
+  content: 'Content'
+  content_bottom: 'Content Bottom'
+  footer: 'Footer'
+  footer_bottom: 'Footer Bottom'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+
+libraries:
+  - 'trilliumlincoln/global-styling'
+  - 'trilliumlincoln/global-scripts'
