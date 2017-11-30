@@ -29,7 +29,7 @@
 							height: parseInt(elem.getAttribute('height')),
 						};
 
-						if ( getWindowWidth() / item.width > getWindowHeight() / item.height ) {
+						if ( getWindowWidth() / item.width > getWindowHeight() / ((item.height)-174) ) {
 							item.elem.css({
 								width: '100%',
 								height: 'auto',
@@ -56,10 +56,10 @@
 	}
 
 	function getWindowWidth() { 
-		return (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+		return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 	}
 	function getWindowHeight(){
-		return (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)+174;
+		return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 	}
 
 })(jQuery, Drupal);
