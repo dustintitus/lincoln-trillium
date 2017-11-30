@@ -20,7 +20,7 @@
 				slider.cycle(opt);			
 
 				function coverImg(){
-					var containerHeight = $window.outerHeight()-174;
+					var containerHeight = $window.outerHeight();
 					var containerWidth = $window.outerWidth();
 					images.each(function(i,elem){
 						var item = {
@@ -29,7 +29,7 @@
 							height: parseInt(elem.getAttribute('height')),
 						};
 
-						if ( getWindowWidth() / item.width > (getWindowHeight()+174) / item.height ) {
+						if ( getWindowWidth() / item.width > getWindowHeight() / item.height ) {
 							item.elem.css({
 								width: '100%',
 								height: 'auto',
@@ -56,10 +56,10 @@
 	}
 
 	function getWindowWidth() { 
-		return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		return (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
 	}
 	function getWindowHeight(){
-		return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		return (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)+174;
 	}
 
 })(jQuery, Drupal);
