@@ -19,7 +19,7 @@
 
 				slider.cycle(opt);			
 
-				function coverImg(){
+				function coverImg(slide_H){
 					var containerHeight = $window.outerHeight();
 					var containerWidth = $window.outerWidth();
 					images.each(function(i,elem){
@@ -29,7 +29,7 @@
 							height: parseInt(elem.getAttribute('height')),
 						};
 
-						if ( getWindowWidth() / item.width > getWindowHeight() / item.height ) {
+						if ( getWindowWidth() / item.width > slide_H / item.height ) {
 							item.elem.css({
 								width: '100%',
 								height: 'auto',
@@ -46,7 +46,7 @@
 				$window.on( 'resize', function() {
 					slide_H = +getWindowHeight() - +header.height();
 					slider.height(slide_H);
-					coverImg();
+					coverImg(slide_H);
 				}).trigger('resize');
 
 				
