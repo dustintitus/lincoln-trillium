@@ -20,7 +20,7 @@
 				slider.cycle(opt);			
 
 				function coverImg(){
-					var containerHeight = $window.outerHeight();
+					var containerHeight = $window.outerHeight()-174;
 					var containerWidth = $window.outerWidth();
 					images.each(function(i,elem){
 						var item = {
@@ -29,7 +29,7 @@
 							height: parseInt(elem.getAttribute('height')),
 						};
 
-						if ( getWindowWidth() / item.width > getWindowHeight() / item.height ) {
+						if ( getWindowWidth() / item.width > (getWindowHeight()+174) / item.height ) {
 							item.elem.css({
 								width: '100%',
 								height: 'auto',
