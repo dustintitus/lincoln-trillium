@@ -29,7 +29,7 @@
 							height: parseInt(elem.getAttribute('height')),
 						};
 
-						if ( getWindowWidth() / item.width > getWindowHeight() / ((item.height)-174) ) {
+						if ( getWindowWidth() / item.width > getWindowHeight() / item.height ) {
 							item.elem.css({
 								width: '100%',
 								height: 'auto',
