@@ -40,6 +40,12 @@
 	function isNumeric(n) {
 		return !isNaN(parseFloat(n)) && isFinite(n);
 	}
-
+	$(document).ready(function()
+	{
+     if( !Cookies.get('newsitepopup') ) {
+     	Cookies.set('newsitepopup', 'true', { expires: 7, path: '/' });
+     	$('#newSite').modal();
+     }
+	});
 
 })(jQuery);

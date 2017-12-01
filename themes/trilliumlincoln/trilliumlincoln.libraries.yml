@@ -9,6 +9,7 @@ global-scripts:
   js:
     js/theme.js: {}
     js/vendor/jquery.cycle2.min.js: {}
+    js/vendor/js.cookie.js: {}
     js/slider.js: {}
   dependencies:
     - core/drupalSettings
