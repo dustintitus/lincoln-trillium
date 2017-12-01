@@ -11,10 +11,10 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'MillerB';
+  font-family: 'MillerBItalic';
   src: url('MillerB/LincolnMillerB-Italic.otf');
   font-weight: normal;
-  font-style: italic;
+  font-style: normal;
 }
 @font-face {
   font-family: 'MillerB';
@@ -29,9 +29,9 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'ProximaNova';
+  font-family: 'ProximaNovaLight';
   src: url('ProximaNova/Lincoln-ProximaNova-Light.otf');
-  font-weight: lighter;
+  font-weight: normal;
   font-style: normal;
 }
 @font-face {
