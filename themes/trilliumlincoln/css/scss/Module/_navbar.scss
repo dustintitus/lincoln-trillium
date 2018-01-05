@@ -63,32 +63,33 @@
 	}
 
 	.navbar-collapse {
-
 		position: absolute;
 		left: 0px;
 		right: 0px;
 		z-index: 200;
-
 		background-color: $c-brown;
+		@include respond($sm){
+			bottom: 0;
+		}
 
 
 		.menu {
 			margin: 0;
 			padding: 0;
 			list-style: none;
+			line-height: 26px;				
 			@include respond($sm){
-				height: 66px;			
-				
+				height: 38px;			
+				line-height: 34px;				
 			}
 			li {
 				height: 100%;
 				text-align: center;
 				@include respond($sm){
-					float: left;
-					border-left: 1px solid $c-brown-l;
-					&:last-child {
-						border-right: 1px solid $c-brown-l;
-					}					
+					float: left;					
+					// &:last-child {
+					// 	border-right: 1px solid $c-brown-l;
+					// }					
 				}
 				
 				a {
@@ -103,7 +104,12 @@
 					text-transform: uppercase;					
 					padding-left: 10px;
 					padding-right: 10px;
-					padding-top: 12px;
+					// padding-top: 12px;
+					transition: 0.3s;
+					&.bg-red {
+						background-color: $c-red;
+						border-left-color: $c-red;
+					}
 					&.is-active{
 						border-bottom-color: $c-red;
 					}
@@ -112,10 +118,10 @@
 						border-bottom-color: $c-red;
 					}
 					@include respond($sm){
-						line-height: 66px;
 						min-width: 90px;
-						border-bottom-width: 5px;
+						border-bottom-width: 4px;
 						display: block;
+						border-left: 1px solid $c-brown-l;
 					}
 				}
 			}
@@ -125,13 +131,9 @@
 					image: url("../images/mail.svg");
 					repeat: no-repeat;
 					size: 100% 14px;
-					position: center 8px;
-
+					position: center;
 				}
 				min-width: 40px;
-				@include respond($sm){
-					background-position: center 38px;
-				}
 			}
 		}
 	}

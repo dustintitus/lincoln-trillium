@@ -29,9 +29,9 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'ProximaNovaLight';
+  font-family: 'ProximaNova';
   src: url('ProximaNova/Lincoln-ProximaNova-Light.otf');
-  font-weight: normal;
+  font-weight: 300;
   font-style: normal;
 }
 @font-face {

@@ -14,10 +14,16 @@
 					fx: 'fadeout',
 					next: ".slider-control.next",
 					prev: ".slider-control.prev",
+					pager: ".slider-pager",
 					timeout: 0,
 				}	
 
-				slider.cycle(opt);			
+				if(item.length < 2){
+					$('.slider-control').hide();
+					$('.slider-pager').hide();
+				}	
+
+				slider.cycle(opt);
 
 				function coverImg(slide_H){
 					var containerHeight = $window.outerHeight();

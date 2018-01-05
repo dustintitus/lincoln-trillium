@@ -1,0 +1,33 @@
+.region-highlighted .sub-menu {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 101;
+	text-align: center;
+	display: none;
+	@include respond($sm){
+		display: block;
+	}
+	.menu {
+		li {
+			float: left;			
+			transform: skew(-26deg);
+			border-left: 2px solid $c-white;
+			a{
+				max-width: 100px;
+				transform: skew(26deg);
+				height: 50px;
+				color: $c-white;
+				font-size: em(14);
+				text-transform: uppercase;
+				&:hover, &:focus {
+					background-color: transparent;
+				}
+				&.large{
+					max-width: 160px;
+				}
+			}
+			
+		}
+	}
+}

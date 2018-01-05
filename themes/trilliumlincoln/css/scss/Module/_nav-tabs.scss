@@ -1,0 +1,29 @@
+.nav-tabs {
+	border-bottom-color: $c-brown;
+	>li {
+		@include respond($sm){
+			&:first-child{
+				padding-left: 12px;
+			}
+			&:last-child{
+				padding-right: 12px;
+			}
+		}
+		> a {
+			padding: 12px;
+			border-radius: 0;
+			color: $c-brown;
+			&:hover {
+				background-color: transparent;
+				border-bottom-color: transparent;
+			}
+		}
+		&.active{
+			>a, >a:hover, >a:focus{
+				border-top-color: $c-brown;
+				border-left-color: $c-brown;
+				border-right-color: $c-brown;
+			}
+		}
+	}
+}

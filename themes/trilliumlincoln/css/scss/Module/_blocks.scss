@@ -126,12 +126,16 @@
 .region-content-top,
 .region-content,
 .region-content-bottom{
-	.block{
+	.block, .paragraph > .paragraph__column{
 		margin-bottom: 20px;
 		padding-bottom: 15px;
 		@include respond($sm){
 			margin-bottom: 36px;
 			padding-bottom: 30px;
+		}
+		.paragraph > .paragraph__column{
+			margin-bottom: 0;
+			padding-bottom: 0;
 		}
 		.block-title{
 			color: $c-brown-l;
@@ -147,6 +151,7 @@
 		}
 	}
 }
+
 .hours-block{
 	.field--name-field-text-callout{
 		@include make-row();

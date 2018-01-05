@@ -48,3 +48,17 @@ function trilliumlincoln_page_attachments_alter(array &$page) {
   );
   $page['#attached']['html_head'][] = [$viewport, 'viewport'];
 }
+
+function trilliumlincoln_preprocess_paragraph__text_block(&$variables){
+  $paragraph = $variables['paragraph'];
+  if($paragraph->hasField('field_p__text_block__classes') && !$paragraph->field_p__text_block__classes->isEmpty()){
+    $variables['paragraph_classes'] = $paragraph->field_p__text_block__classes->first()->value;
+  }
+}
+
+function trilliumlincoln_preprocess_paragraph__text_blocks(&$variables){
+  $paragraph = $variables['paragraph'];
+  if($paragraph->hasField('field_p__text_block__classes') && !$paragraph->field_p__text_block__classes->isEmpty()){
+    $variables['paragraph_classes'] = $paragraph->field_p__text_block__classes->first()->value;
+  }
+}

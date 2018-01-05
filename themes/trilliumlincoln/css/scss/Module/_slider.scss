@@ -86,7 +86,7 @@
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);		
-		z-index: 200;
+		z-index: 101;
 		font-size: em(25);		
 		color: $c-red;
 		&.prev {
@@ -102,6 +102,29 @@
 			}
 			&.next {
 				right: 40px;
+			}
+		}
+	}
+	.slider-pager {
+		position: absolute;
+		z-index: 200;
+		bottom: 20px;
+		height: 10px;
+		display: none;
+		@include respond($sm){
+			display: block;
+		}
+		>span {
+			display: inline-block;
+			height: 10px;
+			width: 10px;
+			text-indent: -9999px;
+			border-radius: 50%;
+			border: 2px solid $c-brown;
+			background-color: $c-brown;
+			margin-right: 10px;
+			&.cycle-pager-active {
+				background-color: transparent;
 			}
 		}
 	}

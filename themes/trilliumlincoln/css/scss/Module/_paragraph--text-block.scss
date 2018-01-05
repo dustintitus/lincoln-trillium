@@ -1,0 +1,16 @@
+.paragraph--type--text-block {
+	
+	line-height: (33/28);
+	padding-bottom: 45px;
+	.field--name-field-p__text-block__title {
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 12px;
+		font-size: em(14);
+	}
+	.field--name-field-p__text-block__body {
+		p{
+			font-size: em(14);
+		}
+	}
+}
