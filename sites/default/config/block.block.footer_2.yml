@@ -1,0 +1,31 @@
+uuid: 5e08b9c2-ab85-41ca-8cca-c2e013a42add
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - block_class
+    - menu_block
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: 'col-sm-offset-1 col-sm-2 footer-menu'
+id: footer_2
+theme: trilliumlincoln
+region: footer
+weight: 0
+provider: null
+plugin: 'menu_block:footer'
+settings:
+  id: 'menu_block:footer'
+  label: Assistance
+  provider: menu_block
+  label_display: visible
+  level: 1
+  depth: 0
+  expand: 0
+  parent: 'footer:menu_link_content:be503a87-e2c6-4c5c-9cd4-e329f5b7c7f2'
+  suggestion: footer
+visibility: {  }

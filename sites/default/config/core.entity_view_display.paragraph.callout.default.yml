@@ -1,0 +1,50 @@
+uuid: 2eb196a0-994a-4fd4-961d-52e70209bc01
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.callout.field_body
+    - field.field.paragraph.callout.field_callout_link_to
+    - field.field.paragraph.callout.field_image
+    - paragraphs.paragraphs_type.callout
+  module:
+    - linked_field
+    - svg_image
+    - text
+id: paragraph.callout.default
+targetEntityType: paragraph
+bundle: callout
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: field
+        destination: field_callout_link_to
+        advanced: {  }
+    type: text_default
+    region: content
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: field
+        destination: field_callout_link_to
+        advanced: {  }
+    type: image
+    region: content
+hidden:
+  field_callout_link_to: true

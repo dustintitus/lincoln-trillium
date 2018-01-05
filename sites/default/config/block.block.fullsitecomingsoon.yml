@@ -1,0 +1,29 @@
+uuid: 8bacb011-7310-46ae-bc9f-1d63c11055d0
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:f59da79f-f360-4ce8-a094-a50b63e2559e'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: text-center
+id: fullsitecomingsoon
+theme: trilliumlincoln
+region: header
+weight: -9
+provider: null
+plugin: 'block_content:f59da79f-f360-4ce8-a094-a50b63e2559e'
+settings:
+  id: 'block_content:f59da79f-f360-4ce8-a094-a50b63e2559e'
+  label: 'Full Site Coming Soon'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

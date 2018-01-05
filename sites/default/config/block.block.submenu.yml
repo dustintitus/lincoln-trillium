@@ -1,0 +1,37 @@
+uuid: 252b1684-62f8-4f77-a2d1-9caafbced374
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.sub-menu
+  module:
+    - block_class
+    - menu_block
+    - system
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: sub-menu
+id: submenu
+theme: trilliumlincoln
+region: highlighted
+weight: -8
+provider: null
+plugin: 'menu_block:sub-menu'
+settings:
+  id: 'menu_block:sub-menu'
+  label: 'Sub menu'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 0
+  parent: 'sub-menu:'
+  suggestion: sub_menu
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

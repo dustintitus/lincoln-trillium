@@ -1,0 +1,29 @@
+uuid: 1b1e40dd-fe33-4be7-9fec-52ab03a08208
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:48489d27-70c9-4ab0-95fe-015edf18e114'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: 'col-sm-10 copyright'
+id: copyright
+theme: trilliumlincoln
+region: footer_bottom
+weight: 0
+provider: null
+plugin: 'block_content:48489d27-70c9-4ab0-95fe-015edf18e114'
+settings:
+  id: 'block_content:48489d27-70c9-4ab0-95fe-015edf18e114'
+  label: Copyright
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

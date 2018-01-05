@@ -1,0 +1,39 @@
+uuid: 55c3e9e4-134d-4778-b604-49d9dda6c26d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_blocks.field_p__text_block__classes
+    - field.field.paragraph.text_blocks.field_p__text_blocks__item
+    - paragraphs.paragraphs_type.text_blocks
+  module:
+    - paragraphs
+id: paragraph.text_blocks.default
+targetEntityType: paragraph
+bundle: text_blocks
+mode: default
+content:
+  field_p__text_block__classes:
+    weight: 0
+    settings:
+      size: 255
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p__text_blocks__item:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

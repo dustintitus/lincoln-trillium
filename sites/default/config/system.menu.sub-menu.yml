@@ -1,0 +1,8 @@
+uuid: 48e7f0a9-6d69-479a-ae61-3255aa3dc9b2
+langcode: en
+status: true
+dependencies: {  }
+id: sub-menu
+label: 'Sub menu'
+description: ''
+locked: false

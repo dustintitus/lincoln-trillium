@@ -113,3 +113,14 @@ $settings['rebuild_access'] = TRUE;
  * directory.
  */
 $settings['skip_permissions_hardening'] = TRUE;
+
+$databases['default']['default'] = array (
+  'database' => 'drupal8_trilliumlincoln_git',
+  'username' => 'developer',
+  'password' => 'developer',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);

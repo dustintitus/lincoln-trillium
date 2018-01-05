@@ -1,0 +1,29 @@
+uuid: d833c38b-b9cb-44f0-8901-8bdd40daeed3
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:6ae62c4e-97c2-475f-bcc7-9358c7c6282f'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: 'col-xs-12 col-sm-6'
+id: linkolnlink
+theme: trilliumlincoln
+region: header
+weight: -8
+provider: null
+plugin: 'block_content:6ae62c4e-97c2-475f-bcc7-9358c7c6282f'
+settings:
+  id: 'block_content:6ae62c4e-97c2-475f-bcc7-9358c7c6282f'
+  label: 'Linkoln Link'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

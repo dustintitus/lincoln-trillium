@@ -1,0 +1,21 @@
+uuid: 746e12e8-5162-48be-b7a8-f6ae0ae3217e
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_p__text_block__classes
+field_name: field_p__text_block__classes
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

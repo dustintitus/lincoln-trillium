@@ -1,0 +1,26 @@
+uuid: 01d34ac0-7500-49fd-af59-89b86b1248a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_blocks.field_p__text_block__classes
+    - field.field.paragraph.text_blocks.field_p__text_blocks__item
+    - paragraphs.paragraphs_type.text_blocks
+  module:
+    - entity_reference_revisions
+id: paragraph.text_blocks.default
+targetEntityType: paragraph
+bundle: text_blocks
+mode: default
+content:
+  field_p__text_blocks__item:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_p__text_block__classes: true

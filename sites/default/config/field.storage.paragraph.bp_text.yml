@@ -1,0 +1,21 @@
+uuid: 69c8535d-a511-440e-a132-371f528c0c65
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+_core:
+  default_config_hash: g_mTcdFTbGF39ke8z44oqVuv8-klnz2rbsd_zd96OGI
+id: paragraph.bp_text
+field_name: bp_text
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

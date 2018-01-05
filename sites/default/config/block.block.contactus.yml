@@ -1,0 +1,35 @@
+uuid: 29a684e3-5f7d-4d04-94d0-ca08db3b9a6b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:text_callout_block:57660c8c-bed1-48e8-b4f6-399d91b23b29'
+  module:
+    - block_class
+    - block_content
+    - system
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: 'contact-us-block '
+id: contactus
+theme: trilliumlincoln
+region: content
+weight: -4
+provider: null
+plugin: 'block_content:57660c8c-bed1-48e8-b4f6-399d91b23b29'
+settings:
+  id: 'block_content:57660c8c-bed1-48e8-b4f6-399d91b23b29'
+  label: 'Contact Us '
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/about\r\n/assistance"
+    negate: false
+    context_mapping: {  }

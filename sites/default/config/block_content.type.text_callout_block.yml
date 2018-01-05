@@ -1,0 +1,8 @@
+uuid: 7a858558-dd72-408d-9dae-b863f27812d1
+langcode: en
+status: true
+dependencies: {  }
+id: text_callout_block
+label: 'Text Callout Block'
+revision: 0
+description: ''

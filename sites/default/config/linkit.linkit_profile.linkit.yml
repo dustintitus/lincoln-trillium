@@ -1,0 +1,21 @@
+uuid: ee391c90-713d-4134-8aa8-db8fae40f08d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: linkit
+label: linkit
+description: ''
+matchers:
+  e7781a89-84bb-4910-ba43-940abadfc642:
+    uuid: e7781a89-84bb-4910-ba43-940abadfc642
+    id: 'entity:node'
+    weight: 0
+    settings:
+      include_unpublished: false
+      metadata: ''
+      bundles:
+        page: page
+      group_by_bundle: false
+      substitution_type: canonical

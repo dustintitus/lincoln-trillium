@@ -1,0 +1,35 @@
+uuid: 775b9c85-e479-4dc2-bbd8-963278e7dece
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:text_callout_block:12908d7a-5242-4ca5-9b65-902697ebc42a'
+  module:
+    - block_class
+    - block_content
+    - system
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: hours-block
+id: hoursblock
+theme: trilliumlincoln
+region: content_bottom
+weight: -8
+provider: null
+plugin: 'block_content:12908d7a-5242-4ca5-9b65-902697ebc42a'
+settings:
+  id: 'block_content:12908d7a-5242-4ca5-9b65-902697ebc42a'
+  label: Hours
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/about\r\n/assistance"
+    negate: false
+    context_mapping: {  }

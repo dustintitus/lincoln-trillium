@@ -1,0 +1,33 @@
+uuid: b17e921e-1690-4a3d-ac89-d83324021cf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.main.field_image
+    - system.menu.main
+  module:
+    - svg_image
+id: menu_link_content.main.default
+targetEntityType: menu_link_content
+bundle: main
+mode: default
+content:
+  children:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden: {  }

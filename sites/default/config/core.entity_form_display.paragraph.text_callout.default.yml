@@ -1,0 +1,39 @@
+uuid: 7aa22eb9-af41-4ba1-ae32-2c6a5557980e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_callout.field_item
+    - field.field.paragraph.text_callout.field_title
+    - paragraphs.paragraphs_type.text_callout
+  module:
+    - paragraphs
+id: paragraph.text_callout.default
+targetEntityType: paragraph
+bundle: text_callout
+mode: default
+content:
+  field_item:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

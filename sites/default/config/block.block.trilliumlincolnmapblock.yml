@@ -1,0 +1,33 @@
+uuid: 87615f30-7fe9-4591-8d29-081ddea9f851
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - system
+    - trilliumlincoln_map
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: ''
+id: trilliumlincolnmapblock
+theme: trilliumlincoln
+region: content_bottom
+weight: 0
+provider: null
+plugin: trilliumlincoln_map_custom_block
+settings:
+  id: trilliumlincoln_map_custom_block
+  label: 'Visit Us'
+  provider: trilliumlincoln_map
+  label_display: visible
+  message: 'We are located at 4589 Industrial Pkwy, Alliston, ON L9R 1W1'
+  lat: '44.162004'
+  lng: '-79.828266'
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/about\r\n/assistance"
+    negate: false
+    context_mapping: {  }

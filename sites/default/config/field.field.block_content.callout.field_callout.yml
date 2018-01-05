@@ -1,0 +1,25 @@
+uuid: f8973c7d-d28a-46f4-b249-d9be27e07245
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.callout
+    - field.storage.block_content.field_callout
+  module:
+    - entity_reference_revisions
+id: block_content.callout.field_callout
+field_name: field_callout
+entity_type: block_content
+bundle: callout
+label: Callout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles: null
+field_type: entity_reference_revisions

@@ -1,0 +1,46 @@
+uuid: 91669bad-c6eb-4ce9-b122-5651efa6713f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p__text_blocks__item
+    - paragraphs.paragraphs_type.text_block
+    - paragraphs.paragraphs_type.text_blocks
+  module:
+    - entity_reference_revisions
+id: paragraph.text_blocks.field_p__text_blocks__item
+field_name: field_p__text_blocks__item
+entity_type: paragraph
+bundle: text_blocks
+label: Text-block
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      text_block: text_block
+    target_bundles_drag_drop:
+      callout:
+        weight: 7
+        enabled: false
+      hero_image:
+        weight: 8
+        enabled: false
+      text_block:
+        enabled: true
+        weight: 9
+      text_blocks:
+        weight: 10
+        enabled: false
+      text_callout:
+        weight: 11
+        enabled: false
+      text_callout_item:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,9 @@
+uuid: 5f3a8b93-9ec5-4b3b-b79f-24cfa58a3357
+langcode: en
+status: true
+dependencies: {  }
+id: text_callout
+label: 'Text Callout'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: c5467e23-76f3-4935-88c6-40e258cfbc2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_button
+    - node.type.slider
+  module:
+    - link
+id: node.slider.field_button
+field_name: field_button
+entity_type: node
+bundle: slider
+label: Button
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

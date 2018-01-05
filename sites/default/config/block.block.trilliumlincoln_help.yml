@@ -1,0 +1,22 @@
+uuid: 9c62550c-ffc4-40b8-a19f-ad62a8457cd2
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - trilliumlincoln
+_core:
+  default_config_hash: MhtNdV__HKRTab0ZPjkPNfYL4Ng4UPBucDLoC7Rg5Eo
+id: trilliumlincoln_help
+theme: trilliumlincoln
+region: content
+weight: -7
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,24 @@
+uuid: c4f40c1f-8c48-4858-9284-fc86b6cfce41
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.text_callout_block
+    - field.field.block_content.text_callout_block.field_text_callout
+  module:
+    - entity_reference_revisions
+id: block_content.text_callout_block.default
+targetEntityType: block_content
+bundle: text_callout_block
+mode: default
+content:
+  field_text_callout:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

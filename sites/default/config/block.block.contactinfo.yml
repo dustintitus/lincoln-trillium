@@ -1,0 +1,29 @@
+uuid: b0b7ada3-378f-4d2f-8496-be4cf9ee749d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3be2c907-9105-45a2-b1a1-690e6a184169'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: 'col-xs-12 col-sm-6'
+id: contactinfo
+theme: trilliumlincoln
+region: header
+weight: -7
+provider: null
+plugin: 'block_content:3be2c907-9105-45a2-b1a1-690e6a184169'
+settings:
+  id: 'block_content:3be2c907-9105-45a2-b1a1-690e6a184169'
+  label: 'Contact info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 703e676e-ea23-451b-86f4-a44b06cca836
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - trilliumlincoln
+_core:
+  default_config_hash: fNNLN48MSGSLiqwIFywCuxH2Dk_IxDbaP0kYhg_IPrg
+id: trilliumlincoln_content
+theme: trilliumlincoln
+region: content
+weight: -6
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,19 @@
+uuid: 0b18f5ec-6977-4f48-b5e6-1177df4ad4dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p__text_block__classes
+    - paragraphs.paragraphs_type.text_block
+id: paragraph.text_block.field_p__text_block__classes
+field_name: field_p__text_block__classes
+entity_type: paragraph
+bundle: text_block
+label: Classes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

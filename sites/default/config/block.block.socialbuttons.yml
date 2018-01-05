@@ -1,0 +1,29 @@
+uuid: 1751ac5c-df93-4e67-a870-7025ded021b5
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:312d27ff-ffa4-4851-89f1-00f5da3dc30f'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: col-sm-2
+id: socialbuttons
+theme: trilliumlincoln
+region: footer_bottom
+weight: 0
+provider: null
+plugin: 'block_content:312d27ff-ffa4-4851-89f1-00f5da3dc30f'
+settings:
+  id: 'block_content:312d27ff-ffa4-4851-89f1-00f5da3dc30f'
+  label: 'Social buttons'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

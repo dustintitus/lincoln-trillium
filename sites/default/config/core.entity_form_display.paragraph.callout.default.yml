@@ -1,0 +1,48 @@
+uuid: d20dd074-5961-4157-a77f-0c3b484f7030
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.callout.field_body
+    - field.field.paragraph.callout.field_callout_link_to
+    - field.field.paragraph.callout.field_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.callout
+  module:
+    - link
+    - svg_image
+    - text
+id: paragraph.callout.default
+targetEntityType: paragraph
+bundle: callout
+mode: default
+content:
+  field_body:
+    weight: 1
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
+  field_callout_link_to:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_image:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

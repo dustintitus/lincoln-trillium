@@ -1,0 +1,9 @@
+uuid: 96bee51c-deb5-42aa-b3e7-11f4ad4849d8
+langcode: en
+status: true
+dependencies: {  }
+id: text_blocks
+label: Text-blocks
+icon_uuid: null
+description: 'Wrapper for Text-block paragraph '
+behavior_plugins: {  }

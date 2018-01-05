@@ -1,0 +1,35 @@
+uuid: ca51e7f0-2cde-4a08-a69f-a13a3561c3d6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:callout:c3415d63-e96b-4e48-837e-2ab007cd3d47'
+  module:
+    - block_class
+    - block_content
+    - system
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: ''
+id: callouthome
+theme: trilliumlincoln
+region: content
+weight: -5
+provider: null
+plugin: 'block_content:c3415d63-e96b-4e48-837e-2ab007cd3d47'
+settings:
+  id: 'block_content:c3415d63-e96b-4e48-837e-2ab007cd3d47'
+  label: 'Callout home'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

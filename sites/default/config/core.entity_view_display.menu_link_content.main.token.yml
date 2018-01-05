@@ -1,0 +1,34 @@
+uuid: 14df7f38-9130-43a4-82e8-7c3e6a22275b
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.menu_link_content.token
+    - field.field.menu_link_content.main.field_image
+    - system.menu.main
+  module:
+    - svg_image
+id: menu_link_content.main.token
+targetEntityType: menu_link_content
+bundle: main
+mode: token
+content:
+  children:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden: {  }

@@ -1,0 +1,35 @@
+uuid: 7d9f3b2a-656f-4dfa-a9d5-44eecfa74377
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.hero_image_block
+  module:
+    - block_class
+    - system
+    - views
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: ''
+id: views_block__hero_image_block_block_1
+theme: trilliumlincoln
+region: highlighted
+weight: -10
+provider: null
+plugin: 'views_block:hero_image_block-block_1'
+settings:
+  id: 'views_block:hero_image_block-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: "/about\r\n/assistance\r\n/terms-and-conditions"
+    negate: false
+    context_mapping: {  }

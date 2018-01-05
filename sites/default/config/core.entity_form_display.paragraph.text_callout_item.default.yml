@@ -1,0 +1,35 @@
+uuid: 249b82e0-b2d3-4d18-a702-40df75a6331d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_callout_item.field_description
+    - field.field.paragraph.text_callout_item.field_label
+    - paragraphs.paragraphs_type.text_callout_item
+  module:
+    - text
+id: paragraph.text_callout_item.default
+targetEntityType: paragraph
+bundle: text_callout_item
+mode: default
+content:
+  field_description:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_label:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

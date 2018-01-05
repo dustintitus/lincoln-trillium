@@ -1,0 +1,32 @@
+schemas:
+  bootstrap: 8000
+  trilliumlincoln: 8000
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'http://drupal8.dev/trilliumlincoln/themes/trilliumlincoln/favicon.ico'
+  use_default: true
+logo:
+  path: 'public://logo.png'
+  url: ''
+  use_default: false
+region_wells:
+  header: ''
+  navigation: ''
+  navigation_collapsible: ''
+  highlighted: ''
+  help: ''
+  content_top: ''
+  content: ''
+  content_bottom: ''
+  footer: ''
+  footer_bottom: ''
+table_responsive: '-1'
+table: ''
+fluid_container: 1
+navbar_position: ''
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true

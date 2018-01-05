@@ -1,0 +1,22 @@
+uuid: db1e4cbc-91eb-4069-9db6-00649966a14c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p__text_block__body
+    - paragraphs.paragraphs_type.text_block
+  module:
+    - text
+id: paragraph.text_block.field_p__text_block__body
+field_name: field_p__text_block__body
+entity_type: paragraph
+bundle: text_block
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary
