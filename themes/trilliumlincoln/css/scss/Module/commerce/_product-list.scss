@@ -1,0 +1,173 @@
+.view-product-list{
+	font-size: em(14);
+	line-height: 33/28;
+	&.list {
+		.view-content {
+			.views-row {
+				@extend .row;
+				.row-separator {
+					border-bottom: 1px solid $c-brown;
+				}
+				&:last-child{
+					.row-separator {
+						border-bottom: none;
+					}
+				}				
+				.col-1{
+					@extend %col-sm-3;
+				}
+				.col-2{
+					@extend %col-sm-6;
+				}
+				.col-3{
+					@extend %col-sm-3;
+				}
+			}
+			.field--name-price {
+				text-align: right;
+				padding-right: 15px;
+			}
+			.product-link-wrapper{
+				text-align: right;
+				.btn {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&.grid{
+		.view-content {
+			@extend .row;
+			.views-row {
+				@include make-col(12, 6, 4);
+				@include respond($sm-1,max){
+					&:nth-child(2n+1){
+						clear: both;
+					}
+				}		
+				@include respond($sm){
+					&:nth-child(3n+1){
+						clear: both;
+					}
+				}
+				.field--name-title{
+					margin-top: 10px;
+					margin-bottom: 10px;
+				}
+				.field--name-price {
+					padding-top: 10px;
+				}
+				.product-link-wrapper{
+					text-align: center;
+				}
+			}
+		}
+	}
+
+	.product {
+		padding-top: 25px;
+		padding-bottom: 25px;
+		overflow: hidden;
+	}
+
+
+	.product-list-viewoptions {
+		float: right;
+		display: none;
+		@include respond($sm){
+			display: block;
+		}
+	}
+	.product-list-viewoptions-label {
+		font-size: em(14);
+		text-transform: uppercase;
+	}
+	.product-list-viewoptions-label,
+	.product-list--grid,
+	.product-list--list,
+	.product-list--separator{
+		vertical-align: middle;
+		display: inline-block;
+		height: 14px;
+	}
+
+	.product-list--grid,
+	.product-list--list{
+		text-indent: -9999px;
+		margin-left: 10px;
+		margin-right: 10px;
+		width: 21px;
+		border: none;
+		background: {
+			repeat: no-repeat;
+			size: 100% ;
+			position: center;
+			color: transparent;
+		}
+	}
+	.product-list--list {
+		background-image: url("../images/list.svg");
+		width: 26px;
+	}
+	.product-list--grid {
+		background-image: url("../images/grid.svg");
+		margin-right: 0;
+	}
+	.product-list--separator{			
+		width: 1px;
+		background-color: $c-grey;
+	}
+
+	.view-content {
+		clear: both;
+		.field-car-images {
+			height: 130px;
+				a {
+					display: block;
+					height: 100%;
+				}
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		.field--name-title{
+			font-weight: bold;
+			margin-bottom: 20px;
+			text-transform: uppercase;
+			color: $text-color;
+			display: block;
+		}
+		.field--name-price {
+			margin-bottom: 20px;
+			font-weight: bold;
+		}
+		.product-link-wrapper{
+			.btn {
+				min-width: 150px;
+			}
+		}
+	}
+
+		.pagination {
+			> li > a, > li > span {
+				color: $c-orange;
+			}
+
+			> .active > a, 
+			> .active > span, 
+			> .active > a:hover, 
+			> .active > span:hover, 
+			> .active > a:focus, 
+			> .active > span:focus {
+				background-color: $c-orange;
+				border-color: $c-orange;
+				color: $c-white;
+			}
+		}
+	
+	
+}

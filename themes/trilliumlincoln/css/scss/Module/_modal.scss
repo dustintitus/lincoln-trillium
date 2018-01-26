@@ -1,0 +1,137 @@
+#trilliumlincoln-modal,
+#trilliumlincoln-close-modal{
+  .modal-dialog{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    .modal-content{
+      background-color: $c-brown;
+      border: 5px solid $c-white;
+      .modal-header{
+        display: none;
+        .close{
+          color: $c-white;
+          opacity: 1;
+          text-shadow: none;
+          &:hover{
+            color: $c-white;
+          }
+        }
+      }
+      .modal-footer{
+        clear: both;
+        padding: 15px 30px;
+        border: none;
+        text-align: center;
+        .webform-button--submit{
+          padding: 1em 5em;
+        }
+      }
+      .modal-body{
+        text-align: center;
+        padding: 15px 30px 30px 30px;
+        h2{
+          color: $c-white;
+          font-family: $font-family-base;
+          font-weight: 300;
+          font-size: em(60);
+        }
+        h3{
+          color: $c-white;
+          font-size: em(30);
+          font-family: MillerBItalic, sans-serif;
+          &:after{
+            content: '';
+            width: 25%;
+            display: block;
+            height: 6px;
+            background-color: $c-red;
+            margin: 16px auto 24px auto;
+          }
+        }
+        p{
+          color: $c-white;
+          font-family: $font-family-base;
+          font-weight: 300;
+          font-size: em(15);
+          letter-spacing: 0.5px;
+          line-height: 1.2em;
+        }
+        .button-section{
+          padding: 10px 0 0 0;
+          .btn-block{
+            display: inline-block;
+            margin: 5px 5px 0px 5px;
+          }
+        }
+        form{
+          margin-right: -3%;
+          .form-actions{
+            display: none;
+          }
+          .form-item{
+            margin-right: 3%;
+            &.form-type-textfield,
+            &.form-type-email,
+            &.form-type-tel{
+              @include respond($sm){
+                width: 47%;
+                float: left;
+              }
+            }
+            .form-control{
+              width: 100%;
+            }
+            .control-label{
+              margin-bottom: 5px;
+              width: 100%;
+              display: block;
+              text-align: left;
+              color: $c-white;
+              &.form-required{
+                &:after{
+                  margin-left: 4px;
+                }
+              }
+            }
+            &.has-error{
+              .control-label{
+                color: #a94442;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#trilliumlincoln-close-modal{
+  .modal-dialog{
+    .modal-content{
+      .modal-header{
+        display: block;
+        border: none;
+        padding: 15px 30px 0px 30px;
+      }
+      .modal-footer{
+        padding-bottom: 30px;
+      }
+      .modal-body{
+        padding-top: 0px;
+        padding-bottom: 0px;
+        h2{
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+}
+#newSite{
+  .modal-dialog{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+}

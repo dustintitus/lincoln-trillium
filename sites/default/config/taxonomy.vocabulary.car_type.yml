@@ -1,0 +1,9 @@
+uuid: cc2035f7-6146-4bad-a39d-7a8794832038
+langcode: en
+status: true
+dependencies: {  }
+name: 'Car Type'
+vid: car_type
+description: ''
+hierarchy: 0
+weight: 0

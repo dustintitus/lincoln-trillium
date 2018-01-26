@@ -1,0 +1,103 @@
+uuid: 88914319-9c95-4b0b-a667-566964c03c98
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - core.entity_view_mode.commerce_product.teaser
+    - field.field.commerce_product.car.body
+    - field.field.commerce_product.car.field_car_accessory
+    - field.field.commerce_product.car.field_car_body_style
+    - field.field.commerce_product.car.field_car_category
+    - field.field.commerce_product.car.field_car_color
+    - field.field.commerce_product.car.field_car_cylinders
+    - field.field.commerce_product.car.field_car_dealership_id
+    - field.field.commerce_product.car.field_car_differential
+    - field.field.commerce_product.car.field_car_engine_type
+    - field.field.commerce_product.car.field_car_fuel_type
+    - field.field.commerce_product.car.field_car_images
+    - field.field.commerce_product.car.field_car_interior_trim
+    - field.field.commerce_product.car.field_car_make
+    - field.field.commerce_product.car.field_car_model
+    - field.field.commerce_product.car.field_car_number_of_axles
+    - field.field.commerce_product.car.field_car_number_of_doors
+    - field.field.commerce_product.car.field_car_odometer_reading
+    - field.field.commerce_product.car.field_car_stock_number
+    - field.field.commerce_product.car.field_car_total_length
+    - field.field.commerce_product.car.field_car_traction
+    - field.field.commerce_product.car.field_car_type
+    - field.field.commerce_product.car.field_car_vin
+    - field.field.commerce_product.car.field_car_year
+    - field.field.commerce_product.car.stores
+    - field.field.commerce_product.car.variations
+    - image.style.thumbnail
+  module:
+    - field_formatter_class
+    - svg_image
+    - text
+id: commerce_product.car.teaser
+targetEntityType: commerce_product
+bundle: car
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_trimmed
+    weight: 1
+    settings:
+      trim_length: 340
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    region: content
+  field_car_images:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: content
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings:
+      field_formatter_class:
+        class: car-images
+    type: image
+    region: content
+  variations:
+    type: entity_reference_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: product_list
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    region: content
+hidden:
+  created: true
+  field_car_accessory: true
+  field_car_body_style: true
+  field_car_category: true
+  field_car_color: true
+  field_car_cylinders: true
+  field_car_dealership_id: true
+  field_car_differential: true
+  field_car_engine_type: true
+  field_car_fuel_type: true
+  field_car_interior_trim: true
+  field_car_make: true
+  field_car_model: true
+  field_car_number_of_axles: true
+  field_car_number_of_doors: true
+  field_car_odometer_reading: true
+  field_car_stock_number: true
+  field_car_total_length: true
+  field_car_traction: true
+  field_car_type: true
+  field_car_vin: true
+  field_car_year: true
+  stores: true
+  uid: true

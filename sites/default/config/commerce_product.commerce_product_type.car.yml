@@ -1,0 +1,10 @@
+uuid: d502a40e-69ce-4d5b-8be8-b40ca06d853e
+langcode: en
+status: true
+dependencies: {  }
+id: car
+label: Cars
+description: ''
+variationType: default
+injectVariationFields: false
+traits: {  }

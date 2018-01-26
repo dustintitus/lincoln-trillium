@@ -1,0 +1,19 @@
+uuid: f539bae2-e52d-4fb9-bc3d-7d27fca2db09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_car_accessory_price
+    - paragraphs.paragraphs_type.car_accessory
+id: paragraph.car_accessory.field_car_accessory_price
+field_name: field_car_accessory_price
+entity_type: paragraph
+bundle: car_accessory
+label: 'Accessory Price'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

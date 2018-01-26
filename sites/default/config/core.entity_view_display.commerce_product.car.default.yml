@@ -1,0 +1,210 @@
+uuid: 6144a362-097e-48af-9b2d-1c5c6cf93159
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.field.commerce_product.car.body
+    - field.field.commerce_product.car.field_car_accessory
+    - field.field.commerce_product.car.field_car_body_style
+    - field.field.commerce_product.car.field_car_category
+    - field.field.commerce_product.car.field_car_color
+    - field.field.commerce_product.car.field_car_cylinders
+    - field.field.commerce_product.car.field_car_dealership_id
+    - field.field.commerce_product.car.field_car_differential
+    - field.field.commerce_product.car.field_car_engine_type
+    - field.field.commerce_product.car.field_car_fuel_type
+    - field.field.commerce_product.car.field_car_images
+    - field.field.commerce_product.car.field_car_interior_trim
+    - field.field.commerce_product.car.field_car_make
+    - field.field.commerce_product.car.field_car_model
+    - field.field.commerce_product.car.field_car_number_of_axles
+    - field.field.commerce_product.car.field_car_number_of_doors
+    - field.field.commerce_product.car.field_car_odometer_reading
+    - field.field.commerce_product.car.field_car_stock_number
+    - field.field.commerce_product.car.field_car_total_length
+    - field.field.commerce_product.car.field_car_traction
+    - field.field.commerce_product.car.field_car_type
+    - field.field.commerce_product.car.field_car_vin
+    - field.field.commerce_product.car.field_car_year
+    - field.field.commerce_product.car.stores
+    - field.field.commerce_product.car.variations
+    - image.style.thumbnail
+  module:
+    - entity_reference_revisions
+    - field_formatter_class
+    - svg_image
+    - text
+id: commerce_product.car.default
+targetEntityType: commerce_product
+bundle: car
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_car_accessory:
+    type: entity_reference_revisions_entity_view
+    weight: 17
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_car_body_style:
+    weight: 7
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_car_category:
+    weight: 5
+    label: inline
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: entity_reference_label
+    region: content
+  field_car_cylinders:
+    weight: 6
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_differential:
+    weight: 11
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_engine_type:
+    weight: 10
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_fuel_type:
+    weight: 4
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_images:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: file
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: image
+    region: content
+  field_car_interior_trim:
+    weight: 8
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_number_of_axles:
+    weight: 13
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_number_of_doors:
+    weight: 15
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_odometer_reading:
+    weight: 12
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_stock_number:
+    type: string
+    weight: 14
+    region: content
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_car_traction:
+    weight: 9
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_type:
+    weight: 1
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: entity_reference_label
+    region: content
+  field_car_vin:
+    weight: 16
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  variations:
+    type: entity_reference_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    region: content
+hidden:
+  created: true
+  field_car_color: true
+  field_car_dealership_id: true
+  field_car_make: true
+  field_car_model: true
+  field_car_total_length: true
+  field_car_year: true
+  stores: true
+  uid: true

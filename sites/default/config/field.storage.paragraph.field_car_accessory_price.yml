@@ -1,0 +1,21 @@
+uuid: 270ab1a6-ab76-4006-8058-f4545af9e5b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_car_accessory_price
+field_name: field_car_accessory_price
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

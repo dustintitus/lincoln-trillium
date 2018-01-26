@@ -1,0 +1,21 @@
+uuid: b393e30d-908a-47e1-8a3f-e051ffbb409b
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_car_accessory_description
+field_name: field_car_accessory_description
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

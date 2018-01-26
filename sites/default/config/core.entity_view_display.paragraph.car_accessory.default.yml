@@ -1,0 +1,32 @@
+uuid: 64adbd14-a869-432a-8049-ac6cd27c8577
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.car_accessory.field_car_accessory_code
+    - field.field.paragraph.car_accessory.field_car_accessory_description
+    - field.field.paragraph.car_accessory.field_car_accessory_price
+    - paragraphs.paragraphs_type.car_accessory
+id: paragraph.car_accessory.default
+targetEntityType: paragraph
+bundle: car_accessory
+mode: default
+content:
+  field_car_accessory_description:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_car_accessory_price:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_car_accessory_code: true

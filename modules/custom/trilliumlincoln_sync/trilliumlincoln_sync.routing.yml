@@ -1,0 +1,9 @@
+trilliumlincoln_sync.synchronization:
+  path: '/admin/config/development/synchronization'
+  defaults:
+    _form: '\Drupal\trilliumlincoln_sync\Form\TrilliumlincolnSyncSynchronizationForm'
+    _title: 'Trilliumlincoln Synchronization'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

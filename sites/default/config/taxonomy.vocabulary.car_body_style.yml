@@ -1,0 +1,9 @@
+uuid: 7d14d442-e7c2-41b0-8ccc-f43142bfd825
+langcode: en
+status: true
+dependencies: {  }
+name: 'Car Body Style'
+vid: car_body_style
+description: ''
+hierarchy: 0
+weight: 0

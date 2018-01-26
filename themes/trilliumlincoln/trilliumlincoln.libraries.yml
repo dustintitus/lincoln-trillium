@@ -9,10 +9,18 @@ global-scripts:
   js:
     js/theme.js: {}
     js/vendor/jquery.cycle2.min.js: {}
+    js/vendor/jquery.cycle2.carousel.min.js: {}
     js/vendor/js.cookie.js: {}
     js/slider.js: {}
+    js/commerce.js: {}
   dependencies:
     - core/drupalSettings
     - core/jquery
     - core/jquery.once
+    - core/drupal.dialog.ajax
+trilliumlincoln.admin:
+  version: VERSION
+  css:
+    theme:
+      css/trilliumlincoln.admin.css: {}
 

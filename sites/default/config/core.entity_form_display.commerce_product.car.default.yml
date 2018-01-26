@@ -1,0 +1,287 @@
+uuid: ebabab11-702f-4fa1-a191-08af83abbf4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.field.commerce_product.car.body
+    - field.field.commerce_product.car.field_car_accessory
+    - field.field.commerce_product.car.field_car_body_style
+    - field.field.commerce_product.car.field_car_category
+    - field.field.commerce_product.car.field_car_color
+    - field.field.commerce_product.car.field_car_cylinders
+    - field.field.commerce_product.car.field_car_dealership_id
+    - field.field.commerce_product.car.field_car_differential
+    - field.field.commerce_product.car.field_car_engine_type
+    - field.field.commerce_product.car.field_car_fuel_type
+    - field.field.commerce_product.car.field_car_images
+    - field.field.commerce_product.car.field_car_interior_trim
+    - field.field.commerce_product.car.field_car_make
+    - field.field.commerce_product.car.field_car_model
+    - field.field.commerce_product.car.field_car_number_of_axles
+    - field.field.commerce_product.car.field_car_number_of_doors
+    - field.field.commerce_product.car.field_car_odometer_reading
+    - field.field.commerce_product.car.field_car_stock_number
+    - field.field.commerce_product.car.field_car_total_length
+    - field.field.commerce_product.car.field_car_traction
+    - field.field.commerce_product.car.field_car_type
+    - field.field.commerce_product.car.field_car_vin
+    - field.field.commerce_product.car.field_car_year
+    - field.field.commerce_product.car.stores
+    - field.field.commerce_product.car.variations
+    - image.style.thumbnail
+  module:
+    - commerce
+    - datetime
+    - inline_entity_form
+    - paragraphs
+    - path
+    - svg_image
+    - text
+id: commerce_product.car.default
+targetEntityType: commerce_product
+bundle: car
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_car_accessory:
+    type: entity_reference_paragraphs
+    weight: 28
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_car_body_style:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_car_category:
+    weight: 24
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_car_color:
+    weight: 14
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_cylinders:
+    weight: 16
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_dealership_id:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_differential:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_engine_type:
+    weight: 19
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_fuel_type:
+    weight: 15
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_images:
+    weight: 8
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_car_interior_trim:
+    weight: 18
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_make:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_model:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_car_number_of_axles:
+    weight: 22
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_number_of_doors:
+    weight: 23
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_odometer_reading:
+    weight: 20
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_stock_number:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_total_length:
+    weight: 21
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_traction:
+    weight: 25
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_type:
+    weight: 17
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_car_vin:
+    weight: 13
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_year:
+    weight: 12
+    settings:
+      date_order: YMD
+      time_type: none
+      increment: 15
+    third_party_settings: {  }
+    type: datetime_datelist
+    region: content
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 7
+    region: content
+    third_party_settings: {  }
+  stores:
+    type: commerce_entity_select
+    weight: 2
+    settings:
+      hide_single_entity: true
+      autocomplete_threshold: 7
+      autocomplete_size: 60
+      autocomplete_placeholder: ''
+    third_party_settings: {  }
+    region: content
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  variations:
+    type: inline_entity_form_complex
+    weight: 4
+    settings:
+      form_mode: default
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: true
+      match_operator: STARTS_WITH
+      override_labels: false
+    third_party_settings: {  }
+    region: content
+hidden: {  }

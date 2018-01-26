@@ -1,0 +1,35 @@
+uuid: f45ff77a-7d08-452a-bb3f-4a7853fc1def
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.hero_image_block_product_
+  module:
+    - block_class
+    - system
+    - views
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: ''
+id: views_block__hero_image_block_product__block_1
+theme: trilliumlincoln
+region: highlighted
+weight: -10
+provider: null
+plugin: 'views_block:hero_image_block_product_-block_1'
+settings:
+  id: 'views_block:hero_image_block_product_-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: "/vehicle/*\r\n/search"
+    negate: true
+    context_mapping: {  }

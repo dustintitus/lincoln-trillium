@@ -1,0 +1,5 @@
+type: module
+name: Trilliumlincoln Sync
+description: 'Synchronize Drupal commerce products from CSV file.'
+package: Custom
+core: 8.x

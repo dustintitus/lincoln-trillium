@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+<article{{ attributes.addClass('product-single') }}>
+<div class="row">
+
+  <div class="col-xs-12 col-sm-4 second-col float-right">
+    <div class="calt-h">
+      <h2 class="product-title">
+        {{- product.title -}}
+      </h2>
+      {{- product.field_car_type -}}
+      {{- product.body -}}
+    </div>
+    {{- product.variations -}}
+    {{- calculator_form -}}
+    <div class="car-action">
+      <a data-dialog-type="modal" href="{{ url('<front>') }}trilliumlincoln_utility/test_drive_modal_form?pid={{ product_entity.id }}" class="use-ajax btn btn-info btn-lg">CALL TO ACTION</a>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-8 first-col float-right">
+    {{- product.field_car_images -}}
+
+    <div class="product-content">
+      <div class="field--label col-xs-12">specifications</div>
+    {{- product|without('variation_attributes')
+    |without('field_car_images') 
+    |without('title') 
+    |without('field_car_type') 
+    |without('body') 
+    |without('variations') 
+    |without('field_car_accessory') 
+    -}}
+    </div>
+    <div class="product-accessory">
+      {{- product.field_car_accessory -}}
+    </div>
+  </div>
+
+</div>
+</article>

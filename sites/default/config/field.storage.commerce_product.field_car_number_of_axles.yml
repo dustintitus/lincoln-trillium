@@ -1,0 +1,21 @@
+uuid: b5dcd0c5-afaa-476f-814e-3f8223f0d83a
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.field_car_number_of_axles
+field_name: field_car_number_of_axles
+entity_type: commerce_product
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

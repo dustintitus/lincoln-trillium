@@ -9,6 +9,7 @@ label: 'Anonymous user'
 weight: 0
 is_admin: false
 permissions:
+  - 'access cart'
   - 'access comments'
   - 'access content'
   - 'access site-wide contact form'
@@ -16,4 +17,5 @@ permissions:
   - 'search content'
   - 'use exclude node title'
   - 'use text format restricted_html'
+  - 'view commerce_product'
   - 'view media'

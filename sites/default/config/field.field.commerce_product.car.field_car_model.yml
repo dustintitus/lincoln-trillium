@@ -1,0 +1,29 @@
+uuid: 638ac41e-0487-4b03-8e8e-2055877b95b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_car_model
+    - taxonomy.vocabulary.car_model
+id: commerce_product.car.field_car_model
+field_name: field_car_model
+entity_type: commerce_product
+bundle: car
+label: Model
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      car_model: car_model
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

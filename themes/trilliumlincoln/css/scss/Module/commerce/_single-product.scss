@@ -1,0 +1,105 @@
+.product-single{
+
+	.first-col{
+		@include respond($sm){
+			padding-right: 10px;
+		}
+	}
+	.second-col {
+		@include respond($sm){
+			padding-left: 10px;
+		}
+	}
+
+	.product-carousel {
+		padding-bottom: 20px;
+	}
+	.field--name-body {
+
+	}
+	.product-title {
+		margin-top: 0;
+		margin-bottom: 25px;
+		font-size: em(20);
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	.field--name-field-car-type{
+		margin-bottom: 25px;
+		font-size: em(14);
+		a {
+			color: $text-color;
+		}
+	}
+	p {
+		font-size: 14px;
+	}
+	.field--name-body {
+		margin-bottom: 25px;
+	}
+	.field--name-price {
+		font-weight: bold;
+		font-size: em(20);
+		line-height: (40/47);
+		margin-top: 6px;
+		margin-bottom: 10px;		
+	}
+	.field--name-field-note {
+		font-size: em(9);
+		font-style: italic;
+		margin-bottom: 10px;
+	}
+	.car-action {
+		margin-bottom: 20px;
+		.btn {
+			display: block;
+			max-width: none;
+		}
+	}
+
+	.product-content, .product-accessory{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-size: em(14);
+		line-height: (33/28);
+		>.field--label {
+			margin-bottom: 12px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		a {
+			color: $text-color;
+		}
+	}
+
+	.product-content {
+		@extend .row;		
+		>.field {
+			@extend %col-xs-12;
+			@extend %col-sm-6;
+		} 
+	}
+
+	.product-accessory {
+		// display: table;
+		>.paragraph {
+			// display: table-row;			
+		}
+		.field--name-field-car-accessory-description{
+			// display: table-cell;
+			display: inline;
+			font-weight: bold;
+			// padding-right: 15px;
+			&::after {
+				content: "\:";
+			}
+		}
+		.field--name-field-car-accessory-price{
+			// display: table-cell;
+			display: inline;
+			&::before {
+				content: "\$";
+			}
+		}
+	}
+}

@@ -1,0 +1,9 @@
+uuid: b65fabd7-6001-4a0f-8458-aca71411215f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Car Model'
+vid: car_model
+description: ''
+hierarchy: 0
+weight: 0

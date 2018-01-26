@@ -1,0 +1,19 @@
+uuid: f12600d4-6d1f-4bae-a7fc-60f6e9408290
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_car_traction
+id: commerce_product.car.field_car_traction
+field_name: field_car_traction
+entity_type: commerce_product
+bundle: car
+label: Traction
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

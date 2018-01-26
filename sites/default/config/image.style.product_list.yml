@@ -1,0 +1,15 @@
+uuid: 9632a3ce-feb3-4d8a-902e-34d382657dec
+langcode: en
+status: true
+dependencies: {  }
+name: product_list
+label: 'Product list(160x130)'
+effects:
+  8a2ebfb5-0c7f-4ee3-9556-fc409592bab2:
+    uuid: 8a2ebfb5-0c7f-4ee3-9556-fc409592bab2
+    id: image_scale
+    weight: 2
+    data:
+      width: 160
+      height: 130
+      upscale: false

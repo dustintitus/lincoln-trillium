@@ -1,0 +1,29 @@
+uuid: dd674c6c-bb4f-4143-876e-f6761ab3d833
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_car_body_style
+    - taxonomy.vocabulary.car_body_style
+id: commerce_product.car.field_car_body_style
+field_name: field_car_body_style
+entity_type: commerce_product
+bundle: car
+label: 'Body Style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      car_body_style: car_body_style
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

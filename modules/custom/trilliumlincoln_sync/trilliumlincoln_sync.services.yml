@@ -1,0 +1,7 @@
+services:
+  trilliumlincoln_sync.source:
+    class: Drupal\trilliumlincoln_sync\TrilliumlincolnSourceService
+    arguments: ['@config.factory']
+  trilliumlincoln_sync.dest:
+    class: Drupal\trilliumlincoln_sync\TrilliumlincolnDestService
+    arguments: ['@config.factory']

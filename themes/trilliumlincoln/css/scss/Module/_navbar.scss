@@ -135,6 +135,25 @@
 				}
 				min-width: 40px;
 			}
+			.icon-search{
+				color: $c-brown;
+				width: 50px;
+				min-width: 55px;
+				height: 25px;
+				overflow: hidden;
+				@include respond($sm){
+					height: 100%;
+				}
+				&:before{
+					color: $c-red;
+				}
+			}
 		}
+	}
+}
+
+.use-ajax{
+	.ajax-throbber{
+		display: none;
 	}
 }

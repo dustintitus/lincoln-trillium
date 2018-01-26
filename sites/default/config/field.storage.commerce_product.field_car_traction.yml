@@ -1,0 +1,21 @@
+uuid: eb9e0157-7fcd-4e10-9ecd-5f38d7b54f08
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.field_car_traction
+field_name: field_car_traction
+entity_type: commerce_product
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

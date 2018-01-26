@@ -1,0 +1,4 @@
+#edit-field-car-model-year-wrapper .form-item-field-car-model-year-0-value-month,
+#edit-field-car-model-year-wrapper .form-item-field-car-model-year-0-value-day{
+  display: none;
+}

@@ -1,0 +1,5 @@
+trilliumlincoln_sync.synchronization:
+  title: 'Trilliumlincoln Synchronization'
+  route_name: trilliumlincoln_sync.synchronization
+  parent: system.admin_config_development
+  description: 'Trilliumlincoln Synchronization'

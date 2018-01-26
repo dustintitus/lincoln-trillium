@@ -15,7 +15,7 @@ third_party_settings:
 id: footer_2
 theme: trilliumlincoln
 region: footer
-weight: 0
+weight: -10
 provider: null
 plugin: 'menu_block:footer'
 settings:

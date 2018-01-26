@@ -1,0 +1,7 @@
+name: Trilliumlincoln utility
+type: module
+description: 'Trilliumlincoln utility module that handles small theme implementations, custom blocks, and etc.'
+package: Custom
+# Information added by Drupal.org packaging script on 2016-06-10
+version: '8.x-1.0'
+core: '8.x'

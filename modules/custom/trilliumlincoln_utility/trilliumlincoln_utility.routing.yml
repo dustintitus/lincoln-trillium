@@ -1,0 +1,19 @@
+trilliumlincoln_utility.open_modal_redirect_lincoln:
+  path: 'trilliumlincoln_utility/modal_redirect_lincoln'
+  defaults:
+    _title: 'Redirect Lincoln'
+    _controller: '\Drupal\trilliumlincoln_utility\Controller\LincolnController::modalRedirectContent'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE
+
+trilliumlincoln_utility.open_modal_test_drive:
+  path: 'trilliumlincoln_utility/test_drive_modal_form'
+  defaults:
+    _title: 'Test Drive'
+    _controller: '\Drupal\trilliumlincoln_utility\Controller\LincolnController::openModalTestDriveForm'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE

@@ -1,0 +1,22 @@
+uuid: 174f3427-0d96-4378-93be-286eabf41078
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.body
+  module:
+    - text
+id: commerce_product.car.body
+field_name: body
+entity_type: commerce_product
+bundle: car
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: null
+settings:
+  display_summary: false
+field_type: text_with_summary

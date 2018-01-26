@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_hero_image
-    - node.type.page
   module:
     - entity_reference_revisions
     - node
@@ -134,15 +133,6 @@ display:
           expose:
             operator: ''
           group: 1
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          value:
-            page: page
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
       sorts:
         created:
           id: created

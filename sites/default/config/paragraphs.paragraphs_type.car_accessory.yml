@@ -1,0 +1,9 @@
+uuid: aa165afa-f30c-4bc1-8c3d-025abe02f83d
+langcode: en
+status: true
+dependencies: {  }
+id: car_accessory
+label: Accessory
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

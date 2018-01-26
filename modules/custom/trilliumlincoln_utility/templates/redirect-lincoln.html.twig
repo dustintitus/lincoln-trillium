@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Display Modal Dialog with redirect.
+ *
+ * Available variables:
+ * - url: redirect url.
+ * @ingroup themeable
+ */
+#}
+
+<h2>LINCOLN</h2>
+<h3>Luxury deserves a higher standard</h3>
+<p>Some predict the future, other’s create their own. You are now being redirected to the Lincoln Canada site to design yours. Enjoy the Lincoln way, it’s the good life.</p>
+<div class="button-section">
+  {% if url %}
+    <a class="btn btn-info btn-lg btn-block" href="{{ url }}">Build Your Lincoln</a>
+  {% endif %}
+  <button class="btn btn-info btn-lg btn-block" data-dismiss="modal" type="button">Stay On Site</button>
+</div>

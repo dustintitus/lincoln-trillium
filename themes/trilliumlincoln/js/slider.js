@@ -16,6 +16,7 @@
 					prev: ".slider-control.prev",
 					pager: ".slider-pager",
 					timeout: 0,
+					log: false,
 				}	
 
 				if(item.length < 2){

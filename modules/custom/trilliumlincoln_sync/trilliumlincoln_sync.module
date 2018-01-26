@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * @file
+ * Synchronize Drupal entities from CSV file.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_cron().
+ */
+function trilliumlincoln_sync_cron() {
+  // We access our configuration.
+  $cron_config = \Drupal::configFactory()->getEditable('trilliumlincoln_sync.cron');
+  // Default to an hourly interval. Of course, cron has to be running at least
+  // hourly for this to work.
+  $interval = $cron_config->get('interval');
+  $interval = !empty($interval) ? $interval : 3600;
+
+  // We usually don't want to act every time cron runs (which could be every
+  // minute) so keep a time for the next run in the site state.
+  $next_execution = \Drupal::state()->get('trilliumlincoln_sync.next_execution');
+  $next_execution = !empty($next_execution) ? $next_execution : 0;
+
+  if (REQUEST_TIME >= $next_execution) {
+    if (\Drupal::state()->get('trilliumlincoln_sync_show_status_message')) {
+      drupal_set_message(t('trilliumlincoln_sync cron executed at %time', ['%time' => date_iso8601(REQUEST_TIME)]));
+      \Drupal::state()->set('trilliumlincoln_sync_show_status_message', FALSE);
+    }
+    \Drupal::state()->set('trilliumlincoln_sync.next_execution', REQUEST_TIME + $interval);
+
+    $importers = trilliumlincoln_sync_get_importers();
+    $queue_service = \Drupal::service('queue');
+    $need_to_fill_queue = TRUE;
+
+    foreach ($importers as $importer_name => $importer) {
+      $queue_worker = $importers[$importer_name]['queue_worker'];
+
+      $queue = $queue_service->get($queue_worker);
+      $in_queue = $queue->numberOfItems();
+      if ($in_queue > 0) {
+        $need_to_fill_queue = FALSE;
+      }
+    }
+
+    if (!empty($need_to_fill_queue)) {
+      $trilliumlincoln_sync_source_service = \Drupal::service('trilliumlincoln_sync.source');
+      foreach ($importers as $importer_name => $importer) {
+        $queue_worker = $importers[$importer_name]['queue_worker'];
+        $queue = $queue_service->get($queue_worker);
+
+        // Car.
+        if ($importer_name == 'car') {
+          $result = $trilliumlincoln_sync_source_service->getCarIds();
+
+          if (!empty($result)) {
+            foreach ($result as $key => $row) {
+              $queue->createItem($row);
+            }
+          }
+        }
+
+      }
+    }
+
+  }
+}
+
+/**
+ * Get importers definitions.
+ */
+function trilliumlincoln_sync_get_importers() {
+  $importers = [
+    'car' => [
+      'entity_type' => 'commerce_product',
+      'bundle' => 'car',
+      'id' => 'product_id',
+      'title' => 'Car',
+      'source' => [
+        'primary_key' => 'stock_number',
+        'method' => 'getCar',
+      ],
+      'dest' => [
+        'primary_key' => 'car_stock_number',
+      ],
+      'queue_worker' => 'trilliumlincoln_sync_queue_car',
+      'config' => 'trilliumlincoln_sync.import.car',
+    ],
+  ];
+
+  return $importers;
+}

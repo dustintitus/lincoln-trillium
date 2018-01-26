@@ -1,0 +1,19 @@
+uuid: 0ebf4db3-e3b5-4947-9c7f-5f4bf93afe83
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_car_differential
+id: commerce_product.car.field_car_differential
+field_name: field_car_differential
+entity_type: commerce_product
+bundle: car
+label: Differential
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,5 @@
+trilliumlincoln_utility.admin:
+  version: VERSION
+  css:
+    theme:
+      css/trilliumlincoln.admin.css: {}

@@ -1,0 +1,38 @@
+uuid: 4ae4a642-824a-418e-bec8-1880aeb393b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_car_images
+  module:
+    - image
+id: commerce_product.car.field_car_images
+field_name: field_car_images
+entity_type: commerce_product
+bundle: car
+label: Images
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: 94891666-be74-4dc6-85e9-6dad6701ce81
+    alt: ''
+    title: ''
+    width: 698
+    height: 524
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

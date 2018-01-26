@@ -1,0 +1,32 @@
+label: 'Import Cars from the CSV files to nodes'
+destination:
+  plugin: 'entity:commerce_product'
+process:
+  type:
+    plugin: default_value
+    default_value: car
+  title: title
+  uid:
+    plugin: default_value
+    default_value: 1
+  status: status
+  field_car_dealership_id: dealership_id
+  field_car_stock_number: stock_number
+  field_car_make: make
+  field_car_year: year
+  field_car_vin: vin
+  field_car_color: color
+  field_car_fuel_type: fuel_type
+  field_car_cylinders: cylinders
+  'body/format':
+    plugin: default_value
+    default_value: full_html
+  'body/value': description
+  field_car_interior_trim: interior_trim
+  field_car_engine_type: engine_type
+  field_car_odometer_reading: odometer_reading
+  field_car_total_length: total_length
+  field_car_number_of_axles: number_of_axles
+  field_car_number_of_doors: number_of_doors
+  field_car_traction: traction
+  field_car_differential: differential

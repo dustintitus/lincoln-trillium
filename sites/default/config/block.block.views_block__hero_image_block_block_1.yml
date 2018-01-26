@@ -1,4 +1,4 @@
-uuid: 7d9f3b2a-656f-4dfa-a9d5-44eecfa74377
+uuid: 483b9a8c-1173-4b20-9fa7-08f259a0c954
 langcode: en
 status: true
 dependencies:
@@ -16,7 +16,7 @@ third_party_settings:
 id: views_block__hero_image_block_block_1
 theme: trilliumlincoln
 region: highlighted
-weight: -10
+weight: -11
 provider: null
 plugin: 'views_block:hero_image_block-block_1'
 settings:
@@ -30,6 +30,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/about\r\n/assistance\r\n/terms-and-conditions"
-    negate: false
+    pages: "/sitemap\r\n/privacy-policy"
+    negate: true
     context_mapping: {  }

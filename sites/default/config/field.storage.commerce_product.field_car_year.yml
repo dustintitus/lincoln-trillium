@@ -1,0 +1,20 @@
+uuid: c0f354e8-62b9-4f05-a9d7-a71a672fbf3a
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+    - datetime
+id: commerce_product.field_car_year
+field_name: field_car_year
+entity_type: commerce_product
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

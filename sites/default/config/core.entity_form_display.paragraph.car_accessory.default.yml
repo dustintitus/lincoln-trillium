@@ -1,0 +1,42 @@
+uuid: fcc22b97-6b34-4978-ab58-b04d2e1769e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.car_accessory.field_car_accessory_code
+    - field.field.paragraph.car_accessory.field_car_accessory_description
+    - field.field.paragraph.car_accessory.field_car_accessory_price
+    - paragraphs.paragraphs_type.car_accessory
+id: paragraph.car_accessory.default
+targetEntityType: paragraph
+bundle: car_accessory
+mode: default
+content:
+  field_car_accessory_code:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_accessory_description:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_car_accessory_price:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

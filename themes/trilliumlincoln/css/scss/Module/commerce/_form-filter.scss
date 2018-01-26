@@ -1,0 +1,74 @@
+.view-product-list{
+  .view-filters{
+    margin-bottom: 40px;
+    .views-exposed-form{
+      // font-size: em(14);
+      // line-height: 33/28;
+      >.form-inline{
+        @extend .row;
+        margin-bottom: 0;
+        .form-wrapper-filter {
+          @extend %col-sm-8;
+          @extend %col-xs-12;
+          margin-bottom: 0;
+          .form-checkboxes {
+            .form-checkboxes{
+              display: flex;
+              justify-content: space-between;
+              flex-direction: column;
+              @include respond($xs){
+                flex-direction: row;
+              }
+              .form-type-checkbox {
+                margin: 0;
+                margin-bottom: 9px;
+                .form-checkbox{
+                  margin-left: 0;
+                  margin-top: 0px;
+                }
+                .control-label{
+                  text-transform: uppercase;
+                  min-height: 0;
+                }
+              }
+            }
+          }
+          .form-type-select {
+            margin-bottom: 5px;
+            @include respond($xs){
+              float: right;
+              margin-left: 15px;
+            }
+            .select-wrapper {
+              &::after { 
+                content: '\e259';
+                color: $c-brown;
+              }
+            }
+            .form-select{
+              border-radius: 0;
+              box-shadow: none;
+              height: auto;
+              padding: 5px 44px 5px 5px;
+              border-color: $c-brown-l;
+              text-transform: uppercase;
+            }
+            &.form-item-field-car-model-target-id{
+              min-width: 200px;
+            }
+          }
+        }
+        .form-actions{
+          @extend %col-sm-4;
+          @extend %col-xs-12;
+          margin-bottom: 0;
+          .form-submit{
+            width: 100%;
+            max-width: none;
+            font-size: 1em;
+          }
+        }
+      }
+    }
+  }
+}

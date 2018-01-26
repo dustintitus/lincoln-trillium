@@ -1,0 +1,19 @@
+uuid: 1347dc40-398f-4b8d-8dd8-30be32c09cc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_car_cylinders
+id: commerce_product.car.field_car_cylinders
+field_name: field_car_cylinders
+entity_type: commerce_product
+bundle: car
+label: Cylinders
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
