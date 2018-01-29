@@ -1,0 +1,23 @@
+uuid: 1fd0acef-6e4d-486b-ae45-36f1aa300977
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_lease_rate
+    - taxonomy.vocabulary.calculator_term
+id: taxonomy_term.calculator_term.field_lease_rate
+field_name: field_lease_rate
+entity_type: taxonomy_term
+bundle: calculator_term
+label: 'Lease Rate'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

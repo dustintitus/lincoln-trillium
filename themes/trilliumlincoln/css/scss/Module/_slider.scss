@@ -1,6 +1,9 @@
 .slider {
 	position: relative;
 	overflow: hidden;
+	// @include respond($lg){
+		height: calc(100vh - 174px);
+	// }
 	h3 {
 		margin: 0;
 	}

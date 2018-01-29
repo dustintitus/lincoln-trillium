@@ -1,12 +1,12 @@
-uuid: d1eb49f8-ee78-4e31-a01f-dddf3bcd596f
+uuid: 6adbab21-00b7-41e6-b61e-3b9fa013ef2b
 langcode: en
 status: true
 dependencies:
   config:
     - commerce_product.commerce_product_type.car
-    - field.storage.commerce_product.field_car_color
-id: commerce_product.car.field_car_color
-field_name: field_car_color
+    - field.storage.commerce_product.field_car_color_long
+id: commerce_product.car.field_car_color_long
+field_name: field_car_color_long
 entity_type: commerce_product
 bundle: car
 label: Color

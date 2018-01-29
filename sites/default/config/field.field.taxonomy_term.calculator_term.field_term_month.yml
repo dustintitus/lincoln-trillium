@@ -1,0 +1,23 @@
+uuid: 52fb327d-851c-4369-917e-9790fde73941
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_term_month
+    - taxonomy.vocabulary.calculator_term
+id: taxonomy_term.calculator_term.field_term_month
+field_name: field_term_month
+entity_type: taxonomy_term
+bundle: calculator_term
+label: 'Number of Months'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

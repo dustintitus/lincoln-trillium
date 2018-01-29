@@ -153,9 +153,9 @@ class TrilliumlincolnSourceService {
         'type' => 'textfield',
         'index' => 7
       ],
-      'color' => [
+      'color_long' => [
         'type' => 'textfield',
-        'index' => 8,
+        'index' => 52,
         'preprocess' => [
           'lower',
           'capitalize'
@@ -197,9 +197,17 @@ class TrilliumlincolnSourceService {
         'type' => 'variations',
         'index' => 23
       ],
+      'msrp' => [
+        'type' => 'price',
+        'index' => 24
+      ],
       'odometer_reading' => [
         'type' => 'textfield',
         'index' => 36
+      ],
+      'odometer_type' => [
+        'type' => 'select',
+        'index' => 38
       ],
       'total_length' => [
         'type' => 'textfield',

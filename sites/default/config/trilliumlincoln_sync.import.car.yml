@@ -15,7 +15,8 @@ process:
   field_car_make: make
   field_car_year: year
   field_car_vin: vin
-  field_car_color: color
+  field_car_color_long: color_long
+  field_car_odometer_type: odometer_type
   field_car_fuel_type: fuel_type
   field_car_cylinders: cylinders
   body/format:
@@ -31,4 +32,4 @@ process:
   field_car_traction: traction
   field_car_differential: differential
 _core:
-  default_config_hash: cAMblwFTz-VZXS7z6DzJXKMC754nk9-YoRh2d36ympg
+  default_config_hash: UiISOy574Mt1Ep3HSTiyYAa6xJkrCkevpNpofBUdYsQ

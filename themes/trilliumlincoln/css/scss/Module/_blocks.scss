@@ -1,202 +1,336 @@
 #block-contactinfo {
-	.company-logo {
-		max-width: 192px;
-		img{
-			max-width:100%;
-		}
-	}
-	.field--name-body {
-		color: $c-black;
-		letter-spacing: 0.028em;
-		padding-top: 8px;
-		font-size: em(12);
-		line-height: (33/28);
-		text-align: right;
-		@include respond($sm){
-			font-size: em(14);
-		}
-		[class^="icon-"]{
-			white-space: nowrap;
-			&:before {
-				background: $c-red;
-				border-radius: 50%;
-				padding: 1px;
-				box-sizing: content-box;
-				color: $c-white;
-			}
-		}
-	}
+  .company-logo {
+    max-width: 192px;
+    img{
+      max-width:100%;
+    }
+  }
+  .field--name-body {
+    color: $c-black;
+    letter-spacing: 0.028em;
+    padding-top: 8px;
+    font-size: em(12);
+    line-height: (33/28);
+    text-align: right;
+    @include respond($sm){
+      font-size: em(14);
+    }
+    [class^="icon-"]{
+      white-space: nowrap;
+      &:before {
+        background: $c-red;
+        border-radius: 50%;
+        padding: 1px;
+        box-sizing: content-box;
+        color: $c-white;
+      }
+    }
+  }
 }
 #block-linkolnlink{
-	.field--name-body {
-		.company-logo{
-			display: block;
-			text-indent: -9999px;
-			background: url('../images/ico-lincoln.png') no-repeat;
-			width: 192px;
-			height: 50px;
-			background-size: 100% auto;
-		}
-	}
+  .field--name-body {
+    .company-logo{
+      display: block;
+      text-indent: -9999px;
+      background: url('../images/ico-lincoln.png') no-repeat;
+      width: 192px;
+      height: 50px;
+      background-size: 100% auto;
+    }
+  }
 }
 
 // ico-lincoln
 
 #block-callouthome {
-	padding-top: 25px;
-	.field--name-field-callout {
-		>.field--item {
-			margin-bottom: 25px;
-			.field--name-field-image {
-				img {
-					max-height: 55px;
-					width: auto;
-					margin: 0 auto;
-				}
-			}
-			.field--name-field-body {
-				font-size: 1em;
-				line-height: (49/41);
-				color: $c-brown-l;
-				letter-spacing: 0.025em;
-				text-align: center;
-				padding-top: 15px;
-				a {
-					color: $c-brown-l;
-				}
-				@include respond($sm){
-					font-size: em(21);
-					padding-top: 25px
-				}
-			}
-		}
-	}
+  padding-top: 25px;
+  .field--name-field-callout {
+    >.field--item {
+      margin-bottom: 25px;
+      .field--name-field-image {
+        img {
+          max-height: 55px;
+          width: auto;
+          margin: 0 auto;
+        }
+      }
+      .field--name-field-body {
+        font-size: 1em;
+        line-height: (49/41);
+        color: $c-brown-l;
+        letter-spacing: 0.025em;
+        text-align: center;
+        padding-top: 15px;
+        a {
+          color: $c-brown-l;
+        }
+        @include respond($sm){
+          font-size: em(21);
+          padding-top: 25px
+        }
+      }
+    }
+  }
 }
 .view-hero-image-block,.view-hero-image-block-product-{
-	.view-content{
-		position: relative;
-		font-family: $font-family-miller;
-		.field--name-field-hero-image{
-			img{
-				width: 100%;
-			}
-		}
-		.hero-image-description{
-			position: absolute;
-			max-width: 320px;
-			top: 30%;
-			left: 55%;
-			@include respond($sm){
-				top: 40%;
-				left: 60%;
-			}
-			.field--name-field-title{
-				font-size: em(40/2);
-				line-height: (132/110);
-				color: $c-brown;
-				font-weight: bolder;
-				@include respond($sm){
-					font-size: em(60/2);
-				}	
-				@include respond($md){
-					font-size: em(80/2);
-				}		
-				@include respond($lg){
-					font-size: em(110/2);
-				}
-			}
-			.field--name-field-subtitle{
-				font-size: 1em;
-				line-height: (84/70);
-				color: $c-brown-l;
-				font-style: italic;
-				@include respond($sm){
-					font-size: em(45/2);
-				}	
-				@include respond($md){
-					font-size: em(60/2);
-				}		
-				@include respond($lg){
-					font-size: em(70/2);
-				}
-			}
-		}
-	}
+  .view-content{
+    position: relative;
+    font-family: $font-family-miller;
+    .field--name-field-hero-image{
+      img{
+        width: 100%;
+      }
+    }
+    .hero-image-description{
+      position: absolute;
+      max-width: 320px;
+      top: 30%;
+      left: 55%;
+      @include respond($sm){
+        top: 40%;
+        left: 60%;
+      }
+      .field--name-field-title{
+        font-size: em(40/2);
+        line-height: (132/110);
+        color: $c-brown;
+        font-weight: bolder;
+        @include respond($sm){
+          font-size: em(60/2);
+        } 
+        @include respond($md){
+          font-size: em(80/2);
+        }   
+        @include respond($lg){
+          font-size: em(110/2);
+        }
+      }
+      .field--name-field-subtitle{
+        font-size: 1em;
+        line-height: (84/70);
+        color: $c-brown-l;
+        font-style: italic;
+        @include respond($sm){
+          font-size: em(45/2);
+        } 
+        @include respond($md){
+          font-size: em(60/2);
+        }   
+        @include respond($lg){
+          font-size: em(70/2);
+        }
+      }
+    }
+  }
 }
 .region-content-top,
 .region-content,
 .region-content-bottom{
-	.block{
-		.block-title{
-			color: $c-brown-l;
-			font-family: $font-family-base;
-			text-transform: uppercase;
-			text-align: center;
-			line-height: (108/90);
-			letter-spacing: 0.04em;
-			font-size: em(30);
-			@include respond($sm){
-				font-size: em(45);
-			}
-		}
-	}
+  .block{
+    .block-title{
+      color: $c-brown-l;
+      font-family: $font-family-base;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: (108/90);
+      letter-spacing: 0.04em;
+      font-size: em(30);
+      @include respond($sm){
+        font-size: em(45);
+      }
+    }
+  }
 }
 
 .hours-block{
-	.field--name-field-text-callout{
-		@include make-row();
-		>.field--item{
-			margin-bottom: 15px;
-			@include respond($sm){
-				margin-bottom: 0px;
-			}
-			@include make-col(12, 12, 4);
-			.paragraph--type--text-callout{
-				padding: 0px;
-				max-width: 320px;
-				margin: 0 auto;
-				@include respond($sm){
-					padding: 0 10px;
-					max-width: 100%;
-					margin: 0;
-				}
-				@include respond($md){
-					padding: 0 20px;
-				}
-				@include respond($lg){
-					padding: 0 30px;
-				}
-				.field--name-field-title{
-					font-size: em(20);
-					color: $c-orange;
-					font-family: $font-family-base;
-					text-transform: uppercase;
-					text-align: center;
-					line-height: (48/40);
-				}
-				.field--name-field-item{
-					.paragraph--type--text-callout-item{
-						border-bottom: 1px solid #000;
-						padding: 11px 0 9px 0;
-						.field--name-field-label,
-						.field--name-field-description{
-							display: inline-block;
-							font-size: em(14);
-							line-height: (34/28);
-							font-family: $font-family-base;
-							color: #2F201C;
-						}
-						.field--name-field-label{
-							width: 25px;
-							margin-right: 10px;
-							color: $c-orange;
-							text-transform: uppercase;
-							text-align: center;
-							font-weight: bold;
-						}
-					}
-				}
-			}
-		}
-	}
+  .field--name-field-text-callout{
+    @include make-row();
+    >.field--item{
+      margin-bottom: 15px;
+      @include respond($sm){
+        margin-bottom: 0px;
+      }
+      @include make-col(12, 12, 4);
+      .paragraph--type--text-callout{
+        padding: 0px;
+        max-width: 320px;
+        margin: 0 auto;
+        @include respond($sm){
+          padding: 0 10px;
+          max-width: 100%;
+          margin: 0;
+        }
+        @include respond($md){
+          padding: 0 20px;
+        }
+        @include respond($lg){
+          padding: 0 30px;
+        }
+        .field--name-field-title{
+          font-size: em(20);
+          color: $c-orange;
+          font-family: $font-family-base;
+          text-transform: uppercase;
+          text-align: center;
+          line-height: (48/40);
+        }
+        .field--name-field-item{
+          .paragraph--type--text-callout-item{
+            border-bottom: 1px solid #000;
+            padding: 11px 0 9px 0;
+            .field--name-field-label,
+            .field--name-field-description{
+              display: inline-block;
+              font-size: em(14);
+              line-height: (34/28);
+              font-family: $font-family-base;
+              color: #2F201C;
+            }
+            .field--name-field-label{
+              width: 25px;
+              margin-right: 10px;
+              color: $c-orange;
+              text-transform: uppercase;
+              text-align: center;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.trilliumlincoln-utility-payment-calculator-form{
+  margin: 13px 0 25px 0;
+  .panel{
+    font-family: $font-family-base;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    .panel-heading{
+      background-color: transparent;
+      border: none;
+      border-radius: 0px;
+      padding: 0px;
+      margin: 0 0 7px 0;
+      .panel-title{
+        padding: 0px;
+        margin: 0px;
+        color: $c-brown-2;
+        font-size: em(14);
+        line-height: (17/14);
+      }
+    }
+    .panel-body{
+      padding: 0px;
+      .panel-default{
+        margin-bottom: 18px;
+      }
+    }
+    .form-type-textfield,
+    .form-type-select{
+      clear: both;
+      overflow: hidden;
+      margin-bottom: 3px;
+      label{
+        font-size: em(14);
+        line-height: 27px;
+        color: $c-brown-2;
+        margin: 0px;
+        float: left;
+        width: 70%;
+      }
+      .form-text{
+        background-color: transparent;
+        border:1px solid $c-brown-1;
+        border-radius: 0px;
+        color: $c-brown-2;
+        font-size: em(14);
+        line-height: (17/14);
+        padding: 4px 8px;
+        height: auto;
+        text-align: right;
+        float: right;
+        width: 30%;
+        height: 27px;
+        &::placeholder{
+          color: $c-brown-2;
+        }
+      }
+      .select-wrapper{
+        width: 30%;
+        &:after{
+          color: $c-brown-2;
+          content: '\e259';
+        }
+        .form-select{
+          height: 27px;
+          background-color: transparent;
+          border:1px solid $c-brown-1;
+          border-radius: 0px;
+          color: $c-brown-2;
+          font-size: em(14);
+          line-height: (17/14);
+          padding: 4px 8px;
+        }
+      }
+    }
+  }
+  >.panel{
+    background-color: $c-grey-l;
+    >.panel-heading{
+      padding: 0px;
+      margin: 0px;
+      background-color: $c-brown-1;
+      color: $c-white;
+      a.panel-title{
+        font-size: em(14);
+        line-height: (17/14);
+        padding: 13px 11px;
+        margin: 0px;
+        position: relative;
+        color: $c-white;
+        &::after { 
+          content: '\e259';
+          transform-origin: 50% 50%;
+          transform: rotate(180deg);
+          display: inline-block;
+          font-family: 'Glyphicons Halflings';
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1;
+          margin-top: -.5em;
+          pointer-events: none;
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          z-index: 10;
+        }
+        &.collapsed{
+          &::after {
+            transform: rotate(0deg);
+          }
+        }
+      }
+    }
+    >.panel-body{
+      padding: 15px 13px;
+    }
+  }
+  .total-item{
+    background-color: $c-brown-1;
+    color: $c-white;
+    font-size: em(14);
+    line-height: (17/14);
+    padding: 6px 10px;
+    span{
+      float: right;
+    }
+    &.total-lease{
+      margin-bottom: 5px;
+    }
+  }
 }

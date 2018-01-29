@@ -1,0 +1,23 @@
+uuid: a11e7890-22b9-44cc-b2aa-3a1a5f890989
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_finance_rate
+    - taxonomy.vocabulary.calculator_term
+id: taxonomy_term.calculator_term.field_finance_rate
+field_name: field_finance_rate
+entity_type: taxonomy_term
+bundle: calculator_term
+label: 'Finance Rate'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

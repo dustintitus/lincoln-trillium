@@ -1,0 +1,20 @@
+uuid: 3104b661-95c4-4ded-ae64-a7a39f69ab2f
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_lease_rate
+field_name: field_lease_rate
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

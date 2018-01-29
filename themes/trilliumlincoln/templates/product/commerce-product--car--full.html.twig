@@ -30,6 +30,9 @@
       {{- product.field_car_type -}}
       {{- product.body -}}
     </div>
+    {% if product.field_car_msrp %}
+    {{- product.field_car_msrp -}}
+    {% endif %}
     {{- product.variations -}}
     {{- calculator_form -}}
     <div class="car-action">
@@ -44,6 +47,7 @@
       <div class="field--label col-xs-12">specifications</div>
     {{- product|without('variation_attributes')
     |without('field_car_images') 
+    |without('field_car_msrp') 
     |without('title') 
     |without('field_car_type') 
     |without('body') 

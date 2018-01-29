@@ -1,0 +1,55 @@
+uuid: ac962936-90e1-4077-ad90-46ace5e2350a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.calculator_term.field_finance_rate
+    - field.field.taxonomy_term.calculator_term.field_lease_rate
+    - field.field.taxonomy_term.calculator_term.field_term_month
+    - taxonomy.vocabulary.calculator_term
+  module:
+    - text
+id: taxonomy_term.calculator_term.default
+targetEntityType: taxonomy_term
+bundle: calculator_term
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_finance_rate:
+    weight: 3
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_lease_rate:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_term_month:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden: {  }

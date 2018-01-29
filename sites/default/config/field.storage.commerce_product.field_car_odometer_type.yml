@@ -1,0 +1,30 @@
+uuid: d2190f02-715f-467f-b7cf-06ddeff6fd6f
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+    - options
+id: commerce_product.field_car_odometer_type
+field_name: field_car_odometer_type
+entity_type: commerce_product
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: K
+      label: Kilometer
+    -
+      value: M
+      label: Miles
+    -
+      value: H
+      label: Hour
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

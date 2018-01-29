@@ -8,7 +8,7 @@ dependencies:
     - field.field.commerce_product.car.field_car_accessory
     - field.field.commerce_product.car.field_car_body_style
     - field.field.commerce_product.car.field_car_category
-    - field.field.commerce_product.car.field_car_color
+    - field.field.commerce_product.car.field_car_color_long
     - field.field.commerce_product.car.field_car_cylinders
     - field.field.commerce_product.car.field_car_dealership_id
     - field.field.commerce_product.car.field_car_differential
@@ -18,9 +18,11 @@ dependencies:
     - field.field.commerce_product.car.field_car_interior_trim
     - field.field.commerce_product.car.field_car_make
     - field.field.commerce_product.car.field_car_model
+    - field.field.commerce_product.car.field_car_msrp
     - field.field.commerce_product.car.field_car_number_of_axles
     - field.field.commerce_product.car.field_car_number_of_doors
     - field.field.commerce_product.car.field_car_odometer_reading
+    - field.field.commerce_product.car.field_car_odometer_type
     - field.field.commerce_product.car.field_car_stock_number
     - field.field.commerce_product.car.field_car_total_length
     - field.field.commerce_product.car.field_car_traction
@@ -31,8 +33,10 @@ dependencies:
     - field.field.commerce_product.car.variations
     - image.style.thumbnail
   module:
+    - commerce_price
     - entity_reference_revisions
     - field_formatter_class
+    - options
     - svg_image
     - text
 id: commerce_product.car.default
@@ -49,7 +53,7 @@ content:
     region: content
   field_car_accessory:
     type: entity_reference_revisions_entity_view
-    weight: 17
+    weight: 19
     label: above
     settings:
       view_mode: default
@@ -73,6 +77,14 @@ content:
       field_formatter_class:
         class: ''
     type: entity_reference_label
+    region: content
+  field_car_color_long:
+    weight: 18
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_car_cylinders:
     weight: 6
@@ -129,8 +141,17 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_car_msrp:
+    weight: 20
+    label: inline
+    settings:
+      strip_trailing_zeroes: false
+      display_currency_code: false
+    third_party_settings: {  }
+    type: commerce_price_default
+    region: content
   field_car_number_of_axles:
-    weight: 13
+    weight: 14
     label: inline
     settings:
       link_to_entity: false
@@ -138,24 +159,33 @@ content:
     type: string
     region: content
   field_car_number_of_doors:
-    weight: 15
+    weight: 16
     label: inline
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: clearboth
     type: string
     region: content
   field_car_odometer_reading:
-    weight: 12
+    weight: 13
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
+  field_car_odometer_type:
+    weight: 12
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_car_stock_number:
     type: string
-    weight: 14
+    weight: 15
     region: content
     label: inline
     settings:
@@ -180,7 +210,7 @@ content:
     type: entity_reference_label
     region: content
   field_car_vin:
-    weight: 16
+    weight: 17
     label: inline
     settings:
       link_to_entity: false
@@ -200,7 +230,6 @@ content:
     region: content
 hidden:
   created: true
-  field_car_color: true
   field_car_dealership_id: true
   field_car_make: true
   field_car_model: true

@@ -114,6 +114,10 @@ class ImportWorkerCar extends ImportWorkerBase {
         ];
       }
 
+      //msrp
+      $msrp = new Price($item['msrp'], 'USD');
+      $entity->set('field_car_msrp', $msrp->toArray());
+
       $entity->save();
 
       // The price of the variation.
@@ -231,6 +235,10 @@ class ImportWorkerCar extends ImportWorkerBase {
         ];
       }
 
+      //msrp
+      $msrp = new Price($item['msrp'], 'USD');
+      $new_entity->set('field_car_msrp', $msrp->toArray());
+
       $variations_field = $entity->get('variations')->getValue();
       $need_create_variations = FALSE;
       if (!empty($variations_field)) {
@@ -273,9 +281,10 @@ class ImportWorkerCar extends ImportWorkerBase {
       $this->compareEntitiesField($entity, $new_entity, 'field_car_body_style', 'target_id');
       // Compare Type field
       $this->compareEntitiesField($entity, $new_entity, 'field_car_type', 'target_id');
-
       // Compare Model field
       $this->compareEntitiesField($entity, $new_entity, 'field_car_model', 'target_id');
+      // Compare msrp field
+      $this->compareEntitiesField($entity, $new_entity, 'field_car_msrp', 'number');
 
       if (!empty($entity->need_to_save)) {
         $entity->save();
@@ -329,7 +338,7 @@ class ImportWorkerCar extends ImportWorkerBase {
         $item[$field_key] = $new_value;
       }
 
-      $item['title'] = $item['make'] . ' ' . $item['model'] . ' ' . $item['year'] . ' - ' . $item['color'];
+      $item['title'] = $item['make'] . ' ' . $item['model'] . ' ' . $item['year'] . ' - ' . $item['color_long'];
       $item['status'] = 1;
       $item['year'] = !empty($item['year']) ? $item['year'] . '-01-01': '';
     }

@@ -239,6 +239,9 @@ a {
 .float-left {
   float: left; }
 
+.clearboth {
+  clear: both; }
+
 @media (min-width: 1200px) {
   .hidden-lg {
     display: none; } }
@@ -260,17 +263,17 @@ a {
   padding-left: 15px;
   padding-right: 15px; }
 
-.row, .contact-us-block .paragraph--type--text-callout .field--name-field-item, .product-single .product-content, .view-product-list.list .view-content .views-row, .view-product-list.grid .view-content, .view-product-list .view-filters .views-exposed-form > .form-inline {
+.row, .contact-us-block .paragraph--type--text-callout .field--name-field-item, .product-single .product-content, .product-single .product-accessory > .paragraph, .view-product-list.list .view-content .views-row, .view-product-list.grid .view-content, .view-product-list .view-filters .views-exposed-form > .form-inline {
   margin-left: -15px;
   margin-right: -15px; }
 
-.container-fluid:before, .container-fluid:after, .row:before, .contact-us-block .paragraph--type--text-callout .field--name-field-item:before, .product-single .product-content:before, .view-product-list.list .view-content .views-row:before, .view-product-list.grid .view-content:before, .view-product-list .view-filters .views-exposed-form > .form-inline:before, .row:after, .contact-us-block .paragraph--type--text-callout .field--name-field-item:after, .product-single .product-content:after, .view-product-list.list .view-content .views-row:after, .view-product-list.grid .view-content:after, .view-product-list .view-filters .views-exposed-form > .form-inline:after {
+.container-fluid:before, .container-fluid:after, .row:before, .contact-us-block .paragraph--type--text-callout .field--name-field-item:before, .product-single .product-content:before, .product-single .product-accessory > .paragraph:before, .view-product-list.list .view-content .views-row:before, .view-product-list.grid .view-content:before, .view-product-list .view-filters .views-exposed-form > .form-inline:before, .row:after, .contact-us-block .paragraph--type--text-callout .field--name-field-item:after, .product-single .product-content:after, .product-single .product-accessory > .paragraph:after, .view-product-list.list .view-content .views-row:after, .view-product-list.grid .view-content:after, .view-product-list .view-filters .views-exposed-form > .form-inline:after {
   content: " ";
   display: table; }
-.container-fluid:after, .row:after, .contact-us-block .paragraph--type--text-callout .field--name-field-item:after, .product-single .product-content:after, .view-product-list.list .view-content .views-row:after, .view-product-list.grid .view-content:after, .view-product-list .view-filters .views-exposed-form > .form-inline:after {
+.container-fluid:after, .row:after, .contact-us-block .paragraph--type--text-callout .field--name-field-item:after, .product-single .product-content:after, .product-single .product-accessory > .paragraph:after, .view-product-list.list .view-content .views-row:after, .view-product-list.grid .view-content:after, .view-product-list .view-filters .views-exposed-form > .form-inline:after {
   clear: both; }
 
-.view-product-list.list .view-content .views-row .col-1, .view-product-list.list .view-content .views-row .col-3, .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions, .product-single .product-content > .field, .view-product-list.list .view-content .views-row .col-2, .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter, .product-single .product-content > .field, .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter, .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions {
+.view-product-list.list .view-content .views-row .col-1, .view-product-list.list .view-content .views-row .col-3, .product-single .product-accessory .field--name-field-car-accessory-price, .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions, .product-single .product-content > .field, .view-product-list.list .view-content .views-row .col-2, .product-single .product-accessory .field--name-field-car-accessory-description, .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter, .product-single .product-content > .field, .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter, .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -284,13 +287,13 @@ a {
   .view-product-list.list .view-content .views-row .col-1, .view-product-list.list .view-content .views-row .col-3 {
     width: 25%; }
 
-  .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions {
+  .product-single .product-accessory .field--name-field-car-accessory-price, .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions {
     width: 33.33333%; }
 
   .product-single .product-content > .field, .view-product-list.list .view-content .views-row .col-2 {
     width: 50%; }
 
-  .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter {
+  .product-single .product-accessory .field--name-field-car-accessory-description, .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter {
     width: 66.66667%; }
 
   .contact-us-block .paragraph--type--text-callout .field--name-field-item > .field--item:nth-child(odd) {
@@ -385,7 +388,7 @@ a {
         .footer .region-footer-bottom-wrapper .region-footer-bottom .footer-social li .icon-fb::before {
           transform: translate(0px, 7px); }
 
-.main-container > .row > .wrapper, .contact-us-block .paragraph--type--text-callout .main-container > .field--name-field-item > .wrapper, .product-single .main-container > .product-content > .wrapper, .view-product-list.list .view-content .main-container > .views-row > .wrapper, .view-product-list.grid .main-container > .view-content > .wrapper, .view-product-list .view-filters .views-exposed-form.main-container > .form-inline > .wrapper {
+.main-container > .row > .wrapper, .contact-us-block .paragraph--type--text-callout .main-container > .field--name-field-item > .wrapper, .product-single .main-container > .product-content > .wrapper, .product-single .product-accessory.main-container > .paragraph > .wrapper, .view-product-list.list .view-content .main-container > .views-row > .wrapper, .view-product-list.grid .main-container > .view-content > .wrapper, .view-product-list .view-filters .views-exposed-form.main-container > .form-inline > .wrapper {
   padding-top: 40px; }
 
 .region-content-top .block,
@@ -704,6 +707,123 @@ a {
           text-align: center;
           font-weight: bold; }
 
+.trilliumlincoln-utility-payment-calculator-form {
+  margin: 13px 0 25px 0; }
+  .trilliumlincoln-utility-payment-calculator-form .panel {
+    font-family: ProximaNova, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
+    background-color: transparent; }
+    .trilliumlincoln-utility-payment-calculator-form .panel .panel-heading {
+      background-color: transparent;
+      border: none;
+      border-radius: 0px;
+      padding: 0px;
+      margin: 0 0 7px 0; }
+      .trilliumlincoln-utility-payment-calculator-form .panel .panel-heading .panel-title {
+        padding: 0px;
+        margin: 0px;
+        color: #2F201C;
+        font-size: 0.875em;
+        line-height: 1.21429; }
+    .trilliumlincoln-utility-payment-calculator-form .panel .panel-body {
+      padding: 0px; }
+      .trilliumlincoln-utility-payment-calculator-form .panel .panel-body .panel-default {
+        margin-bottom: 18px; }
+    .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield,
+    .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select {
+      clear: both;
+      overflow: hidden;
+      margin-bottom: 3px; }
+      .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield label,
+      .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select label {
+        font-size: 0.875em;
+        line-height: 27px;
+        color: #2F201C;
+        margin: 0px;
+        float: left;
+        width: 70%; }
+      .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield .form-text,
+      .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select .form-text {
+        background-color: transparent;
+        border: 1px solid #5E514D;
+        border-radius: 0px;
+        color: #2F201C;
+        font-size: 0.875em;
+        line-height: 1.21429;
+        padding: 4px 8px;
+        height: auto;
+        text-align: right;
+        float: right;
+        width: 30%;
+        height: 27px; }
+        .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield .form-text::placeholder,
+        .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select .form-text::placeholder {
+          color: #2F201C; }
+      .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield .select-wrapper,
+      .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select .select-wrapper {
+        width: 30%; }
+        .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield .select-wrapper:after,
+        .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select .select-wrapper:after {
+          color: #2F201C;
+          content: '\e259'; }
+        .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield .select-wrapper .form-select,
+        .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select .select-wrapper .form-select {
+          height: 27px;
+          background-color: transparent;
+          border: 1px solid #5E514D;
+          border-radius: 0px;
+          color: #2F201C;
+          font-size: 0.875em;
+          line-height: 1.21429;
+          padding: 4px 8px; }
+  .trilliumlincoln-utility-payment-calculator-form > .panel {
+    background-color: #DFDCDB; }
+    .trilliumlincoln-utility-payment-calculator-form > .panel > .panel-heading {
+      padding: 0px;
+      margin: 0px;
+      background-color: #5E514D;
+      color: #fff; }
+      .trilliumlincoln-utility-payment-calculator-form > .panel > .panel-heading a.panel-title {
+        font-size: 0.875em;
+        line-height: 1.21429;
+        padding: 13px 11px;
+        margin: 0px;
+        position: relative;
+        color: #fff; }
+        .trilliumlincoln-utility-payment-calculator-form > .panel > .panel-heading a.panel-title::after {
+          content: '\e259';
+          transform-origin: 50% 50%;
+          transform: rotate(180deg);
+          display: inline-block;
+          font-family: 'Glyphicons Halflings';
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1;
+          margin-top: -.5em;
+          pointer-events: none;
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          z-index: 10; }
+        .trilliumlincoln-utility-payment-calculator-form > .panel > .panel-heading a.panel-title.collapsed::after {
+          transform: rotate(0deg); }
+    .trilliumlincoln-utility-payment-calculator-form > .panel > .panel-body {
+      padding: 15px 13px; }
+  .trilliumlincoln-utility-payment-calculator-form .total-item {
+    background-color: #5E514D;
+    color: #fff;
+    font-size: 0.875em;
+    line-height: 1.21429;
+    padding: 6px 10px; }
+    .trilliumlincoln-utility-payment-calculator-form .total-item span {
+      float: right; }
+    .trilliumlincoln-utility-payment-calculator-form .total-item.total-lease {
+      margin-bottom: 5px; }
+
 .navbar {
   margin: 0;
   padding: 0;
@@ -823,7 +943,8 @@ a {
 
 .slider {
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  height: calc(100vh - 174px); }
   .slider h3 {
     margin: 0; }
   .slider .item {
@@ -1309,26 +1430,53 @@ a {
   .product-single .car-action .btn {
     display: block;
     max-width: none; }
+.product-single .field--name-field-car-msrp {
+  font-size: 0.8em; }
+  .product-single .field--name-field-car-msrp .field--label {
+    text-transform: uppercase;
+    font-weight: normal; }
+  .product-single .field--name-field-car-msrp .field--item {
+    text-decoration: line-through; }
 .product-single .product-content, .product-single .product-accessory {
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 0.875em;
-  line-height: 1.17857; }
+  line-height: 1.42857; }
   .product-single .product-content > .field--label, .product-single .product-accessory > .field--label {
     margin-bottom: 12px;
     font-weight: bold;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-size: 1.2em; }
   .product-single .product-content a, .product-single .product-accessory a {
     color: #2e201b; }
-.product-single .product-accessory .field--name-field-car-accessory-description {
-  display: inline;
-  font-weight: bold; }
-  .product-single .product-accessory .field--name-field-car-accessory-description::after {
-    content: "\:"; }
+.product-single .product-accessory .field--name-field-car-accessory-description,
 .product-single .product-accessory .field--name-field-car-accessory-price {
-  display: inline; }
-  .product-single .product-accessory .field--name-field-car-accessory-price::before {
-    content: "\$"; }
+  float: none; }
+  @media (min-width: 480px) {
+    .product-single .product-accessory .field--name-field-car-accessory-description,
+    .product-single .product-accessory .field--name-field-car-accessory-price {
+      float: left; } }
+.product-single .product-accessory .field--name-field-car-accessory-description {
+  font-weight: bold;
+  overflow: hidden; }
+  .product-single .product-accessory .field--name-field-car-accessory-description .field--item {
+    display: inline;
+    position: relative; }
+    .product-single .product-accessory .field--name-field-car-accessory-description .field--item::after {
+      content: "\:"; }
+    @media (min-width: 768px) {
+      .product-single .product-accessory .field--name-field-car-accessory-description .field--item::before {
+        content: "";
+        border-bottom: 1px dotted;
+        left: 100%;
+        width: 100vw;
+        height: 100%;
+        position: absolute; } }
+@media (min-width: 480px) {
+  .product-single .product-accessory .field--name-field-car-accessory-price {
+    padding-left: 0; } }
+.product-single .product-accessory .field--name-field-car-accessory-price::before {
+  content: "\$"; }
 
 .product-carousel {
   margin-left: -3px; }
@@ -1390,6 +1538,8 @@ a {
   .view-product-list.list .view-content .field--name-price {
     text-align: right;
     padding-right: 15px; }
+  .view-product-list.list .view-content .field--name-body {
+    max-height: 84px; }
   .view-product-list.list .view-content .product-link-wrapper {
     text-align: right; }
     .view-product-list.list .view-content .product-link-wrapper .btn {
@@ -1413,6 +1563,16 @@ a {
     @media (min-width: 768px) {
       .view-product-list.grid .view-content .views-row:nth-child(3n+1) {
         clear: both; } }
+    .view-product-list.grid .view-content .views-row .product {
+      height: 450px;
+      position: relative; }
+      .view-product-list.grid .view-content .views-row .product .col-3 {
+        position: absolute;
+        width: 100%;
+        bottom: 25px; }
+      .view-product-list.grid .view-content .views-row .product .field--name-body {
+        max-height: 140px;
+        overflow: hidden; }
     .view-product-list.grid .view-content .views-row .field--name-title {
       margin-top: 10px;
       margin-bottom: 10px; }
@@ -1463,7 +1623,7 @@ a {
   .view-product-list .view-content {
     clear: both; }
     .view-product-list .view-content .field-car-images {
-      height: 130px; }
+      height: 125px; }
       .view-product-list .view-content .field-car-images a {
         display: block;
         height: 100%; }

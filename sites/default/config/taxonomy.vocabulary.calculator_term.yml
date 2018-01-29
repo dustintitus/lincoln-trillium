@@ -1,0 +1,9 @@
+uuid: 01c6d941-e7ae-407d-815e-601465309d5a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Calculator Term'
+vid: calculator_term
+description: ''
+hierarchy: 0
+weight: 0

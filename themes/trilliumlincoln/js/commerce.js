@@ -85,12 +85,12 @@
 				// if( $(window).width() >= 768 && cookieClass === "list" || cookieClass === "grid") self.removeClass('list grid').addClass(cookieClass);
 				$(window).on('resize', function(){
 					cookieClass = getCookie('productListViewMode');
-					if( $(window).width() < 768 ){
+					if( getWindowWidth() < 768 ){
 						if(self.hasClass("list")) {
 							self.removeClass('list').addClass("grid");	
 						}
 					} 
-					if( $(window).width() >= 768 && (cookieClass === "list" || cookieClass === "grid")){
+					if( getWindowWidth() >= 768 && (cookieClass === "list" || cookieClass === "grid")){
 						if(!self.hasClass(cookieClass)) {
 							self.removeClass('list grid').addClass(cookieClass);	
 						}
@@ -123,14 +123,14 @@
 		attach: function (context, settings) {
 			var subject = $('.product-single', context).find('.calt-h');
 			var predicate = $('.product-single', context).find('.product-carousel-picture-wrapper');
-			if($(window).width() >= 768){
+			if( getWindowWidth() >= 768 ){
 				subject.height(predicate.outerHeight());
 			} else {
 				subject.css('height', 'auto')
 			}
 
 			$(window).on('resize', function(){
-				if($(window).width() >= 768){
+				if( getWindowWidth() >= 768 ){
 					subject.height(predicate.outerHeight());
 				} else {
 					subject.css('height', 'auto')
@@ -183,6 +183,10 @@
 		setCookie(name, "", {
 			expires: -1
 		})
+	}
+
+	function getWindowWidth() { 
+		return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 	}
 
 

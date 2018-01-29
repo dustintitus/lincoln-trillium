@@ -8,7 +8,7 @@ dependencies:
     - field.field.commerce_product.car.field_car_accessory
     - field.field.commerce_product.car.field_car_body_style
     - field.field.commerce_product.car.field_car_category
-    - field.field.commerce_product.car.field_car_color
+    - field.field.commerce_product.car.field_car_color_long
     - field.field.commerce_product.car.field_car_cylinders
     - field.field.commerce_product.car.field_car_dealership_id
     - field.field.commerce_product.car.field_car_differential
@@ -18,9 +18,11 @@ dependencies:
     - field.field.commerce_product.car.field_car_interior_trim
     - field.field.commerce_product.car.field_car_make
     - field.field.commerce_product.car.field_car_model
+    - field.field.commerce_product.car.field_car_msrp
     - field.field.commerce_product.car.field_car_number_of_axles
     - field.field.commerce_product.car.field_car_number_of_doors
     - field.field.commerce_product.car.field_car_odometer_reading
+    - field.field.commerce_product.car.field_car_odometer_type
     - field.field.commerce_product.car.field_car_stock_number
     - field.field.commerce_product.car.field_car_total_length
     - field.field.commerce_product.car.field_car_traction
@@ -32,6 +34,7 @@ dependencies:
     - image.style.thumbnail
   module:
     - commerce
+    - commerce_price
     - datetime
     - inline_entity_form
     - paragraphs
@@ -60,7 +63,7 @@ content:
     third_party_settings: {  }
   field_car_accessory:
     type: entity_reference_paragraphs
-    weight: 28
+    weight: 30
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -71,19 +74,19 @@ content:
     third_party_settings: {  }
     region: content
   field_car_body_style:
-    weight: 27
+    weight: 28
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_car_category:
-    weight: 24
+    weight: 25
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
-  field_car_color:
-    weight: 14
+  field_car_color_long:
+    weight: 29
     settings:
       size: 60
       placeholder: ''
@@ -91,7 +94,7 @@ content:
     type: string_textfield
     region: content
   field_car_cylinders:
-    weight: 16
+    weight: 15
     settings:
       size: 60
       placeholder: ''
@@ -107,7 +110,7 @@ content:
     type: string_textfield
     region: content
   field_car_differential:
-    weight: 26
+    weight: 27
     settings:
       size: 60
       placeholder: ''
@@ -115,7 +118,7 @@ content:
     type: string_textfield
     region: content
   field_car_engine_type:
-    weight: 19
+    weight: 18
     settings:
       size: 60
       placeholder: ''
@@ -123,7 +126,7 @@ content:
     type: string_textfield
     region: content
   field_car_fuel_type:
-    weight: 15
+    weight: 14
     settings:
       size: 60
       placeholder: ''
@@ -139,7 +142,7 @@ content:
     type: image_image
     region: content
   field_car_interior_trim:
-    weight: 18
+    weight: 17
     settings:
       size: 60
       placeholder: ''
@@ -160,8 +163,14 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_car_msrp:
+    weight: 19
+    settings: {  }
+    third_party_settings: {  }
+    type: commerce_price_default
+    region: content
   field_car_number_of_axles:
-    weight: 22
+    weight: 23
     settings:
       size: 60
       placeholder: ''
@@ -169,7 +178,7 @@ content:
     type: string_textfield
     region: content
   field_car_number_of_doors:
-    weight: 23
+    weight: 24
     settings:
       size: 60
       placeholder: ''
@@ -184,8 +193,14 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_car_odometer_type:
+    weight: 21
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_car_stock_number:
-    weight: 29
+    weight: 31
     settings:
       size: 60
       placeholder: ''
@@ -193,7 +208,7 @@ content:
     type: string_textfield
     region: content
   field_car_total_length:
-    weight: 21
+    weight: 22
     settings:
       size: 60
       placeholder: ''
@@ -201,7 +216,7 @@ content:
     type: string_textfield
     region: content
   field_car_traction:
-    weight: 25
+    weight: 26
     settings:
       size: 60
       placeholder: ''
@@ -209,7 +224,7 @@ content:
     type: string_textfield
     region: content
   field_car_type:
-    weight: 17
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: options_select

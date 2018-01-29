@@ -10,6 +10,7 @@ namespace Drupal\trilliumlincoln_utility\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Payment Calculator form.
@@ -29,6 +30,18 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Disable caching on this form.
     $form_state->setCached(FALSE);
+
+    $term_options = [];
+    $vid = 'calculator_term';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0, NULL, TRUE);
+    foreach ($terms as $term) {
+      $field_term_month = $term->get('field_term_month')->getValue();
+      $field_finance_rate = $term->get('field_finance_rate')->getValue();
+      $field_lease_rate = $term->get('field_lease_rate')->getValue();
+
+      $term_options[$field_term_month[0]['value']] = $term->getName();
+    }
+
     $form['payment'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Payment Calculator'),
@@ -41,17 +54,16 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     ];
 
     $form['payment']['lease']['lease_term'] = array(
-      '#type' => 'textfield',
+      '#type' => 'select',
       '#title' => $this->t("Term"),
-      '#size' => 30,
-      '#default_value' => "00"
+      '#options' => $term_options
     );
 
     $form['payment']['lease']['lease_cash_down'] = array(
       '#type' => 'textfield',
       '#title' => $this->t("Cash Down"),
       '#size' => 30,
-      '#default_value' => "$0000"
+      '#placeholder' => '$0000',
     );
 
     $form['payment']['lease']['lease_mileage'] = array(
@@ -67,17 +79,16 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     ];
 
     $form['payment']['finance']['finance_term'] = array(
-      '#type' => 'textfield',
+      '#type' => 'select',
       '#title' => $this->t("Term"),
-      '#size' => 30,
-      '#default_value' => "00"
+      '#options' => $term_options
     );
 
     $form['payment']['finance']['finance_cash_down'] = array(
       '#type' => 'textfield',
       '#title' => $this->t("Cash Down"),
       '#size' => 30,
-      '#default_value' => "$0000"
+      '#placeholder' => '$0000',
     );
 
     $form['payment']['total'] = [

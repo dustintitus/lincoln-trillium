@@ -9,7 +9,7 @@ dependencies:
     - field.field.commerce_product.car.field_car_accessory
     - field.field.commerce_product.car.field_car_body_style
     - field.field.commerce_product.car.field_car_category
-    - field.field.commerce_product.car.field_car_color
+    - field.field.commerce_product.car.field_car_color_long
     - field.field.commerce_product.car.field_car_cylinders
     - field.field.commerce_product.car.field_car_dealership_id
     - field.field.commerce_product.car.field_car_differential
@@ -19,6 +19,7 @@ dependencies:
     - field.field.commerce_product.car.field_car_interior_trim
     - field.field.commerce_product.car.field_car_make
     - field.field.commerce_product.car.field_car_model
+    - field.field.commerce_product.car.field_car_msrp
     - field.field.commerce_product.car.field_car_number_of_axles
     - field.field.commerce_product.car.field_car_number_of_doors
     - field.field.commerce_product.car.field_car_odometer_reading
@@ -30,7 +31,7 @@ dependencies:
     - field.field.commerce_product.car.field_car_year
     - field.field.commerce_product.car.stores
     - field.field.commerce_product.car.variations
-    - image.style.thumbnail
+    - image.style.product_list
   module:
     - field_formatter_class
     - svg_image
@@ -54,7 +55,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: thumbnail
+      image_style: product_list
       image_link: content
       svg_render_as_image: '1'
       svg_attributes:
@@ -81,7 +82,7 @@ hidden:
   field_car_accessory: true
   field_car_body_style: true
   field_car_category: true
-  field_car_color: true
+  field_car_color_long: true
   field_car_cylinders: true
   field_car_dealership_id: true
   field_car_differential: true
@@ -90,6 +91,7 @@ hidden:
   field_car_interior_trim: true
   field_car_make: true
   field_car_model: true
+  field_car_msrp: true
   field_car_number_of_axles: true
   field_car_number_of_doors: true
   field_car_odometer_reading: true

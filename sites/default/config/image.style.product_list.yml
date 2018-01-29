@@ -3,13 +3,13 @@ langcode: en
 status: true
 dependencies: {  }
 name: product_list
-label: 'Product list(160x130)'
+label: 'Product list(200x125)'
 effects:
   8a2ebfb5-0c7f-4ee3-9556-fc409592bab2:
     uuid: 8a2ebfb5-0c7f-4ee3-9556-fc409592bab2
     id: image_scale
     weight: 2
     data:
-      width: 160
-      height: 130
+      width: 200
+      height: 125
       upscale: false

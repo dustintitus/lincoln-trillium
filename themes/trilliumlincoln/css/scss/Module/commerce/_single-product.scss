@@ -57,15 +57,28 @@
 		}
 	}
 
+	.field--name-field-car-msrp {
+		font-size: 0.8em;
+		.field--label {
+			text-transform: uppercase;
+			font-weight: normal;
+		}
+		.field--item{
+			text-decoration: line-through;
+		}
+	}
+
 	.product-content, .product-accessory{
 		padding-top: 20px;
 		padding-bottom: 20px;
 		font-size: em(14);
-		line-height: (33/28);
+		// line-height: (33/28);
+		line-height: (20/14);
 		>.field--label {
 			margin-bottom: 12px;
 			font-weight: bold;
 			text-transform: uppercase;
+			font-size: 1.2em;
 		}
 		a {
 			color: $text-color;
@@ -83,20 +96,54 @@
 	.product-accessory {
 		// display: table;
 		>.paragraph {
-			// display: table-row;			
+			// display: table-row;
+			@extend .row;			
 		}
-		.field--name-field-car-accessory-description{
-			// display: table-cell;
-			display: inline;
-			font-weight: bold;
-			// padding-right: 15px;
-			&::after {
-				content: "\:";
+		.field--name-field-car-accessory-description,
+		.field--name-field-car-accessory-price{
+			float: none;
+			@include respond($xs){
+				
+				float: left;
+			}
+			@include respond($sm){
 			}
 		}
-		.field--name-field-car-accessory-price{
+
+		.field--name-field-car-accessory-description{
 			// display: table-cell;
-			display: inline;
+			// padding-right: 30px;
+			
+			@extend %col-sm-8;			
+			font-weight: bold;
+			overflow: hidden;
+			.field--item {
+				display: inline;
+				position: relative;
+				&::after {
+					content: "\:";				
+				}
+				@include respond($sm){
+					&::before {
+						content: "";
+						border-bottom: 1px dotted;
+						left: 100%;
+						width: 100vw;
+						height: 100%;
+						position: absolute;
+					}
+				}			
+			}
+		}
+
+		.field--name-field-car-accessory-price{
+			@extend %col-sm-4;
+			@include respond($xs){
+				padding-left: 0;
+			}
+			// text-align: right;
+			// padding-right: 100px;
+			// display: table-cell;		
 			&::before {
 				content: "\$";
 			}

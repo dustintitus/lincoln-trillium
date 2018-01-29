@@ -27,6 +27,9 @@
 				text-align: right;
 				padding-right: 15px;
 			}
+			.field--name-body {
+						max-height: 14px*6;
+			}
 			.product-link-wrapper{
 				text-align: right;
 				.btn {
@@ -49,6 +52,19 @@
 				@include respond($sm){
 					&:nth-child(3n+1){
 						clear: both;
+					}
+				}
+				.product{
+					height: 450px;
+					position: relative;
+					.col-3 {
+						position: absolute;
+						width: 100%;
+						bottom: 25px;
+					}
+					.field--name-body {
+						max-height: 14px*10;
+						overflow: hidden;
 					}
 				}
 				.field--name-title{
@@ -122,7 +138,7 @@
 	.view-content {
 		clear: both;
 		.field-car-images {
-			height: 130px;
+			height: 125px;
 				a {
 					display: block;
 					height: 100%;
