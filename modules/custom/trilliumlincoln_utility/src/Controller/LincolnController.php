@@ -8,6 +8,7 @@ use Drupal\Core\Ajax\OpenDialogCommand;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\commerce_product\Entity\Product;
 use Drupal\commerce_product\Entity\ProductVariation;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * LincolnController class.
@@ -64,9 +65,10 @@ class LincolnController extends ControllerBase {
     //model
     if (!empty($product->hasField('field_car_model'))) {
       $field_car_model = $product->get('field_car_model')->getValue();
-      if (!empty($field_car_model)) {
-        $model_name = $field_car_model[0]['value'];
-        $modal_form['elements']['model']['#value'] = $model_name;
+      if (isset($field_car_model[0]['target_id'])) {
+        $field_car_model_id = $field_car_model[0]['target_id'];
+        $model_term = Term::load($field_car_model_id);
+        $modal_form['elements']['model']['#value'] = $model_term->getName();
       }
     }
 
@@ -75,7 +77,7 @@ class LincolnController extends ControllerBase {
       $field_car_year = $product->get('field_car_year')->getValue();
       if (!empty($field_car_year)) {
         $model_year = $field_car_year[0]['value'];
-        $modal_form['elements']['year']['#value'] = $model_year;
+        $modal_form['elements']['year']['#value'] = date('Y', strtotime($model_year));
       }
     }
 

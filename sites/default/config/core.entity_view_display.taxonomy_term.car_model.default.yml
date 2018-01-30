@@ -1,0 +1,32 @@
+uuid: a4f335e5-d033-4752-834e-fcc1d022053a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.car_model.field_car_model_residual
+    - taxonomy.vocabulary.car_model
+  module:
+    - commerce_price
+    - text
+id: taxonomy_term.car_model.default
+targetEntityType: taxonomy_term
+bundle: car_model
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_car_model_residual:
+    weight: 1
+    label: above
+    settings:
+      strip_trailing_zeroes: false
+      display_currency_code: false
+    third_party_settings: {  }
+    type: commerce_price_default
+    region: content
+hidden: {  }

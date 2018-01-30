@@ -19,10 +19,6 @@ process:
   field_car_odometer_type: odometer_type
   field_car_fuel_type: fuel_type
   field_car_cylinders: cylinders
-  'body/format':
-    plugin: default_value
-    default_value: full_html
-  'body/value': description
   field_car_interior_trim: interior_trim
   field_car_engine_type: engine_type
   field_car_odometer_reading: odometer_reading

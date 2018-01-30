@@ -3,3 +3,10 @@ trilliumlincoln_utility.admin:
   css:
     theme:
       css/trilliumlincoln.admin.css: {}
+trilliumlincoln_utility.calculator:
+  version: 1.x
+  js:
+    js/trilliumlincoln_utility.calculator.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

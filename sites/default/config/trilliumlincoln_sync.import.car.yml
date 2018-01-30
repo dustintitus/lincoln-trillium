@@ -19,10 +19,6 @@ process:
   field_car_odometer_type: odometer_type
   field_car_fuel_type: fuel_type
   field_car_cylinders: cylinders
-  body/format:
-    plugin: default_value
-    default_value: full_html
-  body/value: description
   field_car_interior_trim: interior_trim
   field_car_engine_type: engine_type
   field_car_odometer_reading: odometer_reading
@@ -32,4 +28,4 @@ process:
   field_car_traction: traction
   field_car_differential: differential
 _core:
-  default_config_hash: UiISOy574Mt1Ep3HSTiyYAa6xJkrCkevpNpofBUdYsQ
+  default_config_hash: Mh1jgOUOxzvK-mq_HZUa-wH0THIOwmY7Yqkq4V2547g

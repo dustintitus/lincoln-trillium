@@ -161,10 +161,6 @@ class TrilliumlincolnSourceService {
           'capitalize'
         ]
       ],
-      'description' => [
-        'type' => 'textfield',
-        'index' => 10
-      ],
       'fuel_type' => [
         'type' => 'textfield',
         'index' => 11,

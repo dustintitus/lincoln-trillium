@@ -47,54 +47,20 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     region: content
   field_car_accessory:
     type: entity_reference_revisions_entity_view
-    weight: 19
+    weight: 12
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
-  field_car_body_style:
-    weight: 7
-    label: inline
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_car_category:
-    weight: 5
-    label: inline
-    settings:
-      link: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    type: entity_reference_label
-    region: content
   field_car_color_long:
-    weight: 18
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_car_cylinders:
-    weight: 6
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_car_differential:
     weight: 11
     label: inline
     settings:
@@ -102,8 +68,16 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_car_cylinders:
+    weight: 4
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_car_engine_type:
-    weight: 10
+    weight: 6
     label: inline
     settings:
       link_to_entity: false
@@ -111,7 +85,7 @@ content:
     type: string
     region: content
   field_car_fuel_type:
-    weight: 4
+    weight: 3
     label: inline
     settings:
       link_to_entity: false
@@ -134,7 +108,7 @@ content:
     type: image
     region: content
   field_car_interior_trim:
-    weight: 8
+    weight: 5
     label: inline
     settings:
       link_to_entity: false
@@ -142,7 +116,7 @@ content:
     type: string
     region: content
   field_car_msrp:
-    weight: 20
+    weight: 13
     label: inline
     settings:
       strip_trailing_zeroes: false
@@ -150,26 +124,8 @@ content:
     third_party_settings: {  }
     type: commerce_price_default
     region: content
-  field_car_number_of_axles:
-    weight: 14
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_car_number_of_doors:
-    weight: 16
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings:
-      field_formatter_class:
-        class: clearboth
-    type: string
-    region: content
   field_car_odometer_reading:
-    weight: 13
+    weight: 8
     label: inline
     settings:
       link_to_entity: false
@@ -177,7 +133,7 @@ content:
     type: string
     region: content
   field_car_odometer_type:
-    weight: 12
+    weight: 7
     label: inline
     settings: {  }
     third_party_settings: {  }
@@ -185,32 +141,14 @@ content:
     region: content
   field_car_stock_number:
     type: string
-    weight: 15
-    region: content
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-  field_car_traction:
     weight: 9
+    region: content
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-    region: content
-  field_car_type:
-    weight: 1
-    label: hidden
-    settings:
-      link: false
-    third_party_settings:
-      field_formatter_class:
-        class: ''
-    type: entity_reference_label
-    region: content
   field_car_vin:
-    weight: 17
+    weight: 10
     label: inline
     settings:
       link_to_entity: false
@@ -219,7 +157,7 @@ content:
     region: content
   variations:
     type: entity_reference_entity_view
-    weight: 3
+    weight: 2
     label: hidden
     settings:
       view_mode: default
@@ -230,10 +168,17 @@ content:
     region: content
 hidden:
   created: true
+  field_car_body_style: true
+  field_car_category: true
   field_car_dealership_id: true
+  field_car_differential: true
   field_car_make: true
   field_car_model: true
+  field_car_number_of_axles: true
+  field_car_number_of_doors: true
   field_car_total_length: true
+  field_car_traction: true
+  field_car_type: true
   field_car_year: true
   stores: true
   uid: true

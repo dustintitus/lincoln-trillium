@@ -1,0 +1,23 @@
+uuid: 820fa8c5-58ad-4b10-938c-b3cb107c6b99
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_car_model_residual
+    - taxonomy.vocabulary.car_model
+  module:
+    - commerce_price
+id: taxonomy_term.car_model.field_car_model_residual
+field_name: field_car_model_residual
+entity_type: taxonomy_term
+bundle: car_model
+label: Residual
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_currencies:
+    - USD
+field_type: commerce_price
