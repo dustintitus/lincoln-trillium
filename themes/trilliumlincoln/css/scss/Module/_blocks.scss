@@ -235,6 +235,7 @@
       clear: both;
       overflow: hidden;
       margin-bottom: 3px;
+      font-weight: normal;
       label{
         font-size: em(14);
         line-height: 27px;
@@ -242,6 +243,7 @@
         margin: 0px;
         float: left;
         width: 70%;
+        font-weight: normal;
       }
       .form-text{
         background-color: transparent;

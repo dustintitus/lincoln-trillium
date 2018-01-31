@@ -36,7 +36,7 @@
     {{- product.variations -}}
     {{- calculator_form -}}
     <div class="car-action">
-      <a data-dialog-type="modal" href="{{ url('<front>') }}trilliumlincoln_utility/test_drive_modal_form?pid={{ product_entity.id }}" class="use-ajax btn btn-info btn-lg">CALL TO ACTION</a>
+      <a data-dialog-type="modal" href="{{ url('<front>') }}trilliumlincoln_utility/test_drive_modal_form?pid={{ product_entity.id }}" class="use-ajax btn btn-info btn-lg">BOOK A TEST DRIVE</a>
     </div>
   </div>
 
@@ -61,4 +61,17 @@
   </div>
 
 </div>
+
+<div class="modal fade" id="modal-box" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body"></div>
+    </div><!-- /.modal-content -->
+    <div class="modal-nav">
+      <a class="prev" href="#">prev</a>
+      <a class="next" href="#">next</a>
+    </div>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 </article>

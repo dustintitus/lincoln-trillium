@@ -135,3 +135,21 @@
     margin: 0;
   }
 }
+
+#modal-box{
+  .modal-dialog{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    @include respond($sm){
+      width: 50%;
+    }
+    .modal-body{
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

@@ -166,7 +166,7 @@ handlers:
       from_options: {  }
       from_name: default
       subject: 'Test Drive'
-      body: "Name: [webform_submission:values:first_name:value] [webform_submission:values:last_name:value]<br />\nEmail: [webform_submission:values:email:value]<br />\nPhone: [webform_submission:values:phone:value]<br />\nPostal code: [webform_submission:values:postal_code:value]<br />\nStock Number: [webform_submission:values:stock_number:value]<br />\nYear: [webform_submission:values:year:value]<br />\nMake: [webform_submission:values:make:value]<br />\nModel: [webform_submission:values:model:value]<br />\n<br />\nSent from:&nbsp;[webform_submission:values:sent_from:value]"
+      body: 'Thanks for requesting a test drive in a [webform_submission:values:year:value] [webform_submission:values:make:value] [webform_submission:values:model:value], we will be in touch with you shortly and we&#39;ll try and get you behind the wheel at your earliest convenience.'
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

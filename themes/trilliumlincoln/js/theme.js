@@ -1,8 +1,4 @@
 (function($) {
-	// $(document).ready(function() {
-		// changeImgSizes();
-	// });
-
 	function changeElementSizes(elem,delimer){
 		if(!isNumeric(delimer) || delimer === 1 ) return;
 		var extrema = 'min';

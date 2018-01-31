@@ -59,6 +59,8 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       }
     }
 
+    $price+=449;
+
     $term_options = [];
     $term_rate = [];
     $vid = 'calculator_term';
@@ -75,6 +77,17 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       ];
     }
     
+    $default_lease_cash_down = 0;
+    $default_lease_term = 48;
+    $capitalized_cost = $price - $default_lease_cash_down;
+    $amort_amt = $capitalized_cost - $residual;
+    $base_pmt = $amort_amt/$default_lease_term;
+    $lease_rate = isset($term_rate[$default_lease_term]['lease-rate']) ? $term_rate[$default_lease_term]['lease-rate']: 0;
+    $money_factor = ($lease_rate/24)/100;
+    $interest_cost = ($capitalized_cost + $residual) * $money_factor;
+    $pmt = ($base_pmt + $interest_cost);
+    $default_biweekly_lease_pmt = '$' . round((($pmt * 12) / 26),2);
+
     $form['price'] = [
       '#type' => 'hidden',
       '#value' => $price,
@@ -98,23 +111,23 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       '#type' => 'select',
       '#title' => $this->t("Term"),
       '#options' => $term_options,
-      '#options_attribute' => $term_rate
+      '#options_attribute' => $term_rate,
+      '#default_value' => $default_lease_term
     ];
 
     $form['payment']['lease']['lease_cash_down'] = [
       '#type' => 'textfield',
       '#title' => $this->t("Cash Down"),
-      '#placeholder' => '$0000',
+      '#placeholder' => '$0',
     ];
 
-    $form['payment']['lease']['pmt'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t("PMT*"),
-      '#placeholder' => '00,000',
-      '#attributes' => [
-        'readonly' => 'readonly'
-      ]
-    ];
+    $default_finace_cash_down = 0;
+    $default_finance_term = 48;
+    $capitalized_cost = $price - $default_finace_cash_down;
+    $finance_rate = isset($term_rate[$default_finance_term]['finance-rate']) ? $term_rate[$default_finance_term]['finance-rate']: 0;
+    $compoundInterest = $capitalized_cost * pow((1 + ($finance_rate / 100)/12), $default_finance_term);
+    $base_pmt = $compoundInterest/$default_finance_term;
+    $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
 
     $form['payment']['finance'] = [
       '#type' => 'fieldset',
@@ -125,23 +138,24 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       '#type' => 'select',
       '#title' => $this->t("Term"),
       '#options' => $term_options,
-      '#options_attribute' => $term_rate
+      '#options_attribute' => $term_rate,
+      '#default_value' => $default_finance_term
     ];
 
     $form['payment']['finance']['finance_cash_down'] = [
       '#type' => 'textfield',
       '#title' => $this->t("Cash Down"),
-      '#placeholder' => '$0000',
+      '#placeholder' => '$0',
     ];
 
     $form['payment']['total'] = [
       '#type' => 'container',
     ];
     $form['payment']['total']['total_lease'] = [
-      '#markup' => '<div class="total-lease total-item"><label>' . $this->t('Total Lease') . '</label><span>$000</span></div>'
+      '#markup' => '<div class="total-lease total-item"><label>' . $this->t('Total Lease*') . '</label><span>' . $default_biweekly_lease_pmt . '</span></div>'
     ];
     $form['payment']['total']['total_finance'] = [
-      '#markup' => '<div class="total-finance total-item"><label>' . $this->t('Total Finance') . '</label><span>$000</span></div>'
+      '#markup' => '<div class="total-finance total-item"><label>' . $this->t('Total Finance*') . '</label><span>' . $default_biweekly_finance_pmt . '</span></div>'
     ];
 
     $form['pmt_description'] = [

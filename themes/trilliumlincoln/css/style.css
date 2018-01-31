@@ -737,7 +737,8 @@ a {
     .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select {
       clear: both;
       overflow: hidden;
-      margin-bottom: 3px; }
+      margin-bottom: 3px;
+      font-weight: normal; }
       .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield label,
       .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select label {
         font-size: 0.875em;
@@ -745,7 +746,8 @@ a {
         color: #2F201C;
         margin: 0px;
         float: left;
-        width: 70%; }
+        width: 70%;
+        font-weight: normal; }
       .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield .form-text,
       .trilliumlincoln-utility-payment-calculator-form .panel .form-type-select .form-text {
         background-color: transparent;
@@ -1391,6 +1393,18 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0; }
+
+#modal-box .modal-dialog {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0; }
+  @media (min-width: 768px) {
+    #modal-box .modal-dialog {
+      width: 50%; } }
+  #modal-box .modal-dialog .modal-body img {
+    width: 100%;
+    height: auto; }
 
 @media (min-width: 768px) {
   .product-single .first-col {
