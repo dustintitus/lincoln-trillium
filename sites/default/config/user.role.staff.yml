@@ -1,0 +1,34 @@
+uuid: d789db15-e9d0-4805-840d-4e0f70ccea54
+langcode: en
+status: true
+dependencies: {  }
+id: staff
+label: staff
+weight: 3
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access in-place editing'
+  - 'administer filters'
+  - 'administer taxonomy'
+  - 'create article content'
+  - 'create media'
+  - 'create slider content'
+  - 'delete any article content'
+  - 'delete any media'
+  - 'delete any slider content'
+  - 'delete article revisions'
+  - 'delete media'
+  - 'delete own article content'
+  - 'edit any article content'
+  - 'edit any page content'
+  - 'edit any slider content'
+  - 'edit own article content'
+  - 'edit terms in calculator_term'
+  - 'edit terms in car_model'
+  - 'update any car commerce_product'
+  - 'update any media'
+  - 'update media'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'view own unpublished content'

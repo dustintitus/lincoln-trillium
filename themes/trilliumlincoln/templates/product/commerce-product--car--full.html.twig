@@ -34,10 +34,10 @@
     {{- product.field_car_msrp -}}
     {% endif %}
     {{- product.variations -}}
-    {{- calculator_form -}}
     <div class="car-action">
       <a data-dialog-type="modal" href="{{ url('<front>') }}trilliumlincoln_utility/test_drive_modal_form?pid={{ product_entity.id }}" class="use-ajax btn btn-info btn-lg">BOOK A TEST DRIVE</a>
     </div>
+    {{- calculator_form -}}
   </div>
 
   <div class="col-xs-12 col-sm-8 first-col float-right">
@@ -68,8 +68,8 @@
       <div class="modal-body"></div>
     </div><!-- /.modal-content -->
     <div class="modal-nav">
-      <a class="prev" href="#">prev</a>
-      <a class="next" href="#">next</a>
+      <a class="prev" href="#"></a>
+      <a class="next" href="#"></a>
     </div>
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

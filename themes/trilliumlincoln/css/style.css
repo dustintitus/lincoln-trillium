@@ -731,6 +731,9 @@ a {
         line-height: 1.21429; }
     .trilliumlincoln-utility-payment-calculator-form .panel .panel-body {
       padding: 0px; }
+      .trilliumlincoln-utility-payment-calculator-form .panel .panel-body p {
+        text-transform: none;
+        font-weight: normal; }
       .trilliumlincoln-utility-payment-calculator-form .panel .panel-body .panel-default {
         margin-bottom: 18px; }
     .trilliumlincoln-utility-payment-calculator-form .panel .form-type-textfield,
@@ -1401,10 +1404,31 @@ a {
   margin: 0; }
   @media (min-width: 768px) {
     #modal-box .modal-dialog {
-      width: 50%; } }
+      width: auto;
+      max-width: 50%; } }
   #modal-box .modal-dialog .modal-body img {
     width: 100%;
     height: auto; }
+  #modal-box .modal-dialog .modal-nav a {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    color: #2F201C;
+    font-weight: bold;
+    font-size: 1.2em; }
+    #modal-box .modal-dialog .modal-nav a:hover {
+      color: #f15e46; }
+    #modal-box .modal-dialog .modal-nav a::after {
+      display: inline-block;
+      transform-origin: 50% 50%;
+      content: '\e259';
+      font-family: 'Glyphicons Halflings';
+      transform: rotate(270deg); }
+    #modal-box .modal-dialog .modal-nav a.prev {
+      left: 0px;
+      right: auto; }
+      #modal-box .modal-dialog .modal-nav a.prev::after {
+        transform: rotate(90deg); }
 
 @media (min-width: 768px) {
   .product-single .first-col {

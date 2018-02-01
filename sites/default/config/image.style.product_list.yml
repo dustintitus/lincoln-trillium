@@ -5,11 +5,11 @@ dependencies: {  }
 name: product_list
 label: 'Product list(200x125)'
 effects:
-  8a2ebfb5-0c7f-4ee3-9556-fc409592bab2:
-    uuid: 8a2ebfb5-0c7f-4ee3-9556-fc409592bab2
+  010df739-9464-46fd-9834-77716d83ffe8:
+    uuid: 010df739-9464-46fd-9834-77716d83ffe8
     id: image_scale
-    weight: 2
+    weight: 1
     data:
-      width: 200
-      height: 125
+      width: 432
+      height: null
       upscale: false

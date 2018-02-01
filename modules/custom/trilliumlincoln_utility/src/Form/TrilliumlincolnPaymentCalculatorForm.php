@@ -100,7 +100,12 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       '#type' => 'fieldset',
       '#title' => $this->t('Payment Calculator'),
       '#collapsible' => TRUE, 
-      '#collapsed' => FALSE,
+      '#collapsed' => TRUE,
+      '#title_attributes' => [
+        'class' => [
+          'collapsed'
+        ]
+      ]
     ];
     $form['payment']['lease'] = [
       '#type' => 'fieldset',
@@ -158,7 +163,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       '#markup' => '<div class="total-finance total-item"><label>' . $this->t('Total Finance*') . '</label><span>' . $default_biweekly_finance_pmt . '</span></div>'
     ];
 
-    $form['pmt_description'] = [
+    $form['payment']['pmt_description'] = [
       '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing.Lease parts are based on 20,000km/yr with a due on delivery of any cost down, 1st mth part, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
     ];
 

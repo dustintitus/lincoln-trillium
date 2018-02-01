@@ -75,22 +75,57 @@
 
         picture.on('click', 'img', function(event) {
           event.preventDefault();
-          $("#modal-box .modal-body").empty();
-          $($(this).parent().html()).appendTo("#modal-box .modal-body");
-          $("#modal-box").modal({show:true});
+          var $modalBox = $("#modal-box");
+          var $modalBody = $modalBox.find('.modal-body');
+          $modalBody.empty();
 
-          //if (true) {}
+          $($(this).parent().html()).appendTo($modalBody);
+          $modalBox.modal({show:true});
+          var modalBoxNav = $modalBox.find('.modal-nav');
 
-          //var modalBoxImgages = $('.product-carousel').find('.cycle-slide > a');
-          //console.log(pic);
+          var slideCount = pager.data("cycle.opts").slideCount;
+          var activeSlideNumber = 0;
+          var $slides = items.find('a');
 
+          if (slideCount > 1) {
+            var nextSlide = pager.data("cycle.opts").nextSlide;
+            var currSlide = pager.data("cycle.opts").currSlide;
+            var prevSlide = pager.data("cycle.opts").currSlide - 1;
+            if (currSlide == 0) {
+              prevSlide = slideCount - 1;
+            }
+            $(modalBoxNav, context).once('modal-nav').each(function (i,el) {
+              modalBoxNav.on('click', 'a', function(event) {
+                event.preventDefault();
+                if ($(this).hasClass('prev')) {
+                  activeSlideNumber = prevSlide;
+                }
+                else{
+                  activeSlideNumber = nextSlide;
+                }
+
+                if (activeSlideNumber == 0) {
+                  nextSlide = activeSlideNumber + 1;
+                  prevSlide = slideCount - 1;
+                }
+                else if (activeSlideNumber == slideCount - 1) {
+                  nextSlide = 0;
+                  prevSlide = activeSlideNumber - 1;
+                }
+                else{
+                  nextSlide = activeSlideNumber + 1;
+                  prevSlide = activeSlideNumber - 1;
+                }
+
+                var activeSlide = $modalBody.find('img');
+                $(activeSlide).fadeOut(100, function(){ activeSlide.attr('src', $slides[activeSlideNumber].href) }).fadeIn(200);
+              });
+            });
+          }
+          else{
+            modalBoxNav.hide();
+          }
         });
-
-
-
-
-
-
       });
     }
   };

@@ -143,12 +143,40 @@
     transform: translate(-50%, -50%);
     margin: 0;
     @include respond($sm){
-      width: 50%;
+      width: auto;
+      max-width: 50%;
     }
     .modal-body{
       img{
         width: 100%;
         height: auto;
+      }
+    }
+    .modal-nav{
+      a{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        color: $c-brown-2;
+        font-weight: bold;
+        font-size: 1.2em;
+        &:hover{
+          color: $c-red;
+        }
+        &::after{
+          display: inline-block;
+          transform-origin: 50% 50%;
+          content: '\e259';
+          font-family: 'Glyphicons Halflings';
+          transform: rotate(270deg);
+        }
+        &.prev{
+          left: 0px;
+          right: auto;
+          &::after{
+            transform: rotate(90deg);
+          }
+        }
       }
     }
   }

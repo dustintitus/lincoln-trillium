@@ -226,6 +226,10 @@
     }
     .panel-body{
       padding: 0px;
+      p{
+        text-transform: none;
+        font-weight: normal;
+      }
       .panel-default{
         margin-bottom: 18px;
       }

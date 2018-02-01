@@ -1,0 +1,15 @@
+uuid: b0138906-5bd1-41b2-9259-5a6fbc2caf64
+langcode: en
+status: true
+dependencies: {  }
+name: staff_to_dashboard
+label: 'Staff to Dashboard'
+triggers:
+  login: login
+destination_path: 'entity:node/10'
+pages_type: 0
+pages: ''
+roles:
+  staff: staff
+weight: 0
+enabled: true
