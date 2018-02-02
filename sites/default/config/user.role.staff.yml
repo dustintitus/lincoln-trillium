@@ -32,3 +32,4 @@ permissions:
   - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view own unpublished content'
+  - 'view the administration theme'

@@ -153,6 +153,10 @@ class TrilliumlincolnSourceService {
         'type' => 'textfield',
         'index' => 7
       ],
+      'description' => [
+        'type' => 'textfield',
+        'index' => 10
+      ],
       'color_long' => [
         'type' => 'textfield',
         'index' => 52,

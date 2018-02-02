@@ -1,0 +1,15 @@
+uuid: 91e01b1f-f492-44cf-a432-1a8945f3a6f8
+langcode: en
+status: true
+dependencies: {  }
+name: 1050x800
+label: 1050x800
+effects:
+  db27efc9-47c3-4aff-a5ec-b1e397c35c6b:
+    uuid: db27efc9-47c3-4aff-a5ec-b1e397c35c6b
+    id: image_scale
+    weight: 1
+    data:
+      width: 1050
+      height: 800
+      upscale: false

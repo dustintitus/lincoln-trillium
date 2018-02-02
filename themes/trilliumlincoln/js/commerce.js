@@ -88,12 +88,13 @@
           var $slides = items.find('a');
 
           if (slideCount > 1) {
-            var nextSlide = pager.data("cycle.opts").nextSlide;
+            nextSlide = pager.data("cycle.opts").nextSlide;
             var currSlide = pager.data("cycle.opts").currSlide;
-            var prevSlide = pager.data("cycle.opts").currSlide - 1;
+            prevSlide = pager.data("cycle.opts").currSlide - 1;
             if (currSlide == 0) {
               prevSlide = slideCount - 1;
             }
+
             $(modalBoxNav, context).once('modal-nav').each(function (i,el) {
               modalBoxNav.on('click', 'a', function(event) {
                 event.preventDefault();
@@ -103,7 +104,6 @@
                 else{
                   activeSlideNumber = nextSlide;
                 }
-
                 if (activeSlideNumber == 0) {
                   nextSlide = activeSlideNumber + 1;
                   prevSlide = slideCount - 1;
@@ -129,6 +129,9 @@
       });
     }
   };
+
+  var nextSlide = 0;
+  var prevSlide = 0;
 
   Drupal.behaviors.view_product_list = {
     attach: function (context, settings) {

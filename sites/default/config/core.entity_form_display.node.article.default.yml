@@ -11,8 +11,8 @@ dependencies:
     - node.type.article
   module:
     - comment
-    - image
     - path
+    - svg_image
     - text
 _core:
   default_config_hash: buc38w3gxCqFnjINJhMiJvPpj9jWflKvlKDyBVMPVvw

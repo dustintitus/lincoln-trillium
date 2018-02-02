@@ -93,5 +93,15 @@
 		}
 	}
 
-
+}
+.user-logged-in{
+	.login-link{
+		display: none;
+	}
+}
+.role-anonymous{
+	.logout-link,
+	.dashboard-link{
+		display: none;
+	}
 }

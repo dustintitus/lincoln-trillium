@@ -388,6 +388,13 @@ a {
         .footer .region-footer-bottom-wrapper .region-footer-bottom .footer-social li .icon-fb::before {
           transform: translate(0px, 7px); }
 
+.user-logged-in .login-link {
+  display: none; }
+
+.role-anonymous .logout-link,
+.role-anonymous .dashboard-link {
+  display: none; }
+
 .main-container > .row > .wrapper, .contact-us-block .paragraph--type--text-callout .main-container > .field--name-field-item > .wrapper, .product-single .main-container > .product-content > .wrapper, .product-single .product-accessory.main-container > .paragraph > .wrapper, .view-product-list.list .view-content .main-container > .views-row > .wrapper, .view-product-list.grid .main-container > .view-content > .wrapper, .view-product-list .view-filters .views-exposed-form.main-container > .form-inline > .wrapper {
   padding-top: 40px; }
 

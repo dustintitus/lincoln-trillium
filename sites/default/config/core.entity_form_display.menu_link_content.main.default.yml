@@ -7,7 +7,7 @@ dependencies:
     - image.style.thumbnail
     - system.menu.main
   module:
-    - link
+    - link_attributes
     - menu_item_extras
     - svg_image
 id: menu_link_content.main.default

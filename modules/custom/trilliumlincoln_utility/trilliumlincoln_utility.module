@@ -36,6 +36,18 @@ function trilliumlincoln_utility_theme($existing, $type, $theme, $path) {
   ];
 }
 
+function trilliumlincoln_utility_preprocess_html(&$variables) {
+  $account = \Drupal::currentUser();
+  $roles = $account->getRoles();
+
+  foreach ($roles as $role) {
+    $variables['attributes']['class'][] = 'role-' . $role;
+  }
+
+  $variables['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.admin';
+
+  //trilliumlincoln_utility.admin
+}
 /**
  * Implements hook_webform_submission_form_alter().
 **/

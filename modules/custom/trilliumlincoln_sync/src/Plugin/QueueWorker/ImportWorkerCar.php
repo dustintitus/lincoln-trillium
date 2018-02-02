@@ -39,7 +39,7 @@ class ImportWorkerCar extends ImportWorkerBase {
     // Prepare row.
     $item = $this->prepareRow($item);
 
-    if (empty($item['stock_number'])) {
+    if (empty($item['stock_number']) || $item['price'] == 0) {
       return;
     }
 
@@ -338,7 +338,7 @@ class ImportWorkerCar extends ImportWorkerBase {
         $item[$field_key] = $new_value;
       }
 
-      $item['title'] = $item['make'] . ' ' . $item['model'] . ' ' . $item['year'] . ' - ' . $item['color_long'];
+      $item['title'] = $item['make'] . ' ' . $item['model'] . ' ' . $item['year'] . ' - ' . $item['description'];
       $item['status'] = 1;
       $item['year'] = !empty($item['year']) ? $item['year'] . '-01-01': '';
     }

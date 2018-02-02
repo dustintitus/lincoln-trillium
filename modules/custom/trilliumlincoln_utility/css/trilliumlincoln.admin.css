@@ -2,3 +2,9 @@
 #edit-field-car-model-year-wrapper .form-item-field-car-model-year-0-value-day{
   display: none;
 }
+body.role-staff .layout-region-node-main,
+body.role-staff .layout-region-node-secondary,
+body.role-staff .layout-region-node-footer{
+  width: 100%;
+  margin-bottom: 20px;
+}

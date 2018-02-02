@@ -8,6 +8,8 @@
 use Drupal\block\Entity\Block;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
 
 function trilliumlincoln_preprocess_page(&$variables) {
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
@@ -45,6 +47,21 @@ function trilliumlincoln_theme_suggestions_views_view_fields_alter(array &$sugge
   return $suggestions;  
 }
 
+function trilliumlincoln_preprocess_field(&$variables){
+  if($variables['field_name'] == 'field_car_images'){
+    //$variables['items'][0]['attributes']
+    //$field = $variables['element']['#items'][0];
+      //$variables['items'][0]['attributes']->addClass('test');
+
+    //$variables['items'][0]['content']['#url']->setOptions('attributes' => ['class' => ['test']]);
+
+    //dpr($variables['items'][0]['content']['#url']);
+
+    //    attributes
+    //    setOption
+    //die();
+  }
+}
 function trilliumlincoln_preprocess_html(&$variables) {
   $current_path = \Drupal::service('path.current')->getPath();
   $variables['current_path'] = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);

@@ -5,6 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.slider.body
+    - field.field.node.slider.field_button
+    - field.field.node.slider.field_slider_headline
+    - field.field.node.slider.field_slider_image
     - node.type.slider
   module:
     - text
@@ -25,4 +28,7 @@ content:
   links:
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_button: true
+  field_slider_headline: true
+  field_slider_image: true

@@ -1,0 +1,15 @@
+uuid: 61a5b0f7-39cd-4f59-8dc2-777b0b0e6bed
+langcode: en
+status: true
+dependencies: {  }
+name: 174x122
+label: 174x122
+effects:
+  ded593d6-6d82-4813-9156-77382ab908cf:
+    uuid: ded593d6-6d82-4813-9156-77382ab908cf
+    id: image_scale
+    weight: 1
+    data:
+      width: 174
+      height: 122
+      upscale: false

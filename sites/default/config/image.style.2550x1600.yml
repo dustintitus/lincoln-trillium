@@ -1,0 +1,15 @@
+uuid: 133ad092-cba3-4686-8b2c-1377eca59eb0
+langcode: en
+status: true
+dependencies: {  }
+name: 2550x1600
+label: 2550x1600
+effects:
+  6e75867d-ebd7-4c88-a103-5a583cc33e93:
+    uuid: 6e75867d-ebd7-4c88-a103-5a583cc33e93
+    id: image_scale
+    weight: 1
+    data:
+      width: 2550
+      height: 1600
+      upscale: false
