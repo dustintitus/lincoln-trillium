@@ -49,19 +49,16 @@ function trilliumlincoln_theme_suggestions_views_view_fields_alter(array &$sugge
 
 function trilliumlincoln_preprocess_field(&$variables){
   if($variables['field_name'] == 'field_car_images'){
-    //$variables['items'][0]['attributes']
-    //$field = $variables['element']['#items'][0];
-      //$variables['items'][0]['attributes']->addClass('test');
-
-    //$variables['items'][0]['content']['#url']->setOptions('attributes' => ['class' => ['test']]);
-
-    //dpr($variables['items'][0]['content']['#url']);
-
-    //    attributes
-    //    setOption
-    //die();
+    $public_path = file_create_url("public://"); 
+    foreach ($variables['items'] as $key => $value) {
+      $uri = urldecode(str_replace($public_path, 'public://', $value['content']['#url']->getUri()));
+      $style = \Drupal::entityTypeManager()->getStorage('image_style')->load('1050x800');
+      $url = $style->buildUrl($uri);
+      $variables['items'][$key]['content']['#url']->setOption('data-preview-url', $url);
+    }
   }
 }
+
 function trilliumlincoln_preprocess_html(&$variables) {
   $current_path = \Drupal::service('path.current')->getPath();
   $variables['current_path'] = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
@@ -107,8 +104,16 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
   /** @var Drupal\commerce_product\Entity\ProductInterface $product */
   $product = $variables['elements']['#commerce_product'];
   if ($variables['elements']['#view_mode'] == 'full') {
-    $form = \Drupal::formBuilder()->getForm('\Drupal\trilliumlincoln_utility\Form\TrilliumlincolnPaymentCalculatorForm');
-    $variables['calculator_form'] = $form;
+    $field_car_type = $product->get('field_car_type')->getValue();
+    if (isset($field_car_type[0]['target_id'])) {
+      $car_type_id = $field_car_type[0]['target_id'];
+      $car_type = Drupal\taxonomy\Entity\Term::load($car_type_id);
+      $car_type_name = $car_type->getName();
+      if ($car_type_name == 'New') {
+        $form = \Drupal::formBuilder()->getForm('\Drupal\trilliumlincoln_utility\Form\TrilliumlincolnPaymentCalculatorForm');
+        $variables['calculator_form'] = $form;
+      }
+    }
   }
 }
 

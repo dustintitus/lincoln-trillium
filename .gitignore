@@ -4,6 +4,7 @@ sites/*/private
 files/*
 _backup/*
 .user.ini
+php.ini
 
 # Avoid accidental modification of pantheon.upstream.yml in sites
 # created from this upstream

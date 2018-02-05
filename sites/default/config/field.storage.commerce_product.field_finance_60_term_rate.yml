@@ -1,0 +1,20 @@
+uuid: d33491ca-ab16-42f7-9341-00695a0096dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.field_finance_60_term_rate
+field_name: field_finance_60_term_rate
+entity_type: commerce_product
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -10,7 +10,10 @@
         var items = pager.find('.field--item');
 
         var pic = new Image();
-        pic.src = pager.find('.field--item > a')[0].href;
+        var previewImg = pager.find('.field--item > a')[0];
+        
+        pic.src = $(previewImg).attr('data-preview-url');
+        $(pic).attr('data-orig-url', previewImg.href);
         picture.append(pic);
 
         var optionsPager = {
@@ -58,8 +61,10 @@
         });
 
         pager.on( 'cycle-before', function( event, optionHash, outgoingSlideEl, incomingSlideEl ) {
-          var src = incomingSlideEl.querySelector('a').href; 
-          $(pic).fadeOut(100, function(){ pic.src = src }).fadeIn(200);
+          var activeEl = incomingSlideEl.querySelector('a');
+          var src = $(activeEl).attr('data-preview-url');
+          var srcOrig = activeEl.href;
+          $(pic).fadeOut(100, function(){ pic.src = src; $(pic).attr('data-orig-url', srcOrig); }).fadeIn(200);
         });
 
         $(window).on('resize', function(){
@@ -78,8 +83,10 @@
           var $modalBox = $("#modal-box");
           var $modalBody = $modalBox.find('.modal-body');
           $modalBody.empty();
+          var origImg = new Image();
+          origImg.src = $(this).attr('data-orig-url')
 
-          $($(this).parent().html()).appendTo($modalBody);
+          $(origImg).appendTo($modalBody);
           $modalBox.modal({show:true});
           var modalBoxNav = $modalBox.find('.modal-nav');
 

@@ -32,8 +32,26 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     // Disable caching on this form.
     $form_state->setCached(FALSE);
 
-    $residual = 0;
+    $residual = [
+      '24' => 0,
+      '36' => 0,
+      '48' => 0
+    ];
+    $finance_term_rate = [
+      '36' => 0,
+      '48' => 0,
+      '60' => 0,
+      '72' => 0
+    ];
+    $lease_term_rate = [
+      '24' => 0,
+      '36' => 0,
+      '48' => 0
+    ];
+    $lease_term_options = [];
+    $finance_term_options = [];
     $price = 0;
+    $msrp = 0;
     if ($product = \Drupal::routeMatch()->getParameter('commerce_product')) {
       $variations_field = $product->get('variations')->getValue();
       if (!empty($variations_field)) {
@@ -47,13 +65,40 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
         }
       }
 
-      $field_car_model = $product->get('field_car_model')->getValue();
-      if (isset($field_car_model[0]['target_id'])) {
-        $car_model_term = Term::load($field_car_model[0]['target_id']);
-        if (!empty($car_model_term)) {
-          if ($car_model_term->hasField('field_car_model_residual')) {
-            $field_car_model_residual = $car_model_term->get('field_car_model_residual')->getValue();
-            $residual = isset($field_car_model_residual[0]['number']) ? $field_car_model_residual[0]['number']: 0;
+      if ($product->hasField('field_car_msrp')) {
+        $item = $product->get('field_car_msrp')->getValue();
+        if (!empty($item[0]['value'])) {
+          $msrp = $item[0]['value'];
+        }
+      }
+
+      foreach ($residual as $key => $value) {
+        if ($product->hasField('field_residual_' . $key . '_term_rate')) {
+          $item = $product->get('field_residual_' . $key . '_term_rate')->getValue();
+          if (!empty($item[0]['value'])) {
+            $residual[$key] = $item[0]['value'];
+          }
+        }
+      }
+
+      foreach ($finance_term_rate as $key => $value) {
+        if ($product->hasField('field_finance_' . $key . '_term_rate')) {
+          $finance_term_options[$key] = $key;
+          $item = $product->get('field_finance_' . $key . '_term_rate')->getValue();
+          if (!empty($item[0]['value'])) {
+            $finance_term_rate[$key] = ['finance-rate' => $item[0]['value']];
+          }
+        }
+      }
+      foreach ($lease_term_rate as $key => $value) {
+        if ($product->hasField('field_lease_' . $key . '_term_rate')) {
+          $lease_term_options[$key] = $key;
+          $item = $product->get('field_lease_' . $key . '_term_rate')->getValue();
+          if (!empty($item[0]['value'])) {
+            $lease_term_rate[$key] = [
+              'lease-rate' => $item[0]['value'],
+              'residual' => isset($residual[$key]) ? $residual[$key] : 0
+            ];
           }
         }
       }
@@ -61,30 +106,15 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
 
     $price+=449;
 
-    $term_options = [];
-    $term_rate = [];
-    $vid = 'calculator_term';
-    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0, NULL, TRUE);
-    foreach ($terms as $term) {
-      $field_term_month = $term->get('field_term_month')->getValue();
-      $field_finance_rate = $term->get('field_finance_rate')->getValue();
-      $field_lease_rate = $term->get('field_lease_rate')->getValue();
-
-      $term_options[$field_term_month[0]['value']] = $term->getName();
-      $term_rate[$field_term_month[0]['value']] = [
-        'finance-rate' => $field_finance_rate[0]['value'],
-        'lease-rate' => $field_lease_rate[0]['value']
-      ];
-    }
-    
     $default_lease_cash_down = 0;
     $default_lease_term = 48;
     $capitalized_cost = $price - $default_lease_cash_down;
-    $amort_amt = $capitalized_cost - $residual;
+    $new_residual = $residual[$default_lease_term] * $msrp;
+    $amort_amt = $capitalized_cost - $new_residual;
     $base_pmt = $amort_amt/$default_lease_term;
-    $lease_rate = isset($term_rate[$default_lease_term]['lease-rate']) ? $term_rate[$default_lease_term]['lease-rate']: 0;
+    $lease_rate = isset($lease_term_rate[$default_lease_term]['lease-rate']) ? $lease_term_rate[$default_lease_term]['lease-rate']: 0;
     $money_factor = ($lease_rate/24)/100;
-    $interest_cost = ($capitalized_cost + $residual) * $money_factor;
+    $interest_cost = ($capitalized_cost + $new_residual) * $money_factor;
     $pmt = ($base_pmt + $interest_cost);
     $default_biweekly_lease_pmt = '$' . round((($pmt * 12) / 26),2);
 
@@ -92,9 +122,9 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       '#type' => 'hidden',
       '#value' => $price,
     ];
-    $form['residual'] = [
+    $form['msrp'] = [
       '#type' => 'hidden',
-      '#value' => $residual,
+      '#value' => $msrp,
     ];
     $form['payment'] = [
       '#type' => 'fieldset',
@@ -115,8 +145,8 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $form['payment']['lease']['lease_term'] = [
       '#type' => 'select',
       '#title' => $this->t("Term"),
-      '#options' => $term_options,
-      '#options_attribute' => $term_rate,
+      '#options' => $lease_term_options,
+      '#options_attribute' => $lease_term_rate,
       '#default_value' => $default_lease_term
     ];
 
@@ -129,7 +159,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $default_finace_cash_down = 0;
     $default_finance_term = 48;
     $capitalized_cost = $price - $default_finace_cash_down;
-    $finance_rate = isset($term_rate[$default_finance_term]['finance-rate']) ? $term_rate[$default_finance_term]['finance-rate']: 0;
+    $finance_rate = isset($finance_term_rate[$default_finance_term]['finance-rate']) ? $finance_term_rate[$default_finance_term]['finance-rate']: 0;
     $compoundInterest = $capitalized_cost * pow((1 + ($finance_rate / 100)/12), $default_finance_term);
     $base_pmt = $compoundInterest/$default_finance_term;
     $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
@@ -142,8 +172,8 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $form['payment']['finance']['finance_term'] = [
       '#type' => 'select',
       '#title' => $this->t("Term"),
-      '#options' => $term_options,
-      '#options_attribute' => $term_rate,
+      '#options' => $finance_term_options,
+      '#options_attribute' => $finance_term_rate,
       '#default_value' => $default_finance_term
     ];
 

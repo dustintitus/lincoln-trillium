@@ -1,0 +1,23 @@
+uuid: 3de189f5-0a9a-48b8-a402-a0f67a67223a
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_finance_48_term_rate
+id: commerce_product.car.field_finance_48_term_rate
+field_name: field_finance_48_term_rate
+entity_type: commerce_product
+bundle: car
+label: 'Finance 48 Term Rate'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

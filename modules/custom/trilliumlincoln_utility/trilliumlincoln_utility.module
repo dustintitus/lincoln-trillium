@@ -45,8 +45,6 @@ function trilliumlincoln_utility_preprocess_html(&$variables) {
   }
 
   $variables['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.admin';
-
-  //trilliumlincoln_utility.admin
 }
 /**
  * Implements hook_webform_submission_form_alter().

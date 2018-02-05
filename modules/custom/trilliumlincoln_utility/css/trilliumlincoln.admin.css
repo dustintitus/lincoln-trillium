@@ -3,8 +3,13 @@
   display: none;
 }
 body.role-staff .layout-region-node-main,
-body.role-staff .layout-region-node-secondary,
-body.role-staff .layout-region-node-footer{
+body.role-staff .layout-region-node-footer,
+body.role-staff .layout-region-product-main,
+body.role-staff .layout-region-product-footer{
   width: 100%;
   margin-bottom: 20px;
+}
+body.role-staff .layout-region-product-secondary,
+body.role-staff .layout-region-node-secondary{
+  display: none;
 }

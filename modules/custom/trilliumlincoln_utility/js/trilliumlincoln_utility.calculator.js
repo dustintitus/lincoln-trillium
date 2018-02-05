@@ -7,8 +7,8 @@
   Drupal.behaviors.calculator = {
     attach: function (context, settings) {
       $('.trilliumlincoln-utility-payment-calculator-form', context).once('calculator-form').each(function () {
-        var residual = parseFloat($(this).find('input[name=residual]').val());
         var price = parseFloat($(this).find('input[name=price]').val());
+        var msrp = parseFloat($(this).find('input[name=msrp]').val());
         var $totalLease = $(this).find('.total-lease span');
         var $totalFinance = $(this).find('.total-finance span');
         //Lease section
@@ -16,6 +16,7 @@
           var $leaseTerm = $(this).parents('#edit-lease').find('#edit-lease-term');
           var leaseRate = parseFloat($leaseTerm.find('option:selected').attr('data-lease-rate'));
           var leaseTerm = parseInt($leaseTerm.val());
+          var residual = parseFloat($leaseTerm.find('option:selected').attr('data-residual'));
           var leaseCashDown = parseFloat($(this).parents('#edit-lease').find('#edit-lease-cash-down').val()) / 1.13;
           if (isNaN(leaseCashDown) || leaseCashDown < 0) {
             leaseCashDown = 0;
@@ -26,10 +27,11 @@
           var biweeklyLeasePmt = 'Nan';
           
           if (capitalizedCost > 0 && leaseCashDown >= 0) {
-            var amortAmt = capitalizedCost - residual;
+            var newResidual = residual * msrp;
+            var amortAmt = capitalizedCost - newResidual;
             var basePmt = amortAmt/leaseTerm;
             var moneyFactor = (leaseRate/24)/100;
-            var interestCost = (capitalizedCost + residual) * moneyFactor;
+            var interestCost = (capitalizedCost + newResidual) * moneyFactor;
             var pmt = (basePmt + interestCost).toFixed(2);
             biweeklyLeasePmt = '$' + ((pmt * 12) / 26).toFixed(2);
           }

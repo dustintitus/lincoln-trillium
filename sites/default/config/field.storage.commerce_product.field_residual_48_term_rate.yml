@@ -1,0 +1,20 @@
+uuid: 4013dd85-3120-40ee-adca-2900c4b6d6d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.field_residual_48_term_rate
+field_name: field_residual_48_term_rate
+entity_type: commerce_product
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
