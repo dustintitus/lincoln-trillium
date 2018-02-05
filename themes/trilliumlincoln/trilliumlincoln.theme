@@ -124,11 +124,13 @@ function trilliumlincoln_preprocess_select(&$variables) {
       foreach ($variables['options'] as $option_key => $option_value) {
         if (isset($element['#options_attribute'][$option_value['value']])) {
           $option_attributes = $element['#options_attribute'][$option_value['value']];
-          foreach ($option_attributes as $attribute_key => $attribute_value) {
-            $variables['options'][$option_key]['attribute'][] = [
-              'key' => $attribute_key,
-              'value' => $attribute_value
-            ];
+          if (!empty($option_attributes)) {
+            foreach ($option_attributes as $attribute_key => $attribute_value) {
+              $variables['options'][$option_key]['attribute'][] = [
+                'key' => $attribute_key,
+                'value' => $attribute_value
+              ];
+            }
           }
         }
       }
