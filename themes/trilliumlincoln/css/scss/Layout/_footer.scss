@@ -54,6 +54,7 @@
 				}
 			}
 			.footer-social {
+				text-align: center;
 				@include respond($sm){
 					text-align: right;
 				}

@@ -334,6 +334,12 @@
     padding: 6px 10px;
     span{
       float: right;
+      @media (min-width: 768px) and (max-width: 868px) {
+        float:none;
+        display:block;
+        text-align: center;
+        font-size: 1.2em;
+      }
     }
     &.total-lease{
       margin-bottom: 5px;

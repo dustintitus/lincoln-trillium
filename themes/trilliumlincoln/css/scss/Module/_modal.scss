@@ -142,24 +142,38 @@
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
-    @include respond($sm){
-      width: auto;
-      max-width: 50%;
-    }
-    .modal-body{
-      img{
+    width: 95%;
+    max-width: 2550px;
+    height: 95%;
+    max-height: 1600px;
+    .modal-content{
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      box-shadow: none;
+      border: none;
+      .modal-body{
         width: 100%;
-        height: auto;
+        height: 100%;
+        img{
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
+          position: relative;
+          max-width: 100%;
+          max-height: 100%;
+          display: block;
+        }
       }
     }
     .modal-nav{
       a{
         position: absolute;
         top: 50%;
-        right: 0;
+        right: -15px;
         color: $c-brown-2;
         font-weight: bold;
-        font-size: 1.2em;
+        font-size: 2.2em;
         &:hover{
           color: $c-red;
         }
@@ -171,7 +185,7 @@
           transform: rotate(270deg);
         }
         &.prev{
-          left: 0px;
+          left: -15px;
           right: auto;
           &::after{
             transform: rotate(90deg);

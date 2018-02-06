@@ -200,5 +200,6 @@ hidden:
   field_residual_24_term_rate: true
   field_residual_36_term_rate: true
   field_residual_48_term_rate: true
+  quick_product_edit: true
   stores: true
   uid: true

@@ -52,6 +52,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $finance_term_options = [];
     $price = 0;
     $msrp = 0;
+    $hide_lease_section = FALSE;
     if ($product = \Drupal::routeMatch()->getParameter('commerce_product')) {
       $variations_field = $product->get('variations')->getValue();
       if (!empty($variations_field)) {
@@ -78,6 +79,9 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
           if (!empty($item[0]['value'])) {
             $residual[$key] = $item[0]['value'];
           }
+          else{
+            $hide_lease_section = TRUE;
+          }
         }
       }
 
@@ -99,6 +103,9 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
               'lease-rate' => $item[0]['value'],
               'residual' => isset($residual[$key]) ? $residual[$key] : 0
             ];
+          }
+          else{
+            $hide_lease_section = TRUE;
           }
         }
       }
@@ -137,24 +144,26 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
         ]
       ]
     ];
-    $form['payment']['lease'] = [
-      '#type' => 'fieldset',
-      '#title' => $this->t('Lease'),
-    ];
+    if (!$hide_lease_section) {
+      $form['payment']['lease'] = [
+        '#type' => 'fieldset',
+        '#title' => $this->t('Lease'),
+      ];
 
-    $form['payment']['lease']['lease_term'] = [
-      '#type' => 'select',
-      '#title' => $this->t("Term"),
-      '#options' => $lease_term_options,
-      '#options_attribute' => $lease_term_rate,
-      '#default_value' => $default_lease_term
-    ];
+      $form['payment']['lease']['lease_term'] = [
+        '#type' => 'select',
+        '#title' => $this->t("Term"),
+        '#options' => $lease_term_options,
+        '#options_attribute' => $lease_term_rate,
+        '#default_value' => $default_lease_term
+      ];
 
-    $form['payment']['lease']['lease_cash_down'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t("Cash Down"),
-      '#placeholder' => '$0',
-    ];
+      $form['payment']['lease']['lease_cash_down'] = [
+        '#type' => 'textfield',
+        '#title' => $this->t("Cash Down"),
+        '#placeholder' => '$0',
+      ];
+    }
 
     $default_finace_cash_down = 0;
     $default_finance_term = 48;
@@ -186,9 +195,11 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $form['payment']['total'] = [
       '#type' => 'container',
     ];
-    $form['payment']['total']['total_lease'] = [
-      '#markup' => '<div class="total-lease total-item"><label>' . $this->t('Total Lease*') . '</label><span>' . $default_biweekly_lease_pmt . '</span></div>'
-    ];
+    if (!$hide_lease_section) {
+      $form['payment']['total']['total_lease'] = [
+        '#markup' => '<div class="total-lease total-item"><label>' . $this->t('Total Lease*') . '</label><span>' . $default_biweekly_lease_pmt . '</span></div>'
+      ];
+    }
     $form['payment']['total']['total_finance'] = [
       '#markup' => '<div class="total-finance total-item"><label>' . $this->t('Total Finance*') . '</label><span>' . $default_biweekly_finance_pmt . '</span></div>'
     ];

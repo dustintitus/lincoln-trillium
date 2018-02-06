@@ -10,8 +10,17 @@
 			padding-left: 10px;
 		}
 	}
-
+	.main-car-image{
+		margin-bottom: 20px;
+		@include respond($sm){
+			display: none;
+		}
+	}
 	.product-carousel {
+		display: none;
+		@include respond($sm){
+			display: block;
+		}
 		padding-bottom: 20px;
 	}
 	.field--name-body {
