@@ -1,0 +1,60 @@
+.view-rates-edit-page{
+  display: table;
+  font-size: em(14);
+  border: 1px solid $c-brown;
+  .view-header{
+    display: table-header-group;
+    .rates-field-name{
+      display: table-row;
+      .field{
+        display: table-cell;
+        font-weight: bold;
+        border: 1px solid $c-brown;
+        vertical-align: middle;
+        text-align: center;
+        padding: 2px;
+      }
+    }
+  }
+  .view-content{
+    display: table-row-group;
+    .views-row{
+      display: table-row;
+      .field{
+        .field--label{
+          display: none;
+        }
+        display: table-cell;
+        padding: 2px;
+        border: 1px solid $c-brown;
+        vertical-align: middle;
+        text-align: center;
+        a{
+          color: $c-red;
+        }
+      }
+    }
+  }
+}
+
+.commerce-product-car-form{
+  &.commerce-quick-edit{
+    .form-wrapper{
+      display: none;
+    }
+    .layout-region-product-main{
+      width: 100%;
+      padding-right: 0px;
+      .payment-calculator-container{
+        display: block;
+        .form-wrapper{
+          display: block;
+        }
+      }
+    }
+    .layout-region-product-secondary,
+    .layout-region-product-footer{
+      display: none;
+    }
+  }
+}

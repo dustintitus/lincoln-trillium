@@ -84,10 +84,11 @@ third_party_settings:
       weight: 17
       format_type: fieldset
       format_settings:
-        id: ''
-        classes: ''
+        label: 'Payment Calculator Fields'
         description: ''
         required_fields: true
+        id: ''
+        classes: payment-calculator-container
       label: 'Payment Calculator Fields'
       region: content
     group_finance_term_rate:

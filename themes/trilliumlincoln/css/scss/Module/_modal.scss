@@ -166,6 +166,16 @@
         }
       }
     }
+    .close{
+      z-index: 1000000;
+      color: $c-red;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      opacity: 1;
+      text-shadow:none;
+      font-size: em(70);
+    }
     .modal-nav{
       a{
         position: absolute;
@@ -174,6 +184,7 @@
         color: $c-brown-2;
         font-weight: bold;
         font-size: 2.2em;
+        z-index: 1000000;
         &:hover{
           color: $c-red;
         }

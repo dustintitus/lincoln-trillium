@@ -77,6 +77,10 @@
           } 
         });
 
+        $("#modal-box .modal-content").on('click', function(event) {
+          event.preventDefault();
+          $('#modal-box').modal('hide');
+        });
 
         picture.on('click', 'img', function(event) {
           event.preventDefault();

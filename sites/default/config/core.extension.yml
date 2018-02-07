@@ -80,6 +80,7 @@ module:
   trilliumlincoln_utility: 0
   update: 0
   user: 0
+  views_ajax_history: 0
   views_fieldsets: 0
   views_ui: 0
   viewsreference: 0

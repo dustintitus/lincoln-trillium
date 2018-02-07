@@ -7,6 +7,7 @@ use Drupal\Core\Ajax\OpenDialogCommand;
 use Drupal\Core\Ajax\CloseDialogCommand;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Entity\View;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
 
 /**
  * Implements hook_form_commerce_product_form_alter() for node edit form.
@@ -130,5 +131,30 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
     $form['field_car_model_target_id']['#suffix'] = '</div>';
     $form['field_car_model_target_id']['#options']['All'] = t('Model');
 
+  }
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function trilliumlincoln_utility_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+  if ($view->id() == 'media_entity_browser') {
+    if (!empty($view->element['#attached']['library'])) {
+      $views_ajax_history_key = array_search('views_ajax_history/history', $view->element['#attached']['library']);
+      if ($views_ajax_history_key !== FALSE) {
+        unset($view->element['#attached']['library'][$views_ajax_history_key]);
+      }
+    }
+
+    if (isset($view->element['#attached']['drupalSettings']['viewsAjaxHistory'])) {
+      unset($view->element['#attached']['drupalSettings']['viewsAjaxHistory']);
+    }
+
+    if (!empty($view->element['#cache']['contexts'])) {
+      $views_ajax_history_cache_key = array_search('url.query_args.pagers', $view->element['#cache']['contexts']);
+      if ($views_ajax_history_cache_key !== FALSE) {
+        unset($view->element['#cache']['contexts'][$views_ajax_history_cache_key]);
+      }
+    }
   }
 }

@@ -160,7 +160,7 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
   quick_product_edit:
-    weight: -100
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

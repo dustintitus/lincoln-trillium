@@ -127,6 +127,28 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
       }
     }
   }
+  if ($variables['elements']['#view_mode'] == 'preview') {
+    $fields_list = [
+      'field_finance_36_term_rate' => 'Finance 36 Term Rate',
+      'field_finance_48_term_rate' => 'Finance 48 Term Rate',
+      'field_finance_60_term_rate' => 'Finance 60 Term Rate',
+      'field_finance_72_term_rate' => 'Finance 72 Term Rate',
+      'field_lease_24_term_rate' => 'Lease 24 Term Rate',
+      'field_lease_36_term_rate' => 'Lease 36 Term Rate',
+      'field_lease_48_term_rate' => 'Lease 48 Term Rate',
+      'field_residual_24_term_rate' => 'Residual 24 Term Rate',
+      'field_residual_36_term_rate' => 'Residual 36 Term Rate',
+      'field_residual_48_term_rate' => 'Residual 48 Term Rate'
+    ];
+
+    foreach ($fields_list as $field_key => $field_label) {
+      if (!isset($variables['product'][$field_key][0]['#markup'])) {
+        $variables['product'][$field_key][0] = [
+          '#markup' => '<div class="field"><div class="field--label">' . $field_label . '</div>' . '<div class="field--item">N/A</div></div>'
+        ];
+      }
+    }
+  }
 }
 
 function trilliumlincoln_preprocess_select(&$variables) {

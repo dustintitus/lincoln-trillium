@@ -257,9 +257,10 @@ display:
             remember: false
             multiple: true
             remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
+              anonymous: anonymous
+              authenticated: '0'
               administrator: '0'
+              staff: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -306,9 +307,10 @@ display:
             remember: false
             multiple: false
             remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
+              anonymous: anonymous
+              authenticated: '0'
               administrator: '0'
+              staff: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -344,9 +346,10 @@ display:
             remember: false
             multiple: false
             remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
+              anonymous: anonymous
+              authenticated: '0'
               administrator: '0'
+              staff: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -390,9 +393,10 @@ display:
         - url.query_args
         - user
       tags:
+        - 'config:core.entity_view_display.commerce_product.car.preview'
+        - 'config:core.entity_view_display.commerce_product.default.default'
         - 'config:core.entity_view_display.commerce_product.car.default'
         - 'config:core.entity_view_display.commerce_product.car.teaser'
-        - 'config:core.entity_view_display.commerce_product.default.default'
   page_1:
     display_plugin: page
     id: page_1
@@ -411,5 +415,6 @@ display:
         - user
       tags:
         - 'config:core.entity_view_display.commerce_product.car.default'
+        - 'config:core.entity_view_display.commerce_product.car.preview'
         - 'config:core.entity_view_display.commerce_product.car.teaser'
         - 'config:core.entity_view_display.commerce_product.default.default'

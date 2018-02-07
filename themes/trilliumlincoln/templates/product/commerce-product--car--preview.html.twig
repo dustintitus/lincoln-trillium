@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="field title-field">
+  <div class="field--label">Title</div>
+  <div class="field--item">{{- product.title.0|raw -}}</div>
+</div>
+{{ product|without('title', 'quick_product_edit') }}
+<div class="field quick-product-edit-field">
+  <div class="field--label">Edit</div>
+  <div class="field--item">{{- product.quick_product_edit -}}</div>
+</div>

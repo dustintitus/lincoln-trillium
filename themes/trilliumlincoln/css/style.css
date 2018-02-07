@@ -1454,13 +1454,23 @@ a {
         max-width: 100%;
         max-height: 100%;
         display: block; }
+  #modal-box .modal-dialog .close {
+    z-index: 1000000;
+    color: #f15e46;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    opacity: 1;
+    text-shadow: none;
+    font-size: 4.375em; }
   #modal-box .modal-dialog .modal-nav a {
     position: absolute;
     top: 50%;
     right: -15px;
     color: #2F201C;
     font-weight: bold;
-    font-size: 2.2em; }
+    font-size: 2.2em;
+    z-index: 1000000; }
     #modal-box .modal-dialog .modal-nav a:hover {
       color: #f15e46; }
     #modal-box .modal-dialog .modal-nav a::after {
@@ -1792,5 +1802,48 @@ a {
         width: 100%;
         max-width: none;
         font-size: 1em; }
+
+.view-rates-edit-page {
+  display: table;
+  font-size: 0.875em;
+  border: 1px solid #2e201b; }
+  .view-rates-edit-page .view-header {
+    display: table-header-group; }
+    .view-rates-edit-page .view-header .rates-field-name {
+      display: table-row; }
+      .view-rates-edit-page .view-header .rates-field-name .field {
+        display: table-cell;
+        font-weight: bold;
+        border: 1px solid #2e201b;
+        vertical-align: middle;
+        text-align: center;
+        padding: 2px; }
+  .view-rates-edit-page .view-content {
+    display: table-row-group; }
+    .view-rates-edit-page .view-content .views-row {
+      display: table-row; }
+      .view-rates-edit-page .view-content .views-row .field {
+        display: table-cell;
+        padding: 2px;
+        border: 1px solid #2e201b;
+        vertical-align: middle;
+        text-align: center; }
+        .view-rates-edit-page .view-content .views-row .field .field--label {
+          display: none; }
+        .view-rates-edit-page .view-content .views-row .field a {
+          color: #f15e46; }
+
+.commerce-product-car-form.commerce-quick-edit .form-wrapper {
+  display: none; }
+.commerce-product-car-form.commerce-quick-edit .layout-region-product-main {
+  width: 100%;
+  padding-right: 0px; }
+  .commerce-product-car-form.commerce-quick-edit .layout-region-product-main .payment-calculator-container {
+    display: block; }
+    .commerce-product-car-form.commerce-quick-edit .layout-region-product-main .payment-calculator-container .form-wrapper {
+      display: block; }
+.commerce-product-car-form.commerce-quick-edit .layout-region-product-secondary,
+.commerce-product-car-form.commerce-quick-edit .layout-region-product-footer {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */
