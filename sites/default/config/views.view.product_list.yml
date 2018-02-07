@@ -68,6 +68,10 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
+            field_car_year_value:
+              bef_format: default
+              more_options:
+                is_secondary: false
             field_car_model_target_id:
               bef_format: default
               more_options:
@@ -76,10 +80,6 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
-            field_car_year_value:
-              bef_format: default
-              more_options:
-                is_secondary: false
           text_input_required_format: basic_html
       pager:
         type: full
@@ -393,10 +393,10 @@ display:
         - url.query_args
         - user
       tags:
-        - 'config:core.entity_view_display.commerce_product.car.preview'
-        - 'config:core.entity_view_display.commerce_product.default.default'
         - 'config:core.entity_view_display.commerce_product.car.default'
+        - 'config:core.entity_view_display.commerce_product.car.preview'
         - 'config:core.entity_view_display.commerce_product.car.teaser'
+        - 'config:core.entity_view_display.commerce_product.default.default'
   page_1:
     display_plugin: page
     id: page_1

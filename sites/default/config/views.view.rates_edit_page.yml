@@ -5,9 +5,12 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.car
     - core.entity_view_mode.commerce_product.preview
+    - user.role.administrator
+    - user.role.staff
   module:
     - commerce
     - commerce_product
+    - user
 id: rates_edit_page
 label: 'Rates Edit Page'
 module: views
@@ -24,8 +27,11 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: role
+        options:
+          role:
+            administrator: administrator
+            staff: staff
       cache:
         type: tag
         options: {  }
@@ -161,6 +167,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user.roles
       tags: {  }
   page_1:
     display_plugin: page
@@ -175,4 +182,5 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user.roles
       tags: {  }
