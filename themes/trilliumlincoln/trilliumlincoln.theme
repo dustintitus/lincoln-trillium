@@ -116,16 +116,6 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
         $variables['calculator_form'] = $form;
       }
     }
-
-    $field_car_images = $product->get('field_car_images')->getValue();
-    if (!empty($field_car_images)) {
-      $car_image_file = File::load($field_car_images[0]['target_id']);
-      if (!empty($car_image_file)) {
-        $uri = $car_image_file->getFileUri();
-        $url = file_create_url($uri);
-        $variables['main_car_image'] = Markup::create('<img class="img-responsive" src="' . $url . '">');
-      }
-    }
   }
   if ($variables['elements']['#view_mode'] == 'preview') {
     $fields_list = [

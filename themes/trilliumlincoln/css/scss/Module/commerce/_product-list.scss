@@ -55,12 +55,16 @@
 					}
 				}
 				.product{
-					height: 450px;
+					@include respond($xs){
+						height: 450px;
+					}
 					position: relative;
 					.col-3 {
-						position: absolute;
-						width: 100%;
-						bottom: 25px;
+						@include respond($xs){
+							position: absolute;
+							width: 100%;
+							bottom: 25px;
+						}
 					}
 					.field--name-body {
 						max-height: 14px*10;

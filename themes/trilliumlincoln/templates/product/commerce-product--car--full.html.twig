@@ -23,11 +23,9 @@
 <div class="row">
 
   <div class="col-xs-12 col-sm-4 second-col float-right">
-    {% if main_car_image %}
-      <div class="main-car-image">
-        {{- main_car_image -}}
-      </div>
-    {% endif %}
+    <div class="mobile-car-image">
+      {{- product.field_car_images -}}
+    </div>
     <div class="calt-h">
       <h2 class="product-title">
         {{- product.title -}}

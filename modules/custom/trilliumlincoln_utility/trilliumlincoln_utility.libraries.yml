@@ -10,3 +10,10 @@ trilliumlincoln_utility.calculator:
   dependencies:
     - core/jquery
     - core/drupal
+trilliumlincoln_utility.search_filter:
+  version: 1.x
+  js:
+    js/trilliumlincoln_utility.search_filter.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

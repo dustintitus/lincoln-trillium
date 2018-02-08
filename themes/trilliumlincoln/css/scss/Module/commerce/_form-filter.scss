@@ -33,13 +33,28 @@
               }
             }
           }
+          >.form-checkboxes {
+            float: left;
+            width: 50%;
+            @include respond($xs){
+              float: none;
+              width: auto;
+            }
+          }
           .form-type-select {
             margin-bottom: 5px;
+            width: 50%;
+            float: left;
             @include respond($xs){
               float: right;
+              width: auto;
               margin-left: 15px;
             }
             .select-wrapper {
+              width: 100%;
+              @include respond($xs){
+                width: auto;
+              }
               &::after { 
                 content: '\e259';
                 color: $c-brown;
@@ -54,7 +69,9 @@
               text-transform: uppercase;
             }
             &.form-item-field-car-model-target-id{
-              min-width: 200px;
+              @include respond($xs){
+                min-width: 200px;
+              }
             }
           }
         }

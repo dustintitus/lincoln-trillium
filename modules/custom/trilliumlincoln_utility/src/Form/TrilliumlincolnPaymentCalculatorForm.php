@@ -53,6 +53,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $price = 0;
     $msrp = 0;
     $hide_lease_section = FALSE;
+    $hide_finance_section = FALSE;
     if ($product = \Drupal::routeMatch()->getParameter('commerce_product')) {
       $variations_field = $product->get('variations')->getValue();
       if (!empty($variations_field)) {
@@ -91,6 +92,9 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
           $item = $product->get('field_finance_' . $key . '_term_rate')->getValue();
           if (!empty($item[0]['value'])) {
             $finance_term_rate[$key] = ['finance-rate' => $item[0]['value']];
+          }
+          else{
+            $hide_finance_section = TRUE;
           }
         }
       }
@@ -173,41 +177,52 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $base_pmt = $compoundInterest/$default_finance_term;
     $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
 
-    $form['payment']['finance'] = [
-      '#type' => 'fieldset',
-      '#title' => $this->t('Finance'),
-    ];
+    if (!$hide_finance_section) {
+      $form['payment']['finance'] = [
+        '#type' => 'fieldset',
+        '#title' => $this->t('Finance'),
+      ];
 
-    $form['payment']['finance']['finance_term'] = [
-      '#type' => 'select',
-      '#title' => $this->t("Term"),
-      '#options' => $finance_term_options,
-      '#options_attribute' => $finance_term_rate,
-      '#default_value' => $default_finance_term
-    ];
+      $form['payment']['finance']['finance_term'] = [
+        '#type' => 'select',
+        '#title' => $this->t("Term"),
+        '#options' => $finance_term_options,
+        '#options_attribute' => $finance_term_rate,
+        '#default_value' => $default_finance_term
+      ];
 
-    $form['payment']['finance']['finance_cash_down'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t("Cash Down"),
-      '#placeholder' => '$0',
-    ];
-
-    $form['payment']['total'] = [
-      '#type' => 'container',
-    ];
+      $form['payment']['finance']['finance_cash_down'] = [
+        '#type' => 'textfield',
+        '#title' => $this->t("Cash Down"),
+        '#placeholder' => '$0',
+      ];
+    }
+    if (!$hide_lease_section && !$hide_finance_section) {
+      $form['payment']['total'] = [
+        '#type' => 'container',
+      ];
+    }
     if (!$hide_lease_section) {
       $form['payment']['total']['total_lease'] = [
         '#markup' => '<div class="total-lease total-item"><label>' . $this->t('Total Lease*') . '</label><span>' . $default_biweekly_lease_pmt . '</span></div>'
       ];
     }
-    $form['payment']['total']['total_finance'] = [
-      '#markup' => '<div class="total-finance total-item"><label>' . $this->t('Total Finance*') . '</label><span>' . $default_biweekly_finance_pmt . '</span></div>'
-    ];
+    if (!$hide_finance_section) {
+      $form['payment']['total']['total_finance'] = [
+        '#markup' => '<div class="total-finance total-item"><label>' . $this->t('Total Finance*') . '</label><span>' . $default_biweekly_finance_pmt . '</span></div>'
+      ];
+    }
 
-    $form['payment']['pmt_description'] = [
-      '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing.Lease parts are based on 20,000km/yr with a due on delivery of any cost down, 1st mth part, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
-    ];
-
+    if (!$hide_lease_section && !$hide_finance_section) {
+      $form['payment']['pmt_description'] = [
+        '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing.Lease parts are based on 20,000km/yr with a due on delivery of any cost down, 1st mth part, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
+      ];
+    }
+    else{
+      $form['payment']['message'] = [
+        '#markup' => '<p>' . $this->t('Calculator not available for this vehicle. Please contact us for more info.') . '</p>'
+      ];
+    }
     $form['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.calculator';
 
     return $form;
