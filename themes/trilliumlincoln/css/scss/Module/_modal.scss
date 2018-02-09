@@ -137,12 +137,13 @@
 }
 
 #modal-box{
+  padding: 0px !important;
   .modal-dialog{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
-    width: 95%;
+    width: 90%;
     max-width: 2550px;
     height: 95%;
     max-height: 1600px;
@@ -181,12 +182,13 @@
         position: absolute;
         top: 50%;
         right: -15px;
-        color: $c-brown-2;
+        color: $c-red;
         font-weight: bold;
         font-size: 2.2em;
         z-index: 1000000;
+        margin-top: -20px;
         &:hover{
-          color: $c-red;
+          right: -20px;
         }
         &::after{
           display: inline-block;
@@ -198,11 +200,21 @@
         &.prev{
           left: -15px;
           right: auto;
+          &:hover{
+            left: -20px;
+          }
           &::after{
             transform: rotate(90deg);
           }
         }
       }
+    }
+  }
+}
+.path-product{
+  .modal-backdrop{
+    &.in{
+      opacity: 0.9;
     }
   }
 }

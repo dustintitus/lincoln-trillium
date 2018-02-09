@@ -6,6 +6,8 @@
     display: table-header-group;
     .rates-field-name{
       display: table-row;
+      background: $c-brown;
+      color: $c-white;
       .field{
         display: table-cell;
         font-weight: bold;
@@ -20,6 +22,15 @@
     display: table-row-group;
     .views-row{
       display: table-row;
+      &:nth-child(even){
+        background-color: rgba(0,0,0,0.08);
+      }
+      &:nth-child(odd){
+        background-color: rgba(0,0,0,0.03);
+      }
+      &:hover{
+        background-color: rgba(0,0,0,0.3);
+      }
       .field{
         .field--label{
           display: none;
