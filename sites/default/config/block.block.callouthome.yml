@@ -16,7 +16,7 @@ third_party_settings:
 id: callouthome
 theme: trilliumlincoln
 region: content
-weight: -5
+weight: -9
 provider: null
 plugin: 'block_content:c3415d63-e96b-4e48-837e-2ab007cd3d47'
 settings:
