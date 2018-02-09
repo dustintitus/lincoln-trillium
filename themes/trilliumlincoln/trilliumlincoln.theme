@@ -12,6 +12,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\Core\Render\Markup;
 use Drupal\file\Entity\File;
+use Drupal\Component\Utility\Xss;
 
 function trilliumlincoln_preprocess_page(&$variables) {
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
@@ -159,5 +160,19 @@ function trilliumlincoln_preprocess_select(&$variables) {
         }
       }
     }
+  }
+}
+
+function trilliumlincoln_preprocess_block(&$variables) {
+  if (isset($variables['label']) && is_array($variables['label'])) {
+    $html_tags = NULL;
+    $string = '';
+    if (isset($variables['label']['#markup'])) {
+      $string = $variables['label']['#markup'];
+    }
+    if (isset($variables['label']['#allowed_tags'])) {
+      $html_tags = $variables['label']['#allowed_tags'];
+    }
+    $variables['label'] = Xss::filter($string, $html_tags);
   }
 }
