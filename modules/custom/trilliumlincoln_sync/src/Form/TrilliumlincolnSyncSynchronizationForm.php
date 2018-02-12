@@ -99,6 +99,8 @@ class TrilliumlincolnSyncSynchronizationForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $trilliumlincoln_sync_source_service = \Drupal::service('trilliumlincoln_sync.source');
+
     if (\Drupal::request()->request->count() == 0) {
       $form['sync_status'] = [
         '#type' => 'table',
@@ -110,7 +112,6 @@ class TrilliumlincolnSyncSynchronizationForm extends ConfigFormBase {
           $this->t('In Queue'),
         ],
       ];
-      $trilliumlincoln_sync_source_service = \Drupal::service('trilliumlincoln_sync.source');
       $trilliumlincoln_sync_dest_service = \Drupal::service('trilliumlincoln_sync.dest');
 
       $importers = trilliumlincoln_sync_get_importers();
@@ -128,7 +129,6 @@ class TrilliumlincolnSyncSynchronizationForm extends ConfigFormBase {
         }
         $form['sync_status']['#rows'][] = $row;
       }
-
     }
 
     if ($this->currentUser->hasPermission('administer site configuration')) {
@@ -206,6 +206,29 @@ class TrilliumlincolnSyncSynchronizationForm extends ConfigFormBase {
         '#submit' => [[$this, 'removeItems']],
       ];
 
+      // Upload CSV.
+      $form['upload_csv'] = [
+        '#type' => 'details',
+        '#title' => $this->t('Upload CSV'),
+        '#open' => TRUE,
+      ];
+
+      $default_file = $trilliumlincoln_sync_source_service->getCsvFile();
+      if (!empty($default_file)) {
+        $form['upload_csv']['current_file'] = [
+          '#type' => 'item',
+          '#markup' => $this->t('Current file: %file_name', ['%file_name' => $default_file->filename]),
+        ];
+      }
+
+      $form['upload_csv']['csv_file'] = [
+        '#type' => 'managed_file',
+        '#title' => t('CSV File'),
+        '#upload_location' => 'public://trilliumlincoln/',
+        '#upload_validators' => [
+          'file_validate_extensions' => ['csv'],
+        ],
+      ];
     }
 
     return $form;

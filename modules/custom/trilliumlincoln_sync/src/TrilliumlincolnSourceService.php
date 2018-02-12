@@ -23,11 +23,20 @@ class TrilliumlincolnSourceService {
 
 
   public function getCsvFile(){
-    $file = '';
+    $file = [];
     $files = file_scan_directory($this->file_directoty, '/.*\.csv$/', ['key' => 'filename']);
+    $files_created = [];
+
     if (!empty($files)) {
-      krsort($files);
-      $file = reset($files);
+      foreach($files as $file){
+        $created_time = filemtime($file->uri);
+        $files_created[$created_time] = $file;
+      }
+    }
+
+    if (!empty($files_created)) {
+      arsort($files_created);
+      $file = reset($files_created);
     }
 
     return $file;
