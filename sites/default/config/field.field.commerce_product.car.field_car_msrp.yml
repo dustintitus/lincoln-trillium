@@ -19,5 +19,6 @@ default_value: {  }
 default_value_callback: ''
 settings:
   available_currencies:
-    - USD
+    - '0'
+    - CAD
 field_type: commerce_price

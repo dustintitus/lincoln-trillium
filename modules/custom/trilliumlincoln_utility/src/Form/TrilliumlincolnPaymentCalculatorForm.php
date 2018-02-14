@@ -197,7 +197,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
         '#placeholder' => '$0',
       ];
     }
-    if (!$hide_lease_section && !$hide_finance_section) {
+    if (!($hide_lease_section && $hide_finance_section)) {
       $form['payment']['total'] = [
         '#type' => 'container',
       ];
@@ -213,14 +213,14 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       ];
     }
 
-    if (!$hide_lease_section && !$hide_finance_section) {
-      $form['payment']['pmt_description'] = [
-        '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing.Lease parts are based on 20,000km/yr with a due on delivery of any cost down, 1st mth part, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
+    if ($hide_lease_section && $hide_finance_section) {
+      $form['payment']['message'] = [
+        '#markup' => '<p>' . $this->t('Calculator not available for this vehicle. Please contact us for more info.') . '</p>'
       ];
     }
     else{
-      $form['payment']['message'] = [
-        '#markup' => '<p>' . $this->t('Calculator not available for this vehicle. Please contact us for more info.') . '</p>'
+      $form['payment']['pmt_description'] = [
+        '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing.Lease parts are based on 20,000km/yr with a due on delivery of any cost down, 1st mth part, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
       ];
     }
     $form['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.calculator';

@@ -115,13 +115,13 @@ class ImportWorkerCar extends ImportWorkerBase {
       }
 
       //msrp
-      $msrp = new Price($item['msrp'], 'USD');
+      $msrp = new Price($item['msrp'], 'CAD');
       $entity->set('field_car_msrp', $msrp->toArray());
 
       $entity->save();
 
       // The price of the variation.
-      $price = new Price($item['price'], 'USD');
+      $price = new Price($item['price'], 'CAD');
       $variation = ProductVariation::create([
         'type' => 'default',
         'sku' => $item['stock_number'],
@@ -236,7 +236,7 @@ class ImportWorkerCar extends ImportWorkerBase {
       }
 
       //msrp
-      $msrp = new Price($item['msrp'], 'USD');
+      $msrp = new Price($item['msrp'], 'CAD');
       $new_entity->set('field_car_msrp', $msrp->toArray());
 
       $variations_field = $entity->get('variations')->getValue();
@@ -259,7 +259,7 @@ class ImportWorkerCar extends ImportWorkerBase {
           $new_price = (float) $item['price'];
           if ($sku != $new_sku || $price != $new_price) {
             $variation->set('sku', $new_sku);
-            $variation->set('price', new Price($item['price'], 'USD'));
+            $variation->set('price', new Price($item['price'], 'CAD'));
             $variation->save();
           }
         }
@@ -292,7 +292,7 @@ class ImportWorkerCar extends ImportWorkerBase {
 
       if ($need_create_variations) {
         // The price of the variation.
-        $price = new Price($item['price'], 'USD');
+        $price = new Price($item['price'], 'CAD');
         $sku = $item['stock_number'];
         $variation = ProductVariation::create([
           'type' => 'default',
