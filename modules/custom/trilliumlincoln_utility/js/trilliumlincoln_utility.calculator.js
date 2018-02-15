@@ -21,7 +21,6 @@
         console.log("price: "+price);
         console.log("msrp: "+msrp);
         console.log("totalLease: "+totalLease);
-        console.log("totalFinance: "+totalFinance);
           var $leaseTerm = $(this).parents('#edit-lease').find('#edit-lease-term');
           console.log("leaseTerm: "+leaseTerm);
           var leaseRate = parseFloat($leaseTerm.find('option:selected').attr('data-lease-rate'));
@@ -70,7 +69,6 @@
           console.log("*** START FINANCE CALCULATION");
         console.log("price: "+price);
         console.log("msrp: "+msrp);
-        console.log("totalLease: "+totalLease);
         console.log("totalFinance: "+totalFinance);
           var $financeTerm = $(this).parents('#edit-finance').find('#edit-finance-term');
           console.log("financeCashDown: "+financeCashDown);
