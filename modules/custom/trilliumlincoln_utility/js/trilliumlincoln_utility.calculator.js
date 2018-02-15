@@ -75,7 +75,7 @@
           var financeRate = parseFloat($financeTerm.find('option:selected').attr('data-finance-rate'));
           console.log("financeCashDown: "+financeCashDown);
           var financeTerm = parseInt($financeTerm.val());
-          console.log("financeCashDown: "+)financeCashDown;
+          console.log("financeCashDown: "+financeCashDown);
           var financeCashDown = parseFloat($(this).parents('#edit-finance').find('#edit-finance-cash-down').val()) / 1.13;
           console.log("financeCashDown: "+financeCashDown);
 
