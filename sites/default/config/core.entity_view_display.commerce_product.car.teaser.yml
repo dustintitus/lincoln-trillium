@@ -54,10 +54,9 @@ mode: teaser
 content:
   body:
     label: hidden
-    type: text_trimmed
+    type: text_default
     weight: 1
-    settings:
-      trim_length: 340
+    settings: {  }
     third_party_settings:
       field_formatter_class:
         class: ''
