@@ -8,7 +8,7 @@
     attach: function (context, settings) {
       $('.trilliumlincoln-utility-payment-calculator-form', context).once('calculator-form').each(function () {
         var price = parseFloat($(this).find('input[name=price]').val());
-        console.log("price: "+price);
+        console.log("price (price+449): "+price);
         var msrp = parseFloat($(this).find('input[name=msrp]').val());
         console.log("msrp: "+msrp);
         var $totalLease = $(this).find('.total-lease span');
@@ -16,8 +16,8 @@
         //Lease section
         $(this).on('change paste keyup','#edit-lease-term, #edit-lease-cash-down', function(event) {
           console.log("*** START LEASE CALCULATION");
-        console.log("price: "+price);
-        console.log("msrp: "+msrp);
+          console.log("price (price+449): "+price);
+          console.log("msrp: "+msrp);
           var $leaseTerm = $(this).parents('#edit-lease').find('#edit-lease-term');
           var leaseRate = parseFloat($leaseTerm.find('option:selected').attr('data-lease-rate'));
           console.log("leaseRate: "+leaseRate);
@@ -62,7 +62,7 @@
         //finance section
         $(this).on('change paste keyup','#edit-finance-term, #edit-finance-cash-down', function(event) {
           console.log("*** START FINANCE CALCULATION");
-          console.log("price: "+price);
+          console.log("price (price+449): "+price);
           console.log("msrp: "+msrp);
           var $financeTerm = $(this).parents('#edit-finance').find('#edit-finance-term');
           var financeRate = parseFloat($financeTerm.find('option:selected').attr('data-finance-rate'));

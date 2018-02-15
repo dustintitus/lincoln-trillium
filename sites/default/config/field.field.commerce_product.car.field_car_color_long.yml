@@ -10,7 +10,7 @@ field_name: field_car_color_long
 entity_type: commerce_product
 bundle: car
 label: Color
-description: ''
+description: 'User editable.'
 required: false
 translatable: false
 default_value: {  }

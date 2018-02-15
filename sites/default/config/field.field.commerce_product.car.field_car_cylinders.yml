@@ -10,7 +10,7 @@ field_name: field_car_cylinders
 entity_type: commerce_product
 bundle: car
 label: Cylinders
-description: ''
+description: 'Please do not edit, it will be overridden daily.'
 required: false
 translatable: false
 default_value: {  }

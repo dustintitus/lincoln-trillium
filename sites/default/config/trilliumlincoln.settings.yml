@@ -4,7 +4,7 @@ schemas:
 favicon:
   mimetype: image/vnd.microsoft.icon
   path: ''
-  url: 'http://drupal8.dev/trilliumlincoln/themes/trilliumlincoln/favicon.ico'
+  url: 'http://drupal8.test/trilliumlincoln/themes/trilliumlincoln/favicon.ico'
   use_default: true
 logo:
   path: 'public://logo.png'
@@ -24,9 +24,9 @@ region_wells:
 table_responsive: '-1'
 table: ''
 fluid_container: 1
-navbar_position: ''
 features:
   comment_user_picture: true
   comment_user_verification: true
   favicon: true
   node_user_picture: true
+forms_smart_descriptions: 0

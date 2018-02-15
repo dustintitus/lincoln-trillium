@@ -69,8 +69,8 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
 
       if ($product->hasField('field_car_msrp')) {
         $item = $product->get('field_car_msrp')->getValue();
-        if (!empty($item[0]['value'])) {
-          $msrp = $item[0]['value'];
+        if (!empty($item[0]['number'])) {
+          $msrp = $item[0]['number'];
         }
       }
 
