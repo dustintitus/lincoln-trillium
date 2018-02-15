@@ -12,17 +12,13 @@
         var msrp = parseFloat($(this).find('input[name=msrp]').val());
         console.log("msrp: "+msrp);
         var $totalLease = $(this).find('.total-lease span');
-        console.log("totalLease: "+$totalLease);
         var $totalFinance = $(this).find('.total-finance span');
-        console.log("totalFinance: "+$totalFinance);
         //Lease section
         $(this).on('change paste keyup','#edit-lease-term, #edit-lease-cash-down', function(event) {
           console.log("*** START LEASE CALCULATION");
         console.log("price: "+price);
         console.log("msrp: "+msrp);
-        console.log("totalLease: "+$totalLease);
           var $leaseTerm = $(this).parents('#edit-lease').find('#edit-lease-term');
-          console.log("leaseTerm: "+$leaseTerm);
           var leaseRate = parseFloat($leaseTerm.find('option:selected').attr('data-lease-rate'));
           console.log("leaseRate: "+leaseRate);
           var leaseTerm = parseInt($leaseTerm.val());
@@ -37,7 +33,6 @@
           }
 
           var $pmt = $(this).parents('#edit-lease').find('#edit-pmt');
-          console.log("pmt: "+$pmt);
           var capitalizedCost = price - leaseCashDown;
           console.log("capitalizedCost: "+capitalizedCost);
           var biweeklyLeasePmt = 'Nan';
@@ -60,7 +55,7 @@
             console.log("biweeklyLeasePmt: "+biweeklyLeasePmt);
           }
           $totalLease.text(biweeklyLeasePmt);
-          console.log("totalLease/biweeklyLeasePmt: "+biweeklyLeasePmt);
+          console.log("$totalLease/biweeklyLeasePmt: "+biweeklyLeasePmt);
           console.log("*** END LEASE CALCULATION");
         });
 
@@ -69,9 +64,7 @@
           console.log("*** START FINANCE CALCULATION");
           console.log("price: "+price);
           console.log("msrp: "+msrp);
-          console.log("totalFinance: "+$totalFinance);
           var $financeTerm = $(this).parents('#edit-finance').find('#edit-finance-term');
-          console.log("$financeTerm: "+$financeTerm);
           var financeRate = parseFloat($financeTerm.find('option:selected').attr('data-finance-rate'));
           console.log("financeRate: "+financeRate);
           var financeTerm = parseInt($financeTerm.val());
