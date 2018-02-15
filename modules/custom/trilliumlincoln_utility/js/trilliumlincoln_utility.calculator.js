@@ -71,11 +71,11 @@
           console.log("msrp: "+msrp);
           console.log("totalFinance: "+$totalFinance);
           var $financeTerm = $(this).parents('#edit-finance').find('#edit-finance-term');
-          console.log("financeCashDown: "+$financeCashDown);
+          console.log("$financeTerm: "+$financeTerm);
           var financeRate = parseFloat($financeTerm.find('option:selected').attr('data-finance-rate'));
-          console.log("financeCashDown: "+financeCashDown);
+          console.log("financeRate: "+financeRate);
           var financeTerm = parseInt($financeTerm.val());
-          console.log("financeCashDown: "+financeCashDown);
+          console.log("financeTerm: "+financeTerm);
           var financeCashDown = parseFloat($(this).parents('#edit-finance').find('#edit-finance-cash-down').val()) / 1.13;
           console.log("financeCashDown: "+financeCashDown);
 
