@@ -12,17 +12,17 @@
         var msrp = parseFloat($(this).find('input[name=msrp]').val());
         console.log("msrp: "+msrp);
         var $totalLease = $(this).find('.total-lease span');
-        console.log("totalLease: "+totalLease);
+        console.log("totalLease: "+$totalLease);
         var $totalFinance = $(this).find('.total-finance span');
-        console.log("totalFinance: "+totalFinance);
+        console.log("totalFinance: "+$totalFinance);
         //Lease section
         $(this).on('change paste keyup','#edit-lease-term, #edit-lease-cash-down', function(event) {
           console.log("*** START LEASE CALCULATION");
         console.log("price: "+price);
         console.log("msrp: "+msrp);
-        console.log("totalLease: "+totalLease);
+        console.log("totalLease: "+$totalLease);
           var $leaseTerm = $(this).parents('#edit-lease').find('#edit-lease-term');
-          console.log("leaseTerm: "+leaseTerm);
+          console.log("leaseTerm: "+$leaseTerm);
           var leaseRate = parseFloat($leaseTerm.find('option:selected').attr('data-lease-rate'));
           console.log("leaseRate: "+leaseRate);
           var leaseTerm = parseInt($leaseTerm.val());
@@ -37,7 +37,7 @@
           }
 
           var $pmt = $(this).parents('#edit-lease').find('#edit-pmt');
-          console.log("pmt: "+pmt);
+          console.log("pmt: "+$pmt);
           var capitalizedCost = price - leaseCashDown;
           console.log("capitalizedCost: "+capitalizedCost);
           var biweeklyLeasePmt = 'Nan';
@@ -60,18 +60,18 @@
             console.log("biweeklyLeasePmt: "+biweeklyLeasePmt);
           }
           $totalLease.text(biweeklyLeasePmt);
-          console.log("totalLease: "+totalLease);
+          console.log("totalLease/biweeklyLeasePmt: "+biweeklyLeasePmt);
           console.log("*** END LEASE CALCULATION");
         });
 
         //finance section
         $(this).on('change paste keyup','#edit-finance-term, #edit-finance-cash-down', function(event) {
           console.log("*** START FINANCE CALCULATION");
-        console.log("price: "+price);
-        console.log("msrp: "+msrp);
-        console.log("totalFinance: "+totalFinance);
+          console.log("price: "+price);
+          console.log("msrp: "+msrp);
+          console.log("totalFinance: "+$totalFinance);
           var $financeTerm = $(this).parents('#edit-finance').find('#edit-finance-term');
-          console.log("financeCashDown: "+financeCashDown);
+          console.log("financeCashDown: "+$financeCashDown);
           var financeRate = parseFloat($financeTerm.find('option:selected').attr('data-finance-rate'));
           console.log("financeCashDown: "+financeCashDown);
           var financeTerm = parseInt($financeTerm.val());
@@ -81,7 +81,7 @@
 
           if (isNaN(financeCashDown) || financeCashDown < 0) {
             financeCashDown = 0;
-          console.log("financeCashDown: "+financeCashDown);
+            console.log("financeCashDown: "+financeCashDown);
           }
 
           var capitalizedCost = price - financeCashDown;
@@ -90,17 +90,17 @@
           console.log("biweeklyFinancePmt: "+biweeklyFinancePmt);
           if (capitalizedCost > 0 && financeCashDown >= 0) {
             var partFirst = 1 + (financeRate/100)/12;
-          console.log("partFirst: "+partFirst);
+            console.log("partFirst: "+partFirst);
             var compoundInterest = capitalizedCost*Math.pow(partFirst, financeTerm);
-          console.log("compoundInterest: "+compoundInterest);
+            console.log("compoundInterest: "+compoundInterest);
             var basePmt = compoundInterest/financeTerm;
-          console.log("basePmt: "+basePmt);
+            console.log("basePmt: "+basePmt);
             biweeklyFinancePmt = '$' + ((basePmt * 12) / 26).toFixed(2);
-          console.log("biweeklyFinancePmt: "+biweeklyFinancePmt);
+            console.log("biweeklyFinancePmt: "+biweeklyFinancePmt);
           }
 
           $totalFinance.text(biweeklyFinancePmt);
-          console.log("biweeklyFinancePmt: "+biweeklyFinancePmt);
+          console.log("$totalFinance/biweeklyFinancePmt: "+biweeklyFinancePmt);
           console.log("*** END FINANCE CALCULATION");
         });
       });
