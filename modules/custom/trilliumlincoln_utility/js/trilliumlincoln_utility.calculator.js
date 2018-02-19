@@ -24,6 +24,7 @@
           var leaseTerm = parseInt($leaseTerm.val());
           console.log("leaseTerm: "+leaseTerm);
           var residual = parseFloat($leaseTerm.find('option:selected').attr('data-residual'));
+          residual = residual/100;
           console.log("residual: "+residual);
           var leaseCashDown = parseFloat($(this).parents('#edit-lease').find('#edit-lease-cash-down').val()) / 1.13;
           console.log("leaseCashDown: "+leaseCashDown);
@@ -36,7 +37,6 @@
           var capitalizedCost = price - leaseCashDown;
           console.log("capitalizedCost: "+capitalizedCost);
           var biweeklyLeasePmt = 'Nan';
-          console.log("biweeklyLeasePmt: "+biweeklyLeasePmt);
           
           if (capitalizedCost > 0 && leaseCashDown >= 0) {
             var newResidual = residual * msrp;
