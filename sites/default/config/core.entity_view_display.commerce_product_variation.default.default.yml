@@ -12,14 +12,6 @@ targetEntityType: commerce_product_variation
 bundle: default
 mode: default
 content:
-  field_note:
-    type: string
-    weight: 1
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   price:
     type: commerce_price_default
     weight: 0
@@ -30,6 +22,7 @@ content:
       display_currency_code: false
     third_party_settings: {  }
 hidden:
+  field_note: true
   product_id: true
   sku: true
   title: true

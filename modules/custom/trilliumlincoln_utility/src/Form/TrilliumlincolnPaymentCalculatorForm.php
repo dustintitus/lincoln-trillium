@@ -115,7 +115,9 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       }
     }
 
-    $price+=449;
+    if ($price > 0) {
+      $price+=449;
+    }
 
     $default_lease_cash_down = 0;
     $default_lease_term = 48;
@@ -148,7 +150,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
         ]
       ]
     ];
-    if (!$hide_lease_section) {
+    if (!$hide_lease_section && $price > 0) {
       $form['payment']['lease'] = [
         '#type' => 'fieldset',
         '#title' => $this->t('Lease'),
@@ -177,7 +179,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $base_pmt = $compoundInterest/$default_finance_term;
     $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
 
-    if (!$hide_finance_section) {
+    if (!$hide_finance_section && $price > 0) {
       $form['payment']['finance'] = [
         '#type' => 'fieldset',
         '#title' => $this->t('Finance'),
@@ -197,23 +199,23 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
         '#placeholder' => '$0',
       ];
     }
-    if (!($hide_lease_section && $hide_finance_section)) {
+    if (!($hide_lease_section && $hide_finance_section) && $price > 0) {
       $form['payment']['total'] = [
         '#type' => 'container',
       ];
     }
-    if (!$hide_lease_section) {
+    if (!$hide_lease_section && $price > 0) {
       $form['payment']['total']['total_lease'] = [
         '#markup' => '<div class="total-lease total-item"><label>' . $this->t('Total Lease*') . '</label><span>' . $default_biweekly_lease_pmt . '</span></div>'
       ];
     }
-    if (!$hide_finance_section) {
+    if (!$hide_finance_section && $price > 0) {
       $form['payment']['total']['total_finance'] = [
         '#markup' => '<div class="total-finance total-item"><label>' . $this->t('Total Finance*') . '</label><span>' . $default_biweekly_finance_pmt . '</span></div>'
       ];
     }
 
-    if ($hide_lease_section && $hide_finance_section) {
+    if (($hide_lease_section && $hide_finance_section) || $price == 0) {
       $form['payment']['message'] = [
         '#markup' => '<p>' . $this->t('Calculator not available for this vehicle. Please contact us for more info.') . '</p>'
       ];

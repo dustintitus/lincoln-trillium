@@ -60,6 +60,22 @@ function trilliumlincoln_preprocess_field(&$variables){
       $variables['items'][$key]['content']['#url']->setOption('data-preview-url', $url);
     }
   }
+
+  if ($variables['field_name'] == 'price') {
+    $product = $variables['element'];
+    $price_field = $product['#object']->get('price')->getValue();
+    if (!empty($price_field)) {
+      $price = $price_field[0]['number'];
+      if ($price == 0) {
+        $field_note = $product['#object']->get('field_note')->getValue();
+        $note = Markup::create( html_entity_decode('Call for more details') );
+        if (!empty($field_note[0]['value'])) {
+          $note = $field_note[0]['value'];
+        }
+        $variables['items'][0]['content']['#markup'] = $note;
+      }
+    }
+  }
 }
 
 function trilliumlincoln_preprocess_html(&$variables) {

@@ -239,37 +239,37 @@ class ImportWorkerCar extends ImportWorkerBase {
       $msrp = new Price($item['msrp'], 'CAD');
       $new_entity->set('field_car_msrp', $msrp->toArray());
 
-      $variations_field = $entity->get('variations')->getValue();
-      $need_create_variations = FALSE;
-      if (!empty($variations_field)) {
-        $variation = ProductVariation::load($variations_field[0]['target_id']);
-        if (!empty($variation)) {
-          $sku_field = $variation->get('sku')->getValue();
-          $sku = NULL;
-          if (!empty($sku_field)) {
-            $sku = $sku_field[0]['value'];
-          }
-          $price_field = $variation->get('price')->getValue();
-          $price = NULL;
-          if (!empty($price_field)) {
-            $price = (float) $price_field[0]['number'];
-          }
+      // $variations_field = $entity->get('variations')->getValue();
+      // $need_create_variations = FALSE;
+      // if (!empty($variations_field)) {
+      //   $variation = ProductVariation::load($variations_field[0]['target_id']);
+      //   if (!empty($variation)) {
+      //     $sku_field = $variation->get('sku')->getValue();
+      //     $sku = NULL;
+      //     if (!empty($sku_field)) {
+      //       $sku = $sku_field[0]['value'];
+      //     }
+      //     $price_field = $variation->get('price')->getValue();
+      //     $price = NULL;
+      //     if (!empty($price_field)) {
+      //       $price = (float) $price_field[0]['number'];
+      //     }
 
-          $new_sku = $item['stock_number'];
-          $new_price = (float) $item['price'];
-          if ($sku != $new_sku || $price != $new_price) {
-            $variation->set('sku', $new_sku);
-            $variation->set('price', new Price($item['price'], 'CAD'));
-            $variation->save();
-          }
-        }
-        else{
-          $need_create_variations = TRUE;
-        }
-      }
-      else{
-        $need_create_variations = TRUE;
-      }
+      //     $new_sku = $item['stock_number'];
+      //     $new_price = (float) $item['price'];
+      //     if ($sku != $new_sku || $price != $new_price) {
+      //       $variation->set('sku', $new_sku);
+      //       $variation->set('price', new Price($item['price'], 'CAD'));
+      //       $variation->save();
+      //     }
+      //   }
+      //   else{
+      //     $need_create_variations = TRUE;
+      //   }
+      // }
+      // else{
+      //   $need_create_variations = TRUE;
+      // }
 
       $this->compareEntities($entity, $new_entity);
 
@@ -290,21 +290,21 @@ class ImportWorkerCar extends ImportWorkerBase {
         $entity->save();
       }
 
-      if ($need_create_variations) {
-        // The price of the variation.
-        $price = new Price($item['price'], 'CAD');
-        $sku = $item['stock_number'];
-        $variation = ProductVariation::create([
-          'type' => 'default',
-          'sku' => $sku,
-          'status' => 1, // The product status. 0 for disabled, 1 for enabled.
-          'price' => $price,
-        ]);
-        $variation->save();
+      // if ($need_create_variations) {
+      //   // The price of the variation.
+      //   $price = new Price($item['price'], 'CAD');
+      //   $sku = $item['stock_number'];
+      //   $variation = ProductVariation::create([
+      //     'type' => 'default',
+      //     'sku' => $sku,
+      //     'status' => 1, // The product status. 0 for disabled, 1 for enabled.
+      //     'price' => $price,
+      //   ]);
+      //   $variation->save();
 
-        $entity->addVariation($variation);
-        $entity->save();
-      }
+      //   $entity->addVariation($variation);
+      //   $entity->save();
+      // }
     } //end update section
 
   }
