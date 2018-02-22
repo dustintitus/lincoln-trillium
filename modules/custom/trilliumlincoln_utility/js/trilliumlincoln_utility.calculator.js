@@ -126,20 +126,30 @@
 //    document.SimpleInterest.CostOfLoan.value =  principalAmount * magicNumber * loanTerm - principalAmount
 // }
 
+   console.log("************* START NEW RATE **********");
    var interestRate = financeRate;
+   console.log("interestRate :" + interestRate);
    var loanTerm = financeTerm;
+   console.log("loanTerm :" + loanTerm);
    var principalAmount = price;
+   console.log("principalAmount :" + principalAmount);
    var i = interestRate/100.0/12.0;
    var tau = 1.0 + i;
    var tauToTheN = Math.pow(tau, loanTerm);
    var magicNumber = tauToTheN * i / (tauToTheN - 1.0 );
+   console.log("magicNumber :" + magicNumber);
    var monthlyPayment = principalAmount * magicNumber;
+   console.log("monthlyPayment :" + monthlyPayment);
    var costOfLoan =  principalAmount * magicNumber * loanTerm - principalAmount;
+   console.log("costOfLoan :" + costOfLoan);
    var princPlusLoad = costOfLoan + principalAmount;
+   console.log("princPlusLoad :" + princPlusLoad);
    var numberOfPayments = 52 * (financeTerm/12) / 2;
+   console.log("numberOfPayments :" + numberOfPayments);
    var biweeklyNewPayment = princPlusLoad / numberOfPayments;
 
    console.log("biweeklyNewPayment biweeklyNewPayment :" + biweeklyNewPayment);
+   console.log("************* END NEW RATE **********");
 
 
 
