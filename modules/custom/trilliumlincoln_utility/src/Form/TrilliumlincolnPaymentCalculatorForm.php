@@ -200,7 +200,8 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
            $numberOfPayments = 52 * ($default_finance_term/12) / 2;
            $biweeklyNewPayment = $princPlusLoad / $numberOfPayments;
 
-    $default_biweekly_finance_pmt = $biweeklyNewPayment;
+    $default_biweekly_finance_pmt = number_format((float)$biweeklyNewPayment, 2, '.', '');
+
 
 
     if (!$hide_finance_section && $price > 0) {
