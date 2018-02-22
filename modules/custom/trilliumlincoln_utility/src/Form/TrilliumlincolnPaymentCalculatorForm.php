@@ -171,16 +171,53 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       ];
     }
 
+
+
+
+           console.log("************* START NEW RATE **********");
+           var interestRate = financeRate;
+           var loanTerm = financeTerm;
+           var principalAmount = price;
+           var i = interestRate/100.0/12.0;
+           var tau = 1.0 + i;
+           var tauToTheN = Math.pow(tau, loanTerm);
+           var magicNumber = tauToTheN * i / (tauToTheN - 1.0 );
+           var monthlyPayment = principalAmount * magicNumber;
+           var costOfLoan =  principalAmount * magicNumber * loanTerm - principalAmount;
+           var princPlusLoad = costOfLoan + principalAmount;
+           var numberOfPayments = 52 * (financeTerm/12) / 2;
+           var biweeklyNewPayment = princPlusLoad / numberOfPayments;
+           biweeklyNewPayment = parseFloat(biweeklyNewPayment).toFixed(2);
+           console.log("biweeklyNewPayment biweeklyNewPayment :" + biweeklyNewPayment);
+           console.log("************* END NEW RATE **********");
+
+
+
     $default_finace_cash_down = 0;
     $default_finance_term = 48;
     $capitalized_cost = $price - $default_finace_cash_down;
     $finance_rate = isset($finance_term_rate[$default_finance_term]['finance-rate']) ? $finance_term_rate[$default_finance_term]['finance-rate']: 0;
-    
-    $first_part = (1 + ($finance_rate / 100 / 1));
-    $secondPart = $default_finance_term/12;
-    $compoundInterest = $capitalized_cost * pow($first_part, $secondPart);
-    $base_pmt = $compoundInterest/$default_finance_term;
-    $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
+
+    // $first_part = (1 + ($finance_rate / 100 / 1));
+    // $secondPart = $default_finance_term/12;
+    // $compoundInterest = $capitalized_cost * pow($first_part, $secondPart);
+    // $base_pmt = $compoundInterest/$default_finance_term;
+    // $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
+           $interestRate = $finance_rate;
+           $loanTerm = $default_finance_term;
+           $principalAmount = $price;
+           $i = $interestRate/100.0/12.0;
+           $tau = 1.0 + i;
+           $tauToTheN = Math.pow($tau, $loanTerm);
+           $magicNumber = $tauToTheN * i / ($tauToTheN - 1.0 );
+           $monthlyPayment = $principalAmount * $magicNumber;
+           $costOfLoan =  $principalAmount * $magicNumber * $loanTerm - $principalAmount;
+           $princPlusLoad = $costOfLoan + $principalAmount;
+           $numberOfPayments = 52 * ($default_finance_term/12) / 2;
+           $biweeklyNewPayment = $princPlusLoad / $numberOfPayments;
+           
+    $default_biweekly_finance_pmt = $biweeklyNewPayment;
+
 
     if (!$hide_finance_section && $price > 0) {
       $form['payment']['finance'] = [
