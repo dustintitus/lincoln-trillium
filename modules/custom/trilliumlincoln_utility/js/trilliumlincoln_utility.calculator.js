@@ -125,6 +125,8 @@
            var numberOfPayments = 52 * (financeTerm/12) / 2;
            //console.log("numberOfPayments :" + numberOfPayments);
            var biweeklyNewPayment = princPlusLoad / numberOfPayments;
+           biweeklyNewPayment = parseFloat(biweeklyNewPayment).toFixed(2);
+
 
            console.log("biweeklyNewPayment biweeklyNewPayment :" + biweeklyNewPayment);
            console.log("************* END NEW RATE **********");
