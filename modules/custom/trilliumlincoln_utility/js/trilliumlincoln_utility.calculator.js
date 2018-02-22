@@ -148,7 +148,7 @@
             console.log("basePmtNoCompoundInterest: "+basePmtNoCompoundInterest);
 
             biweeklyFinancePmt = '$' + ((basePmt * 12) / 26).toFixed(2);
-            console.log("biweeklyFinancePmt: "+ (biweeklyFinancePmt);
+            console.log("biweeklyFinancePmt: "+ biweeklyFinancePmt;
           }
 
           $totalFinance.text(biweeklyFinancePmt);
