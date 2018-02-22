@@ -8,6 +8,7 @@
     attach: function (context, settings) {
       $('.trilliumlincoln-utility-payment-calculator-form', context).once('calculator-form').each(function () {
         var price = parseFloat($(this).find('input[name=price]').val());
+        var finPrice = price-449;
         console.log("price (price+449): "+price);
         var msrp = parseFloat($(this).find('input[name=msrp]').val());
         console.log("msrp: "+msrp);
@@ -62,11 +63,8 @@
         //finance section
         $(this).on('change paste keyup','#edit-finance-term, #edit-finance-cash-down', function(event) {
           console.log("*** START FINANCE CALCULATION");
-          console.log("price (price+449): "+price);
-
-          price = price - 449;
-          console.log("price (price - nofee): "+price-449);
-          console.log("msrp: "+msrp);
+          finPrice = 
+          console.log("price: "+finPrice);
 
           var $financeTerm = $(this).parents('#edit-finance').find('#edit-finance-term');
           var financeRate = parseFloat($financeTerm.find('option:selected').attr('data-finance-rate'));
@@ -83,7 +81,7 @@
             console.log("financeCashDown: "+financeCashDown);
           }
 
-          var capitalizedCost = price - financeCashDown;
+          var capitalizedCost = finPrice - financeCashDown;
           console.log("capitalizedCost: "+capitalizedCost);
 
           var biweeklyFinancePmt = 'Nan';
@@ -102,7 +100,7 @@
 
             // A = 75052 (1 + .0399 / 1)^5
 
-            var firstPart = 1 + (financeRate/100/12);
+            var firstPart = 1 + (financeRate/100/1);
             console.log("firstPart: "+firstPart);
 
             var secondPart = financeTerm/12;
