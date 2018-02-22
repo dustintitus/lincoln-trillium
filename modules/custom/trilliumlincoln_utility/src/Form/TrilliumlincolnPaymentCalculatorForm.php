@@ -122,7 +122,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $default_lease_cash_down = 0;
     $default_lease_term = 48;
     $capitalized_cost = $price - $default_lease_cash_down;
-    $new_residual = $residual[$default_lease_term] * $msrp;
+    $new_residual = (($residual[$default_lease_term])/100) * $msrp;
     $amort_amt = $capitalized_cost - $new_residual;
     $base_pmt = $amort_amt/$default_lease_term;
     $lease_rate = isset($lease_term_rate[$default_lease_term]['lease-rate']) ? $lease_term_rate[$default_lease_term]['lease-rate']: 0;

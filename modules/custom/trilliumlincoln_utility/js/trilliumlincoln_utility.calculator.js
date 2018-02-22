@@ -102,7 +102,6 @@
           console.log("*** END FINANCE CALCULATION");
         });
       });
-      });
     }
   };
 
