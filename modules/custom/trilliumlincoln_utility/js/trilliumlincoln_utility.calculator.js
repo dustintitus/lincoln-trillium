@@ -85,9 +85,9 @@
             // Future Value = Beginning Value * (1 + (interest rate/number of compounding periods per year)/12)^(years * number of compounding periods per year) 
             // first_part = (1 + (financeRate/24)/12);
             // compoundInterest = capitalizedCost * first_part^(financeTerm*2) 
-            var firstPart = 1 + (financeRate/24)/12;
+            var firstPart = 1 + (financeRate/12)/12;
             console.log("firstPart: "+firstPart);
-            var secondPart = financeTerm*2;
+            var secondPart = financeTerm;
             console.log("secondPart: "+secondPart);
             var compoundInterest = capitalizedCost*Math.pow(firstPart, secondPart);
             console.log("compoundInterest: "+compoundInterest);

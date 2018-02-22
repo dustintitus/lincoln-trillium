@@ -175,7 +175,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $default_finance_term = 48;
     $capitalized_cost = $price - $default_finace_cash_down;
     $finance_rate = isset($finance_term_rate[$default_finance_term]['finance-rate']) ? $finance_term_rate[$default_finance_term]['finance-rate']: 0;
-    $compoundInterest = $capitalized_cost * pow((1 + ($finance_rate / 100)/12), $default_finance_term);
+    $compoundInterest = $capitalized_cost * pow((1 + (($finance_rate / 12)/12), $default_finance_term);
     $base_pmt = $compoundInterest/$default_finance_term;
     $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
 
