@@ -96,12 +96,16 @@
 
             // first_part = (1 + (financeRate/24)/12);
             // compoundInterest = capitalizedCost * first_part^(financeTerm) 
+
+
+            // $first_part = (1 + ($finance_rate / 100 / 12));
+
             // A = 75052 (1 + .0399 / 1)^5
 
-            var firstPart = 1 + (financeRate*100/12);
+            var firstPart = 1 + (financeRate/100/12);
             console.log("firstPart: "+firstPart);
 
-            var secondPart = financeTerm;
+            var secondPart = financeTerm/12;
             console.log("secondPart: "+secondPart);
 
             var compoundInterest = capitalizedCost*Math.pow(firstPart, secondPart);            
