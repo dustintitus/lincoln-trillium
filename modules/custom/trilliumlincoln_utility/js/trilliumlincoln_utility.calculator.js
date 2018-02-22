@@ -115,6 +115,8 @@
 
           $totalFinance.text(biweeklyFinancePmt);
           console.log("$totalFinance/biweeklyFinancePmt: "+biweeklyFinancePmt);
+          console.log("GOAL: $638 for navigator");
+          
           console.log("*** END FINANCE CALCULATION");
         });
       });

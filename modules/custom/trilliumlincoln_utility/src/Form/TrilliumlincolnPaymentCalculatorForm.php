@@ -175,8 +175,10 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $default_finance_term = 48;
     $capitalized_cost = $price - $default_finace_cash_down;
     $finance_rate = isset($finance_term_rate[$default_finance_term]['finance-rate']) ? $finance_term_rate[$default_finance_term]['finance-rate']: 0;
-    $first_part = (1 + ($finance_rate / 100 / 12));
-    $compoundInterest = $capitalized_cost * pow($first_part, $default_finance_term);
+    
+    $first_part = (1 + ($finance_rate / 100 / 1));
+    $secondPart = $default_finance_term/12;
+    $compoundInterest = $capitalized_cost * pow($first_part, $secondPart);
     $base_pmt = $compoundInterest/$default_finance_term;
     $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
 
@@ -223,7 +225,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     }
     else{
       $form['payment']['pmt_description'] = [
-        '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing.Lease parts are based on 20,000km/yr with a due on delivery of any cost down, 1st mth part, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
+        '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing. Lease parts are based on 20,000km/yr with a due on delivery of any cost down, 1st mth part, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
       ];
     }
     $form['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.calculator';
