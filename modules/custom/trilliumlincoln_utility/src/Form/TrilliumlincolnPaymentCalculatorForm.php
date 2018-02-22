@@ -190,10 +190,10 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
            $interestRate = $finance_rate;
            $loanTerm = $default_finance_term;
            $principalAmount = $price;
-           $i = $interestRate/100.0/12.0;
-           $tau = 1.0 + i;
+           $inter = $interestRate/100.0/12.0;
+           $tau = 1.0 + $inter;
            $tauToTheN = Math.pow($tau, $loanTerm);
-           $magicNumber = $tauToTheN * i / ($tauToTheN - 1.0 );
+           $magicNumber = $tauToTheN * $inter / ($tauToTheN - 1.0 );
            $monthlyPayment = $principalAmount * $magicNumber;
            $costOfLoan =  $principalAmount * $magicNumber * $loanTerm - $principalAmount;
            $princPlusLoad = $costOfLoan + $principalAmount;
