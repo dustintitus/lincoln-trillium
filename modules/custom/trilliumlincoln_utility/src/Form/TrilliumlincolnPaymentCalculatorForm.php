@@ -116,7 +116,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     }
 
     if ($price > 0) {
-      $price+=449;
+      // $price+=449;
     }
 
     $default_lease_cash_down = 0;

@@ -8,7 +8,6 @@
     attach: function (context, settings) {
       $('.trilliumlincoln-utility-payment-calculator-form', context).once('calculator-form').each(function () {
         var price = parseFloat($(this).find('input[name=price]').val());
-        var finPrice = price-449;
         console.log("price (price+449): "+price);
         var msrp = parseFloat($(this).find('input[name=msrp]').val());
         console.log("msrp: "+msrp);
@@ -63,8 +62,7 @@
         //finance section
         $(this).on('change paste keyup','#edit-finance-term, #edit-finance-cash-down', function(event) {
           console.log("*** START FINANCE CALCULATION");
-          finPrice = 
-          console.log("price: "+finPrice);
+          console.log("price: "+price);
 
           var $financeTerm = $(this).parents('#edit-finance').find('#edit-finance-term');
           var financeRate = parseFloat($financeTerm.find('option:selected').attr('data-finance-rate'));
@@ -81,7 +79,7 @@
             console.log("financeCashDown: "+financeCashDown);
           }
 
-          var capitalizedCost = finPrice - financeCashDown;
+          var capitalizedCost = price - financeCashDown;
           console.log("capitalizedCost: "+capitalizedCost);
 
           var biweeklyFinancePmt = 'Nan';
