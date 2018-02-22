@@ -63,12 +63,18 @@
         $(this).on('change paste keyup','#edit-finance-term, #edit-finance-cash-down', function(event) {
           console.log("*** START FINANCE CALCULATION");
           console.log("price (price+449): "+price);
+
+          price = price - 449;
+          console.log("price (price - nofee): "+price-449);
           console.log("msrp: "+msrp);
+
           var $financeTerm = $(this).parents('#edit-finance').find('#edit-finance-term');
           var financeRate = parseFloat($financeTerm.find('option:selected').attr('data-finance-rate'));
           console.log("financeRate: "+financeRate);
+
           var financeTerm = parseInt($financeTerm.val());
           console.log("financeTerm: "+financeTerm);
+
           var financeCashDown = parseFloat($(this).parents('#edit-finance').find('#edit-finance-cash-down').val()) / 1.13;
           console.log("financeCashDown: "+financeCashDown);
 
@@ -79,18 +85,28 @@
 
           var capitalizedCost = price - financeCashDown;
           console.log("capitalizedCost: "+capitalizedCost);
+
           var biweeklyFinancePmt = 'Nan';
+
           console.log("biweeklyFinancePmt: "+biweeklyFinancePmt);
+
           if (capitalizedCost > 0 && financeCashDown >= 0) {
+
             // Future Value = Beginning Value * (1 + (interest rate/number of compounding periods per year)/12)^(years * number of compounding periods per year) 
+
             // first_part = (1 + (financeRate/24)/12);
-            // compoundInterest = capitalizedCost * first_part^(financeTerm*2) 
-            var firstPart = 1 + (financeRate/12)/12;
+            // compoundInterest = capitalizedCost * first_part^(financeTerm) 
+            // A = 75052 (1 + .0399 / 1)^5
+
+            var firstPart = 1 + (financeRate*100/12);
             console.log("firstPart: "+firstPart);
+
             var secondPart = financeTerm;
             console.log("secondPart: "+secondPart);
-            var compoundInterest = capitalizedCost*Math.pow(firstPart, secondPart);
+
+            var compoundInterest = capitalizedCost*Math.pow(firstPart, secondPart);            
             console.log("compoundInterest: "+compoundInterest);
+
             var basePmt = compoundInterest/financeTerm;
             console.log("basePmt: "+basePmt);
             biweeklyFinancePmt = '$' + ((basePmt * 12) / 26).toFixed(2);
