@@ -88,15 +88,8 @@
 
           if (capitalizedCost > 0 && financeCashDown >= 0) {
 
-            // Future Value = Beginning Value * (1 + (interest rate/number of compounding periods per year)/12)^(years * number of compounding periods per year) 
-
-            // first_part = (1 + (financeRate/24)/12);
-            // compoundInterest = capitalizedCost * first_part^(financeTerm) 
-
-
-            // $first_part = (1 + ($finance_rate / 100 / 12));
-
-            // A = 75052 (1 + .0399 / 1)^5
+/*
+            COMPOUND INTEREST CALCULATOR
 
             var firstPart = 1 + (financeRate/100/1);
             console.log("firstPart: "+firstPart);
@@ -110,54 +103,36 @@
             var basePmt = compoundInterest/financeTerm;
             console.log("basePmt: "+basePmt);
 
+*/
+           console.log("************* START NEW RATE **********");
+           var interestRate = financeRate;
+           //console.log("interestRate :" + interestRate);
+           var loanTerm = financeTerm;
+           //console.log("loanTerm :" + loanTerm);
+           var principalAmount = price;
+           //console.log("principalAmount :" + principalAmount);
+           var i = interestRate/100.0/12.0;
+           var tau = 1.0 + i;
+           var tauToTheN = Math.pow(tau, loanTerm);
+           var magicNumber = tauToTheN * i / (tauToTheN - 1.0 );
+           //console.log("magicNumber :" + magicNumber);
+           var monthlyPayment = principalAmount * magicNumber;
+           //console.log("monthlyPayment :" + monthlyPayment);
+           var costOfLoan =  principalAmount * magicNumber * loanTerm - principalAmount;
+           //console.log("costOfLoan :" + costOfLoan);
+           var princPlusLoad = costOfLoan + principalAmount;
+           //console.log("princPlusLoad :" + princPlusLoad);
+           var numberOfPayments = 52 * (financeTerm/12) / 2;
+           //console.log("numberOfPayments :" + numberOfPayments);
+           var biweeklyNewPayment = princPlusLoad / numberOfPayments;
 
-// function calculateMonthlyPayment() {
-
-//    var interestRate = parseFloat(document.SimpleInterest.InterestRate.value)
-//    var loanTerm = parseInt(document.SimpleInterest.LoanTerm.value)
-//    var principalAmount = 
-//       parseFloat(document.SimpleInterest.PrincipalAmount.value)
-
-//    var i = interestRate/100.0/12.0 
-//    var tau = 1.0 + i
-//    var tauToTheN = Math.pow(tau, loanTerm ) ;
-//    var magicNumber = tauToTheN * i / (tauToTheN - 1.0 )
-//    document.SimpleInterest.MonthlyPayment.value = principalAmount * magicNumber 
-//    document.SimpleInterest.CostOfLoan.value =  principalAmount * magicNumber * loanTerm - principalAmount
-// }
-
-   console.log("************* START NEW RATE **********");
-   var interestRate = financeRate;
-   console.log("interestRate :" + interestRate);
-   var loanTerm = financeTerm;
-   console.log("loanTerm :" + loanTerm);
-   var principalAmount = price;
-   console.log("principalAmount :" + principalAmount);
-   var i = interestRate/100.0/12.0;
-   var tau = 1.0 + i;
-   var tauToTheN = Math.pow(tau, loanTerm);
-   var magicNumber = tauToTheN * i / (tauToTheN - 1.0 );
-   console.log("magicNumber :" + magicNumber);
-   var monthlyPayment = principalAmount * magicNumber;
-   console.log("monthlyPayment :" + monthlyPayment);
-   var costOfLoan =  principalAmount * magicNumber * loanTerm - principalAmount;
-   console.log("costOfLoan :" + costOfLoan);
-   var princPlusLoad = costOfLoan + principalAmount;
-   console.log("princPlusLoad :" + princPlusLoad);
-   var numberOfPayments = 52 * (financeTerm/12) / 2;
-   console.log("numberOfPayments :" + numberOfPayments);
-   var biweeklyNewPayment = princPlusLoad / numberOfPayments;
-
-   console.log("biweeklyNewPayment biweeklyNewPayment :" + biweeklyNewPayment);
-   console.log("************* END NEW RATE **********");
+           console.log("biweeklyNewPayment biweeklyNewPayment :" + biweeklyNewPayment);
+           console.log("************* END NEW RATE **********");
 
 
 
 
-            var basePmtNoCompoundInterest = price * (1+(financeRate*100/12));
-            console.log("basePmtNoCompoundInterest: "+basePmtNoCompoundInterest);
-
-            biweeklyFinancePmt = '$' + ((basePmt * 12) / 26).toFixed(2);
+            biweeklyFinancePmt = '$' + biweeklyNewPayment;
             console.log("biweeklyFinancePmt: "+ biweeklyFinancePmt);
           }
 
