@@ -82,9 +82,14 @@
           var biweeklyFinancePmt = 'Nan';
           console.log("biweeklyFinancePmt: "+biweeklyFinancePmt);
           if (capitalizedCost > 0 && financeCashDown >= 0) {
-            var partFirst = 1 + (financeRate/100)/12;
-            console.log("partFirst: "+partFirst);
-            var compoundInterest = capitalizedCost*Math.pow(partFirst, financeTerm);
+            // Future Value = Beginning Value * (1 + (interest rate/number of compounding periods per year)/12)^(years * number of compounding periods per year) 
+            // first_part = (1 + (financeRate/24)/12);
+            // compoundInterest = capitalizedCost * first_part^(financeTerm*2) 
+            var firstPart = 1 + (financeRate/24)/12;
+            console.log("firstPart: "+firstPart);
+            var secondPart = financeTerm*2;
+            console.log("secondPart: "+secondPart);
+            var compoundInterest = capitalizedCost*Math.pow(firstPart, secondPart);
             console.log("compoundInterest: "+compoundInterest);
             var basePmt = compoundInterest/financeTerm;
             console.log("basePmt: "+basePmt);
@@ -96,6 +101,8 @@
           console.log("$totalFinance/biweeklyFinancePmt: "+biweeklyFinancePmt);
           console.log("*** END FINANCE CALCULATION");
         });
+      });
+      $('#edit-lease-cash-down').val(0);
       });
     }
   };
