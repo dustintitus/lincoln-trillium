@@ -109,8 +109,46 @@
 
             var basePmt = compoundInterest/financeTerm;
             console.log("basePmt: "+basePmt);
+
+
+// function calculateMonthlyPayment() {
+
+//    var interestRate = parseFloat(document.SimpleInterest.InterestRate.value)
+//    var loanTerm = parseInt(document.SimpleInterest.LoanTerm.value)
+//    var principalAmount = 
+//       parseFloat(document.SimpleInterest.PrincipalAmount.value)
+
+//    var i = interestRate/100.0/12.0 
+//    var tau = 1.0 + i
+//    var tauToTheN = Math.pow(tau, loanTerm ) ;
+//    var magicNumber = tauToTheN * i / (tauToTheN - 1.0 )
+//    document.SimpleInterest.MonthlyPayment.value = principalAmount * magicNumber 
+//    document.SimpleInterest.CostOfLoan.value =  principalAmount * magicNumber * loanTerm - principalAmount
+// }
+
+   var interestRate = financeRate;
+   var loanTerm = financeTerm;
+   var principalAmount = price;
+   var i = interestRate/100.0/12.0;
+   var tau = 1.0 + i;
+   var tauToTheN = Math.pow(tau, loanTerm);
+   var magicNumber = tauToTheN * i / (tauToTheN - 1.0 );
+   var monthlyPayment = principalAmount * magicNumber;
+   var costOfLoan =  principalAmount * magicNumber * loanTerm - principalAmount;
+   var princPlusLoad = costOfLoan + principalAmount;
+   var numberOfPayments = 52 * (financeTerm/12) / 2;
+   var biweeklyNewPayment = princPlusLoad / numberOfPayments;
+
+   console.log("biweeklyNewPayment biweeklyNewPayment :" + biweeklyNewPayment);
+
+
+
+
+            var basePmtNoCompoundInterest = price * (1+(financeRate*100/12));
+            console.log("basePmtNoCompoundInterest: "+basePmtNoCompoundInterest);
+
             biweeklyFinancePmt = '$' + ((basePmt * 12) / 26).toFixed(2);
-            console.log("biweeklyFinancePmt: "+biweeklyFinancePmt);
+            console.log("biweeklyFinancePmt: "+ (biweeklyFinancePmt);
           }
 
           $totalFinance.text(biweeklyFinancePmt);
