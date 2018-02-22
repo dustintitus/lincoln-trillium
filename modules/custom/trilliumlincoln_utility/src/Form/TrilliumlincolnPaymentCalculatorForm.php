@@ -174,22 +174,6 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
 
 
 
-           console.log("************* START NEW RATE **********");
-           var interestRate = financeRate;
-           var loanTerm = financeTerm;
-           var principalAmount = price;
-           var i = interestRate/100.0/12.0;
-           var tau = 1.0 + i;
-           var tauToTheN = Math.pow(tau, loanTerm);
-           var magicNumber = tauToTheN * i / (tauToTheN - 1.0 );
-           var monthlyPayment = principalAmount * magicNumber;
-           var costOfLoan =  principalAmount * magicNumber * loanTerm - principalAmount;
-           var princPlusLoad = costOfLoan + principalAmount;
-           var numberOfPayments = 52 * (financeTerm/12) / 2;
-           var biweeklyNewPayment = princPlusLoad / numberOfPayments;
-           biweeklyNewPayment = parseFloat(biweeklyNewPayment).toFixed(2);
-           console.log("biweeklyNewPayment biweeklyNewPayment :" + biweeklyNewPayment);
-           console.log("************* END NEW RATE **********");
 
 
 
@@ -215,7 +199,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
            $princPlusLoad = $costOfLoan + $principalAmount;
            $numberOfPayments = 52 * ($default_finance_term/12) / 2;
            $biweeklyNewPayment = $princPlusLoad / $numberOfPayments;
-           
+
     $default_biweekly_finance_pmt = $biweeklyNewPayment;
 
 
