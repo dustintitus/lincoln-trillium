@@ -58,7 +58,7 @@
           console.log("$totalLease/biweeklyLeasePmt: "+biweeklyLeasePmt);
           console.log("*** END LEASE CALCULATION");
         });
-
+        $('.trilliumlincoln-utility-payment-calculator-form').change();
         //finance section
         $(this).on('change paste keyup','#edit-finance-term, #edit-finance-cash-down', function(event) {
           console.log("*** START FINANCE CALCULATION");
@@ -102,7 +102,6 @@
           console.log("*** END FINANCE CALCULATION");
         });
       });
-      $('#edit-lease-cash-down').val(0);
       });
     }
   };
