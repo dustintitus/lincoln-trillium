@@ -120,13 +120,16 @@ class ImportWorkerCar extends ImportWorkerBase {
 
       $entity->save();
 
+      $default_price = 0;
+
       // The price of the variation.
-      $price = new Price($item['price'], 'CAD');
+      $price = new Price($default_price, 'CAD');
       $variation = ProductVariation::create([
         'type' => 'default',
         'sku' => $item['stock_number'],
         'status' => 1, // The product status. 0 for disabled, 1 for enabled.
         'price' => $price,
+        'field_note' => t('Call for price')
       ]);
       $variation->save();
 

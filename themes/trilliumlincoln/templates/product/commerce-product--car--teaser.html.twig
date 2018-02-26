@@ -30,7 +30,7 @@
 </div>
 <div class="col-2">
 	<a class="field--name-title" href="{{- product_url -}}">{{- product.title.0|raw -}}</a>
-	{% set text = product.body|render|striptags %}
+	{% set text = product.body|render|striptags|convert_encoding('UTF-8', 'HTML-ENTITIES') %}
 	{% if text %}
 		<div class="field--name-body">
 			<p>
