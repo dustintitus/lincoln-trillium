@@ -119,17 +119,22 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       // $price+=449;
     }
 
-    $default_lease_cash_down = 0;
-    $default_lease_term = 48;
-    $capitalized_cost = $price - $default_lease_cash_down;
-    $new_residual = (($residual[$default_lease_term])/100) * $msrp;
-    $amort_amt = $capitalized_cost - $new_residual;
-    $base_pmt = $amort_amt/$default_lease_term;
-    $lease_rate = isset($lease_term_rate[$default_lease_term]['lease-rate']) ? $lease_term_rate[$default_lease_term]['lease-rate']: 0;
-    $money_factor = ($lease_rate/24)/100;
-    $interest_cost = ($capitalized_cost + $new_residual) * $money_factor;
-    $pmt = ($base_pmt + $interest_cost);
-    $default_biweekly_lease_pmt = '$' . round((($pmt * 12) / 26),2);
+    if (!$hide_finance_section) {
+      $default_lease_cash_down = 0;
+      $default_lease_term = 48;
+      $capitalized_cost = $price - $default_lease_cash_down;
+      $new_residual = (($residual[$default_lease_term])/100) * $msrp;
+      $amort_amt = $capitalized_cost - $new_residual;
+      $base_pmt = $amort_amt/$default_lease_term;
+      $lease_rate = isset($lease_term_rate[$default_lease_term]['lease-rate']) ? $lease_term_rate[$default_lease_term]['lease-rate']: 0;
+      $money_factor = ($lease_rate/24)/100;
+      $interest_cost = ($capitalized_cost + $new_residual) * $money_factor;
+      $pmt = ($base_pmt + $interest_cost);
+      $default_biweekly_lease_pmt = '$' . round((($pmt * 12) / 26),2);
+    }
+    else{
+      $default_biweekly_lease_pmt = NULL;
+    }
 
     $form['price'] = [
       '#type' => 'hidden',
@@ -171,12 +176,6 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       ];
     }
 
-
-
-
-
-
-
     $default_finace_cash_down = 0;
     $default_finance_term = 48;
     $capitalized_cost = $price - $default_finace_cash_down;
@@ -187,22 +186,26 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     // $compoundInterest = $capitalized_cost * pow($first_part, $secondPart);
     // $base_pmt = $compoundInterest/$default_finance_term;
     // $default_biweekly_finance_pmt = '$' . round((($base_pmt * 12) / 26),2);
-           $interestRate = $finance_rate;
-           $loanTerm = $default_finance_term;
-           $principalAmount = $price;
-           $inter = $interestRate/100.0/12.0;
-           $tau = 1.0 + $inter;
-           $tauToTheN = pow($tau, $loanTerm);
-           $magicNumber = $tauToTheN * $inter / ($tauToTheN - 1.0 );
-           $monthlyPayment = $principalAmount * $magicNumber;
-           $costOfLoan =  $principalAmount * $magicNumber * $loanTerm - $principalAmount;
-           $princPlusLoad = $costOfLoan + $principalAmount;
-           $numberOfPayments = 52 * ($default_finance_term/12) / 2;
-           $biweeklyNewPayment = $princPlusLoad / $numberOfPayments;
 
-    $default_biweekly_finance_pmt = "$".number_format((float)$biweeklyNewPayment, 2, '.', '');
+    if (!$hide_finance_section) {
+      $interestRate = $finance_rate;
+      $loanTerm = $default_finance_term;
+      $principalAmount = $price;
+      $inter = $interestRate/100.0/12.0;
+      $tau = 1.0 + $inter;
+      $tauToTheN = pow($tau, $loanTerm);
+      $magicNumber = $tauToTheN * $inter / ($tauToTheN - 1.0 );
+      $monthlyPayment = $principalAmount * $magicNumber;
+      $costOfLoan =  $principalAmount * $magicNumber * $loanTerm - $principalAmount;
+      $princPlusLoad = $costOfLoan + $principalAmount;
+      $numberOfPayments = 52 * ($default_finance_term/12) / 2;
+      $biweeklyNewPayment = $princPlusLoad / $numberOfPayments;
 
-
+      $default_biweekly_finance_pmt = "$".number_format((float)$biweeklyNewPayment, 2, '.', '');
+    }
+    else{
+      $default_biweekly_finance_pmt = NULL;
+    }
 
     if (!$hide_finance_section && $price > 0) {
       $form['payment']['finance'] = [
