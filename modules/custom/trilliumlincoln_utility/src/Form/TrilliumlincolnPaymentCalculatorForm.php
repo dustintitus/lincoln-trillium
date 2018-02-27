@@ -247,7 +247,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     }
     else{
       $form['payment']['pmt_description'] = [
-        '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing. Lease payments are based on 25,000&nbsp;km/yr with a due on delivery of any cost down, 1st mth part, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
+        '#markup' => '<p>' . $this->t('*PMT is biweekly, plus HST & Licensing. Lease payments are based on 25,000&nbsp;km/yr with a due on delivery of any cash down, first month payment, applicable HST, licensing & registration. Pricing is subject to incentive eligibility.') . '</p>'
       ];
     }
     $form['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.calculator';
