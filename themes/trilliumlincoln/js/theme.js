@@ -44,7 +44,7 @@
 	}
 	$(document).ready(function()
 	{
-	  setTimeout(tryPopup, 5000);
+	  //setTimeout(tryPopup, 5000);
 	});
 
 })(jQuery);
