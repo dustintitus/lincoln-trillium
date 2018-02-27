@@ -1,9 +1,9 @@
-uuid: 775b9c85-e479-4dc2-bbd8-963278e7dece
+uuid: 546e28cd-53c2-4196-bbd9-2130e0750b33
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:text_callout_block:12908d7a-5242-4ca5-9b65-902697ebc42a'
+    - 'block_content:basic:0e77ac89-0447-4c0e-862d-3a9604de0720'
   module:
     - block_class
     - block_content
@@ -12,24 +12,24 @@ dependencies:
     - trilliumlincoln
 third_party_settings:
   block_class:
-    classes: hours-block
-id: hoursblock
+    classes: ''
+id: homebuttonblock
 theme: trilliumlincoln
 region: content_bottom
-weight: -13
+weight: -11
 provider: null
-plugin: 'block_content:12908d7a-5242-4ca5-9b65-902697ebc42a'
+plugin: 'block_content:0e77ac89-0447-4c0e-862d-3a9604de0720'
 settings:
-  id: 'block_content:12908d7a-5242-4ca5-9b65-902697ebc42a'
-  label: Hours
+  id: 'block_content:0e77ac89-0447-4c0e-862d-3a9604de0720'
+  label: 'Home Button Block'
   provider: block_content
-  label_display: visible
+  label_display: '0'
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: "/about\r\n/assistance"
+    pages: '<front>'
     negate: false
     context_mapping: {  }

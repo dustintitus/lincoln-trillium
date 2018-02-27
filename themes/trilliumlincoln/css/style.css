@@ -843,6 +843,17 @@ a {
     .trilliumlincoln-utility-payment-calculator-form .total-item.total-lease {
       margin-bottom: 5px; }
 
+#block-homebuttonblock {
+  border-top: 1px solid #000;
+  padding-top: 35px; }
+  @media (min-width: 768px) {
+    #block-homebuttonblock {
+      padding-top: 50px; } }
+  #block-homebuttonblock .field--name-body {
+    text-align: center; }
+    #block-homebuttonblock .field--name-body .btn {
+      display: inline-block; }
+
 .navbar {
   margin: 0;
   padding: 0;

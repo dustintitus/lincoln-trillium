@@ -346,3 +346,16 @@
     }
   }
 }
+#block-homebuttonblock{
+  border-top: 1px solid #000;
+  padding-top: 35px;
+  @include respond($sm){
+    padding-top: 50px;
+  }
+  .field--name-body{
+    text-align: center;
+    .btn{
+      display: inline-block;
+    }
+  }
+}
