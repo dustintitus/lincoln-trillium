@@ -13,6 +13,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Render\Markup;
 use Drupal\file\Entity\File;
 use Drupal\Component\Utility\Xss;
+use Drupal\Component\Utility\Unicode;
 
 function trilliumlincoln_preprocess_page(&$variables) {
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
@@ -73,6 +74,19 @@ function trilliumlincoln_preprocess_field(&$variables){
           $note = $field_note[0]['value'];
         }
         $variables['items'][0]['content']['#markup'] = $note;
+      }
+    }
+  }
+
+  if ($variables['field_name'] == 'body') {
+    $element = $variables['element'];
+    if ($element['#bundle'] == 'car' && $element['#view_mode'] == 'teaser') {
+      $field_body = $element['#object']->get('body')->getValue();
+      if (!empty($field_body[0]['value'])) {
+        $body = Unicode::truncate($field_body[0]['value'], 340, false, true);
+        $body = strip_tags($body);
+        $body = preg_replace("/[\n\r]/","", $body);
+        $variables['items'][0]['content']['#text'] = Markup::create('<p>' . $body . '</p>');
       }
     }
   }
