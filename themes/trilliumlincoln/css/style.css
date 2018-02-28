@@ -1601,6 +1601,12 @@ a {
     padding-left: 0; } }
 .product-single .product-accessory .field--name-field-car-accessory-price::before {
   content: "\$"; }
+.product-single .car-nav {
+  margin-top: 20px; }
+  .product-single .car-nav .prev {
+    float: left; }
+  .product-single .car-nav .next {
+    float: right; }
 
 .product-carousel {
   margin-left: -3px; }
@@ -1817,8 +1823,11 @@ a {
         @media (min-width: 480px) {
           .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-type-select {
             float: right;
-            width: auto;
-            margin-left: 15px; } }
+            width: 33.3%;
+            margin-left: 0px; } }
+        @media (min-width: 480px) {
+          .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-type-select.form-item-field-car-year-value {
+            text-align: center; } }
         .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-type-select .select-wrapper {
           width: 100%; }
           @media (min-width: 480px) {
@@ -1836,7 +1845,39 @@ a {
           text-transform: uppercase; }
         @media (min-width: 480px) {
           .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-type-select.form-item-field-car-model-target-id {
-            min-width: 200px; } }
+            width: 33.3%; } }
+      .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-item-field-car-stock-number-value {
+        margin-bottom: 5px;
+        width: 50%;
+        float: left; }
+        @media (min-width: 480px) {
+          .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-item-field-car-stock-number-value {
+            width: 33.3%;
+            float: right; } }
+        .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-item-field-car-stock-number-value input {
+          border-color: #5e504c;
+          text-transform: uppercase;
+          border-radius: 0;
+          box-shadow: none;
+          padding: 5px;
+          height: 26px;
+          width: 100%;
+          float: right; }
+          @media (min-width: 480px) {
+            .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-item-field-car-stock-number-value input {
+              width: 85px; } }
+          .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-item-field-car-stock-number-value input::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: #555; }
+          .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-item-field-car-stock-number-value input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #555; }
+          .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-item-field-car-stock-number-value input:-ms-input-placeholder {
+            /* IE 10+ */
+            color: #555; }
+          .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter .form-item-field-car-stock-number-value input:-moz-placeholder {
+            /* Firefox 18- */
+            color: #555; }
     .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions {
       margin-bottom: 0; }
       .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions .form-submit {

@@ -63,6 +63,17 @@
     </div>
   </div>
 
+  {% if car_nav.prev or car_nav.next %}
+    <div class="car-nav col-xs-12">
+      {% if car_nav.prev %}
+        {{- car_nav.prev -}}
+      {% endif %}
+      {% if car_nav.next %}
+        {{- car_nav.next -}}
+      {% endif %}
+    </div>
+  {% endif %}
+
 </div>
 
 <div class="modal fade" id="modal-box" tabindex="-1" role="dialog">

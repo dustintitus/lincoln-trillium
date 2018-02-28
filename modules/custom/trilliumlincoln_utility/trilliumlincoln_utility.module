@@ -132,6 +132,8 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
     $form['field_car_model_target_id']['#suffix'] = '</div>';
     $form['field_car_model_target_id']['#options']['All'] = t('Model');
 
+    $form['field_car_stock_number_value']['#attributes']['placeholder'] = t('stock #');
+
     $form['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.search_filter';
   }
 }
@@ -168,13 +170,14 @@ function trilliumlincoln_utility_views_query_alter(ViewExecutable $view, QueryPl
   if ($view->storage->get('id') === 'product_list' && $view->current_display === 'page_1') {
     $exposed_value = $view->exposed_raw_input;
     if (isset($exposed_value['all'])) {
-
+      unset($exposed_value['all']);
       $vid = 'car_type';
       $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
       $car_type_target_id = [];
       if (!empty($terms)) {
         foreach ($terms as $key => $term) {
           $car_type_target_id[$term->tid] = $term->tid;
+          $exposed_value[$term->tid] = $term->tid;
         }
       }
 
@@ -185,5 +188,7 @@ function trilliumlincoln_utility_views_query_alter(ViewExecutable $view, QueryPl
       $query->where[0]['conditions'][0]['field'] = 'commerce_product__field_car_type.field_car_type_target_id IN(:commerce_product__field_car_type_field_car_type_target_id[])';
       $query->where[0]['conditions'][0]['value'][':commerce_product__field_car_type_field_car_type_target_id[]'] = $car_type_target_id;
     }
+
+    $_SESSION['search-car-filter'] = $exposed_value;
   }
 }

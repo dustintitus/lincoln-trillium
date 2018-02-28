@@ -47,8 +47,13 @@
             float: left;
             @include respond($xs){
               float: right;
-              width: auto;
-              margin-left: 15px;
+              width: 33.3%;
+              margin-left: 0px;
+            }
+            &.form-item-field-car-year-value{
+              @include respond($xs){
+                text-align: center;
+              }
             }
             .select-wrapper {
               width: 100%;
@@ -70,7 +75,41 @@
             }
             &.form-item-field-car-model-target-id{
               @include respond($xs){
-                min-width: 200px;
+                width: 33.3%;
+              }
+            }
+          }
+          .form-item-field-car-stock-number-value{
+            margin-bottom: 5px;
+            width: 50%;
+            float: left;
+            @include respond($xs){
+              width: 33.3%;
+              float: right;
+            }
+            input{
+              border-color: $c-brown-l;
+              text-transform: uppercase;
+              border-radius: 0;
+              box-shadow: none;
+              padding: 5px;
+              height: 26px;
+              width: 100%;
+              @include respond($xs){
+                width: 85px;
+              }
+              float: right;
+              &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: #555;
+              }
+              &::-moz-placeholder { /* Firefox 19+ */
+                color: #555;
+              }
+              &:-ms-input-placeholder { /* IE 10+ */
+                color: #555;
+              }
+              &:-moz-placeholder { /* Firefox 18- */
+                color: #555;
               }
             }
           }

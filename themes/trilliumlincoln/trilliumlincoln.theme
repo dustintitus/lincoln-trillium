@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
+use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\file\Entity\File;
 use Drupal\Component\Utility\Xss;
@@ -140,7 +141,44 @@ function trilliumlincoln_preprocess_paragraph__text_blocks(&$variables){
 function trilliumlincoln_preprocess_commerce_product(array &$variables) {
   /** @var Drupal\commerce_product\Entity\ProductInterface $product */
   $product = $variables['elements']['#commerce_product'];
+  $product_id = $product->id();
   if ($variables['elements']['#view_mode'] == 'full') {
+    // get the view machine id
+    $view = \Drupal\views\Views::getView('product_list');
+     
+    // set the display machine id
+    $view->setDisplay('page_1');
+    if (isset($_SESSION['search-car-filter'])) {
+      $view->setExposedInput($_SESSION['search-car-filter']);
+    }
+    $view->setItemsPerPage(0);
+    $view->execute();
+    $result = $view->result;
+    $result_ids = [];
+    if (!empty($result)) {
+      foreach ($result as $key => $value) {
+        $entity = $value->_entity;
+        $entity_id = $entity->id();
+        $result_ids[] = $entity_id;
+      }
+    }
+
+    $nav = [];
+    if (!empty($result_ids)) {
+      foreach ($result_ids as $key => $value) {
+        if ($product_id == $value) {
+          if (isset($result_ids[$key-1])) {
+            $nav['prev'] = Link::fromTextAndUrl(t('<<'), Url::fromUri('internal:/product/' . $result_ids[$key-1], ['attributes' => ['class' => ['prev', 'btn', 'btn-info', 'btn-lg']]]))->toString();
+          }
+          if (isset($result_ids[$key+1])) {
+            $nav['next'] = Link::fromTextAndUrl(t('>>'), Url::fromUri('internal:/product/' . $result_ids[$key+1],['attributes' => ['class' => ['next', 'btn', 'btn-info', 'btn-lg']]]))->toString();
+          }
+        }
+      }
+    }
+
+    $variables['car_nav'] = $nav;
+
     $field_car_type = $product->get('field_car_type')->getValue();
     if (isset($field_car_type[0]['target_id'])) {
       $car_type_id = $field_car_type[0]['target_id'];

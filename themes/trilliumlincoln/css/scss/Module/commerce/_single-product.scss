@@ -1,167 +1,177 @@
 .product-single{
 
-	.first-col{
-		@include respond($sm){
-			padding-right: 10px;
-		}
-	}
-	.second-col {
-		@include respond($sm){
-			padding-left: 10px;
-		}
-	}
-	.mobile-car-image{
-		.product-carousel {
-			padding-bottom: 0px;
-			display: block;
-			.product-carousel-pager{
-				display: none;
-			}
-		}
-		@include respond($sm){
-			display: none;
-		}
-	}
-	.product-carousel {
-		display: none;
-		@include respond($sm){
-			display: block;
-		}
-		padding-bottom: 20px;
-	}
-	.field--name-body {
+  .first-col{
+    @include respond($sm){
+      padding-right: 10px;
+    }
+  }
+  .second-col {
+    @include respond($sm){
+      padding-left: 10px;
+    }
+  }
+  .mobile-car-image{
+    .product-carousel {
+      padding-bottom: 0px;
+      display: block;
+      .product-carousel-pager{
+        display: none;
+      }
+    }
+    @include respond($sm){
+      display: none;
+    }
+  }
+  .product-carousel {
+    display: none;
+    @include respond($sm){
+      display: block;
+    }
+    padding-bottom: 20px;
+  }
+  .field--name-body {
 
-	}
-	.product-title {
-		margin-top: 0;
-		margin-bottom: 25px;
-		font-size: em(20);
-		font-weight: bold;
-		text-transform: uppercase;
-	}
-	.field--name-field-car-type{
-		margin-bottom: 25px;
-		font-size: em(14);
-		a {
-			color: $text-color;
-		}
-	}
-	p {
-		font-size: 14px;
-	}
-	.field--name-body {
-		margin-bottom: 25px;
-	}
-	.field--name-price {
-		font-weight: bold;
-		font-size: em(20);
-		line-height: (40/47);
-		margin-top: 6px;
-		margin-bottom: 10px;		
-	}
-	.field--name-field-note {
-		font-size: em(9);
-		font-style: italic;
-		margin-bottom: 10px;
-	}
-	.car-action {
-		margin-bottom: 20px;
-		.btn {
-			display: block;
-			max-width: none;
-		}
-	}
+  }
+  .product-title {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: em(20);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .field--name-field-car-type{
+    margin-bottom: 25px;
+    font-size: em(14);
+    a {
+      color: $text-color;
+    }
+  }
+  p {
+    font-size: 14px;
+  }
+  .field--name-body {
+    margin-bottom: 25px;
+  }
+  .field--name-price {
+    font-weight: bold;
+    font-size: em(20);
+    line-height: (40/47);
+    margin-top: 6px;
+    margin-bottom: 10px;    
+  }
+  .field--name-field-note {
+    font-size: em(9);
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .car-action {
+    margin-bottom: 20px;
+    .btn {
+      display: block;
+      max-width: none;
+    }
+  }
 
-	.field--name-field-car-msrp {
-		font-size: 0.8em;
-		.field--label {
-			text-transform: uppercase;
-			font-weight: normal;
-		}
-		.field--item{
-			text-decoration: line-through;
-		}
-	}
+  .field--name-field-car-msrp {
+    font-size: 0.8em;
+    .field--label {
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+    .field--item{
+      text-decoration: line-through;
+    }
+  }
 
-	.product-content, .product-accessory{
-		padding-top: 20px;
-		padding-bottom: 20px;
-		font-size: em(14);
-		// line-height: (33/28);
-		line-height: (20/14);
-		>.field--label {
-			margin-bottom: 12px;
-			font-weight: bold;
-			text-transform: uppercase;
-			font-size: 1.2em;
-		}
-		a {
-			color: $text-color;
-		}
-	}
+  .product-content, .product-accessory{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: em(14);
+    // line-height: (33/28);
+    line-height: (20/14);
+    >.field--label {
+      margin-bottom: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 1.2em;
+    }
+    a {
+      color: $text-color;
+    }
+  }
 
-	.product-content {
-		@extend .row;		
-		>.field {
-			@extend %col-xs-12;
-			@extend %col-sm-6;
-		} 
-	}
+  .product-content {
+    @extend .row;   
+    >.field {
+      @extend %col-xs-12;
+      @extend %col-sm-6;
+    } 
+  }
 
-	.product-accessory {
-		// display: table;
-		>.paragraph {
-			// display: table-row;
-			@extend .row;			
-		}
-		.field--name-field-car-accessory-description,
-		.field--name-field-car-accessory-price{
-			float: none;
-			@include respond($xs){
-				
-				float: left;
-			}
-			@include respond($sm){
-			}
-		}
+  .product-accessory {
+    // display: table;
+    >.paragraph {
+      // display: table-row;
+      @extend .row;     
+    }
+    .field--name-field-car-accessory-description,
+    .field--name-field-car-accessory-price{
+      float: none;
+      @include respond($xs){
+        
+        float: left;
+      }
+      @include respond($sm){
+      }
+    }
 
-		.field--name-field-car-accessory-description{
-			// display: table-cell;
-			// padding-right: 30px;
-			
-			@extend %col-sm-8;			
-			font-weight: bold;
-			overflow: hidden;
-			.field--item {
-				display: inline;
-				position: relative;
-				&::after {
-					content: "\:";				
-				}
-				@include respond($sm){
-					&::before {
-						content: "";
-						border-bottom: 1px dotted;
-						left: 100%;
-						width: 100vw;
-						height: 100%;
-						position: absolute;
-					}
-				}			
-			}
-		}
+    .field--name-field-car-accessory-description{
+      // display: table-cell;
+      // padding-right: 30px;
+      
+      @extend %col-sm-8;      
+      font-weight: bold;
+      overflow: hidden;
+      .field--item {
+        display: inline;
+        position: relative;
+        &::after {
+          content: "\:";        
+        }
+        @include respond($sm){
+          &::before {
+            content: "";
+            border-bottom: 1px dotted;
+            left: 100%;
+            width: 100vw;
+            height: 100%;
+            position: absolute;
+          }
+        }     
+      }
+    }
 
-		.field--name-field-car-accessory-price{
-			@extend %col-sm-4;
-			@include respond($xs){
-				padding-left: 0;
-			}
-			// text-align: right;
-			// padding-right: 100px;
-			// display: table-cell;		
-			&::before {
-				content: "\$";
-			}
-		}
-	}
+    .field--name-field-car-accessory-price{
+      @extend %col-sm-4;
+      @include respond($xs){
+        padding-left: 0;
+      }
+      // text-align: right;
+      // padding-right: 100px;
+      // display: table-cell;   
+      &::before {
+        content: "\$";
+      }
+    }
+  }
+
+  .car-nav{
+    margin-top: 20px;
+    .prev{
+      float: left;
+    }
+    .next{
+      float: right;
+    }
+  }
 }
