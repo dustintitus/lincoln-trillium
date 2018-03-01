@@ -971,19 +971,21 @@ a {
             font-size: 0.875em;
             background-size: 100% 14px; } }
       .navbar .navbar-collapse .menu .icon-search {
-        color: #2e201b;
-        min-width: 55px;
-        height: 68px;
-        width: 106px;
-        overflow: hidden;
-        font-size: 1.5em; }
+        color: #fff;
+        overflow: hidden; }
         @media (min-width: 768px) {
           .navbar .navbar-collapse .menu .icon-search {
+            color: #2e201b;
+            min-width: 55px;
             width: 50px;
             height: 100%;
             font-size: 0.875em; } }
         .navbar .navbar-collapse .menu .icon-search:before {
+          display: none;
           color: #f15e46; }
+          @media (min-width: 768px) {
+            .navbar .navbar-collapse .menu .icon-search:before {
+              display: inline-block; } }
 
 .use-ajax .ajax-throbber {
   display: none; }

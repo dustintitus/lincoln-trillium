@@ -146,19 +146,21 @@
 				}
 			}
 			.icon-search{
-				color: $c-brown;
-				min-width: 55px;
-				height: 68px;
-				width: 106px;
+				color: $c-white;
 				overflow: hidden;
-				font-size: 1.5em;
 				@include respond($sm){
+					color: $c-brown;
+					min-width: 55px;
 					width: 50px;
 					height: 100%;
 					font-size: em(14);
 				}
 				&:before{
+					display: none;
 					color: $c-red;
+					@include respond($sm){
+						display: inline-block;
+					}
 				}
 			}
 		}
