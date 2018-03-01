@@ -89,7 +89,12 @@
           $modalBody.empty();
           var origImg = new Image();
           origImg.src = $(this).attr('data-orig-url')
-
+          $(origImg).css('opacity', '0');
+          $modalBody.addClass('load-image');
+          origImg.onload = function() {
+            $modalBody.removeClass('load-image');
+            $(origImg).css('opacity', '1');
+          }
           $(origImg).appendTo($modalBody);
           $modalBox.modal({show:true});
           var modalBoxNav = $modalBox.find('.modal-nav');
@@ -131,13 +136,14 @@
                 var activeSlide = $modalBody.find('img');
 
                 $(activeSlide).fadeOut(200, function(){
+                  $modalBody.addClass('load-image');
                   activeSlide.attr('src', $slides[activeSlideNumber].href);
 
                   objImg = new Image();
                   objImg.src = $slides[activeSlideNumber].href;
                   objImg.onload = function() { 
+                    $modalBody.removeClass('load-image');
                     activeSlide.fadeIn(200);
-                    console.log('load');
                   }
                 });
               });

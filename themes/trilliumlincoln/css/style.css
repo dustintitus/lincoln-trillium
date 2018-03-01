@@ -1461,6 +1461,17 @@ a {
       #modal-box .modal-dialog .modal-content .modal-body {
         width: 100%;
         height: 100%; }
+        #modal-box .modal-dialog .modal-content .modal-body.load-image::before {
+          content: "";
+          background: url("../images/loader.svg") no-repeat;
+          width: 67px;
+          height: 67px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -38px;
+          margin-left: -38px;
+          z-index: 10; }
         #modal-box .modal-dialog .modal-content .modal-body img {
           transform: translate(-50%, -50%);
           top: 50%;
