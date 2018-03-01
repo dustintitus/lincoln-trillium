@@ -4,6 +4,7 @@ global-styling:
     theme:
       fonts/fontface.css: {}
       css/style.css: {}
+
 global-scripts:
   js:
     js/theme.js: {}
@@ -22,13 +23,3 @@ trilliumlincoln.admin:
   css:
     theme:
       css/trilliumlincoln.admin.css: {}
-font-awesome:
-  remote: https://fortawesome.github.io/Font-Awesome/
-  version: 4.5.0
-  license:
-    name: MIT
-    url: https://fortawesome.github.io/Font-Awesome/license/
-    gpl-compatible: true
-  css:
-    theme:
-      https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css: { type: external, minified: true }

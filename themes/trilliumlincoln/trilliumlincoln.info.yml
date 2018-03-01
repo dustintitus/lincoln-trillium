@@ -23,4 +23,3 @@ regions:
 libraries:
   - 'trilliumlincoln/global-styling'
   - 'trilliumlincoln/global-scripts'
-  - 'trilliumlincoln/font-awesome'
