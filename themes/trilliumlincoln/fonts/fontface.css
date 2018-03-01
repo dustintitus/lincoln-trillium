@@ -102,4 +102,5 @@
 .icon-print:before { content: '\e802'; } /* '' */
 .icon-phone:before { content: '\e803'; } /* '' */
 .icon-mail:before { content: '\e804'; } /* '' */
+.icon-link:before { content: '\e819'; }
 .icon-fb:before { content: '\e805'; }
