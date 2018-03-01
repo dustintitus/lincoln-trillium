@@ -4,6 +4,7 @@ global-styling:
     theme:
       fonts/fontface.css: {}
       css/style.css: {}
+      
 
 global-scripts:
   js:
@@ -13,6 +14,12 @@ global-scripts:
     js/vendor/js.cookie.js: {}
     js/slider.js: {}
     js/commerce.js: {}
+    https://use.fontawesome.com/releases/v5.0.7/js/all.js: {
+      type: external, attributes:
+        defer: true
+        async: true
+        data-test: map-link
+      }
   dependencies:
     - core/drupalSettings
     - core/jquery
