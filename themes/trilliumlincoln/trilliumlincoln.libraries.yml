@@ -4,7 +4,6 @@ global-styling:
     theme:
       fonts/fontface.css: {}
       css/style.css: {}
-
 global-scripts:
   js:
     js/theme.js: {}
