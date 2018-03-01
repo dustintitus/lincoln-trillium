@@ -129,7 +129,17 @@
                 }
 
                 var activeSlide = $modalBody.find('img');
-                $(activeSlide).fadeOut(200, function(){ activeSlide.attr('src', $slides[activeSlideNumber].href) }).fadeIn(200);
+
+                $(activeSlide).fadeOut(200, function(){
+                  activeSlide.attr('src', $slides[activeSlideNumber].href);
+
+                  objImg = new Image();
+                  objImg.src = $slides[activeSlideNumber].href;
+                  objImg.onload = function() { 
+                    activeSlide.fadeIn(200);
+                    console.log('load');
+                  }
+                });
               });
             });
           }
