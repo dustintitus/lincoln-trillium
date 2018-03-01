@@ -1000,6 +1000,14 @@ a {
     right: 0;
     bottom: 0;
     overflow: hidden; }
+    .slider .item .light {
+      color: #ffffff !important; }
+    .slider .item .dark {
+      color: #2e201b; }
+    .slider .item .theme {
+      color: #f15e46; }
+    .slider .item .secondary {
+      color: #5e504c; }
     .slider .item img {
       position: absolute;
       bottom: 0;

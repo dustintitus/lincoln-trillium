@@ -6,7 +6,10 @@ dependencies:
     - field.field.node.slider.body
     - field.field.node.slider.field_button
     - field.field.node.slider.field_slider_headline
+    - field.field.node.slider.field_slider_headline_color
     - field.field.node.slider.field_slider_image
+    - field.field.node.slider.field_slider_subhead_color
+    - field.field.node.slider.field_slider_text_position
     - node.type.slider
   module:
     - link
@@ -21,12 +24,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     region: content
   field_button:
-    weight: 104
+    weight: 3
     label: hidden
     settings:
       trim_length: 80
@@ -38,7 +41,7 @@ content:
     type: link
     region: content
   field_slider_headline:
-    weight: 105
+    weight: 4
     label: hidden
     settings:
       link_to_entity: false
@@ -46,7 +49,7 @@ content:
     type: string
     region: content
   field_slider_image:
-    weight: 102
+    weight: 2
     label: hidden
     settings:
       svg_attributes:
@@ -59,8 +62,11 @@ content:
     type: image
     region: content
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_slider_headline_color: true
+  field_slider_subhead_color: true
+  field_slider_text_position: true

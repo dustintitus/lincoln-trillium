@@ -1,0 +1,33 @@
+uuid: 2e733fad-49bf-43a9-87b7-e6ac10703424
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_slider_headline_color
+field_name: field_slider_headline_color
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: light
+      label: 'Light (#ffffff)'
+    -
+      value: dark
+      label: 'Dark (#2e201b)'
+    -
+      value: theme
+      label: 'Theme (#f15e46)'
+    -
+      value: secondary
+      label: 'Secondary (#5e504c)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

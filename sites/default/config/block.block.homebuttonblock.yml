@@ -1,9 +1,9 @@
-uuid: 546e28cd-53c2-4196-bbd9-2130e0750b33
+uuid: b207efb3-46ca-4d97-94b4-a14239002569
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:0e77ac89-0447-4c0e-862d-3a9604de0720'
+    - 'block_content:basic:14283cad-46d1-4447-9cc2-d093a368ce70'
   module:
     - block_class
     - block_content
@@ -16,11 +16,11 @@ third_party_settings:
 id: homebuttonblock
 theme: trilliumlincoln
 region: content_bottom
-weight: -11
+weight: 0
 provider: null
-plugin: 'block_content:0e77ac89-0447-4c0e-862d-3a9604de0720'
+plugin: 'block_content:14283cad-46d1-4447-9cc2-d093a368ce70'
 settings:
-  id: 'block_content:0e77ac89-0447-4c0e-862d-3a9604de0720'
+  id: 'block_content:14283cad-46d1-4447-9cc2-d093a368ce70'
   label: 'Home Button Block'
   provider: block_content
   label_display: '0'

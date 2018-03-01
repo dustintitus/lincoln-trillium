@@ -1,0 +1,23 @@
+uuid: 3d4c19b5-58a5-44b4-922a-c6e9c5a39323
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_slider_text_position
+    - node.type.slider
+  module:
+    - options
+id: node.slider.field_slider_text_position
+field_name: field_slider_text_position
+entity_type: node
+bundle: slider
+label: 'Text Position'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '0'
+default_value_callback: ''
+settings: {  }
+field_type: list_string
