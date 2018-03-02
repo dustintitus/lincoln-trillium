@@ -115,9 +115,9 @@ $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
 
 $databases['default']['default'] = array (
-  'database' => 'drupal8_trilliumlincoln_git',
-  'username' => 'developer',
-  'password' => 'developer',
+  'database' => 'drupal',
+  'username' => 'ddefault',
+  'password' => '3ZS01!#37t',
   'prefix' => '',
   'host' => 'localhost',
   'port' => '3306',
