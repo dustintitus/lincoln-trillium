@@ -35,7 +35,9 @@
       right: 0;
       bottom: 0;
       margin: 0;
-      padding: 15px;
+      width: 100%;
+      height: 100%;
+      padding: 0px;
       list-style: none;
       /* default fallback */
       background: rgb(255, 255, 255) transparent;
@@ -46,14 +48,82 @@
       /* IE8 */    
       -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
       @include respond($sm){
-        top: 50%;
-        bottom: 0;
         background: none;
-        padding: 0 0 0 20px;
       } 
       .views-field {
         max-width: 430px;
         margin-left: auto;
+      }
+
+      .wrapper{
+        position: absolute;
+        @include respond($sm){
+          margin-bottom: 50px;
+        }
+        &.oclock{
+          top: 5%;
+          left: 5%;
+        }
+        &.oclock1{
+          top: 10%;
+          left: auto;
+          right: 10%;
+        }
+        &.oclock2{
+          top: 15%;
+          left: auto;
+          right: 10%;
+        }
+        &.oclock3{
+          top: 20%;
+          left: auto;
+          right: 5%;
+        }
+        &.oclock4{
+          top: auto;
+          bottom: 15%;
+          left: auto;
+          right: 10%;
+        }
+        &.oclock5{
+          top: auto;
+          bottom: 10%;
+          left: auto;
+          right: 10%;
+        }
+        &.oclock6{
+          top: auto;
+          bottom: 5%;
+          left: auto;
+          right: 30%;
+        }
+        &.oclock7{
+          top: auto;
+          bottom: 10%;
+          left: 5%;
+        }
+        &.oclock8{
+          top: auto;
+          bottom: 10%;
+          left: 10%;
+        }
+        &.oclock9{
+          top: 20%;
+          left: 5%;
+        }
+        &.oclock10{
+          top: 15%;
+          left: 10%;
+        }
+        &.oclock11{
+          top: 10%;
+          left: 10%;
+        }
+        &.oclock12{
+          top: 5%;
+          left: auto;
+          right: 30%;
+        }
       }
     }
 

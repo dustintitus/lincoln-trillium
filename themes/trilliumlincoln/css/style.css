@@ -568,6 +568,10 @@ a {
       padding: 1px;
       box-sizing: content-box;
       color: #fff; }
+    #block-contactinfo .field--name-body [class^="icon-"].icon-link-ext:before {
+      font-size: 10px;
+      padding: 2px 3px !important;
+      line-height: 11px; }
 
 #block-linkolnlink .field--name-body .company-logo {
   display: block;
@@ -1019,7 +1023,9 @@ a {
       right: 0;
       bottom: 0;
       margin: 0;
-      padding: 15px;
+      width: 100%;
+      height: 100%;
+      padding: 0px;
       list-style: none;
       /* default fallback */
       background: white transparent;
@@ -1031,13 +1037,66 @@ a {
       -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)"; }
       @media (min-width: 768px) {
         .slider .item .list {
-          top: 50%;
-          bottom: 0;
-          background: none;
-          padding: 0 0 0 20px; } }
+          background: none; } }
       .slider .item .list .views-field {
         max-width: 430px;
         margin-left: auto; }
+      .slider .item .list .wrapper {
+        position: absolute; }
+        @media (min-width: 768px) {
+          .slider .item .list .wrapper {
+            margin-bottom: 50px; } }
+        .slider .item .list .wrapper.oclock {
+          top: 5%;
+          left: 5%; }
+        .slider .item .list .wrapper.oclock1 {
+          top: 10%;
+          left: auto;
+          right: 10%; }
+        .slider .item .list .wrapper.oclock2 {
+          top: 15%;
+          left: auto;
+          right: 10%; }
+        .slider .item .list .wrapper.oclock3 {
+          top: 20%;
+          left: auto;
+          right: 5%; }
+        .slider .item .list .wrapper.oclock4 {
+          top: auto;
+          bottom: 15%;
+          left: auto;
+          right: 10%; }
+        .slider .item .list .wrapper.oclock5 {
+          top: auto;
+          bottom: 10%;
+          left: auto;
+          right: 10%; }
+        .slider .item .list .wrapper.oclock6 {
+          top: auto;
+          bottom: 5%;
+          left: auto;
+          right: 30%; }
+        .slider .item .list .wrapper.oclock7 {
+          top: auto;
+          bottom: 10%;
+          left: 5%; }
+        .slider .item .list .wrapper.oclock8 {
+          top: auto;
+          bottom: 10%;
+          left: 10%; }
+        .slider .item .list .wrapper.oclock9 {
+          top: 20%;
+          left: 5%; }
+        .slider .item .list .wrapper.oclock10 {
+          top: 15%;
+          left: 10%; }
+        .slider .item .list .wrapper.oclock11 {
+          top: 10%;
+          left: 10%; }
+        .slider .item .list .wrapper.oclock12 {
+          top: 5%;
+          left: auto;
+          right: 30%; }
     .slider .item .views-field-field-slider-headline {
       font-family: MillerB, sans-serif;
       font-size: 1.25em;
