@@ -4,6 +4,7 @@ global-styling:
     theme:
       fonts/fontface.css: {}
       css/style.css: {}
+
 global-scripts:
   js:
     js/theme.js: {}
@@ -17,3 +18,9 @@ global-scripts:
     - core/jquery
     - core/jquery.once
     - core/drupal.dialog.ajax
+trilliumlincoln.admin:
+  version: VERSION
+  css:
+    theme:
+      css/trilliumlincoln.admin.css: {}
+
