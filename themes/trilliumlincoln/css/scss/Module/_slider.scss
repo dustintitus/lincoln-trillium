@@ -103,6 +103,10 @@
             margin: 0 auto;
             float: none;
           }
+          .views-field {
+            max-width: none !important;
+            margin: auto !important;
+          }
         }
         &.oclock1{
           top: 0;

@@ -1079,6 +1079,9 @@ a {
           .slider .item .list .wrapper.oclock0 .btn {
             margin: 0 auto;
             float: none; }
+          .slider .item .list .wrapper.oclock0 .views-field {
+            max-width: none !important;
+            margin: auto !important; }
         .slider .item .list .wrapper.oclock1 {
           top: 0;
           left: auto;
