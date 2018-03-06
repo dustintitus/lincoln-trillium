@@ -57,6 +57,8 @@
 
       .wrapper{
         position: absolute;
+        width:100%;
+        padding: 5%;
         @include respond($sm){
           margin-bottom: 50px;
         }
@@ -64,26 +66,31 @@
           top: 5%;
           left: 5%;
         }
+        &.oclock0 {
+          top: 0;
+          left: 0;
+          right: 0
+        }
         &.oclock1{
-          top: 10%;
+          top: 0;
           left: auto;
-          right: 10%;
+          right: 5%;
         }
         &.oclock2{
-          top: 15%;
+          top: 5%;
           left: auto;
-          right: 10%;
+          right: 0%;
         }
         &.oclock3{
           top: 20%;
           left: auto;
-          right: 5%;
+          right: 0%;
         }
         &.oclock4{
           top: auto;
-          bottom: 15%;
+          bottom: 5%;
           left: auto;
-          right: 10%;
+          right: 0%;
         }
         &.oclock5{
           top: auto;

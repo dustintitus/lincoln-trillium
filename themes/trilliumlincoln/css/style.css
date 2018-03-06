@@ -1042,30 +1042,36 @@ a {
         max-width: 430px;
         margin-left: auto; }
       .slider .item .list .wrapper {
-        position: absolute; }
+        position: absolute;
+        width: 100%;
+        padding: 5%; }
         @media (min-width: 768px) {
           .slider .item .list .wrapper {
             margin-bottom: 50px; } }
         .slider .item .list .wrapper.oclock {
           top: 5%;
           left: 5%; }
+        .slider .item .list .wrapper.oclock0 {
+          top: 0;
+          left: 0;
+          right: 0; }
         .slider .item .list .wrapper.oclock1 {
-          top: 10%;
+          top: 0;
           left: auto;
-          right: 10%; }
+          right: 5%; }
         .slider .item .list .wrapper.oclock2 {
-          top: 15%;
+          top: 5%;
           left: auto;
-          right: 10%; }
+          right: 0%; }
         .slider .item .list .wrapper.oclock3 {
           top: 20%;
           left: auto;
-          right: 5%; }
+          right: 0%; }
         .slider .item .list .wrapper.oclock4 {
           top: auto;
-          bottom: 15%;
+          bottom: 5%;
           left: auto;
-          right: 10%; }
+          right: 0%; }
         .slider .item .list .wrapper.oclock5 {
           top: auto;
           bottom: 10%;
