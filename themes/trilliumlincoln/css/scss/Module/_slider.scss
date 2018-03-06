@@ -28,6 +28,10 @@
       bottom: 0;
       width: 100%;
       max-width: none;
+      margin-left: -50vw;
+      @include respond($sm){
+        margin-left: 0;
+      } 
     }
     .list {
       position: absolute;
@@ -40,13 +44,13 @@
       padding: 0px;
       list-style: none;
       /* default fallback */
-      background: rgb(255, 255, 255) transparent;
+      // background: rgb(255, 255, 255) transparent;
       /* nice browsers */
-      background: rgba(255, 255, 255, 0.6);
+      // background: rgba(255, 255, 255, 0.6);
       /* IE 6/7 */
-      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF);
+      // filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF);
       /* IE8 */    
-      -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
+      // -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
       @include respond($sm){
         background: none;
       } 
@@ -61,6 +65,15 @@
         padding: 5%;
         @include respond($sm){
           margin-bottom: 50px;
+        }
+        .btn-lg {
+          width: auto;
+          padding: 0.5em 1em;
+          line-height: 1em;
+          @include respond($sm){
+            padding: 1em 2em;
+            line-height: 1.5em;
+          }
         }
         &.oclock{
           top: 0%;
