@@ -1057,120 +1057,121 @@ a {
             .slider .item .list .wrapper .btn-lg {
               padding: 1em 2em;
               line-height: 1.5em; } }
-        .slider .item .list .wrapper.oclock {
-          top: 0%;
-          right: 0%;
-          left: 0%; }
-          .slider .item .list .wrapper.oclock .btn {
-            margin: 0 auto;
-            float: none; }
-        .slider .item .list .wrapper.oclock12 {
-          top: 0%;
-          left: 0%;
-          right: 0%;
-          text-align: center; }
-          .slider .item .list .wrapper.oclock12 .btn {
-            margin: 0 auto;
-            float: none; }
-        .slider .item .list .wrapper.oclock0 {
-          top: 20%;
-          left: 0;
-          right: 0;
-          text-align: center; }
-          .slider .item .list .wrapper.oclock0 .btn {
-            margin: 0 auto;
-            float: none; }
-          .slider .item .list .wrapper.oclock0 .views-field {
-            max-width: none !important;
-            margin: auto !important; }
-        .slider .item .list .wrapper.oclock1 {
-          top: 0;
-          left: auto;
-          right: 5%;
-          text-align: right; }
-          .slider .item .list .wrapper.oclock1 .btn {
-            margin: 0 auto;
-            float: right; }
-        .slider .item .list .wrapper.oclock2 {
-          top: 5%;
-          left: auto;
-          right: 0%;
-          text-align: right; }
-          .slider .item .list .wrapper.oclock2 .btn {
-            margin: 0 auto;
-            float: right; }
-        .slider .item .list .wrapper.oclock3 {
-          top: 20%;
-          left: auto;
-          right: 0%;
-          text-align: right; }
-          .slider .item .list .wrapper.oclock3 .btn {
-            margin: 0 auto;
-            float: right; }
-        .slider .item .list .wrapper.oclock4 {
-          top: auto;
-          bottom: 5%;
-          left: auto;
-          right: 0%;
-          text-align: right; }
-          .slider .item .list .wrapper.oclock4 .btn {
-            margin: 0 auto;
-            float: right; }
-        .slider .item .list .wrapper.oclock5 {
-          top: auto;
-          bottom: 10%;
-          left: auto;
-          right: 10%;
-          text-align: right; }
-          .slider .item .list .wrapper.oclock5 .btn {
-            margin: 0 auto;
-            float: right; }
-        .slider .item .list .wrapper.oclock6 {
-          top: auto;
-          bottom: 5%;
-          left: auto;
-          right: 30%;
-          text-align: center; }
-          .slider .item .list .wrapper.oclock6 .btn {
-            margin: 0 auto;
-            float: none; }
-        .slider .item .list .wrapper.oclock7 {
-          top: auto;
-          bottom: 10%;
-          left: 5%;
-          text-align: left; }
-          .slider .item .list .wrapper.oclock7 .btn {
-            margin: 0 auto;
-            float: left; }
-        .slider .item .list .wrapper.oclock8 {
-          top: auto;
-          bottom: 10%;
-          left: 10%;
-          text-align: left; }
-          .slider .item .list .wrapper.oclock8 .btn {
-            margin: 0 auto;
-            float: left; }
-        .slider .item .list .wrapper.oclock9 {
-          top: 20%;
-          left: 5%;
-          text-align: left; }
-          .slider .item .list .wrapper.oclock9 .btn {
-            margin: 0 auto;
-            float: left; }
-        .slider .item .list .wrapper.oclock10 {
-          top: 15%;
-          left: 10%;
-          text-align: left; }
-          .slider .item .list .wrapper.oclock10 .btn {
-            margin: 0 auto;
-            float: left; }
-        .slider .item .list .wrapper.oclock11 {
-          top: 10%;
-          left: 10%;
-          text-align: left; }
-          .slider .item .list .wrapper.oclock11 .btn {
-            margin: 0 auto;
-            float: left; }
+        @media (min-width: 768px) {
+          .slider .item .list .wrapper.oclock {
+            top: 0%;
+            right: 0%;
+            left: 0%; }
+            .slider .item .list .wrapper.oclock .btn {
+              margin: 0 auto;
+              float: none; }
+          .slider .item .list .wrapper.oclock12 {
+            top: 0%;
+            left: 0%;
+            right: 0%;
+            text-align: center; }
+            .slider .item .list .wrapper.oclock12 .btn {
+              margin: 0 auto;
+              float: none; }
+          .slider .item .list .wrapper.oclock0 {
+            top: 20%;
+            left: 0;
+            right: 0;
+            text-align: center; }
+            .slider .item .list .wrapper.oclock0 .btn {
+              margin: 0 auto;
+              float: none; }
+            .slider .item .list .wrapper.oclock0 .views-field {
+              max-width: none !important;
+              margin: auto !important; }
+          .slider .item .list .wrapper.oclock1 {
+            top: 0;
+            left: auto;
+            right: 5%;
+            text-align: right; }
+            .slider .item .list .wrapper.oclock1 .btn {
+              margin: 0 auto;
+              float: right; }
+          .slider .item .list .wrapper.oclock2 {
+            top: 5%;
+            left: auto;
+            right: 0%;
+            text-align: right; }
+            .slider .item .list .wrapper.oclock2 .btn {
+              margin: 0 auto;
+              float: right; }
+          .slider .item .list .wrapper.oclock3 {
+            top: 20%;
+            left: auto;
+            right: 0%;
+            text-align: right; }
+            .slider .item .list .wrapper.oclock3 .btn {
+              margin: 0 auto;
+              float: right; }
+          .slider .item .list .wrapper.oclock4 {
+            top: auto;
+            bottom: 5%;
+            left: auto;
+            right: 0%;
+            text-align: right; }
+            .slider .item .list .wrapper.oclock4 .btn {
+              margin: 0 auto;
+              float: right; }
+          .slider .item .list .wrapper.oclock5 {
+            top: auto;
+            bottom: 10%;
+            left: auto;
+            right: 10%;
+            text-align: right; }
+            .slider .item .list .wrapper.oclock5 .btn {
+              margin: 0 auto;
+              float: right; }
+          .slider .item .list .wrapper.oclock6 {
+            top: auto;
+            bottom: 5%;
+            left: auto;
+            right: 30%;
+            text-align: center; }
+            .slider .item .list .wrapper.oclock6 .btn {
+              margin: 0 auto;
+              float: none; }
+          .slider .item .list .wrapper.oclock7 {
+            top: auto;
+            bottom: 10%;
+            left: 5%;
+            text-align: left; }
+            .slider .item .list .wrapper.oclock7 .btn {
+              margin: 0 auto;
+              float: left; }
+          .slider .item .list .wrapper.oclock8 {
+            top: auto;
+            bottom: 10%;
+            left: 10%;
+            text-align: left; }
+            .slider .item .list .wrapper.oclock8 .btn {
+              margin: 0 auto;
+              float: left; }
+          .slider .item .list .wrapper.oclock9 {
+            top: 20%;
+            left: 5%;
+            text-align: left; }
+            .slider .item .list .wrapper.oclock9 .btn {
+              margin: 0 auto;
+              float: left; }
+          .slider .item .list .wrapper.oclock10 {
+            top: 15%;
+            left: 10%;
+            text-align: left; }
+            .slider .item .list .wrapper.oclock10 .btn {
+              margin: 0 auto;
+              float: left; }
+          .slider .item .list .wrapper.oclock11 {
+            top: 10%;
+            left: 10%;
+            text-align: left; }
+            .slider .item .list .wrapper.oclock11 .btn {
+              margin: 0 auto;
+              float: left; } }
     .slider .item .views-field-field-slider-headline {
       font-family: MillerB, sans-serif;
       font-size: 1.25em;
