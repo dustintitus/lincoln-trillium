@@ -54,6 +54,7 @@
       -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
       @include respond($sm){
         background: none;
+        position: unset;
       } 
       .views-field {
         max-width: 430px;

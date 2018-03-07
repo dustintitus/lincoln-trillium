@@ -1038,7 +1038,8 @@ a {
       -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)"; }
       @media (min-width: 768px) {
         .slider .item .list {
-          background: none; } }
+          background: none;
+          position: unset; } }
       .slider .item .list .views-field {
         max-width: 430px;
         margin-left: auto; }
