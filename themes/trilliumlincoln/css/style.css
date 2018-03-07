@@ -1043,11 +1043,11 @@ a {
         max-width: 430px;
         margin-left: auto; }
       .slider .item .list .wrapper {
-        position: absolute;
-        width: 100%;
         padding: 5%; }
         @media (min-width: 768px) {
           .slider .item .list .wrapper {
+            position: absolute;
+            width: 100%;
             margin-bottom: 50px; } }
         .slider .item .list .wrapper .btn-lg {
           width: auto;

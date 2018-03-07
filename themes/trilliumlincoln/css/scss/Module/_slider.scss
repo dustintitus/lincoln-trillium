@@ -61,10 +61,10 @@
       }
 
       .wrapper{
-        position: absolute;
-        width:100%;
         padding: 5%;
         @include respond($sm){
+          position: absolute;
+          width:100%;
           margin-bottom: 50px;
         }
         .btn-lg {
