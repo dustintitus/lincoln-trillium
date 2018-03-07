@@ -9,16 +9,24 @@
   }
   .item {
     .light{
+      @include respond($sm){
       color: #ffffff !important;
+      }
     }
     .dark{
+      @include respond($sm){
       color: #2e201b;
+      }
     }
     .theme{
+      @include respond($sm){
       color: #f15e46;
+      }
     }
     .secondary{
+      @include respond($sm){
       color: #5e504c;
+      }
     }
     right: 0;
     bottom: 0;
