@@ -1001,6 +1001,9 @@ a {
   position: relative;
   overflow: hidden;
   height: calc(100vh - 174px); }
+  @media screen and (orientation: landscape) {
+    .slider {
+      min-height: 500px; } }
   .slider h3 {
     margin: 0; }
   .slider .item {

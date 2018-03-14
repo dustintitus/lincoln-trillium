@@ -1,6 +1,9 @@
 .slider {
   position: relative;
   overflow: hidden;
+  @media screen and (orientation:landscape) {
+  min-height:500px;
+  }
   // @include respond($lg){
     height: calc(100vh - 174px);
   // }
