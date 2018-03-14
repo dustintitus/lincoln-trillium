@@ -248,3 +248,13 @@ function trilliumlincoln_preprocess_block(&$variables) {
     $variables['label'] = Xss::filter($string, $html_tags);
   }
 }
+
+
+function trilliumlincoln_preprocess_menu(&$vars) {
+  if(isset($vars['menu_name']) && $vars['menu_name'] === 'main') {
+    foreach($vars['items'] as $key => $item){
+      $title = $item['title'];
+      $vars['items'][$key]['title'] = Markup::create($title);
+    }
+  }
+}

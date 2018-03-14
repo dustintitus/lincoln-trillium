@@ -1,0 +1,7 @@
+trulliumlincold.mobile:
+  label: mobile
+  mediaQuery: 'all and (max-width: 768px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x

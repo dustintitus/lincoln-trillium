@@ -990,6 +990,9 @@ a {
           @media (min-width: 768px) {
             .navbar .navbar-collapse .menu .icon-search:before {
               display: inline-block; } }
+      .navbar .navbar-collapse .menu .icon-mobile,
+      .navbar .navbar-collapse .menu .icon-android {
+        color: #f15e46; }
 
 .use-ajax .ajax-throbber {
   display: none; }
@@ -1177,6 +1180,10 @@ a {
             .slider .item .list .wrapper.oclock11 .btn {
               margin: 0 auto;
               float: left; } }
+    .slider .item:first-child img {
+      z-index: 10; }
+    .slider .item:first-child .list .wrapper {
+      z-index: 10; }
     .slider .item .views-field-field-slider-headline {
       font-family: MillerB, sans-serif;
       font-size: 1.25em;

@@ -1,0 +1,17 @@
+uuid: 589e8143-f2ca-45d0-83cf-f242529370e6
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: focal_point_slider
+label: 'focal point slider'
+effects:
+  8aa7d7ab-dc19-478c-bc55-a08990282d12:
+    uuid: 8aa7d7ab-dc19-478c-bc55-a08990282d12
+    id: focal_point_crop
+    weight: 1
+    data:
+      width: 642
+      height: 785
+      crop_type: focal_point

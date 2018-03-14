@@ -10,12 +10,12 @@ dependencies:
     - field.field.node.slider.field_slider_image
     - field.field.node.slider.field_slider_subhead_color
     - field.field.node.slider.field_slider_text_position
-    - image.style.thumbnail
+    - image.style.large
     - node.type.slider
   module:
+    - focal_point
     - link_attributes
     - path
-    - svg_image
     - text
 id: node.slider.default
 targetEntityType: node
@@ -69,10 +69,12 @@ content:
   field_slider_image:
     weight: 7
     settings:
+      preview_image_style: large
+      preview_link: true
+      offsets: '50,50'
       progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_slider_subhead_color:
     weight: 4

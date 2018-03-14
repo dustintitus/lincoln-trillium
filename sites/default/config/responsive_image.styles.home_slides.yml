@@ -1,0 +1,23 @@
+uuid: 8edff33b-4f4b-437f-adae-df8928734570
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.focal_point_slider
+  theme:
+    - trilliumlincoln
+id: home_slides
+label: 'Home Slides'
+image_style_mappings:
+  -
+    breakpoint_id: trulliumlincold.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: focal_point_slider
+  -
+    breakpoint_id: trulliumlincold.mobile
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: focal_point_slider
+breakpoint_group: trilliumlincoln
+fallback_image_style: '_original image_'

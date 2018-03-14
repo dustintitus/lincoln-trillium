@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.slider.field_slider_text_position
     - node.type.slider
   module:
+    - field_formatter_class
     - link
     - svg_image
     - text
@@ -52,13 +53,15 @@ content:
     weight: 2
     label: hidden
     settings:
+      image_style: ''
+      image_link: ''
+      svg_render_as_image: '1'
       svg_attributes:
         width: ''
         height: ''
-      svg_render_as_image: true
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     type: image
     region: content
   links:

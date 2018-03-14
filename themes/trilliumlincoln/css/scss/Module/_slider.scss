@@ -232,6 +232,14 @@
         }
       }
     }
+	&:first-child{
+		img{
+			z-index:10;
+		}
+    .list .wrapper{
+      z-index:10;
+    }
+	}
 
     .views-field-field-slider-headline {
       font-family: $font-family-miller;
