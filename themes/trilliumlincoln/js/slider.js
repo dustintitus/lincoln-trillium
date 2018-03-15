@@ -45,10 +45,17 @@
 									height: 'auto',
 								});
 							} else {
-								item.elem.css({
-									width: 'auto',
-									height: '100%',
-								});
+                if(getWindowWidth() <= item.width)
+                  item.elem.css({
+                    width: 'auto',
+                    height: '100%',
+                  });
+                else{
+                  item.elem.css({
+                    width: '100%',
+                    height: 'auto',
+                  });
+                }
 							}
 						});
 					}
