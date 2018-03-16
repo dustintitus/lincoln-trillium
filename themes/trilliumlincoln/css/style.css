@@ -1038,10 +1038,7 @@ a {
       height: auto;
       padding: 0px;
       list-style: none;
-      /* default fallback */
-      background: white transparent;
-      /* nice browsers */
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(46, 32, 27, 0.2);
       /* IE 6/7 */
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF);
       /* IE8 */
@@ -1054,7 +1051,7 @@ a {
         max-width: 430px;
         margin-left: auto; }
       .slider .item .list .wrapper {
-        padding: 5%; }
+        padding: 15px; }
         @media (min-width: 768px) {
           .slider .item .list .wrapper {
             position: absolute;
@@ -1261,7 +1258,7 @@ a {
 .btn {
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  transition: 0.3s; }
+  transition: color .3s, background-color .3s, border-color .3s; }
 
 .btn-info {
   background-color: #f15e46;

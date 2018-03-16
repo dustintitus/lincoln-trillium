@@ -6,9 +6,10 @@
 
 					var slider = $(this),
 						item = slider.find('.item'),
+						item_caption = item.find('> .list'),
 						header = $('.header'),
 						$window = $(window),
-						images = slider.find('.item picture img');
+						images = slider.find('.item picture img');						
 
 					var opt = {
 						slides: '.item',
@@ -27,17 +28,31 @@
 
 					slider.cycle(opt);
 
+					function modifiedEachItems() {
+						item.each(function(i,elem) {	
+							if ( getWindowWidth() < 768 ){
+								images[i].style.bottom = (item_caption[i].clientHeight)+'px';														
+							} else {
+								images[i].style.bottom = null;
+							}
+							$(images[i]).resizeToParent({parent: '.slider'});
+						});						
+					}
+
 					function coverImg(slide_H){
 						var containerHeight = $window.outerHeight();
 						var containerWidth = $window.outerWidth();
 						images.each(function(i,elem){
 							var item = {
 								elem: $(elem),
-								//width: parseInt(elem.getAttribute('width')),
-								//height: parseInt(elem.getAttribute('height')),
-								width: parseInt(elem.width),
-								height: parseInt(elem.height),
+								width: parseInt(elem.dataset.width),
+								height: parseInt(elem.dataset.height),
 							};
+
+							if( getWindowWidth() < 768 ){
+								item.width = parseInt(elem.dataset.modileWidth);
+								item.height = parseInt(elem.dataset.mobileHeight);
+							}
 
 							if ( getWindowWidth() / item.width > slide_H / item.height ) {
 								item.elem.css({
@@ -45,17 +60,10 @@
 									height: 'auto',
 								});
 							} else {
-                if(getWindowWidth() <= item.width)
-                  item.elem.css({
-                    width: 'auto',
-                    height: '100%',
-                  });
-                else{
-                  item.elem.css({
-                    width: '100%',
-                    height: 'auto',
-                  });
-                }
+								item.elem.css({
+									width: 'auto',
+									height: '100%',
+								});
 							}
 						});
 					}
@@ -63,7 +71,8 @@
 					$window.on( 'resize', function() {
 						slide_H = +getWindowHeight() - +header.height();
 						slider.height(slide_H);
-						coverImg(slide_H);
+						// coverImg(slide_H);
+						modifiedEachItems();
 					}).trigger('resize');
 
 					

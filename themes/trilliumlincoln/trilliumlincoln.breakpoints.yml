@@ -1,6 +1,6 @@
 trulliumlincold.mobile:
   label: mobile
-  mediaQuery: 'all and (max-width: 768px)'
+  mediaQuery: 'all and (max-width: 767px)'
   weight: 0
   multipliers:
     - 1x

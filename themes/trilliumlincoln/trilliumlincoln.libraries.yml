@@ -11,6 +11,7 @@ global-scripts:
     js/vendor/jquery.cycle2.min.js: {}
     js/vendor/jquery.cycle2.carousel.min.js: {}
     js/vendor/js.cookie.js: {}
+    js/vendor/jquery.resizeimagetoparent.js: {}
     js/slider.js: {}
     js/commerce.js: {}
   dependencies:

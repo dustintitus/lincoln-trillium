@@ -258,3 +258,7 @@ function trilliumlincoln_preprocess_menu(&$vars) {
     }
   }
 }
+
+function trilliumlincoln_preprocess_responsive_image(&$variables){
+  $variables['img_element']['#attributes'] = ['data-width' =>$variables['width'], 'data-height'=>$variables['height'],'data-modile-width' =>642, 'data-mobile-height'=>785];
+}

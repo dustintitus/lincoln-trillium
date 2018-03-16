@@ -1,7 +1,7 @@
 .btn {
 	letter-spacing: 0.11em;
 	text-transform: uppercase;
-	transition: 0.3s;
+	transition: color .3s, background-color .3s, border-color .3s;
 }
 .btn-info {
 	background-color: $c-red;
