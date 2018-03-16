@@ -1054,6 +1054,7 @@ a {
         padding: 15px; }
         @media (min-width: 768px) {
           .slider .item .list .wrapper {
+            padding: 5%;
             position: absolute;
             width: 100%;
             margin-bottom: 50px; } }

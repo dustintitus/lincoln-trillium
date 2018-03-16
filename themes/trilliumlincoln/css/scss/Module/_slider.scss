@@ -72,6 +72,7 @@
       .wrapper{
         padding: 15px;
         @include respond($sm){
+          padding: 5%;
           position: absolute;
           width:100%;
           margin-bottom: 50px;
