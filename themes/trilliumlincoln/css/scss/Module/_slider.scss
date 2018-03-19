@@ -23,7 +23,7 @@
     }
     .theme{
       @include respond($sm){
-      color: #f15e46; 
+      color: #f15e46;
       }
     }
     .secondary{
@@ -42,7 +42,7 @@
       // margin-left: -50vw;
       @include respond($sm){
         // margin-left: 0;
-      } 
+      }
     }
     .list {
       position: absolute;
@@ -58,12 +58,12 @@
       background: rgba(46,32,27,0.2);
       /* IE 6/7 */
       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF);
-      /* IE8 */    
+      /* IE8 */
       -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
       @include respond($sm){
         background: none;
         position: unset;
-      } 
+      }
       .views-field {
         max-width: 430px;
         margin-left: auto;
@@ -107,7 +107,7 @@
             }
           }
           &.oclock0 {
-            top: 20%;
+            top: 10%;
             left: 0;
             right: 0;
             text-align: center;
@@ -245,16 +245,16 @@
     .views-field-field-slider-headline {
       font-family: $font-family-miller;
       font-size: em(40/2);
-      
+
       line-height: (132/110);
       color: $c-brown;
       font-weight: bolder;
       @include respond($sm){
         font-size: em(60/2);
-      } 
+      }
       @include respond($md){
         font-size: em(80/2);
-      }   
+      }
       @include respond($lg){
         font-size: em(110/2);
       }
@@ -268,10 +268,10 @@
       padding-bottom: 5px;
       @include respond($sm){
         font-size: em(46/2);
-      } 
+      }
       @include respond($md){
         font-size: em(60/2);
-      }   
+      }
       @include respond($lg){
         font-size: em(70/2);
       }
@@ -279,14 +279,14 @@
     }
     .views-field-field-button{
       margin-top: 4px;
-    } 
+    }
   }
   .slider-control {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);    
+    transform: translateY(-50%);
     z-index: 101;
-    font-size: em(25);    
+    font-size: em(25);
     color: $c-red;
     &.prev {
       left: 3px;
