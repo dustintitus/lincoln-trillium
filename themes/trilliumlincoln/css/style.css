@@ -178,7 +178,7 @@ th {
 
 /* Vendor Libraries */
 /* Example for rubik-500 - latin */
-/*
+/* 
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
@@ -188,8 +188,8 @@ th {
        url('../fonts/Rubik/rubik-v2-latin-500.eot?#iefix') format('embedded-opentype'),
        url('../fonts/Rubik/rubik-v2-latin-500.woff2') format('woff2'),
        url('../fonts/Rubik/rubik-v2-latin-500.woff') format('woff'),
-       url('../fonts/Rubik/rubik-v2-latin-500.ttf') format('truetype'),
-       url('../fonts/Rubik/rubik-v2-latin-500.svg#Rubik') format('svg');
+       url('../fonts/Rubik/rubik-v2-latin-500.ttf') format('truetype'), 
+       url('../fonts/Rubik/rubik-v2-latin-500.svg#Rubik') format('svg'); 
 }
  */
 /**********************
@@ -1420,7 +1420,7 @@ a {
 
 .region-highlighted .sub-menu {
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   right: 0;
   z-index: 101;
   text-align: center;
@@ -1431,12 +1431,12 @@ a {
   .region-highlighted .sub-menu .menu li {
     float: left;
     transform: skew(-26deg);
-    border-left: 2px solid #fff; }
+    border-left: 2px solid #5e504c; }
     .region-highlighted .sub-menu .menu li a {
       max-width: 100px;
       transform: skew(26deg);
       height: 50px;
-      color: #fff;
+      color: #5e504c;
       font-size: 0.875em;
       text-transform: uppercase; }
       .region-highlighted .sub-menu .menu li a:hover, .region-highlighted .sub-menu .menu li a:focus {

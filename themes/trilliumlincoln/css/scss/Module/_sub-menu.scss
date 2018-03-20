@@ -1,6 +1,6 @@
 .region-highlighted .sub-menu {
 	position: absolute;
-	bottom: 0;
+	bottom: 1px;
 	right: 0;
 	z-index: 101;
 	text-align: center;
@@ -12,12 +12,12 @@
 		li {
 			float: left;			
 			transform: skew(-26deg);
-			border-left: 2px solid $c-white;
+			border-left: 2px solid $c-brown-l;
 			a{
 				max-width: 100px;
 				transform: skew(26deg);
 				height: 50px;
-				color: $c-white;
+				color: $c-brown-l;
 				font-size: em(14);
 				text-transform: uppercase;
 				&:hover, &:focus {
