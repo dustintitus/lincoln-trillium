@@ -17,3 +17,13 @@ trilliumlincoln_utility.open_modal_test_drive:
     _permission: 'access content'
   options:
     _admin_route: TRUE
+
+trilliumlincoln_utility.open_modal_email_sales:
+  path: 'trilliumlincoln_utility/email_sales_modal_form'
+  defaults:
+    _title: 'Email Sales'
+    _controller: '\Drupal\trilliumlincoln_utility\Controller\LincolnController::openModalEmailSalesForm'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE

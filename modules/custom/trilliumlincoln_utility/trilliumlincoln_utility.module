@@ -54,6 +54,7 @@ function trilliumlincoln_utility_preprocess_html(&$variables) {
 function trilliumlincoln_utility_webform_submission_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
   switch ($form_id) {
     case 'webform_submission_test_drive_add_form':
+    case 'webform_submission_email_sales_add_form':
       honeypot_add_form_protection(
         $form,
         $form_state,

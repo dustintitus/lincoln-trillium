@@ -33,6 +33,9 @@
       {{- product.field_car_type -}}
       {{- product.body -}}
     </div>
+    <div class="car-action">
+      <a data-dialog-type="modal" href="{{ url('<front>') }}trilliumlincoln_utility/email_sales_modal_form?pid={{ product_entity.id }}" class="use-ajax btn btn-info btn-lg">Email Sales</a>
+    </div>
     {% if product.field_car_msrp %}
     {{- product.field_car_msrp -}}
     {% endif %}
