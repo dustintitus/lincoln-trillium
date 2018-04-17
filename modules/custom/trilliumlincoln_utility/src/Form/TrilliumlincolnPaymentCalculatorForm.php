@@ -54,6 +54,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $msrp = 0;
     $hide_lease_section = FALSE;
     $hide_finance_section = FALSE;
+    $default_finance_term = NULL;
     if ($product = \Drupal::routeMatch()->getParameter('commerce_product')) {
       $variations_field = $product->get('variations')->getValue();
       if (!empty($variations_field)) {
@@ -88,10 +89,19 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
 
       foreach ($finance_term_rate as $key => $value) {
         if ($product->hasField('field_finance_' . $key . '_term_rate')) {
-          $finance_term_options[$key] = $key;
           $item = $product->get('field_finance_' . $key . '_term_rate')->getValue();
           if (!empty($item[0]['value'])) {
-            $finance_term_rate[$key] = ['finance-rate' => $item[0]['value']];
+            $finance_term_rate_value = (float)($item[0]['value']);
+            if ($finance_term_rate_value > 0) {
+              $finance_term_options[$key] = $key;
+              $finance_term_rate[$key] = ['finance-rate' => $item[0]['value']];
+              if (empty($default_finance_term)) {
+                $default_finance_term = $key;
+              }
+            }
+            else{
+              unset($finance_term_rate[$key]);
+            }
           }
           else{
             $hide_finance_section = TRUE;
@@ -119,7 +129,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       // $price+=449;
     }
 
-    if (!$hide_finance_section) {
+    if (!$hide_lease_section) {
       $default_lease_cash_down = 0;
       $default_lease_term = 48;
       $capitalized_cost = $price - $default_lease_cash_down;
@@ -177,10 +187,12 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     }
 
     $default_finace_cash_down = 0;
-    $default_finance_term = 48;
     $capitalized_cost = $price - $default_finace_cash_down;
     $finance_rate = isset($finance_term_rate[$default_finance_term]['finance-rate']) ? $finance_term_rate[$default_finance_term]['finance-rate']: 0;
 
+    if (empty($finance_rate)) {
+      $hide_finance_section = TRUE;
+    }
     // $first_part = (1 + ($finance_rate / 100 / 1));
     // $secondPart = $default_finance_term/12;
     // $compoundInterest = $capitalized_cost * pow($first_part, $secondPart);
