@@ -98,8 +98,12 @@ function trilliumlincoln_preprocess_field(&$variables){
 }
 
 function trilliumlincoln_preprocess_html(&$variables) {
+  global $base_url, $base_path;
+
   $current_path = \Drupal::service('path.current')->getPath();
   $variables['current_path'] = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+
+  $variables['#attached']['drupalSettings']['path']['logoUrl'] = $base_url . '/' . \Drupal::theme()->getActiveTheme()->getPath() . '/images/ico-lincoln.png';
 }
 
 function trilliumlincoln_page_attachments_alter(array &$page) {

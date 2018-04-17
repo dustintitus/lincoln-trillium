@@ -4,6 +4,7 @@ global-styling:
     theme:
       fonts/fontface.css: {}
       css/style.css: {}
+      css/print.css: { media: print }
 
 global-scripts:
   js:

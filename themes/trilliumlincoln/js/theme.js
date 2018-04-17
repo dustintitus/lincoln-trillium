@@ -44,6 +44,7 @@
 	}
 	$(document).ready(function()
 	{
+		$('.company-logo').after('<img class="print-logo" style="display:none" src="' + drupalSettings.path.logoUrl +'" />');
 	  //setTimeout(tryPopup, 5000);
 	});
 

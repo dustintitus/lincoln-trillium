@@ -546,6 +546,12 @@ a {
     .sitemap .sitemap-box .content a {
       font-size: 1em; } }
 
+.product-single .print-btn {
+  margin-bottom: 20px;
+  display: block;
+  max-width: 250px;
+  width: 100%; }
+
 #block-contactinfo .company-logo {
   max-width: 192px; }
   #block-contactinfo .company-logo img {

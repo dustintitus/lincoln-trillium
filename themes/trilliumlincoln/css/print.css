@@ -1,0 +1,15 @@
+.footer,
+.header .navbar,
+.region-content .tabs,
+.product-single .print-btn,
+.product-single .car-action,
+.trilliumlincoln-utility-payment-calculator-form,
+.car-nav{
+  display: none;
+}
+.print-logo{
+  display: block !important;
+}
+#block-contactinfo .field--name-body a{
+  display: none;
+}
