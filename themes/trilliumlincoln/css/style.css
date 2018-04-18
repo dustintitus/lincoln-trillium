@@ -549,8 +549,8 @@ a {
 .product-single .print-btn {
   margin-bottom: 20px;
   display: block;
-  max-width: 250px;
-  width: 100%; }
+  width: 100%;
+  max-width: none; }
 
 #block-contactinfo .company-logo {
   max-width: 192px; }
