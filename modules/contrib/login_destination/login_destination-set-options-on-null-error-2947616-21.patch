@@ -1,0 +1,119 @@
+diff --git a/login_destination.module b/login_destination.module
+index 3fa5a08..deac2de 100644
+--- a/login_destination.module
++++ b/login_destination.module
+@@ -72,19 +72,17 @@ function login_destination_toolbar_alter(&$items) {
+   $items['user']['tray']['user_links']['#cache']['max-age'] = 0;
+ 
+   if (\Drupal::currentUser()->isAnonymous()) {
+-    $url_login = Url::fromRoute('user.login');
+-    // Change route name, since route "user.page" always redirects to "user.login".
+-    $items['user']['tray']['user_links']['#links']['login']['url'] = $url_login;
+     $url = &$items['user']['tray']['user_links']['#links']['login']['url'];
+-  }
+-  else {
+-    $url = &$items['user']['tray']['user_links']['#links']['logout']['url'];
+-  }
+-  // Get current path.
+-  $current = \Drupal::service('path.current')->getPath();
+ 
+-  // Add current param to be able to evaluate previous page.
+-  $url->setOptions(['query' => ['current' => $current]]);
++    // Change route name, since route "user.page" always redirects to "user.login".
++    $url = Url::fromRoute('user.login');
++
++    // Get current path.
++    $current = \Drupal::service('path.current')->getPath();
++
++    // Add current param to be able to evaluate previous page.
++    $url->setOptions(['query' => ['current' => $current]]);
++  }
+ }
+ 
+ /**
+diff --git a/login_destination.services.yml b/login_destination.services.yml
+index 0524818..effe992 100644
+--- a/login_destination.services.yml
++++ b/login_destination.services.yml
+@@ -2,3 +2,8 @@ services:
+   login_destination.manager:
+     class: Drupal\login_destination\LoginDestinationManager
+     arguments: ['@entity_type.manager', '@path.alias_manager', '@path.matcher', '@path.current', '@config.factory', '@request_stack']
++  login_destination.toolbar_link_builder:
++    class: Drupal\login_destination\LoginDestinationToolbarLinkBuilder
++    decorates: user.toolbar_link_builder
++    decoration_priority: 5
++    arguments: ['@login_destination.toolbar_link_builder.inner', '@current_user']
+diff --git a/src/LoginDestinationToolbarLinkBuilder.php b/src/LoginDestinationToolbarLinkBuilder.php
+new file mode 100644
+index 0000000..290f6da
+--- /dev/null
++++ b/src/LoginDestinationToolbarLinkBuilder.php
+@@ -0,0 +1,67 @@
++<?php
++
++namespace Drupal\login_destination;
++
++use Drupal\Core\Session\AccountProxyInterface;
++use Drupal\user\ToolbarLinkBuilder;
++
++/**
++ * ToolbarLinkBuilder fills out the placeholders generated in user_toolbar().
++ */
++class LoginDestinationToolbarLinkBuilder extends ToolbarLinkBuilder {
++
++  /**
++   * The decorated service.
++   */
++  protected $innerService;
++
++  /**
++   * ToolbarHandler constructor.
++   *
++   * @param \Drupal\user\ToolbarLinkBuilder $inner_service
++   *   The decorated service.
++   * @param \Drupal\Core\Session\AccountProxyInterface $account
++   *   The current user.
++   */
++  public function __construct(ToolbarLinkBuilder $inner_service, AccountProxyInterface $account) {
++    $this->innerService = $inner_service;
++    parent::__construct($account);
++  }
++
++  /**
++   * Pass any undefined method calls onto the inner service.
++   *
++   * @param string $method
++   *   The method being called.
++   * @param array $args
++   *   The arguments passed to the method.
++   *
++   * @return mixed
++   *   The inner services response.
++   */
++  public function __call($method, array $args = []) {
++    return call_user_func_array(array($this->innerService, $method), $args);
++  }
++
++  /**
++   * Lazy builder callback for rendering toolbar links.
++   *
++   * @return array
++   *   A renderable array as expected by the renderer service.
++   */
++  public function renderToolbarLinks() {
++    $build = $this->innerService->renderToolbarLinks();
++
++    if ($this->account->getAccount()->isAuthenticated()) {
++      $url = &$build['#links']['logout']['url'];
++
++      $current = \Drupal::service('path.current')->getPath();
++
++      // Add current param to be able to evaluate previous page.
++      $url->setOptions(['query' => ['current' => $current]]);
++    }
++
++    return $build;
++  }
++
++}
