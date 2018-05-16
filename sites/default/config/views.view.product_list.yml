@@ -307,6 +307,7 @@ display:
               anonymous: '0'
               administrator: '0'
               staff: '0'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -350,6 +351,9 @@ display:
               authenticated: '0'
               administrator: '0'
               staff: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
           is_grouped: false
           group_info:
             label: ''
