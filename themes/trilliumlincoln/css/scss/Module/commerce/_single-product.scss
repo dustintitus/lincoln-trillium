@@ -1,5 +1,24 @@
 .product-single{
-
+  &.product-sold{
+    .product-carousel{
+      .product-carousel-picture-wrapper{
+        position: relative;
+        overflow: hidden;
+        &::before{
+          content: "";
+          display: block;
+          top: 0;
+          left: 3px;
+          width: 100px;
+          height: 100px;
+          background: url(../images/sold.png) no-repeat 0 0;
+          background-size: 100% auto;
+          position: absolute;
+          z-index: 100;
+        }
+      }
+    }
+  }
   .first-col{
     @include respond($sm){
       padding-right: 10px;
@@ -172,6 +191,23 @@
     }
     .next{
       float: right;
+    }
+  }
+}
+.product-sold{
+  .field-car-images{
+    position: relative;
+    &::before{
+      content: "";
+      display: block;
+      top: 0;
+      left: 0px;
+      width: 100px;
+      height: 100px;
+      background: url(../images/sold.png) no-repeat 0 0;
+      background-size: 100% auto;
+      position: absolute;
+      z-index: 100;
     }
   }
 }

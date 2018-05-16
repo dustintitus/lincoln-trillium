@@ -1,0 +1,27 @@
+uuid: cb34b5d3-a8b8-44c5-ac18-b6edfcf4d6d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+    - options
+id: commerce_product.field_car_status
+field_name: field_car_status
+entity_type: commerce_product
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: sold
+      label: Sold
+    -
+      value: available
+      label: Available
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

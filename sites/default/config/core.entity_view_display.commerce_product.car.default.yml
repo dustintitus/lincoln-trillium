@@ -23,6 +23,7 @@ dependencies:
     - field.field.commerce_product.car.field_car_number_of_doors
     - field.field.commerce_product.car.field_car_odometer_reading
     - field.field.commerce_product.car.field_car_odometer_type
+    - field.field.commerce_product.car.field_car_status
     - field.field.commerce_product.car.field_car_stock_number
     - field.field.commerce_product.car.field_car_total_length
     - field.field.commerce_product.car.field_car_traction
@@ -148,6 +149,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
+  field_car_status:
+    weight: 14
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
     region: content
   field_car_stock_number:
     type: string

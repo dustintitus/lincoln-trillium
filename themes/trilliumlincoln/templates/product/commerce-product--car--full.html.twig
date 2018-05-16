@@ -19,7 +19,15 @@
  * @ingroup themeable
  */
 #}
-<article{{ attributes.addClass('product-single') }}>
+
+{%
+  set product_classes = [
+    'product-single',
+    product_entity.field_car_status.value == 'sold' ? 'product-sold',
+  ]
+%}
+
+<article{{ attributes.addClass(product_classes) }}>
 <div class="row">
 
   <div class="col-xs-12 col-sm-4 second-col float-right">
@@ -54,6 +62,7 @@
       <div class="field--label col-xs-12">specifications</div>
     {{- product|without('variation_attributes')
     |without('field_car_images') 
+    |without('field_car_status') 
     |without('field_car_msrp') 
     |without('title') 
     |without('field_car_type') 

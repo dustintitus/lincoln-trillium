@@ -1678,6 +1678,20 @@ a {
 .path-product .modal-backdrop.in {
   opacity: 0.9; }
 
+.product-single.product-sold .product-carousel .product-carousel-picture-wrapper {
+  position: relative;
+  overflow: hidden; }
+  .product-single.product-sold .product-carousel .product-carousel-picture-wrapper::before {
+    content: "";
+    display: block;
+    top: 0;
+    left: 3px;
+    width: 100px;
+    height: 100px;
+    background: url(../images/sold.png) no-repeat 0 0;
+    background-size: 100% auto;
+    position: absolute;
+    z-index: 100; }
 @media (min-width: 768px) {
   .product-single .first-col {
     padding-right: 10px; } }
@@ -1781,6 +1795,20 @@ a {
     float: left; }
   .product-single .car-nav .next {
     float: right; }
+
+.product-sold .field-car-images {
+  position: relative; }
+  .product-sold .field-car-images::before {
+    content: "";
+    display: block;
+    top: 0;
+    left: 0px;
+    width: 100px;
+    height: 100px;
+    background: url(../images/sold.png) no-repeat 0 0;
+    background-size: 100% auto;
+    position: absolute;
+    z-index: 100; }
 
 .product-carousel {
   margin-left: -3px; }
