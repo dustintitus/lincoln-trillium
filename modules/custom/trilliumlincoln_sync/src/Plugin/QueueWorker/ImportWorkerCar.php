@@ -242,6 +242,7 @@ class ImportWorkerCar extends ImportWorkerBase {
       $msrp = new Price($item['msrp'], 'CAD');
       $new_entity->set('field_car_msrp', $msrp->toArray());
 
+      $new_entity->status->setValue(1);
       // $variations_field = $entity->get('variations')->getValue();
       // $need_create_variations = FALSE;
       // if (!empty($variations_field)) {
