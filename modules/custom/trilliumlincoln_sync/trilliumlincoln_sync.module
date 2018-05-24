@@ -52,6 +52,7 @@ function trilliumlincoln_sync_cron() {
 
         // Car.
         if ($importer_name == 'car') {
+          $trilliumlincoln_sync_source_service->unpublishCars();
           $result = $trilliumlincoln_sync_source_service->getCarIds();
 
           if (!empty($result)) {

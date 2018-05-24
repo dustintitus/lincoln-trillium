@@ -290,6 +290,7 @@ class TrilliumlincolnSyncSynchronizationForm extends ConfigFormBase {
         $importer = $importers[$importer_name];
 
         $trilliumlincoln_sync_source_service = \Drupal::service('trilliumlincoln_sync.source');
+        $trilliumlincoln_sync_source_service->unpublishCars();
         $result = $trilliumlincoln_sync_source_service->getCarIds();
 
         $num_items = 0;

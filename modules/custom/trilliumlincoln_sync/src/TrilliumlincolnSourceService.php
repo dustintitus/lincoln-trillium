@@ -131,6 +131,38 @@ class TrilliumlincolnSourceService {
     return $result;
   }
 
+  /**
+   * Get CarIds function.
+   */
+  public function unpublishCars() {
+    $result = [];
+    $result_csv = $this->parseCSV(['make' => 'LINCOLN']);
+    if ($result_csv) {
+      foreach ($result_csv as $key => $value) {
+        $sku = $value['stock_number'];
+        $result[] = $sku;
+      }
+    }
+
+    $query = \Drupal::database()->select('commerce_product', 'cp');
+    $query->fields('cpfsn', ['entity_id']);
+    $query->join('commerce_product_field_data', 'cpfd', 'cpfd.product_id = cp.product_id');
+    $query->join('commerce_product__field_car_stock_number', 'cpfsn', 'cpfsn.entity_id = cp.product_id');
+    if (!empty($result)) {
+      $query->condition('cpfsn.field_car_stock_number_value', $result,'NOT IN');
+    }
+    $query->condition('cp.type', 'car');
+    $query->condition('cpfd.status', 1);
+    $products = $query->execute()->fetchAll();
+
+    if (!empty($products)) {
+      foreach ($products as $key => $value) {
+        $product = \Drupal\commerce_product\Entity\Product::load($value->entity_id);
+        $product->setPublished(FALSE);
+        $product->save();
+      }
+    }
+  }
 
   public function getMapFields(){
     $fields = [
