@@ -113,15 +113,15 @@ $settings['rebuild_access'] = TRUE;
  * directory.
  */
 $settings['skip_permissions_hardening'] = TRUE;
-$settings['update_free_access'] = TRUE;
 
 $databases['default']['default'] = array (
-  'database' => 'drupal8_trilliumlincoln_new2',
-  'username' => 'developer',
-  'password' => 'developer',
+  'database' => 'drupal',
+  'username' => 'ddefault',
+  'password' => '3ZS01!#37t',
   'prefix' => '',
   'host' => 'localhost',
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+$settings['update_free_access'] = TRUE;
