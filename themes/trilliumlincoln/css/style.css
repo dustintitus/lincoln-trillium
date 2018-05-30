@@ -1439,9 +1439,13 @@ a {
         transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
 
 #block-webform-2 {
-  background-color: #2e201b; }
+  background-color: #2e201b;
+  padding: 3rem; }
   #block-webform-2 .form-item label {
     color: #fff; }
+  #block-webform-2 .webform-style-block form .form-item {
+    margin-right: 1.5%;
+    margin-left: 1.5%; }
 
 .contact-us-block .block-title {
   margin-bottom: 31px;
