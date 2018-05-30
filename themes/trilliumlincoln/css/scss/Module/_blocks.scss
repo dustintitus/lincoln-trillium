@@ -366,3 +366,82 @@
     }
   }
 }
+.webform-style-block{
+  form{
+    #edit-markup-header,
+    #edit-text{
+      display: none;
+    }
+    text-align: center;
+    h2{
+      font-family: $font-family-base;
+      font-weight: 300;
+      font-size: em(60);
+    }
+    h3{
+      font-size: em(30);
+      font-family: MillerBItalic, sans-serif;
+      &:after{
+        content: '';
+        width: 25%;
+        display: block;
+        height: 6px;
+        background-color: $c-red;
+        margin: 16px auto 24px auto;
+      }
+    }
+    p{
+      font-family: $font-family-base;
+      font-weight: 300;
+      font-size: em(15);
+      letter-spacing: 0.5px;
+      line-height: 1.2em;
+    }
+    .button-section{
+      padding: 10px 0 0 0;
+      .btn-block{
+        display: inline-block;
+        margin: 5px 5px 0px 5px;
+      }
+    }
+    .form-actions{
+      clear: both;
+      padding: 15px 30px;
+      border: none;
+      text-align: center;
+      button{
+        padding: 1em 5em;
+      }
+    }
+    .form-item{
+      margin-right: 3%;
+      &.form-type-textfield,
+      &.form-type-email,
+      &.form-type-tel{
+        @include respond($sm){
+          width: 47%;
+          float: left;
+        }
+      }
+      .form-control{
+        width: 100%;
+      }
+      .control-label{
+        margin-bottom: 5px;
+        width: 100%;
+        display: block;
+        text-align: left;
+        &.form-required{
+          &:after{
+            margin-left: 4px;
+          }
+        }
+      }
+      &.has-error{
+        .control-label{
+          color: #a94442;
+        }
+      }
+    }
+  }
+}

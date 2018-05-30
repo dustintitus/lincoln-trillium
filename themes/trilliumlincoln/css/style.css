@@ -864,6 +864,61 @@ a {
     #block-homebuttonblock .field--name-body .btn {
       display: inline-block; }
 
+.webform-style-block form {
+  text-align: center; }
+  .webform-style-block form #edit-markup-header,
+  .webform-style-block form #edit-text {
+    display: none; }
+  .webform-style-block form h2 {
+    font-family: ProximaNova, sans-serif;
+    font-weight: 300;
+    font-size: 3.75em; }
+  .webform-style-block form h3 {
+    font-size: 1.875em;
+    font-family: MillerBItalic, sans-serif; }
+    .webform-style-block form h3:after {
+      content: '';
+      width: 25%;
+      display: block;
+      height: 6px;
+      background-color: #f15e46;
+      margin: 16px auto 24px auto; }
+  .webform-style-block form p {
+    font-family: ProximaNova, sans-serif;
+    font-weight: 300;
+    font-size: 0.9375em;
+    letter-spacing: 0.5px;
+    line-height: 1.2em; }
+  .webform-style-block form .button-section {
+    padding: 10px 0 0 0; }
+    .webform-style-block form .button-section .btn-block {
+      display: inline-block;
+      margin: 5px 5px 0px 5px; }
+  .webform-style-block form .form-actions {
+    clear: both;
+    padding: 15px 30px;
+    border: none;
+    text-align: center; }
+    .webform-style-block form .form-actions button {
+      padding: 1em 5em; }
+  .webform-style-block form .form-item {
+    margin-right: 3%; }
+    @media (min-width: 768px) {
+      .webform-style-block form .form-item.form-type-textfield, .webform-style-block form .form-item.form-type-email, .webform-style-block form .form-item.form-type-tel {
+        width: 47%;
+        float: left; } }
+    .webform-style-block form .form-item .form-control {
+      width: 100%; }
+    .webform-style-block form .form-item .control-label {
+      margin-bottom: 5px;
+      width: 100%;
+      display: block;
+      text-align: left; }
+      .webform-style-block form .form-item .control-label.form-required:after {
+        margin-left: 4px; }
+    .webform-style-block form .form-item.has-error .control-label {
+      color: #a94442; }
+
 .navbar {
   margin: 0;
   padding: 0;
@@ -1088,29 +1143,32 @@ a {
             .slider .item .list .wrapper.oclock12 .btn {
               margin: 0 auto;
               float: none; }
-          .slider .item .list .wrapper.oclock0 {
+            .slider .item .list .wrapper.oclock12 .views-field {
+              max-width: none !important;
+              margin: auto !important; }
+          .slider .item .list .wrapper.oclock0, .slider .item .list .wrapper.oclock6 {
             top: 10%;
             left: 0;
             right: 0;
             text-align: center; }
-            .slider .item .list .wrapper.oclock0 .btn {
+            .slider .item .list .wrapper.oclock0 .btn, .slider .item .list .wrapper.oclock6 .btn {
               margin: 0 auto;
               float: none; }
-            .slider .item .list .wrapper.oclock0 .views-field {
+            .slider .item .list .wrapper.oclock0 .views-field, .slider .item .list .wrapper.oclock6 .views-field {
               max-width: none !important;
               margin: auto !important; }
           .slider .item .list .wrapper.oclock1 {
-            top: 0;
+            top: 5%;
             left: auto;
-            right: 5%;
+            right: 10%;
             text-align: right; }
             .slider .item .list .wrapper.oclock1 .btn {
               margin: 0 auto;
               float: right; }
           .slider .item .list .wrapper.oclock2 {
-            top: 5%;
+            top: 15%;
             left: auto;
-            right: 0%;
+            right: 10%;
             text-align: right; }
             .slider .item .list .wrapper.oclock2 .btn {
               margin: 0 auto;
@@ -1118,7 +1176,7 @@ a {
           .slider .item .list .wrapper.oclock3 {
             top: 20%;
             left: auto;
-            right: 0%;
+            right: 5%;
             text-align: right; }
             .slider .item .list .wrapper.oclock3 .btn {
               margin: 0 auto;
@@ -1127,7 +1185,7 @@ a {
             top: auto;
             bottom: 5%;
             left: auto;
-            right: 0%;
+            right: 5%;
             text-align: right; }
             .slider .item .list .wrapper.oclock4 .btn {
               margin: 0 auto;
@@ -1136,20 +1194,14 @@ a {
             top: auto;
             bottom: 10%;
             left: auto;
-            right: 10%;
+            right: 5%;
             text-align: right; }
             .slider .item .list .wrapper.oclock5 .btn {
               margin: 0 auto;
               float: right; }
           .slider .item .list .wrapper.oclock6 {
             top: auto;
-            bottom: 5%;
-            left: auto;
-            right: 30%;
-            text-align: center; }
-            .slider .item .list .wrapper.oclock6 .btn {
-              margin: 0 auto;
-              float: none; }
+            bottom: 5%; }
           .slider .item .list .wrapper.oclock7 {
             top: auto;
             bottom: 10%;
@@ -1158,6 +1210,8 @@ a {
             .slider .item .list .wrapper.oclock7 .btn {
               margin: 0 auto;
               float: left; }
+            .slider .item .list .wrapper.oclock7 .views-field {
+              margin-left: 0; }
           .slider .item .list .wrapper.oclock8 {
             top: auto;
             bottom: 10%;
@@ -1166,6 +1220,8 @@ a {
             .slider .item .list .wrapper.oclock8 .btn {
               margin: 0 auto;
               float: left; }
+            .slider .item .list .wrapper.oclock8 .views-field {
+              margin-left: 0; }
           .slider .item .list .wrapper.oclock9 {
             top: 20%;
             left: 5%;
@@ -1173,6 +1229,8 @@ a {
             .slider .item .list .wrapper.oclock9 .btn {
               margin: 0 auto;
               float: left; }
+            .slider .item .list .wrapper.oclock9 .views-field {
+              margin-left: 0; }
           .slider .item .list .wrapper.oclock10 {
             top: 15%;
             left: 10%;
@@ -1180,13 +1238,17 @@ a {
             .slider .item .list .wrapper.oclock10 .btn {
               margin: 0 auto;
               float: left; }
+            .slider .item .list .wrapper.oclock10 .views-field {
+              margin-left: 0; }
           .slider .item .list .wrapper.oclock11 {
-            top: 10%;
+            top: 5%;
             left: 10%;
             text-align: left; }
             .slider .item .list .wrapper.oclock11 .btn {
               margin: 0 auto;
-              float: left; } }
+              float: left; }
+            .slider .item .list .wrapper.oclock11 .views-field {
+              margin-left: 0; } }
     .slider .item:first-child img {
       z-index: 10; }
     .slider .item:first-child .list .wrapper {
