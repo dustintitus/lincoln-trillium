@@ -35,9 +35,8 @@
     bottom: 0;
     overflow: hidden;
     img {
-      position: absolute;
-      bottom: 0;
       width: 100%;
+      position: relative;
       max-width: none;
       // margin-left: -50vw;
       @include respond($sm){
@@ -79,6 +78,8 @@
         }
         .btn-lg {
           width: auto;
+          max-width: none;
+          display: inline-block;
           padding: 0.5em 1em;
           line-height: 1em;
           @include respond($sm){

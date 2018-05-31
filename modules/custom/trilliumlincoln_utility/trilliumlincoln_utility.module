@@ -55,11 +55,11 @@ function trilliumlincoln_utility_webform_submission_form_alter(array &$form, For
   switch ($form_id) {
     case 'webform_submission_test_drive_add_form':
     case 'webform_submission_email_sales_add_form':
-      honeypot_add_form_protection(
-        $form,
-        $form_state,
-        ['honeypot', 'time_restriction']
-      );
+      // honeypot_add_form_protection(
+      //   $form,
+      //   $form_state,
+      //   ['honeypot', 'time_restriction']
+      // );
 
       $form['actions']['submit']['#attributes']['class'][] = 'use-ajax';
       $form['actions']['submit']['#attributes']['class'][] = 'btn';
