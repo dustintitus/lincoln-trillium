@@ -145,3 +145,20 @@
     max-width: none;
   }
 }
+.webform-submission-form{
+  .captcha{
+    clear: both;
+    overflow: hidden;
+    img{
+      margin-bottom: 15px;
+      @include respond($sm){
+        float: left;
+        margin-right: 3%;
+        margin-bottom: 0px;
+      }
+    }
+    label{
+      color: #fff;
+    }
+  }
+}

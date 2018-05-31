@@ -10,6 +10,7 @@ module:
   block_content: 0
   bootstrap_paragraphs: 0
   breakpoint: 0
+  captcha: 0
   ckeditor: 0
   color: 0
   comment: 0
@@ -43,8 +44,8 @@ module:
   focal_point: 0
   help: 0
   history: 0
-  honeypot: 0
   image: 0
+  image_captcha: 0
   inline_entity_form: 0
   kint: 0
   link: 0
