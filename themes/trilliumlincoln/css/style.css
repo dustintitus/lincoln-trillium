@@ -1533,7 +1533,7 @@ a {
       max-width: 100px;
       transform: skew(26deg);
       height: 50px;
-      color: #5e504c;
+      color: #fff;
       font-size: 0.875em;
       text-transform: uppercase; }
       .region-highlighted .sub-menu .menu li a:hover, .region-highlighted .sub-menu .menu li a:focus {
