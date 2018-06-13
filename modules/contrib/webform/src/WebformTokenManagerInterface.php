@@ -27,9 +27,6 @@ interface WebformTokenManagerInterface {
    *     array of token replacements after they are generated.
    *   - clear: A boolean flag indicating that tokens should be removed from the
    *     final text if no replacement value can be generated.
-   *   - webform_clear: A boolean flag indicating that only webform tokens
-   *     should be removed from the final text if no replacement value can be
-   *     generated. (Default is TRUE)
    *
    * @return string|array
    *   Text or array with tokens replaced.
@@ -47,5 +44,17 @@ interface WebformTokenManagerInterface {
    *   (optional) Description to appear after the token tree link.
    */
   public function buildTreeLink(array $token_types = ['webform', 'webform_submission'], $description = NULL);
+
+  /**
+   * Validate form that should have tokens in it.
+   *
+   * @param array $form
+   *   A form.
+   * @param array $token_types
+   *   An array containing token types that should be validated.
+   *
+   * @see token_element_validate()
+   */
+  public function elementValidate(array &$form, array $token_types = ['webform', 'webform_submission', 'webform_handler']);
 
 }

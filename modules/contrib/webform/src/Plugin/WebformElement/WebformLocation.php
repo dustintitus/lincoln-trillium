@@ -44,6 +44,7 @@ class WebformLocation extends WebformCompositeBase {
       'required_error' => '',
       // Attributes.
       'wrapper_attributes' => [],
+      'label_attributes' => [],
       // Location settings.
       'geolocation' => FALSE,
       'hidden' => FALSE,
@@ -99,7 +100,7 @@ class WebformLocation extends WebformCompositeBase {
   /**
    * {@inheritdoc}
    */
-  public function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  protected function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
 
     // Return empty value.

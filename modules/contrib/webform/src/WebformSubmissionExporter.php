@@ -256,7 +256,9 @@ class WebformSubmissionExporter implements WebformSubmissionExporterInterface {
       'range_latest' => '',
       'range_start' => '',
       'range_end' => '',
+      'order' => 'asc',
       'state' => 'all',
+      'locked' => '',
       'sticky' => '',
       'download' => TRUE,
       'files' => FALSE,
@@ -317,9 +319,23 @@ class WebformSubmissionExporter implements WebformSubmissionExporterInterface {
       // @see \Drupal\webform\Plugin\WebformExporterBase::buildConfigurationForm
       '#attributes' => ['class' => ['js-webform-exporter']],
     ];
+    // Exporter configuration forms.
+    $form['export']['format']['exporters'] = [
+      '#tree' => TRUE,
+    ];
     foreach ($exporter_plugins as $plugin_id => $exporter) {
       $subform_state = SubformState::createForSubform($form['export']['format'], $form, $form_state);
-      $form['export']['format'] = $exporter->buildConfigurationForm($form['export']['format'], $subform_state);
+      $exporter_form = $exporter->buildConfigurationForm([], $subform_state);
+      if ($exporter_form) {
+        $form['export']['format']['exporters'][$plugin_id] = [
+          '#type' => 'container',
+          '#states' => [
+            'visible' => [
+              ':input.js-webform-exporter' => ['value' => $plugin_id],
+            ],
+          ],
+        ] + $exporter_form;
+      }
     }
 
     // Element.
@@ -550,7 +566,21 @@ class WebformSubmissionExporter implements WebformSubmissionExporterInterface {
           '#default_value' => $export_options['range_end'],
         ];
     }
-
+    $form['export']['download']['order'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Order'),
+      '#description' => $this->t('Order submissions by ascending (oldest first) or descending (newest first).'),
+      '#options' => [
+        'asc' => $this->t('Sort ascending'),
+        'desc' => $this->t('Sort descending'),
+      ],
+      '#default_value' => $export_options['order'],
+      '#states' => [
+        'visible' => [
+          ':input[name="range_type"]' => ['!value' => 'latest'],
+        ],
+      ],
+    ];
     $form['export']['download']['sticky'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Starred/flagged submissions'),
@@ -578,6 +608,14 @@ class WebformSubmissionExporter implements WebformSubmissionExporterInterface {
    * {@inheritdoc}
    */
   public function getValuesFromInput(array $values) {
+    // Get selected exporter configuration.
+    if (isset($values['exporter']) && isset($values['exporters'])) {
+      if (isset($values['exporters'][$values['exporter']])) {
+        $values += $values['exporters'][$values['exporter']];
+      }
+      unset($values['exporters']);
+    }
+
     if (isset($values['range_type'])) {
       $range_type = $values['range_type'];
       $values['range_type'] = $range_type;
@@ -761,9 +799,10 @@ class WebformSubmissionExporter implements WebformSubmissionExporterInterface {
         $query->condition('sid', end($latest_query_entity_ids), '>=');
       }
     }
-
-    // Sort by sid with the oldest one first.
-    $query->sort('sid', 'ASC');
+    else {
+      // Sort by sid in ASC or DESC order.
+      $query->sort('sid', isset($export_options['order']) ? $export_options['order'] : 'ASC');
+    }
 
     return $query;
   }
