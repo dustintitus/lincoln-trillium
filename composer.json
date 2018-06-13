@@ -2,14 +2,15 @@
     "name": "drupal/drupal",
     "description": "Drupal is an open source content management platform powering millions of websites and applications.",
     "type": "project",
-    "license": "GPL-2.0+",
+    "license": "GPL-2.0-or-later",
     "require": {
         "composer/installers": "^1.0.24",
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/commerce": "2.2.0",
-        "drupal/core": "8.5.3"
+        "drupal/core": "^8.5"
     },
     "replace": {
+        
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -70,14 +71,10 @@
         "post-package-install": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
         "post-package-update": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup"
     },
-    "repositories": {
-        "0": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        "drupal": {
+    "repositories": [
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
-    }
+    ]
 }
