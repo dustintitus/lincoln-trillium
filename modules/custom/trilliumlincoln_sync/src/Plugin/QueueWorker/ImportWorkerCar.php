@@ -342,6 +342,10 @@ class ImportWorkerCar extends ImportWorkerBase {
         $item[$field_key] = $new_value;
       }
 
+      if ($item['type'] == 'Used') {
+        $item['type'] = 'Certified Pre-Owned';
+      }
+
       $item['title'] = $item['make'] . ' ' . $item['model'] . ' ' . $item['year'] . ' - ' . $item['description'];
       $item['status'] = 1;
       $item['year'] = !empty($item['year']) ? $item['year'] . '-01-01': '';
