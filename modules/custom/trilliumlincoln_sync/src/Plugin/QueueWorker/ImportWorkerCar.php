@@ -39,7 +39,7 @@ class ImportWorkerCar extends ImportWorkerBase {
     // Prepare row.
     $item = $this->prepareRow($item);
 
-    if (empty($item['stock_number']) || $item['price'] == 0) {
+    if (empty($item['stock_number'])) {
       return;
     }
 
@@ -340,10 +340,6 @@ class ImportWorkerCar extends ImportWorkerBase {
           }
         }
         $item[$field_key] = $new_value;
-      }
-
-      if ($item['type'] == 'Used') {
-        $item['type'] = 'Certified Pre-Owned';
       }
 
       $item['title'] = $item['make'] . ' ' . $item['model'] . ' ' . $item['year'] . ' - ' . $item['description'];

@@ -6,7 +6,6 @@ dependencies:
     - commerce_product.commerce_product_type.car
     - core.entity_view_mode.commerce_product.teaser
     - taxonomy.vocabulary.car_model
-    - taxonomy.vocabulary.car_type
   module:
     - better_exposed_filters
     - commerce
@@ -235,52 +234,6 @@ display:
           entity_field: type
           plugin_id: commerce_entity_bundle
           group: 1
-        field_car_type_target_id:
-          id: field_car_type_target_id
-          table: commerce_product__field_car_type
-          field: field_car_type_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_car_type_target_id_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: field_car_type_target_id_op
-            identifier: field_car_type_target_id
-            required: false
-            remember: false
-            multiple: true
-            remember_roles:
-              anonymous: anonymous
-              authenticated: '0'
-              administrator: '0'
-              staff: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: car_type
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
         field_car_stock_number_value:
           id: field_car_stock_number_value
           table: commerce_product__field_car_stock_number
@@ -452,8 +405,54 @@ display:
       header: {  }
       footer: {  }
       empty: {  }
-      relationships: {  }
-      arguments: {  }
+      relationships:
+        field_car_type:
+          id: field_car_type
+          table: commerce_product__field_car_type
+          field: field_car_type
+          relationship: none
+          group_type: group
+          admin_label: 'field_car_type: Taxonomy term'
+          required: true
+          plugin_id: standard
+      arguments:
+        tid:
+          id: tid
+          table: taxonomy_term_field_data
+          field: tid
+          relationship: field_car_type
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: taxonomy_term
+          entity_field: tid
+          plugin_id: taxonomy
       display_extenders: {  }
       css_class: grid
       use_ajax: true
@@ -470,10 +469,10 @@ display:
         - url.query_args
         - user
       tags:
-        - 'config:core.entity_view_display.commerce_product.car.preview'
-        - 'config:core.entity_view_display.commerce_product.default.default'
         - 'config:core.entity_view_display.commerce_product.car.default'
+        - 'config:core.entity_view_display.commerce_product.car.preview'
         - 'config:core.entity_view_display.commerce_product.car.teaser'
+        - 'config:core.entity_view_display.commerce_product.default.default'
   page_1:
     display_plugin: page
     id: page_1
@@ -481,7 +480,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: search
+      path: search/%
     cache_metadata:
       max-age: -1
       contexts:

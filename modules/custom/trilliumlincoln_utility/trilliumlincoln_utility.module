@@ -102,10 +102,6 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
   $display = $form_state->get('display');
 
   if ($display['id'] == 'page_1' && $view->id() == 'product_list') {
-    $options = ["all" => 'All'] + $form['field_car_type_target_id']['#options'];
-    $form['field_car_type_target_id']['#options'] = $options;
-    $form['field_car_type_target_id']['#prefix'] = '<div class="form-wrapper-filter">';
-
     $form['actions']['submit']['#attributes']['class'][] = 'btn-info';
     $form['actions']['submit']['#attributes']['class'][] = 'btn-lg';
 
@@ -133,6 +129,7 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
     $form['field_car_model_target_id']['#suffix'] = '</div>';
     $form['field_car_model_target_id']['#options']['All'] = t('Model');
 
+    $form['field_car_stock_number_value']['#prefix'] = '<div class="form-wrapper-filter">';
     $form['field_car_stock_number_value']['#attributes']['placeholder'] = t('stock #');
 
     $form['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.search_filter';
@@ -191,5 +188,17 @@ function trilliumlincoln_utility_views_query_alter(ViewExecutable $view, QueryPl
     }
 
     $_SESSION['search-car-filter'] = $exposed_value;
+  }
+}
+
+function trilliumlincoln_utility_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  if ($view->id() == 'product_list' && $display_id == 'page_1') {
+    if (!empty($args[0])) {
+      $path = \Drupal::service('path.alias_manager')->getPathByAlias('/vehicle-type/' . $args[0]);
+      if(preg_match('/taxonomy\/term\/(\d+)/', $path, $matches)) {
+        $tid[] = $matches[1];
+        $args = $tid;
+      }
+    }
   }
 }

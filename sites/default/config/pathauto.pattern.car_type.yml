@@ -1,0 +1,23 @@
+uuid: 7aae091a-ff9f-4806-b762-c7a3e7186df9
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: car_type
+label: 'Car Type'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'vehicle-type/[term:name]'
+selection_criteria:
+  4d299e76-7464-4e68-be01-2d1aee767a74:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      car_type: car_type
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 4d299e76-7464-4e68-be01-2d1aee767a74
+selection_logic: and
+weight: -5
+relationships: {  }

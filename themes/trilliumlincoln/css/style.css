@@ -2165,7 +2165,8 @@ a {
       .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions .form-submit {
         width: 100%;
         max-width: none;
-        font-size: 1em; }
+        font-size: 1em;
+        padding: 10px; }
 
 .view-rates-edit-page {
   display: table;
