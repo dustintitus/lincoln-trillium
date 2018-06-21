@@ -932,6 +932,34 @@ a {
     .webform-style-block form .form-item.has-error .control-label {
       color: #a94442; }
 
+.car-type-block {
+  margin-right: -15px;
+  margin-left: -15px; }
+  .car-type-block .car-type-item {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px; }
+    @media (min-width: 768px) {
+      .car-type-block .car-type-item {
+        float: left;
+        width: 25%;
+        margin-bottom: 0px; } }
+    .car-type-block .car-type-item a {
+      font-size: 13px;
+      display: block;
+      text-align: center; }
+      .car-type-block .car-type-item a span {
+        background-color: #f15e46;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 5px;
+        display: block; }
+      .car-type-block .car-type-item a img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto; }
+
 .navbar {
   margin: 0;
   padding: 0;

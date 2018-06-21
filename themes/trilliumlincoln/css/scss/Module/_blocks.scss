@@ -445,3 +445,35 @@
     }
   }
 }
+.car-type-block{
+  margin-right: -15px;
+  margin-left: -15px;
+  .car-type-item{
+    margin-bottom: 15px;
+    @include respond($sm){
+      float: left;
+      width: 25%;
+      margin-bottom: 0px;
+    }
+    padding-left: 15px;
+    padding-right: 15px;
+    a{
+      font-size: 13px;
+      display: block;
+      text-align: center;
+      span{
+        background-color: #f15e46;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 5px;
+        display: block;
+      }
+      img{
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+}
