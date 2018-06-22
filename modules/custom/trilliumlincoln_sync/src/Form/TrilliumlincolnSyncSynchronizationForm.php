@@ -229,6 +229,12 @@ class TrilliumlincolnSyncSynchronizationForm extends ConfigFormBase {
           'file_validate_extensions' => ['csv'],
         ],
       ];
+      $form['upload_csv']['actions'] = ['#type' => 'actions'];
+      $form['upload_csv']['actions']['sumbit'] = [
+        '#type' => 'submit',
+        '#value' => $this->t('Import Cars'),
+        '#submit' => [[$this, 'carsImport']],
+      ];
     }
 
     return $form;
@@ -348,4 +354,37 @@ class TrilliumlincolnSyncSynchronizationForm extends ConfigFormBase {
       }
     }
   }
+
+    /**
+   * Import All cars manual.
+   */
+  public function carsImport(array &$form, FormStateInterface &$form_state) {
+    $importer_name = 'car';
+    $importers = trilliumlincoln_sync_get_importers();
+    $importer = $importers[$importer_name];
+    $source = $importer['source'];
+    $plugin_id = $importer['queue_worker'];
+
+    $trilliumlincoln_sync_source_service = \Drupal::service('trilliumlincoln_sync.source');
+    $trilliumlincoln_sync_source_service->unpublishCars();
+    $result = $trilliumlincoln_sync_source_service->getCarIds();
+
+    $queue_worker_manager = \Drupal::service('plugin.manager.queue_worker');
+    $queue_worker = $queue_worker_manager->createInstance($plugin_id);
+
+    $count = 0;
+    if (!empty($result)) {
+      foreach ($result as $key => $row) {
+        $queue_worker->processItem($row);
+        $count++;
+      }
+    }
+
+    $args = [
+      '%count' => $count,
+      '%title_label' => 'Cars',
+    ];
+    drupal_set_message(t('%count %title_label has been synced.', $args));
+  }
+
 }

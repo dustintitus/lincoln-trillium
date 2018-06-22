@@ -118,11 +118,15 @@
           @extend %col-sm-4;
           @extend %col-xs-12;
           margin-bottom: 0;
+          text-align: center;
           .form-submit{
-            width: 100%;
             max-width: none;
-            font-size: 1em;
-            padding: 10px;
+            font-size: 0.875em;
+            padding: 1em;
+            @include respond($sm){
+              padding: 2px 12px;
+              font-size: 1em;
+            }
           }
         }
       }

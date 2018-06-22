@@ -937,10 +937,16 @@ a {
   margin-left: -15px; }
   .car-type-block .car-type-item {
     margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 15px;
     padding-right: 15px; }
+    @media (min-width: 480px) {
+      .car-type-block .car-type-item {
+        max-width: 60%; } }
     @media (min-width: 768px) {
       .car-type-block .car-type-item {
+        max-width: 100%;
         float: left;
         width: 25%;
         margin-bottom: 0px; } }
@@ -2189,12 +2195,16 @@ a {
             /* Firefox 18- */
             color: #555; }
     .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions {
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      text-align: center; }
       .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions .form-submit {
-        width: 100%;
         max-width: none;
-        font-size: 1em;
-        padding: 10px; }
+        font-size: 0.875em;
+        padding: 1em; }
+        @media (min-width: 768px) {
+          .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions .form-submit {
+            padding: 2px 12px;
+            font-size: 1em; } }
 
 .view-rates-edit-page {
   display: table;
