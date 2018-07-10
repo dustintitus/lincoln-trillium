@@ -2,6 +2,8 @@ uuid: 824d6ec4-8496-471b-96b4-cfc716605a71
 langcode: en
 status: true
 dependencies:
+  config:
+    - webform.webform.test_drive
   module:
     - block_class
     - system

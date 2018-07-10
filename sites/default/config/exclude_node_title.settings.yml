@@ -1,6 +1,7 @@
 nid_list:
   - 1
   - 9
+  - 17
 translation_sync: true
 search: false
 _core:

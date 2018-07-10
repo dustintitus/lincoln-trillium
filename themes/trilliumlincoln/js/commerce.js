@@ -205,6 +205,18 @@
 
   Drupal.behaviors.product_single = {
     attach: function (context, settings) {
+      $('.back-button', context).once('button').each(function (i,el) {
+        $(this).on('click', function(event) {
+          var referrer = document.referrer;
+          var siteUrl = drupalSettings.path.siteUrl;
+          if (referrer.indexOf(siteUrl) >= 0 && history.length > 1){
+            event.preventDefault();
+            parent.history.back();
+            return false;
+          }
+        });
+      });
+
       var subject = $('.product-single', context).find('.calt-h');
       var predicate = $('.product-single', context).find('.product-carousel-picture-wrapper');
       if( getWindowWidth() >= 768 ){

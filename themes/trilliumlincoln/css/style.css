@@ -1803,6 +1803,9 @@ a {
 .path-product .modal-backdrop.in {
   opacity: 0.9; }
 
+.product-single .back-button {
+  margin-bottom: 15px;
+  padding: 2px 12px; }
 .product-single.product-sold .product-carousel .product-carousel-picture-wrapper {
   position: relative;
   overflow: hidden; }

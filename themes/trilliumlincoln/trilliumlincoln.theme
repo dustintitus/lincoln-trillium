@@ -104,6 +104,7 @@ function trilliumlincoln_preprocess_html(&$variables) {
   $variables['current_path'] = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
 
   $variables['#attached']['drupalSettings']['path']['logoUrl'] = $base_url . '/' . \Drupal::theme()->getActiveTheme()->getPath() . '/images/ico-lincoln.png';
+  $variables['#attached']['drupalSettings']['path']['siteUrl'] = $base_url;
 }
 
 function trilliumlincoln_page_attachments_alter(array &$page) {
@@ -188,6 +189,10 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
       $car_type_id = $field_car_type[0]['target_id'];
       $car_type = Drupal\taxonomy\Entity\Term::load($car_type_id);
       $car_type_name = $car_type->getName();
+      $clean_car_type_name = \Drupal::service('pathauto.alias_cleaner')->cleanString($car_type_name);
+      $back_button = Link::fromTextAndUrl(t('< Back'), Url::fromUri('internal:/search/' . $clean_car_type_name, ['attributes' => ['class' => ['btn-info', 'back-button', 'btn', 'btn-lg']]]))->toString();
+      $variables['back_button'] = $back_button;
+
       if ($car_type_name == 'New') {
         $form = \Drupal::formBuilder()->getForm('\Drupal\trilliumlincoln_utility\Form\TrilliumlincolnPaymentCalculatorForm');
         $variables['calculator_form'] = $form;

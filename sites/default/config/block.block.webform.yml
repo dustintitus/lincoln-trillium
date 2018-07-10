@@ -2,6 +2,8 @@ uuid: 5fc09ac5-73d3-4d04-ac58-57ce0e1c3102
 langcode: en
 status: true
 dependencies:
+  config:
+    - webform.webform.contact_us
   module:
     - block_class
     - system
