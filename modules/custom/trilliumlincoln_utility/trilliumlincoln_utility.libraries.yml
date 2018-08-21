@@ -17,3 +17,11 @@ trilliumlincoln_utility.search_filter:
   dependencies:
     - core/jquery
     - core/drupal
+trilliumlincoln_utility.recaptcha:
+  version: VERSION
+  js:
+    js/trilliumlincoln_utility.fix_recaptcha.js: {}
+    https://www.google.com/recaptcha/api.js: { type: external, attributes: { defer: true, async: true } }
+  dependencies:
+    - core/jquery
+    - core/drupal

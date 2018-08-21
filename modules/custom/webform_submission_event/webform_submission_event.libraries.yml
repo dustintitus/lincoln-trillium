@@ -1,0 +1,11 @@
+# Libraries for webformSubmissionCommand Ajax command
+webform_submission_command:
+  version: VERSION
+  js:
+    # Add JS files
+    js/webform_submission_command.js: {}
+  dependencies:
+    - core/drupal.ajax
+    - core/jquery
+    - core/jquery.once
+    - core/drupal

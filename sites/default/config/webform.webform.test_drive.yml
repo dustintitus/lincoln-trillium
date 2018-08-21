@@ -1,8 +1,10 @@
+uuid: fb24cedd-7752-4329-a64a-a263faed9be8
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
+weight: 0
 uid: 1
 template: false
 archive: false
@@ -10,7 +12,7 @@ id: test_drive
 title: 'Test Drive'
 description: ''
 category: ''
-elements: "markup_header:\n  '#type': webform_markup\n  '#markup': \"<h2>LINCOLN</h2>\\n\\n<h3>Luxury deserves a higher standard</h3>\"\ntext:\n  '#type': webform_markup\n  '#markup': '<p>You deserve the very best, choose the Lincoln life and treat yourself to the luxury you deserve. Book your test drive today.</p>'\nfirst_name:\n  '#type': textfield\n  '#title': 'First name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\nphone:\n  '#type': tel\n  '#title': Phone\n  '#required': true\npostal_code:\n  '#type': textfield\n  '#title': 'Postal code'\n  '#required': true\nstock_number:\n  '#type': hidden\n  '#title': 'Stock Number'\nyear:\n  '#type': hidden\n  '#title': Year\nmake:\n  '#type': hidden\n  '#title': Make\nmodel:\n  '#type': hidden\n  '#title': Model\nsent_from:\n  '#type': hidden\n  '#title': sent_from\ncaptcha:\n  '#type': captcha\n  '#captcha_type': image_captcha/Image\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__attributes':\n    class:\n      - 'btn btn-info btn-lg'\n"
+elements: "markup_header:\n  '#type': webform_markup\n  '#markup': \"<h2>LINCOLN</h2>\\n\\n<h3>Luxury deserves a higher standard</h3>\"\ntext:\n  '#type': webform_markup\n  '#markup': '<p>You deserve the very best, choose the Lincoln life and treat yourself to the luxury you deserve. Book your test drive today.</p>'\nfirst_name:\n  '#type': textfield\n  '#title': 'First name'\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': 'Last name'\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\n  '#required': true\nphone:\n  '#type': tel\n  '#title': Phone\n  '#required': true\npostal_code:\n  '#type': textfield\n  '#title': 'Postal code'\n  '#required': true\nstock_number:\n  '#type': hidden\n  '#title': 'Stock Number'\nyear:\n  '#type': hidden\n  '#title': Year\nmake:\n  '#type': hidden\n  '#title': Make\nmodel:\n  '#type': hidden\n  '#title': Model\nsent_from:\n  '#type': hidden\n  '#title': sent_from\ncaptcha:\n  '#type': captcha\n  '#captcha_type': recaptcha/reCAPTCHA\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__attributes':\n    class:\n      - 'btn btn-info btn-lg'\n"
 css: ''
 javascript: ''
 settings:
@@ -196,7 +198,7 @@ handlers:
       bcc_options: {  }
       from_mail: dev@morrison.digital
       from_options: {  }
-      from_name: default
+      from_name: _default
       subject: 'Test Drive'
       body: 'Thanks for requesting a test drive in a [webform_submission:values:year:value] [webform_submission:values:make:value] [webform_submission:values:model:value], we will be in touch with you shortly and we&#39;ll try and get you behind the wheel at your earliest convenience.'
       excluded_elements: {  }
@@ -211,4 +213,3 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-uuid: fb24cedd-7752-4329-a64a-a263faed9be8

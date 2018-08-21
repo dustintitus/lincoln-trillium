@@ -73,6 +73,8 @@ function trilliumlincoln_utility_webform_submission_form_alter(array &$form, For
 
       break;
   }
+  
+  $form['#attached']['library'][] = 'trilliumlincoln_utility/trilliumlincoln_utility.recaptcha';
 }
 
 /**

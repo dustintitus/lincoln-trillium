@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\trilliumlincoln_form\EventSubscriber;
+namespace Drupal\webform_submission_event\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Response subscriber to handle AJAX responses.
  */
-class TrilliumlincolnFormSubscriber implements EventSubscriberInterface {
+class WebformSubmissionEventSubscriber implements EventSubscriberInterface {
 /**
    * Renders the ajax commands right before preparing the result.
    *
@@ -28,7 +28,7 @@ class TrilliumlincolnFormSubscriber implements EventSubscriberInterface {
         if ($pos === 0) {
           $valid_form = \Drupal::request()->get('valid_form');
           $commands[] = [
-            'command' => 'WebformSubmission',
+            'command' => 'webformSubmissionCommand',
             'selector' => $form_id,
             'result' => $_REQUEST['valid_form']
           ];

@@ -1,0 +1,6 @@
+name: Webform Submission Event
+type: module
+description: 'Webform Submission Event module.'
+package: Custom
+version: '8.x-1.0'
+core: '8.x'

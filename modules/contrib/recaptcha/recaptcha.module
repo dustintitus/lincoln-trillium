@@ -109,9 +109,18 @@ function recaptcha_captcha($op, $captcha_type = '') {
             '#markup' => '<div' . new Attribute($attributes) . '></div>',
             '#suffix' => $noscript,
             '#attached' => [
-              'library' => [
-                'recaptcha/google.recaptcha_'. \Drupal::service('language_manager')->getCurrentLanguage()->getId(),
-                'recaptcha/recaptcha',
+              'html_head' => [
+                [
+                  [
+                    '#tag' => 'script',
+                    '#attributes' => [
+                      'src' => Url::fromUri('https://www.google.com/recaptcha/api.js', ['query' => ['hl' => \Drupal::service('language_manager')->getCurrentLanguage()->getId()], 'absolute' => TRUE])->toString(),
+                      'async' => TRUE,
+                      'defer' => TRUE,
+                    ],
+                  ],
+                  'recaptcha_api',
+                ],
               ],
             ],
           ];
@@ -178,33 +187,4 @@ function template_preprocess_recaptcha_widget_noscript(&$variables) {
   $variables['sitekey']  = $variables['widget']['sitekey'];
   $variables['language'] = $variables['widget']['language'];
   $variables['url']      = Url::fromUri('https://www.google.com/recaptcha/api/fallback', ['query' => ['k' => $variables['widget']['sitekey'], 'hl' => $variables['widget']['language']], 'absolute' => TRUE])->toString();
-}
-
-/**
- * Implements hook_library_info_build().
- */
-function recaptcha_library_info_build() {
-  $libraries = [];
-  $languages = \Drupal::service('language_manager')->getLanguages();
-  foreach ($languages as $key => $language) {
-    $url = Url::fromUri('https://www.google.com/recaptcha/api.js', [
-      'query' => ['hl' => $key],
-      'absolute' => TRUE
-    ])->toString();
-    $libraries["google.recaptcha_$key"] = [
-      'version' => '1.x',
-      'header' => TRUE,
-      'js' => [
-        $url => [
-          'type' => 'external',
-          'minified' => TRUE,
-          'attributes' => [
-            'defer' => "defer",
-            'async' => "async",
-          ],
-        ],
-      ],
-    ];
-  }
-  return $libraries;
 }

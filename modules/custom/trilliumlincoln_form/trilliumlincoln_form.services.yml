@@ -1,5 +1,0 @@
-services:
-  trilliumlincoln_form_subscriber:
-    class: '\Drupal\trilliumlincoln_form\EventSubscriber\TrilliumlincolnFormSubscriber'
-    tags:
-      - { name: 'event_subscriber' }

@@ -90,13 +90,19 @@ class WebformSubmissionViewBuilder extends EntityViewBuilder implements WebformS
 
       if ($view_mode === 'preview') {
         $options = [
+          'view_mode' => $view_mode,
           'excluded_elements' => $webform->getSetting('preview_excluded_elements'),
           'exclude_empty' => $webform->getSetting('preview_exclude_empty'),
           'exclude_empty_checkbox' => $webform->getSetting('preview_exclude_empty_checkbox'),
         ];
       }
       else {
-        $options = [];
+        $options = [
+          'view_mode' => $view_mode,
+          'excluded_elements' => [],
+          'exclude_empty' => FALSE,
+          'exclude_empty_checkbox' => FALSE,
+        ];
       }
 
       switch ($view_mode) {

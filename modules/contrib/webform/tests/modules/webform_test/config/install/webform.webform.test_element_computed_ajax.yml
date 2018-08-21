@@ -9,36 +9,55 @@ close: null
 uid: null
 template: false
 archive: false
-id: test_element_text
-title: 'Test: Element: Text'
-description: 'Tests text field and text area based elements.'
+id: test_element_computed_ajax
+title: 'Test: Element: Computed ajax'
+description: 'Test computed element using Ajax.'
 category: 'Test: Element'
 elements: |
-  '#attributes':
-    novalidate: novalidate
-  text_format_element:
-    '#type': details
-    '#title': 'Text format elements'
-    '#open': true
-    text_format:
-      '#type': text_format
-      '#title': text_format
-      '#hide_help': true
-  counter_elements:
-    '#type': details
-    '#title': 'Word and character counter'
-    '#open': true
-    counter_characters:
-      '#type': textfield
-      '#title': 'Character counter'
-      '#counter_type': character
-      '#counter_maximum': 10
-    counter_words:
-      '#type': textarea
-      '#title': 'Word counter'
-      '#counter_type': word
-      '#counter_maximum': 3
-      '#counter_message': 'word(s) left. This is a custom message'
+  a:
+    '#type': number
+    '#title': a
+  b:
+    '#type': number
+    '#title': b
+  webform_computed_token_a:
+    '#type': webform_computed_token
+    '#title': a
+    '#value': '[webform_submission:values:a:clear]'
+    '#ajax': TRUE
+    '#hide_empty': TRUE
+  webform_computed_token_b:
+    '#type': webform_computed_token
+    '#title': b
+    '#value': '[webform_submission:values:b:clear]'
+    '#ajax': TRUE
+    '#hide_empty': TRUE
+  webform_computed_twig:
+    '#type': webform_computed_twig
+    '#title': webform_computed_twig_data
+    '#value': |
+      {% spaceless %}
+      {% if data.a|length and data.b|length %}
+      {{ data.a }} + {{ data.b }} = {{ data.a + data.b }}
+      {% else %}
+      Please enter a value for a and b.
+      {% endif %}
+      {% endspaceless %}
+    '#ajax': TRUE
+  webform_computed_twig_token:
+    '#type': webform_computed_twig
+    '#title': webform_computed_twig_token
+    '#value': |
+      {% spaceless %}
+      {% set a = webform_token('[webform_submission:values:a:clear]', webform_submission) %}
+      {% set b = webform_token('[webform_submission:values:b:clear]', webform_submission) %}
+      {% if a|length and b|length %}
+      {{ a }} + {{ b }} = {{ a + b }}
+      {% else %}
+      Please enter a value for a and b.
+      {% endif %}
+      {% endspaceless %}
+    '#ajax': TRUE
 css: ''
 javascript: ''
 settings:
@@ -87,11 +106,13 @@ settings:
   wizard_progress_bar: true
   wizard_progress_pages: false
   wizard_progress_percentage: false
+  wizard_progress_link: false
   wizard_start_label: ''
+  wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
-  preview: 0
+  preview: 1
   preview_label: ''
   preview_title: ''
   preview_message: ''
@@ -126,7 +147,7 @@ settings:
   entity_limit_user_interval: null
   purge: none
   purge_days: null
-  results_disabled: true
+  results_disabled: false
   results_disabled_ignore: false
   token_update: false
 access:
@@ -172,12 +193,5 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers:
-  debug:
-    id: debug
-    label: Debug
-    handler_id: debug
-    status: true
-    conditions: {  }
-    weight: 1
-    settings: {  }
+handlers: {  }
+weight: 0

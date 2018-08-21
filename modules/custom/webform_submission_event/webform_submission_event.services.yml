@@ -1,0 +1,5 @@
+services:
+  webform_submission_event_subscriber:
+    class: '\Drupal\webform_submission_event\EventSubscriber\WebformSubmissionEventSubscriber'
+    tags:
+      - { name: 'event_subscriber' }

@@ -18,7 +18,7 @@ use Drupal\webform\WebformInterface;
  * done via an update hook.
  *
  * @param bool $reset
- *   If set TRUE old admin settings will be completly deleted.
+ *   If set TRUE old admin settings will be completely deleted.
  *
  * @see drush_webform_repair()
  */
@@ -89,7 +89,7 @@ function _webform_update_webform_settings() {
  * Update webform setting to reflect changes in the default settings.
  *
  * @param array $data
- *   A webform's raw configuration data from webform.webform.*.yml
+ *   A webform's raw configuration data from webform.webform.*.yml.
  *
  * @return array
  *   Updated raw configuration data.
@@ -148,6 +148,9 @@ function _webform_update_webform_setting(array $data) {
  * @see \Drupal\webform\Plugin\WebformHandlerInterface
  */
 function _webform_update_webform_handler_settings() {
+  // Issue #2863986: Allow updating modules with new service dependencies.
+  \Drupal::service('kernel')->rebuildContainer();
+
   // Get the default configuration (aka settings) for all handlers provided
   // by the Webform module.
   /** @var \Drupal\webform\Plugin\WebformHandlerManagerInterface $handler_manager */
@@ -280,7 +283,7 @@ function _webform_update_webform_submission_storage_schema() {
 }
 
 /**
- * Replace string in webform.settings.yml and webform.webform.*.yml
+ * Replace string in webform.settings.yml and webform.webform.*.yml.
  *
  * @param string $search
  *   String to be search for.
