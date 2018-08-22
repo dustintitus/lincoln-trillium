@@ -4,7 +4,12 @@
 
     // Custom Ajax command
     Drupal.AjaxCommands.prototype.webformSubmissionCommand = function(ajax, response, status){
-      $( document ).trigger( "webform_submission", [ response.selector, response.result ] );
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'webform_submission',
+        'selector': response.selector,
+        'result': response.result
+      });
     }
   }
 
