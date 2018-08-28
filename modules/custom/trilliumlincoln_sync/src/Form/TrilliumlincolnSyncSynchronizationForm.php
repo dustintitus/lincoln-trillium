@@ -270,6 +270,8 @@ class TrilliumlincolnSyncSynchronizationForm extends ConfigFormBase {
 
     // Use a state variable to signal that cron was run manually from this form.
     $this->state->set('trilliumlincoln_sync_show_status_message', TRUE);
+    $this->state->set('trilliumlincoln_sync_manual_cron', TRUE);
+
     if ($this->cron->run()) {
       drupal_set_message($this->t('Cron ran successfully.'));
     }

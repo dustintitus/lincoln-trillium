@@ -23,7 +23,10 @@ function trilliumlincoln_sync_cron() {
   $next_execution = \Drupal::state()->get('trilliumlincoln_sync.next_execution');
   $next_execution = !empty($next_execution) ? $next_execution : 0;
 
-  if (REQUEST_TIME >= $next_execution) {
+  $manual_cron = \Drupal::state()->get('trilliumlincoln_sync_manual_cron');
+  \Drupal::state()->set('trilliumlincoln_sync_manual_cron', FALSE);
+
+  if ((REQUEST_TIME >= $next_execution && date('G', REQUEST_TIME) > 21) || $manual_cron) {
     if (\Drupal::state()->get('trilliumlincoln_sync_show_status_message')) {
       drupal_set_message(t('trilliumlincoln_sync cron executed at %time', ['%time' => date_iso8601(REQUEST_TIME)]));
       \Drupal::state()->set('trilliumlincoln_sync_show_status_message', FALSE);
