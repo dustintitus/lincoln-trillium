@@ -135,7 +135,7 @@ class TrilliumlincolnSourceService {
    * Get CarIds function.
    */
   public function unpublishCars() {
-    $result = [];
+    /*$result = [];
     $result_csv = $this->parseCSV(['make' => 'LINCOLN']);
     if ($result_csv) {
       foreach ($result_csv as $key => $value) {
@@ -161,7 +161,7 @@ class TrilliumlincolnSourceService {
         $product->setPublished(FALSE);
         $product->save();
       }
-    }
+    }*/
   }
 
   public function getMapFields(){
