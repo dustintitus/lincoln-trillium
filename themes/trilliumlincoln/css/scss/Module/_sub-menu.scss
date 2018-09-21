@@ -1,33 +1,48 @@
 .region-highlighted .sub-menu {
-	position: absolute;
-	bottom: 1px;
-	right: 0;
-	z-index: 101;
-	text-align: center;
-	display: none;
-	@include respond($sm){
-		display: block;
-	}
-	.menu {
-		li {
-			float: left;			
-			transform: skew(-26deg);
-			border-left: 2px solid $c-brown-l;
-			a{
-				max-width: 100px;
-				transform: skew(26deg);
-				height: 50px;
-				color: $c-white;
-				font-size: em(14);
-				text-transform: uppercase;
-				&:hover, &:focus {
-					background-color: transparent;
-				}
-				&.large{
-					max-width: 160px;
-				}
-			}
-			
-		}
-	}
+  position: absolute;
+  bottom: 1px;
+  right: 0;
+  z-index: 101;
+  text-align: center;
+  display: none;
+  @include respond($sm){
+    display: block;
+  }
+  .menu {
+    li {
+      float: left;      
+      transform: skew(-26deg);
+      border-left: 2px solid $c-brown-l;
+      a{
+        max-width: 100px;
+        transform: skew(26deg);
+        height: 50px;
+        color: $c-white;
+        font-size: em(14);
+        text-transform: uppercase;
+        &:hover, &:focus {
+          background-color: transparent;
+        }
+        &.large{
+          max-width: 160px;
+        }
+      }
+      
+    }
+  }
+}
+.submenu-container{
+  position: relative;
+  @include respond($sm){
+    &:before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 50px;
+      background: #000;
+      left: 0;
+      top: -50px;
+      z-index: 100;
+    }
+  }
 }

@@ -1366,8 +1366,8 @@ a {
       width: 10px;
       text-indent: -9999px;
       border-radius: 50%;
-      border: 2px solid #2e201b;
-      background-color: #2e201b;
+      border: 2px solid #808080;
+      background-color: #808080;
       margin-right: 10px; }
       .slider .slider-pager > span.cycle-pager-active {
         background-color: transparent; }
@@ -1574,6 +1574,19 @@ a {
         background-color: transparent; }
       .region-highlighted .sub-menu .menu li a.large {
         max-width: 160px; }
+
+.submenu-container {
+  position: relative; }
+  @media (min-width: 768px) {
+    .submenu-container:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 50px;
+      background: #000;
+      left: 0;
+      top: -50px;
+      z-index: 100; } }
 
 .paragraph--type--text-block {
   line-height: 1.17857;
