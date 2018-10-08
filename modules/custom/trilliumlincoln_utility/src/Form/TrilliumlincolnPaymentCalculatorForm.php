@@ -35,6 +35,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $residual = [
       '24' => 0,
       '36' => 0,
+      '39' => 0,
       '48' => 0
     ];
     $finance_term_rate = [

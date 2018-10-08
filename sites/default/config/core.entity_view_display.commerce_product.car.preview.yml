@@ -24,6 +24,7 @@ dependencies:
     - field.field.commerce_product.car.field_car_number_of_doors
     - field.field.commerce_product.car.field_car_odometer_reading
     - field.field.commerce_product.car.field_car_odometer_type
+    - field.field.commerce_product.car.field_car_status
     - field.field.commerce_product.car.field_car_stock_number
     - field.field.commerce_product.car.field_car_total_length
     - field.field.commerce_product.car.field_car_traction
@@ -39,9 +40,12 @@ dependencies:
     - field.field.commerce_product.car.field_lease_48_term_rate
     - field.field.commerce_product.car.field_residual_24_term_rate
     - field.field.commerce_product.car.field_residual_36_term_rate
+    - field.field.commerce_product.car.field_residual_39_term_rate
     - field.field.commerce_product.car.field_residual_48_term_rate
     - field.field.commerce_product.car.stores
     - field.field.commerce_product.car.variations
+  module:
+    - field_formatter_class
 id: commerce_product.car.preview
 targetEntityType: commerce_product
 bundle: car
@@ -148,7 +152,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_residual_48_term_rate:
+  field_residual_39_term_rate:
     type: number_decimal
     weight: 9
     region: content
@@ -158,9 +162,24 @@ content:
       decimal_separator: .
       scale: 2
       prefix_suffix: true
-    third_party_settings: {  }
-  quick_product_edit:
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+  field_residual_48_term_rate:
+    type: number_decimal
     weight: 10
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+  quick_product_edit:
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -185,6 +204,7 @@ hidden:
   field_car_number_of_doors: true
   field_car_odometer_reading: true
   field_car_odometer_type: true
+  field_car_status: true
   field_car_stock_number: true
   field_car_total_length: true
   field_car_traction: true
