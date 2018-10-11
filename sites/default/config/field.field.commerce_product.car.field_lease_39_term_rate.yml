@@ -1,0 +1,23 @@
+uuid: 6d0184e9-05de-4402-bef5-8c64b4b6b331
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_lease_39_term_rate
+id: commerce_product.car.field_lease_39_term_rate
+field_name: field_lease_39_term_rate
+entity_type: commerce_product
+bundle: car
+label: 'Lease 39 Term Rate'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

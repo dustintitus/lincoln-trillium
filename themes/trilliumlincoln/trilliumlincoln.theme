@@ -202,11 +202,13 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
   if ($variables['elements']['#view_mode'] == 'preview') {
     $fields_list = [
       'field_finance_36_term_rate' => 'Finance 36 Term Rate',
+      'field_finance_39_term_rate' => 'Finance 39 Term Rate',
       'field_finance_48_term_rate' => 'Finance 48 Term Rate',
       'field_finance_60_term_rate' => 'Finance 60 Term Rate',
       'field_finance_72_term_rate' => 'Finance 72 Term Rate',
       'field_lease_24_term_rate' => 'Lease 24 Term Rate',
       'field_lease_36_term_rate' => 'Lease 36 Term Rate',
+      'field_lease_39_term_rate' => 'Lease 39 Term Rate',
       'field_lease_48_term_rate' => 'Lease 48 Term Rate',
       'field_residual_24_term_rate' => 'Residual 24 Term Rate',
       'field_residual_36_term_rate' => 'Residual 36 Term Rate',

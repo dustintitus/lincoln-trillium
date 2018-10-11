@@ -40,6 +40,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     ];
     $finance_term_rate = [
       '36' => 0,
+      '39' => 0,
       '48' => 0,
       '60' => 0,
       '72' => 0
@@ -47,6 +48,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $lease_term_rate = [
       '24' => 0,
       '36' => 0,
+      '39' => 0,
       '48' => 0
     ];
     $lease_term_options = [];
