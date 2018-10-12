@@ -15,6 +15,9 @@
     @include respond($sm){
       font-size: em(14);
     }
+    a{
+      color: $c-black;
+    }
     [class^="icon-"]{
       white-space: nowrap;
       &:before {
