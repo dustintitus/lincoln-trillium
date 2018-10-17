@@ -269,9 +269,6 @@
       @include respond($md){
         font-size: em(80/2);
       }
-      @include respond($lg){
-        font-size: em(110/2);
-      }
 
     }
     .views-field-body {

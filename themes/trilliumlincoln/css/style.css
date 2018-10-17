@@ -1315,9 +1315,6 @@ a {
       @media (min-width: 992px) {
         .slider .item .views-field-field-slider-headline {
           font-size: 2.5em; } }
-      @media (min-width: 1200px) {
-        .slider .item .views-field-field-slider-headline {
-          font-size: 3.4375em; } }
     .slider .item .views-field-body {
       font-family: MillerB, sans-serif;
       font-size: 1em;
