@@ -138,6 +138,13 @@ class ImportWorkerCar extends ImportWorkerBase {
     }
     // Update entity if required ( source information was changed )
     else {
+      $field_prevent_automatic_update = $entity->get('field_prevent_automatic_update')->getValue();
+      if (!empty($field_prevent_automatic_update)) {
+        if ($field_prevent_automatic_update[0]['value'] == 1) {
+          return;
+        }
+      }
+
       $entity->need_to_save = FALSE;
       $new_entity = $this->prepareEntity($item);
 

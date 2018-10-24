@@ -1,0 +1,23 @@
+uuid: 3679e35d-3820-40ad-80af-d3631eb31d8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_prevent_automatic_update
+id: commerce_product.car.field_prevent_automatic_update
+field_name: field_prevent_automatic_update
+entity_type: commerce_product
+bundle: car
+label: 'Prevent Automatic Daily Updates'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

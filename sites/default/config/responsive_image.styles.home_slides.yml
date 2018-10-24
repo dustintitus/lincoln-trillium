@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.focal_point_slider
+    - image.style.mobile_portrait
   theme:
     - trilliumlincoln
 id: home_slides
@@ -12,12 +12,18 @@ image_style_mappings:
   -
     breakpoint_id: trulliumlincold.mobile
     multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: focal_point_slider
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vh
+      sizes_image_styles:
+        - mobile_portrait
   -
     breakpoint_id: trulliumlincold.mobile
     multiplier: 2x
-    image_mapping_type: image_style
-    image_mapping: focal_point_slider
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vh
+      sizes_image_styles:
+        - mobile_portrait
 breakpoint_group: trilliumlincoln
 fallback_image_style: '_original image_'

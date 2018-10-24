@@ -39,6 +39,7 @@ dependencies:
     - field.field.commerce_product.car.field_lease_36_term_rate
     - field.field.commerce_product.car.field_lease_39_term_rate
     - field.field.commerce_product.car.field_lease_48_term_rate
+    - field.field.commerce_product.car.field_prevent_automatic_update
     - field.field.commerce_product.car.field_residual_24_term_rate
     - field.field.commerce_product.car.field_residual_36_term_rate
     - field.field.commerce_product.car.field_residual_39_term_rate
@@ -70,7 +71,7 @@ third_party_settings:
         - field_car_odometer_reading
         - field_car_odometer_type
       parent_name: ''
-      weight: 15
+      weight: 16
       format_type: fieldset
       format_settings:
         id: ''
@@ -85,7 +86,7 @@ third_party_settings:
         - group_lease_term_rate
         - group_residual_term_rate
       parent_name: ''
-      weight: 18
+      weight: 19
       format_type: fieldset
       format_settings:
         label: 'Payment Calculator Fields'
@@ -151,7 +152,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 1
+    weight: 2
     settings:
       rows: 9
       summary_rows: 3
@@ -160,13 +161,13 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   field_car_accessory:
     type: entity_reference_paragraphs
-    weight: 16
+    weight: 17
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -193,7 +194,7 @@ content:
     type: string_textfield
     region: content
   field_car_dealership_id:
-    weight: 11
+    weight: 12
     settings:
       size: 60
       placeholder: ''
@@ -217,7 +218,7 @@ content:
     type: string_textfield
     region: content
   field_car_images:
-    weight: 10
+    weight: 11
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -233,7 +234,7 @@ content:
     type: string_textfield
     region: content
   field_car_make:
-    weight: 12
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -241,13 +242,13 @@ content:
     type: string_textfield
     region: content
   field_car_model:
-    weight: 13
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_car_msrp:
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: commerce_price_default
@@ -267,13 +268,13 @@ content:
     type: options_select
     region: content
   field_car_status:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_car_stock_number:
-    weight: 17
+    weight: 18
     settings:
       size: 60
       placeholder: ''
@@ -295,7 +296,7 @@ content:
     type: string_textfield
     region: content
   field_car_year:
-    weight: 14
+    weight: 15
     settings:
       date_order: YMD
       time_type: none
@@ -366,6 +367,13 @@ content:
     third_party_settings: {  }
     type: number
     region: content
+  field_prevent_automatic_update:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_residual_24_term_rate:
     weight: 24
     settings:
@@ -396,7 +404,7 @@ content:
     region: content
   path:
     type: path
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -404,12 +412,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 10
     region: content
     third_party_settings: {  }
   stores:
     type: commerce_entity_select
-    weight: 2
+    weight: 3
     settings:
       hide_single_entity: true
       autocomplete_threshold: 7
@@ -427,7 +435,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -436,7 +444,7 @@ content:
     third_party_settings: {  }
   variations:
     type: inline_entity_form_complex
-    weight: 4
+    weight: 5
     settings:
       form_mode: default
       label_singular: ''

@@ -153,7 +153,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<div class="rates-field-name"><div class="field">Title</div><div class="field">Finance 36 Term Rate</div><div class="field">Finance 48 Term Rate</div><div class="field">Finance 60 Term Rate</div><div class="field">Finance 72 Term Rate</div><div class="field">Lease 24 Term Rate</div><div class="field">Lease 36 Term Rate</div><div class="field">Lease 48 Term Rate</div><div class="field">Residual 24 Term Rate</div><div class="field">Residual 36 Term Rate</div><div class="field">Residual 48 Term Rate</div><div class="field">Edit</div></div>'
+            value: '<div class="rates-field-name"><div class="field">Title</div><div class="field">Finance 36 Term Rate</div><div class="field">Finance 39 Term Rate</div><div class="field">Finance 48 Term Rate</div><div class="field">Finance 60 Term Rate</div><div class="field">Finance 72 Term Rate</div><div class="field">Lease 24 Term Rate</div><div class="field">Lease 36 Term Rate</div><div class="field">Lease 39 Term Rate</div><div class="field">Lease 48 Term Rate</div><div class="field">Residual 24 Term Rate</div><div class="field">Residual 36 Term Rate</div><div class="field">Residual 39 Term Rate</div><div class="field">Residual 48 Term Rate</div><div class="field">Edit</div></div>'
             format: full_html
           plugin_id: text
       footer: {  }

@@ -32,11 +32,13 @@ dependencies:
     - field.field.commerce_product.car.field_car_vin
     - field.field.commerce_product.car.field_car_year
     - field.field.commerce_product.car.field_finance_36_term_rate
+    - field.field.commerce_product.car.field_finance_39_term_rate
     - field.field.commerce_product.car.field_finance_48_term_rate
     - field.field.commerce_product.car.field_finance_60_term_rate
     - field.field.commerce_product.car.field_finance_72_term_rate
     - field.field.commerce_product.car.field_lease_24_term_rate
     - field.field.commerce_product.car.field_lease_36_term_rate
+    - field.field.commerce_product.car.field_lease_39_term_rate
     - field.field.commerce_product.car.field_lease_48_term_rate
     - field.field.commerce_product.car.field_residual_24_term_rate
     - field.field.commerce_product.car.field_residual_36_term_rate
@@ -64,7 +66,7 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
-  field_finance_48_term_rate:
+  field_finance_39_term_rate:
     type: number_decimal
     weight: 1
     region: content
@@ -75,7 +77,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_finance_60_term_rate:
+  field_finance_48_term_rate:
     type: number_decimal
     weight: 2
     region: content
@@ -86,7 +88,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_finance_72_term_rate:
+  field_finance_60_term_rate:
     type: number_decimal
     weight: 3
     region: content
@@ -97,7 +99,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_lease_24_term_rate:
+  field_finance_72_term_rate:
     type: number_decimal
     weight: 4
     region: content
@@ -108,7 +110,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_lease_36_term_rate:
+  field_lease_24_term_rate:
     type: number_decimal
     weight: 5
     region: content
@@ -119,7 +121,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_lease_48_term_rate:
+  field_lease_36_term_rate:
     type: number_decimal
     weight: 6
     region: content
@@ -130,7 +132,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_residual_24_term_rate:
+  field_lease_39_term_rate:
     type: number_decimal
     weight: 7
     region: content
@@ -141,7 +143,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_residual_36_term_rate:
+  field_lease_48_term_rate:
     type: number_decimal
     weight: 8
     region: content
@@ -152,9 +154,31 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-  field_residual_39_term_rate:
+  field_residual_24_term_rate:
     type: number_decimal
     weight: 9
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+  field_residual_36_term_rate:
+    type: number_decimal
+    weight: 10
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+  field_residual_39_term_rate:
+    type: number_decimal
+    weight: 11
     region: content
     label: above
     settings:
@@ -167,7 +191,7 @@ content:
         class: ''
   field_residual_48_term_rate:
     type: number_decimal
-    weight: 10
+    weight: 12
     region: content
     label: above
     settings:
@@ -179,7 +203,7 @@ content:
       field_formatter_class:
         class: ''
   quick_product_edit:
-    weight: 11
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }

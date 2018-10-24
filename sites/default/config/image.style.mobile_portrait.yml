@@ -1,0 +1,17 @@
+uuid: b2d72d6f-7575-42a7-876e-4e43d0bda145
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: mobile_portrait
+label: 'Mobile Portrait Focal Point'
+effects:
+  a39c93cc-d627-4dcc-abcd-e2ac0c1fc3dc:
+    uuid: a39c93cc-d627-4dcc-abcd-e2ac0c1fc3dc
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 960
+      height: 1172
+      crop_type: focal_point
