@@ -3,8 +3,10 @@
 namespace CommerceGuys\Intl\Tests\Formatter;
 
 use CommerceGuys\Intl\Currency\Currency;
+use CommerceGuys\Intl\Exception\InvalidArgumentException;
 use CommerceGuys\Intl\Formatter\NumberFormatter;
 use CommerceGuys\Intl\NumberFormat\NumberFormat;
+use CommerceGuys\Intl\NumberFormat\NumberFormatRepository;
 
 /**
  * @coversDefaultClass \CommerceGuys\Intl\Formatter\NumberFormatter
@@ -12,343 +14,154 @@ use CommerceGuys\Intl\NumberFormat\NumberFormat;
 class NumberFormatterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Prepare two number formats.
+     * @covers ::format
      */
-    protected $numberFormats = [
-        'latn' => [
-            'numbering_system' => 'latn',
-            'decimal_pattern' => '#,##0.###',
-            'percent_pattern' => '#,##0%',
-            'currency_pattern' => '¤#,##0.00',
-            'accounting_currency_pattern' => '¤#,##0.00;(¤#,##0.00)',
-        ],
-        'beng' => [
-            'numbering_system' => 'beng',
-            'decimal_pattern' => '#,##,##0.###',
-            'percent_pattern' => '#,##,##0%',
-            'currency_pattern' => '#,##,##0.00¤',
-            'accounting_currency_pattern' => '#,##,##0.00¤;(#,##,##0.00¤)',
-        ],
-    ];
-
-    /**
-     * Prepare two currency formats.
-     */
-    protected $currencies = [
-        'USD' => [
-            'code' => 'USD',
-            'name' => 'US Dollar',
-            'numeric_code' => '840',
-            'symbol' => '$',
-        ],
-        'BND' => [
-            'code' => 'BND',
-            'name' => 'dollar Brunei',
-            'numeric_code' => '096',
-            'symbol' => 'BND',
-        ],
-    ];
-
-    /**
-     * @covers ::__construct
-     *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::getNumberFormat
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     */
-    public function testConstructor()
+    public function testFormatWithInvalidOptions()
     {
-        $numberFormat = new NumberFormat();
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::DECIMAL);
-        $this->assertSame($numberFormat, $formatter->getNumberFormat());
-    }
+        $formatter = new NumberFormatter(new NumberFormatRepository());
+        $data = [
+            'Unrecognized option "unknown".' => [
+                'unknown' => '123',
+            ],
+            'The option "use_grouping" must be a boolean.' => [
+              'use_grouping' => 'INVALID',
+            ],
+            'The option "minimum_fraction_digits" must be numeric.' => [
+                'minimum_fraction_digits' => 'INVALID',
+            ],
+            'The option "maximum_fraction_digits" must be numeric.' => [
+                'maximum_fraction_digits' => 'INVALID',
+            ],
+            'Unrecognized rounding mode "INVALID".' => [
+                'rounding_mode' => 'INVALID',
+            ],
+            'Unrecognized style "INVALID".' => [
+                'style' => 'INVALID',
+            ],
+        ];
 
-    /**
-     * @covers ::__construct
-     *
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     *
-     * @expectedException         \CommerceGuys\Intl\Exception\InvalidArgumentException
-     * @expectedExceptionMessage  Unknown format style provided to NumberFormatter::__construct().
-     */
-    public function testConstructorWithInvalidStyle()
-    {
-        $numberFormat = new NumberFormat();
-        new NumberFormatter($numberFormat, 'foo');
+        foreach ($data as $expectedError => $options) {
+            $message = '';
+            try {
+                $formatter->format('9.99', $options);
+            } catch (InvalidArgumentException $e) {
+                $message = $e->getMessage();
+            }
+            $this->assertEquals($expectedError, $message);
+        }
     }
 
     /**
      * @covers ::format
-     * @covers ::replaceDigits
-     * @covers ::replaceSymbols
-     *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     *
-     * @dataProvider numberValueProvider
-     */
-    public function testFormat($number_format, $style, $value, $expected_value)
-    {
-        $formatter = new NumberFormatter($number_format, $style);
-
-        $formattedNumber = $formatter->format($value);
-        $this->assertSame($expected_value, $formattedNumber);
-    }
-
-    /**
-     * @covers ::SetMinimumFractionDigits
-     * @covers ::SetMaximumFractionDigits
-     * @covers ::format
-     *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::replaceDigits
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::replaceSymbols
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     */
-    public function testFormatFractionDigits()
-    {
-        $numberFormat = $this->createNumberFormat($this->numberFormats['latn']);
-
-        $formatter = new NumberFormatter($numberFormat);
-        $formatter->setMinimumFractionDigits(2);
-        $formattedNumber = $formatter->format('12.5');
-        $this->assertSame('12.50', $formattedNumber);
-
-        $formatter = new NumberFormatter($numberFormat);
-        $formatter->setMaximumFractionDigits(1);
-        $formattedNumber = $formatter->format('12.50');
-        $this->assertSame('12.5', $formattedNumber);
-
-        $formatter = new NumberFormatter($numberFormat);
-        $formatter->setMinimumFractionDigits(4);
-        $formatter->setMaximumFractionDigits(5);
-        $formattedNumber = $formatter->format('12.50000');
-        $this->assertSame('12.5000', $formattedNumber);
-
-        $formatter = new NumberFormatter($numberFormat);
-        $formatter->setMinimumFractionDigits(1);
-        $formatter->setMaximumFractionDigits(2);
-        $formattedNumber = $formatter->format('12.0000');
-        $this->assertSame('12.0', $formattedNumber);
-
-        $formatter = new NumberFormatter($numberFormat);
-        $formatter->setMinimumFractionDigits(1);
-        $formatter->setMaximumFractionDigits(2);
-        $formattedNumber = $formatter->format('12');
-        $this->assertSame('12.0', $formattedNumber);
-    }
-
-    /**
-     * @covers ::format
-     *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::format
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
      *
      * @expectedException \CommerceGuys\Intl\Exception\InvalidArgumentException
+     * @expectedExceptionMessage The provided value "a12.34" is not a valid number or numeric string.
      */
-    public function testFormatOnlyAllowsNumbers()
+    public function testFormatWithInvalidNumber()
     {
-        $numberFormat = $this->createNumberFormat($this->numberFormats['latn']);
-        $formatter = new NumberFormatter($numberFormat);
+        $formatter = new NumberFormatter(new NumberFormatRepository());
         $formatter->format('a12.34');
     }
 
     /**
-     * @covers ::formatCurrency
-     * @covers ::replaceSymbols
-     *
-     * @uses \CommerceGuys\Intl\Currency\Currency
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::format
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::replaceDigits
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     *
-     * @dataProvider currencyValueProvider
+     * @covers ::format
      */
-    public function testFormatCurrency($number_format, $currency, $style, $value, $expected_value)
+    public function testFormatWithFloat()
     {
-        $formatter = new NumberFormatter($number_format, $style);
+        $formatter = new NumberFormatter(new NumberFormatRepository());
+        $formattedNumber = $formatter->format(12.34);
+        $this->assertSame('12.34', $formattedNumber);
+    }
 
-        $formattedNumber = $formatter->formatCurrency($value, $currency);
-        $this->assertSame($expected_value, $formattedNumber);
+    /**
+     * @covers ::format
+     *
+     * @dataProvider numberValueProvider
+     */
+    public function testBasicFormat($locale, $style, $number, $expectedNumber)
+    {
+        $formatter = new NumberFormatter(new NumberFormatRepository(), [
+            'locale' => $locale,
+            'style' => $style,
+        ]);
+        $formattedNumber = $formatter->format($number);
+        $this->assertSame($expectedNumber, $formattedNumber);
+    }
+
+    /**
+     * @covers ::format
+     */
+    public function testAdvancedFormat()
+    {
+        $formatter = new NumberFormatter(new NumberFormatRepository(), [
+            'maximum_fraction_digits' => 2,
+            'rounding_mode' => 'none',
+        ]);
+
+        $formattedNumber = $formatter->format('12.999');
+        $this->assertSame('12.99', $formattedNumber);
+
+        $formattedNumber = $formatter->format('12.5', [
+           'minimum_fraction_digits' => 2,
+        ]);
+        $this->assertSame('12.50', $formattedNumber);
+
+        $formattedNumber = $formatter->format('12', [
+            'minimum_fraction_digits' => 1,
+        ]);
+        $this->assertSame('12.0', $formattedNumber);
+
+        // Format with and without grouping.
+        $formattedNumber = $formatter->format('10000.90');
+        $this->assertSame('10,000.9', $formattedNumber);
+        $formattedNumber = $formatter->format('10000.90', [
+            'use_grouping' => false,
+        ]);
+        $this->assertSame('10000.9', $formattedNumber);
+
+        // Test secondary groups.
+        $formattedNumber = $formatter->format('12345678.90', ['locale' => 'bn']);
+        $this->assertSame('১,২৩,৪৫,৬৭৮.৯', $formattedNumber);
+
+        // No grouping needed.
+        $formattedNumber = $formatter->format('123.90', ['locale' => 'bn']);
+        $this->assertSame('১২৩.৯', $formattedNumber);
+
+        // Rounding.
+        $formattedNumber = $formatter->format('12.555', [
+            'rounding_mode' => PHP_ROUND_HALF_UP,
+        ]);
+        $this->assertSame('12.56', $formattedNumber);
+
+        $formattedNumber = $formatter->format('12.555', [
+            'rounding_mode' => PHP_ROUND_HALF_DOWN,
+        ]);
+        $this->assertSame('12.55', $formattedNumber);
     }
 
     /**
      * @covers ::parse
      *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     *
      * @dataProvider formattedValueProvider
      */
-    public function testParse($number_format, $style, $value, $expected_value)
+    public function testParse($locale, $number, $expectedNumber)
     {
-        $formatter = new NumberFormatter($number_format, $style);
-
-        $parsedNumber = $formatter->parse($value);
-        $this->assertSame($expected_value, $parsedNumber);
+        $formatter = new NumberFormatter(new NumberFormatRepository());
+        $parsedNumber = $formatter->parse($number, ['locale' => $locale]);
+        $this->assertSame($expectedNumber, $parsedNumber);
     }
 
     /**
-     * @covers ::parseCurrency
-     *
-     * @uses \CommerceGuys\Intl\Currency\Currency
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     *
-     * @dataProvider formattedCurrencyProvider
-     */
-    public function testParseCurrency($number_format, $currency, $style, $value, $expected_value)
-    {
-        $formatter = new NumberFormatter($number_format, $style);
-
-        $parsedNumber = $formatter->parseCurrency($value, $currency);
-        $this->assertSame($expected_value, $parsedNumber);
-    }
-
-    /**
-     * @covers ::getNumberFormat
-     *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     */
-    public function testGetNumberFormat()
-    {
-        $numberFormat = $this->createNumberFormat($this->numberFormats['latn']);
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::DECIMAL);
-        $this->assertSame($numberFormat, $formatter->getNumberFormat());
-    }
-
-    /**
-     * @covers ::getMinimumFractionDigits
-     *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     */
-    public function testMinimumFractionDigits()
-    {
-        $numberFormat = $this->createNumberFormat($this->numberFormats['latn']);
-
-        // Defaults to 0 for decimal and percentage formats.
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::DECIMAL);
-        $this->assertEquals(0, $formatter->getMinimumFractionDigits());
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::PERCENT);
-        $this->assertEquals(0, $formatter->getMinimumFractionDigits());
-
-        // Should default to null for currency formats.
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::CURRENCY);
-        $this->assertNull($formatter->getMinimumFractionDigits());
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::CURRENCY_ACCOUNTING);
-        $this->assertNull($formatter->getMinimumFractionDigits());
-    }
-
-    /**
-     * @covers ::getMaximumFractionDigits
-     *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     */
-    public function testMaximumFractionDigits()
-    {
-        $numberFormat = $this->createNumberFormat($this->numberFormats['latn']);
-
-        // Defaults to 3 for decimal and percentage formats.
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::DECIMAL);
-        $this->assertEquals(3, $formatter->getMaximumFractionDigits());
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::PERCENT);
-        $this->assertEquals(3, $formatter->getMaximumFractionDigits());
-
-        // Should default to null for currency formats.
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::CURRENCY);
-        $this->assertNull($formatter->getMaximumFractionDigits());
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::CURRENCY_ACCOUNTING);
-        $this->assertNull($formatter->getMaximumFractionDigits());
-    }
-
-    /**
-     * @covers ::isGroupingUsed
-     * @covers ::setGroupingUsed
-     *
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::format
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::replaceDigits
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::replaceSymbols
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     */
-    public function testGroupingUsed()
-    {
-        $numberFormat = $this->createNumberFormat($this->numberFormats['latn']);
-
-        // The formatter groups correctly.
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::DECIMAL);
-        $this->assertTrue($formatter->isGroupingUsed());
-        $this->assertSame('10,000.9', $formatter->format('10000.90'));
-
-        // The formatter respects grouping turned off.
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::DECIMAL);
-        $formatter->setGroupingUsed(false);
-        $this->assertFalse($formatter->isGroupingUsed());
-        $this->assertSame('10000.9', $formatter->format('10000.90'));
-    }
-
-    /**
-     * @covers ::getCurrencyDisplay
-     * @covers ::setCurrencyDisplay
-     * @covers ::formatCurrency
-     *
-     * @uses \CommerceGuys\Intl\Currency\Currency
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::__construct
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::format
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::replaceDigits
-     * @uses \CommerceGuys\Intl\Formatter\NumberFormatter::replaceSymbols
-     * @uses \CommerceGuys\Intl\NumberFormat\NumberFormat
-     */
-    public function testCurrencyDisplay()
-    {
-        $numberFormat = $this->createNumberFormat($this->numberFormats['latn']);
-        $currency = $this->createCurrency($this->currencies['USD']);
-
-        // Currency display defaults to symbol.
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::CURRENCY);
-        $this->assertSame(NumberFormatter::CURRENCY_DISPLAY_SYMBOL, $formatter->getCurrencyDisplay());
-        $formattedNumber = $formatter->formatCurrency('100', $currency);
-        $this->assertSame('$100.00', $formattedNumber);
-
-        // Currency display respects setting the value to currency code.
-        $formatter = new NumberFormatter($numberFormat, NumberFormatter::CURRENCY);
-        $formatter->setCurrencyDisplay(NumberFormatter::CURRENCY_DISPLAY_CODE);
-        $this->assertSame(NumberFormatter::CURRENCY_DISPLAY_CODE, $formatter->getCurrencyDisplay());
-        $formattedNumber = $formatter->formatCurrency('100', $currency);
-        $this->assertSame('USD100.00', $formattedNumber);
-    }
-
-    /**
-     * Provides the number format, number style, value and expected formatted value.
+     * Provides the locale, number style, value and expected formatted value.
      */
     public function numberValueProvider()
     {
         return [
-            [$this->createNumberFormat($this->numberFormats['latn']), NumberFormatter::DECIMAL, '-50.5', '-50.5'],
-            [$this->createNumberFormat($this->numberFormats['latn']), NumberFormatter::PERCENT, '50.5', '50.5%'],
-            [$this->createNumberFormat($this->numberFormats['latn']), NumberFormatter::DECIMAL, '5000000.5', '5,000,000.5'],
-            [$this->createNumberFormat($this->numberFormats['beng'], 'bn'), NumberFormatter::DECIMAL, '-50.5', '-৫০.৫'],
-            [$this->createNumberFormat($this->numberFormats['beng'], 'bn'), NumberFormatter::PERCENT, '50.5', '৫০.৫%'],
-            [$this->createNumberFormat($this->numberFormats['beng'], 'bn'), NumberFormatter::DECIMAL, '5000000.5', '৫০,০০,০০০.৫'],
-        ];
-    }
-
-    /**
-     * Provides the number format, currency format, number style, value and expected formatted value.
-     */
-    public function currencyValueProvider()
-    {
-        return [
-            [$this->createNumberFormat($this->numberFormats['latn']), $this->createCurrency($this->currencies['USD']), NumberFormatter::CURRENCY, '-5.05', '-$5.05'],
-            [$this->createNumberFormat($this->numberFormats['latn']), $this->createCurrency($this->currencies['USD']), NumberFormatter::CURRENCY_ACCOUNTING, '-5.05', '($5.05)'],
-            [$this->createNumberFormat($this->numberFormats['latn']), $this->createCurrency($this->currencies['USD']), NumberFormatter::CURRENCY, '500100.05', '$500,100.05'],
-            [$this->createNumberFormat($this->numberFormats['beng'], 'bn'), $this->createCurrency($this->currencies['BND'], 'bn'), NumberFormatter::CURRENCY, '-50.5', '-৫০.৫০BND'],
-            [$this->createNumberFormat($this->numberFormats['beng'], 'bn'), $this->createCurrency($this->currencies['BND'], 'bn'), NumberFormatter::CURRENCY_ACCOUNTING, '-50.5', '(৫০.৫০BND)'],
-            [$this->createNumberFormat($this->numberFormats['beng'], 'bn'), $this->createCurrency($this->currencies['BND'], 'bn'), NumberFormatter::CURRENCY, '500100.05', '৫,০০,১০০.০৫BND'],
+            ['en', 'decimal', '-50.00', '-50'],
+            ['en', 'percent', '0.50', '50%'],
+            ['en', 'decimal', '5000000.5', '5,000,000.5'],
+            ['bn', 'decimal', '-50.5', '-৫০.৫'],
+            ['bn', 'decimal', '5000000.5', '৫০,০০,০০০.৫'],
         ];
     }
 
@@ -358,73 +171,10 @@ class NumberFormatterTest extends \PHPUnit_Framework_TestCase
     public function formattedValueProvider()
     {
         return [
-            [$this->createNumberFormat($this->numberFormats['latn']), NumberFormatter::DECIMAL, '500,100.05', '500100.05'],
-            [$this->createNumberFormat($this->numberFormats['latn']), NumberFormatter::DECIMAL, '-1,059.59', '-1059.59'],
-            [$this->createNumberFormat($this->numberFormats['beng'], 'bn'), NumberFormatter::DECIMAL, '৫,০০,১০০.০৫', '500100.05'],
+            ['en', '500,100.05', '500100.05'],
+            ['en', '-1,059.59', '-1059.59'],
+            ['en', '50%', '0.5'],
+            ['bn', '৫,০০,১০০.০৫', '500100.05'],
         ];
-    }
-
-    /**
-     * Provides values for the formatted currency parser.
-     */
-    public function formattedCurrencyProvider()
-    {
-        return [
-            [$this->createNumberFormat($this->numberFormats['latn']), $this->createCurrency($this->currencies['USD']), NumberFormatter::CURRENCY, '$500,100.05', '500100.05'],
-            [$this->createNumberFormat($this->numberFormats['latn']), $this->createCurrency($this->currencies['USD']), NumberFormatter::CURRENCY, '-$1,059.59', '-1059.59'],
-            [$this->createNumberFormat($this->numberFormats['latn']), $this->createCurrency($this->currencies['USD']), NumberFormatter::CURRENCY_ACCOUNTING, '($1,059.59)', '-1059.59'],
-            [$this->createNumberFormat($this->numberFormats['beng'], 'bn'), $this->createCurrency($this->currencies['BND'], 'bn'), NumberFormatter::CURRENCY, '৫,০০,১০০.০৫BND', '500100.05'],
-        ];
-    }
-
-    /**
-     * Helper for initiating a new NumberFormat object.
-     */
-    protected function createNumberFormat(array $definition, $locale = 'en')
-    {
-        $default = [
-            'decimal_separator' => '.',
-            'grouping_separator' => ',',
-            'plus_sign' => '+',
-            'minus_sign' => '-',
-            'percent_sign' => '%',
-        ];
-        $format = array_merge($default, $definition);
-
-        $numberFormat = new NumberFormat();
-        $numberFormat->setLocale($locale);
-        $numberFormat->setNumberingSystem($format['numbering_system']);
-        $numberFormat->setDecimalSeparator($format['decimal_separator']);
-        $numberFormat->setGroupingSeparator($format['grouping_separator']);
-        $numberFormat->setPlusSign($format['plus_sign']);
-        $numberFormat->setMinusSign($format['minus_sign']);
-        $numberFormat->setPercentSign($format['percent_sign']);
-        $numberFormat->setDecimalPattern($format['decimal_pattern']);
-        $numberFormat->setPercentPattern($format['percent_pattern']);
-        $numberFormat->setCurrencyPattern($format['currency_pattern']);
-        $numberFormat->setAccountingCurrencyPattern($format['accounting_currency_pattern']);
-
-        return $numberFormat;
-    }
-
-    /**
-     * Helper for initiating a new Currency object.
-     */
-    protected function createCurrency(array $definition, $locale = 'en')
-    {
-        $default = [
-            'fraction_digits' => 2,
-        ];
-        $format = array_merge($default, $definition);
-
-        $currency = new Currency();
-        $currency->setCurrencyCode($format['code']);
-        $currency->setName($format['name']);
-        $currency->setNumericCode($format['numeric_code']);
-        $currency->setFractionDigits($format['fraction_digits']);
-        $currency->setSymbol($format['symbol']);
-        $currency->setLocale($locale);
-
-        return $currency;
     }
 }

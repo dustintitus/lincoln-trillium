@@ -1,10 +1,12 @@
+/* eslint-disable */
+
 'use strict';
 
 module.exports = (configs) => {
   return {
     entry: {},
     output: {
-      filename: '[name]',
+      filename: '[name]'
     },
     module: {
       rules: [
@@ -14,15 +16,15 @@ module.exports = (configs) => {
           loader: 'babel-loader',
           query: {
             presets: [
-              ["env", {
-                "targets": {
-                  "browsers": configs.browsersSupport
+              ['env', {
+                'targets': {
+                  'browsers': configs.browsersSupport
                 }
               }]
-            ],
-          },
-        },
-      ],
-    },
+            ]
+          }
+        }
+      ]
+    }
   };
 };

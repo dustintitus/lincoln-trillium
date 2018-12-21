@@ -135,6 +135,18 @@ class Element extends DrupalAttributes {
   }
 
   /**
+   * Sets the #access property on an element.
+   *
+   * @param bool|\Drupal\Core\Access\AccessResultInterface $access
+   *   The value to assign to #access.
+   *
+   * @return static
+   */
+  public function access($access = NULL) {
+    return $this->setProperty('access', $access);
+  }
+
+  /**
    * Appends a property with a value.
    *
    * @param string $name
@@ -296,6 +308,27 @@ class Element extends DrupalAttributes {
   public function exchangeArray($data) {
     $old = parent::exchangeArray($data);
     return $old;
+  }
+
+  /**
+   * Traverses the element to find the closest button.
+   *
+   * @return \Drupal\bootstrap\Utility\Element|false
+   *   The first button element or FALSE if no button could be found.
+   */
+  public function &findButton() {
+    $button = FALSE;
+    foreach ($this->children() as $child) {
+      if ($child->isButton()) {
+        $button = $child;
+        break;
+      }
+      if ($result = &$child->findButton()) {
+        $button = $result;
+        break;
+      }
+    }
+    return $button;
   }
 
   /**

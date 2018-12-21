@@ -2,12 +2,18 @@
 
 namespace Drupal\svg_image\Plugin\Field\FieldFormatter;
 
+use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Logger\LoggerChannel;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
 use Drupal\image\Plugin\Field\FieldFormatter\ImageFormatter;
 use Drupal\Core\Cache\Cache;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Plugin implementation of the 'image' formatter.
@@ -27,6 +33,39 @@ use Drupal\Core\Cache\Cache;
  * )
  */
 class SvgImageFormatter extends ImageFormatter {
+
+  /**
+   * File logger channel.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannel
+   */
+  private $logger;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($pluginId, $pluginDefinition, FieldDefinitionInterface $fieldDefinition, array $settings, $label, $viewMode, array $thirdPartySettings, AccountInterface $currentUser, EntityStorageInterface $ImageStyleStorage, LoggerChannel $logger) {
+    parent::__construct($pluginId, $pluginDefinition, $fieldDefinition, $settings, $label, $viewMode, $thirdPartySettings, $currentUser, $ImageStyleStorage);
+    $this->logger = $logger;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $pluginId, $pluginDefinition) {
+    return new static(
+      $pluginId,
+      $pluginDefinition,
+      $configuration['field_definition'],
+      $configuration['settings'],
+      $configuration['label'],
+      $configuration['view_mode'],
+      $configuration['third_party_settings'],
+      $container->get('current_user'),
+      $container->get('entity_type.manager')->getStorage('image_style'),
+      $container->get('logger.channel.file')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -64,11 +103,6 @@ class SvgImageFormatter extends ImageFormatter {
     }
 
     $svg_attributes = $this->getSetting('svg_attributes');
-    foreach ($svg_attributes as &$attribute) {
-      if ($attribute) {
-        $attribute .= 'px';
-      }
-    }
     foreach ($files as $delta => $file) {
       $attributes = [];
       $isSvg = svg_image_is_file_svg($file);
@@ -111,17 +145,19 @@ class SvgImageFormatter extends ImageFormatter {
       }
       else {
         // Render as SVG tag.
-        $svgRaw = file_get_contents($file->getFileUri());
-        $svgRaw = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $svgRaw);
-        $svgRaw = trim($svgRaw);
+        $svgRaw = $this->fileGetContents($file);
+        if ($svgRaw) {
+          $svgRaw = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $svgRaw);
+          $svgRaw = trim($svgRaw);
 
-        $elements[$delta] = [
-          '#markup' => Markup::create($svgRaw),
-          '#cache' => [
-            'tags' => $cacheTags,
-            'contexts' => $cacheContexts,
-          ],
-        ];
+          $elements[$delta] = [
+            '#markup' => Markup::create($svgRaw),
+            '#cache' => [
+              'tags' => $cacheTags,
+              'contexts' => $cacheContexts,
+            ],
+          ];
+        }
       }
     }
 
@@ -145,8 +181,8 @@ class SvgImageFormatter extends ImageFormatter {
 
     $element['svg_render_as_image'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Render SVG image as &lt;img&rt;'),
-      '#description' => $this->t('Render SVG images as usual image in IMG tag instead of &lt;svg&rt; tag'),
+      '#title' => $this->t('Render SVG image as &lt;img&gt;'),
+      '#description' => $this->t('Render SVG images as usual image in IMG tag instead of &lt;svg&gt; tag'),
       '#default_value' => $this->getSetting('svg_render_as_image'),
     ];
 
@@ -175,6 +211,30 @@ class SvgImageFormatter extends ImageFormatter {
     ];
 
     return $element;
+  }
+
+  /**
+   * Provides content of the file.
+   *
+   * @param \Drupal\file\Entity\File $file
+   *   File to handle.
+   *
+   * @return string
+   *   File content.
+   */
+  protected function fileGetContents(File $file) {
+    $fileUri = $file->getFileUri();
+
+    if (file_exists($fileUri)) {
+      return file_get_contents($fileUri);
+    }
+
+    $this->logger->error(
+      'File @file_uri (ID: @file_id) does not exists in filesystem.',
+      ['@file_id' => $file->id(), '@file_uri' => $fileUri]
+    );
+
+    return FALSE;
   }
 
 }

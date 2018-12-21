@@ -8,7 +8,7 @@
 	"DJF": {
 		"name": "Djiboutian Franc"
 	},
-	"STD": {
+	"STN": {
 		"name": "São Tomé & Príncipe Dobra"
 	},
 	"SCR": {
@@ -22,6 +22,9 @@
 	},
 	"TMT": {
 		"name": "Turkmenistani Manat"
+	},
+	"UYW": {
+		"name": "Uruguayan Nominal Wage Index Unit"
 	},
 	"ZWL": {
 		"name": "Zimbabwean Dollar (2009)"
@@ -415,7 +418,7 @@
 	"MUR": {
 		"name": "مورٮ۪شِیاہٕچ رۄپَے"
 	},
-	"MRO": {
+	"MRU": {
 		"name": "مورِٹینِیَن عوگیوٗیا"
 	},
 	"MAD": {
@@ -469,7 +472,7 @@
 	"VUV": {
 		"name": "وَنوٗاَتوٗ وَتوٗ"
 	},
-	"VEF": {
+	"VES": {
 		"name": "وینٕزوٗلیُک بولِوَر"
 	},
 	"VND": {

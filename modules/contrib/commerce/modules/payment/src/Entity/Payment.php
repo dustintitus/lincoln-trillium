@@ -32,14 +32,13 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *       "operation" = "Drupal\commerce_payment\Form\PaymentOperationForm",
  *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
  *     },
- *     "views_data" = "Drupal\views\EntityViewsData",
+ *     "views_data" = "Drupal\commerce\CommerceEntityViewsData",
  *     "route_provider" = {
  *       "default" = "Drupal\Core\Entity\Routing\DefaultHtmlRouteProvider",
  *     },
  *   },
  *   base_table = "commerce_payment",
  *   admin_permission = "administer commerce_payment",
- *   fieldable = TRUE,
  *   entity_keys = {
  *     "id" = "payment_id",
  *     "bundle" = "type",
@@ -258,6 +257,13 @@ class Payment extends ContentEntityBase implements PaymentInterface {
   /**
    * {@inheritdoc}
    */
+  public function isCompleted() {
+    return !$this->get('completed')->isEmpty();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getCompletedTime() {
     return $this->get('completed')->value;
   }
@@ -290,10 +296,10 @@ class Payment extends ContentEntityBase implements PaymentInterface {
       $refunded_amount = new Price('0', $this->getAmount()->getCurrencyCode());
       $this->setRefundedAmount($refunded_amount);
     }
-    // Maintain the authorized completed timestamps.
+    // Maintain the authorized and completed timestamps.
     $state = $this->getState()->value;
     $original_state = isset($this->original) ? $this->original->getState()->value : '';
-    if ($state == 'authorized' && $original_state != 'authorized') {
+    if ($state == 'authorization' && $original_state != 'authorization') {
       if (empty($this->getAuthorizedTime())) {
         $this->setAuthorizedTime(\Drupal::time()->getRequestTime());
       }
@@ -302,6 +308,34 @@ class Payment extends ContentEntityBase implements PaymentInterface {
       if (empty($this->getCompletedTime())) {
         $this->setCompletedTime(\Drupal::time()->getRequestTime());
       }
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function postSave(EntityStorageInterface $storage, $update = TRUE) {
+    if ($this->isCompleted()) {
+      $payment_order_manager = \Drupal::service('commerce_payment.order_manager');
+      $payment_order_manager->updateTotalPaid($this->getOrder());
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function postDelete(EntityStorageInterface $storage, array $entities) {
+    parent::postDelete($storage, $entities);
+
+    // Multiple payments might reference the same order, make sure that each
+    // order is only updated once.
+    $orders = [];
+    foreach ($entities as $entity) {
+      $orders[$entity->getOrderId()] = $entity->getOrder();
+    }
+    $payment_order_manager = \Drupal::service('commerce_payment.order_manager');
+    foreach ($orders as $order) {
+      $payment_order_manager->updateTotalPaid($order);
     }
   }
 

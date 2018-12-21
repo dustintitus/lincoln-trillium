@@ -179,22 +179,25 @@ function menu_item_extras_preprocess_block(&$variables) {
  */
 function menu_item_extras_theme_suggestions_menu_link_content(array $variables) {
   $suggestions = [];
-  $suggestion_prefix = 'menu_link_content';
-  /* @var \Drupal\menu_link_content\Entity\MenuLinkContent $menu_link_content */
-  $menu_link_content = $variables['elements']['#menu_link_content'];
-  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
-
-  $suggestions[] = $suggestion_prefix . '__' . $sanitized_view_mode;
-  $suggestions[] = $suggestion_prefix . '__' . $menu_link_content->getMenuName();
-  $suggestions[] = $suggestion_prefix . '__' . $menu_link_content->getMenuName() . '__' . $sanitized_view_mode;
+  /** @var \Drupal\menu_item_extras\Utility\Utility $utility */
+  $utility = \Drupal::service('menu_item_extras.utility');
+  /* @var \Drupal\menu_link_content\Entity\MenuLinkContent $entity */
+  $entity = $variables['elements']['#menu_link_content'];
+  $prefix = 'menu_link_content';
+  $view_mode = $utility::sanitizeMachineName($variables['elements']['#view_mode']);
+  $menu_name = $utility::sanitizeMachineName($entity->getMenuName());
+  $entity_id = $entity->id();
+  $suggestions[] = $utility::suggestion($prefix, $view_mode);
+  $suggestions[] = $utility::suggestion($prefix, $menu_name);
+  $suggestions[] = $utility::suggestion($prefix, $menu_name, $view_mode);
   if (isset($variables['elements']['#menu_level'])) {
-    $level = $variables['elements']['#menu_level'];
-    $suggestions[] = $suggestion_prefix . '__menu_level_' . $level;
-    $suggestions[] = $suggestion_prefix . '__' . $menu_link_content->getMenuName() . '__menu_level_' . $level;
-    $suggestions[] = $suggestion_prefix . '__' . $menu_link_content->getMenuName() . '__menu_level_' . $level . '__' . $sanitized_view_mode;
+    $level = 'menu_level_' . $variables['elements']['#menu_level'];
+    $suggestions[] = $utility::suggestion($prefix, $level);
+    $suggestions[] = $utility::suggestion($prefix, $menu_name, $level);
+    $suggestions[] = $utility::suggestion($prefix, $menu_name, $level, $view_mode);
   }
-  $suggestions[] = $suggestion_prefix . '__' . $menu_link_content->getMenuName() . '__' . $menu_link_content->id();
-  $suggestions[] = $suggestion_prefix . '__' . $menu_link_content->getMenuName() . '__' . $menu_link_content->id() . '__' . $sanitized_view_mode;
+  $suggestions[] = $utility::suggestion($prefix, $menu_name, $entity_id);
+  $suggestions[] = $utility::suggestion($prefix, $menu_name, $entity_id, $view_mode);
 
   return $suggestions;
 }
@@ -205,19 +208,21 @@ function menu_item_extras_theme_suggestions_menu_link_content(array $variables) 
 function menu_item_extras_theme_suggestions_menu_levels(array $variables) {
   $suggestions = [];
   $suggestion_prefix = 'menu_levels';
+  /** @var \Drupal\menu_item_extras\Utility\Utility $utility */
+  $utility = \Drupal::service('menu_item_extras.utility');
 
-  $menu_name = $variables['items']['#menu_name'];
+  $menu_name = $utility::sanitizeMachineName($variables['items']['#menu_name']);
   $children = Element::children($variables['items']);
   if (isset($variables['items'][$children[0]]['menu_level'])) {
     $level = 'level_' . $variables['items'][$children[0]]['menu_level'];
   }
 
   if (isset($level)) {
-    $suggestions[] = $suggestion_prefix . '__' . $level;
+    $suggestions[] = $utility::suggestion($suggestion_prefix, $level);
   }
-  $suggestions[] = $suggestion_prefix . '__' . $menu_name;
+  $suggestions[] = $utility::suggestion($suggestion_prefix, $menu_name);
   if (isset($level)) {
-    $suggestions[] = $suggestion_prefix . '__' . $menu_name . '__' . $level;
+    $suggestions[] = $utility::suggestion($suggestion_prefix, $menu_name, $level);
   }
 
   return $suggestions;
@@ -229,20 +234,22 @@ function menu_item_extras_theme_suggestions_menu_levels(array $variables) {
 function menu_item_extras_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
   if (isset($variables['menu_name'])) {
     $menu_name = $variables['menu_name'];
-    $menu_name = strtr($menu_name, '-', '_');
+    /** @var \Drupal\menu_item_extras\Utility\Utility $utility */
+    $utility = \Drupal::service('menu_item_extras.utility');
+    $menu_name = $utility::sanitizeMachineName($menu_name);
 
     // We have to add back the original suggestion that normally is generated
     // from the #theme, because in pre-process we are replacing it with 'menu'.
-    $suggestions[] = 'menu__' . $menu_name;
+    $suggestions[] = $utility::suggestion('menu', $menu_name);
 
     if (Utility::checkBundleHasExtraFieldsThanEntity('menu_link_content', $variables['menu_name'])) {
       $suggestion_prefix = 'menu__extras';
       // Custom suggestions.
       $suggestions[] = $suggestion_prefix;
-      $suggestions[] = $suggestion_prefix . '__' . $menu_name;
+      $suggestions[] = $utility::suggestion($suggestion_prefix, $menu_name);
       // Custom suggestions for the parent region.
       if (isset($variables['attributes']['data-region'])) {
-        $suggestions[] = $suggestion_prefix . '__' . $menu_name . '__' . $variables['attributes']['data-region'];
+        $suggestions[] = $utility::suggestion($suggestion_prefix, $menu_name, $variables['attributes']['data-region']);
       }
     }
   }
@@ -297,7 +304,7 @@ function menu_item_extras_form_menu_edit_form_alter(array &$form, FormStateInter
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter() for "node_form".
+ * Implements hook_form_BASE_FORM_ID_alter().
  */
 function menu_item_extras_form_node_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
   /** @var \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler */
@@ -358,6 +365,19 @@ function menu_item_extras_entity_view_alter(array &$build, EntityInterface $enti
     $hidden_fields = ['title', 'description', 'weight', 'expanded', 'enabled'];
     foreach ($hidden_fields as $hidden_field) {
       $build[$hidden_field]['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for field.html.twig.
+ */
+function menu_item_extras_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  if ($variables['element']['#entity_type'] === 'menu_link_content') {
+    /** @var \Drupal\menu_item_extras\Utility\Utility $utility */
+    $utility = \Drupal::service('menu_item_extras.utility');
+    foreach ($suggestions as $key => $suggestion) {
+      $suggestions[$key] = $utility::sanitizeMachineName($suggestion);
     }
   }
 }

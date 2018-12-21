@@ -43,7 +43,7 @@
 	"ETB": {
 		"name": "Birr Ethiopia"
 	},
-	"VEF": {
+	"VES": {
 		"name": "Bolívar Venezuela"
 	},
 	"BOB": {
@@ -97,7 +97,7 @@
 	"AED": {
 		"name": "Dirham UAE"
 	},
-	"STD": {
+	"STN": {
 		"name": "Dobra São Tomé và Príncipe"
 	},
 	"AMD": {
@@ -332,7 +332,7 @@
 		"name": "Nhân dân tệ",
 		"symbol": "CN¥"
 	},
-	"MRO": {
+	"MRU": {
 		"name": "Ouguiya Mauritania"
 	},
 	"TOP": {
@@ -473,6 +473,9 @@
 	},
 	"MNT": {
 		"name": "Tugrik Mông Cổ"
+	},
+	"UYW": {
+		"name": "Uruguayan Nominal Wage Index Unit"
 	},
 	"VUV": {
 		"name": "Vatu Vanuatu"

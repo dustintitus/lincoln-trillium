@@ -47,7 +47,8 @@ class OffsiteRedirect extends OffsitePaymentGatewayBase {
       '#title' => $this->t('Redirect method'),
       '#options' => [
         'get' => $this->t('Redirect via GET (302 header)'),
-        'post' => $this->t('Redirect via POST'),
+        'post' => $this->t('Redirect via POST (automatic)'),
+        'post_manual' => $this->t('Redirect via POST (manual)'),
       ],
       '#default_value' => $this->configuration['redirect_method'],
     ];
@@ -74,14 +75,13 @@ class OffsiteRedirect extends OffsitePaymentGatewayBase {
     $payment_storage = $this->entityTypeManager->getStorage('commerce_payment');
     $payment = $payment_storage->create([
       'state' => 'authorization',
-      'amount' => $order->getTotalPrice(),
+      'amount' => $order->getBalance(),
       'payment_gateway' => $this->entityId,
       'order_id' => $order->id(),
       'remote_id' => $request->query->get('txn_id'),
       'remote_state' => $request->query->get('payment_status'),
     ]);
     $payment->save();
-    drupal_set_message('Payment was processed');
   }
 
 }

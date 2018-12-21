@@ -296,7 +296,7 @@
 	"MUR": {
 		"name": "Mavriki Rupisi"
 	},
-	"MRO": {
+	"MRU": {
 		"name": "Mavritaniya Ugiyası"
 	},
 	"MXN": {
@@ -378,7 +378,7 @@
 	"WST": {
 		"name": "Samoa Talası"
 	},
-	"STD": {
+	"STN": {
 		"name": "San Tom və Prinsip Dobrası"
 	},
 	"RSD": {
@@ -459,13 +459,16 @@
 	"UGX": {
 		"name": "Uqanda Şillinqi"
 	},
+	"UYW": {
+		"name": "Uruguayan Nominal Wage Index Unit"
+	},
 	"UYU": {
 		"name": "Uruqvay Pesosu"
 	},
 	"VUV": {
 		"name": "Vanuatu Vatusu"
 	},
-	"VEF": {
+	"VES": {
 		"name": "Venesuela Bolivarı"
 	},
 	"VND": {

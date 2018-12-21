@@ -1,10 +1,11 @@
-# Commerce Quick Edit
+# COMMERCE QUICK EDIT
 
 ## CONTENTS OF THIS FILE
 
   * Introduction
   * Requirements
   * Installation
+  * Configuration
   * Author
 
 ## INTRODUCTION
@@ -31,11 +32,19 @@ Drupal Commerce 2.x.
 1. Install module as usual via Drush, Drupal UI or Composer.
 2. Go to "Extend" and enable the Commerce Quick Edit module.
 
+## CONFIGURATION
+
+You can configure the modal window width here:
+
+```
+/admin/commerce/config/commerce-quick-edit
+```
+
 ### AUTHOR
 
 Goran Nikolovski  
 Website: (http://www.gorannikolovski.com)  
-Drupal: (https://www.drupal.org/user/3451979)  
+Drupal: (https://www.drupal.org/u/gnikolovski)  
 Email: nikolovski84@gmail.com  
 
 Company: Studio Present, Subotica, Serbia  

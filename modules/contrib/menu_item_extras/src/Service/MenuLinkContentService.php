@@ -235,15 +235,7 @@ class MenuLinkContentService implements MenuLinkContentServiceInterface {
     $node = $form_object->getEntity();
     if (!$form_state->isValueEmpty('menu')) {
       $values = $form_state->getValue('menu');
-      if (empty($values['enabled'])) {
-        if ($values['entity_id']) {
-          $entity = $this->entityTypeManager
-            ->getStorage('menu_link_content')
-            ->load($values['entity_id']);
-          $entity->delete();
-        }
-      }
-      elseif (trim($values['title'])) {
+      if (!empty($values['enabled']) && trim($values['title'])) {
         // Decompose the selected menu parent
         // option into 'menu_name' and 'parent',
         // if the form used the default parent selection widget.

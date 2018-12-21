@@ -5,7 +5,7 @@ namespace Drupal\commerce_product\Form;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Entity\ContentEntityForm;
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
@@ -29,8 +29,8 @@ class ProductForm extends ContentEntityForm {
   /**
    * Constructs a new ProductForm object.
    *
-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
-   *   The entity manager.
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   *   The entity repository.
    * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
    *   The entity type bundle info.
    * @param \Drupal\Component\Datetime\TimeInterface $time
@@ -38,8 +38,8 @@ class ProductForm extends ContentEntityForm {
    * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
    *   The date formatter.
    */
-  public function __construct(EntityManagerInterface $entity_manager, EntityTypeBundleInfoInterface $entity_type_bundle_info, TimeInterface $time, DateFormatterInterface $date_formatter) {
-    parent::__construct($entity_manager, $entity_type_bundle_info, $time);
+  public function __construct(EntityRepositoryInterface $entity_repository, EntityTypeBundleInfoInterface $entity_type_bundle_info, TimeInterface $time, DateFormatterInterface $date_formatter) {
+    parent::__construct($entity_repository, $entity_type_bundle_info, $time);
 
     $this->dateFormatter = $date_formatter;
   }
@@ -49,7 +49,7 @@ class ProductForm extends ContentEntityForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity.manager'),
+      $container->get('entity.repository'),
       $container->get('entity_type.bundle.info'),
       $container->get('datetime.time'),
       $container->get('date.formatter')
@@ -88,14 +88,6 @@ class ProductForm extends ContentEntityForm {
     $form['changed'] = [
       '#type' => 'hidden',
       '#default_value' => $product->getChangedTime(),
-    ];
-
-    $form['footer'] = [
-      '#type' => 'container',
-      '#weight' => 99,
-      '#attributes' => [
-        'class' => ['product-form-footer'],
-      ],
     ];
     $form['status']['#group'] = 'footer';
 
@@ -151,7 +143,7 @@ class ProductForm extends ContentEntityForm {
     $form['path_settings'] = [
       '#type' => 'details',
       '#title' => t('URL path settings'),
-      '#open' => !empty($form['path']['widget'][0]['alias']['#value']),
+      '#open' => !empty($form['path']['widget'][0]['alias']['#default_value']),
       '#group' => 'advanced',
       '#access' => !empty($form['path']['#access']) && $product->get('path')->access('edit'),
       '#attributes' => [
@@ -168,9 +160,6 @@ class ProductForm extends ContentEntityForm {
       '#group' => 'advanced',
       '#attributes' => [
         'class' => ['product-form-author'],
-      ],
-      '#attached' => [
-        'library' => ['commerce_product/drupal.commerce_product'],
       ],
       '#weight' => 90,
       '#optional' => TRUE,
@@ -218,12 +207,38 @@ class ProductForm extends ContentEntityForm {
   /**
    * {@inheritdoc}
    */
+  protected function actions(array $form, FormStateInterface $form_state) {
+    $actions = parent::actions($form, $form_state);
+
+    if ($this->entity->isNew()) {
+      $actions['submit_continue'] = [
+        '#type' => 'submit',
+        '#value' => $this->t('Save and add variations'),
+        '#continue' => TRUE,
+        '#submit' => ['::submitForm', '::save'],
+        // Hide the button if variations are managed through a widget.
+        '#access' => empty($form['variations']),
+      ];
+    }
+
+    return $actions;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function save(array $form, FormStateInterface $form_state) {
     /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
     $product = $this->getEntity();
     $product->save();
-    drupal_set_message($this->t('The product %label has been successfully saved.', ['%label' => $product->label()]));
-    $form_state->setRedirect('entity.commerce_product.canonical', ['commerce_product' => $product->id()]);
+    $this->messenger()->addMessage($this->t('The product %label has been successfully saved.', ['%label' => $product->label()]));
+
+    if (!empty($form_state->getTriggeringElement()['#continue'])) {
+      $form_state->setRedirect('entity.commerce_product_variation.collection', ['commerce_product' => $product->id()]);
+    }
+    else {
+      $form_state->setRedirect('entity.commerce_product.canonical', ['commerce_product' => $product->id()]);
+    }
   }
 
 }

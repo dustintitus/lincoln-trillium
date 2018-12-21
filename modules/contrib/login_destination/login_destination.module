@@ -74,7 +74,8 @@ function login_destination_toolbar_alter(&$items) {
   if (\Drupal::currentUser()->isAnonymous()) {
     $url = &$items['user']['tray']['user_links']['#links']['login']['url'];
 
-    // Change route name, since route "user.page" always redirects to "user.login".
+    // Change route name, since route "user.page" always redirects to
+    // "user.login".
     $url = Url::fromRoute('user.login');
 
     // Get current path.

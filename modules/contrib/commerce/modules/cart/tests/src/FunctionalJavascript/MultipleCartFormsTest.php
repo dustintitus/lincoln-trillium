@@ -56,7 +56,7 @@ class MultipleCartFormsTest extends CartBrowserTestBase {
     /** @var \Drupal\Core\Entity\Entity\EntityFormDisplay $order_item_form_display */
     $order_item_form_display = EntityFormDisplay::load('commerce_order_item.default.add_to_cart');
     $order_item_form_display->setComponent('quantity', [
-      'type' => 'number',
+      'type' => 'commerce_quantity',
     ]);
     $order_item_form_display->save();
 
@@ -145,8 +145,6 @@ class MultipleCartFormsTest extends CartBrowserTestBase {
 
   /**
    * Tests that a page with multiple add to cart forms works properly.
-   *
-   * @group debug
    */
   public function testMultipleRenderedProducts() {
     // View of rendered products, each containing an add to cart form.

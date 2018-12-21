@@ -25,7 +25,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
  *     "list_builder" = "Drupal\commerce_promotion\CouponListBuilder",
  *     "storage" = "Drupal\commerce_promotion\CouponStorage",
  *     "access" = "Drupal\commerce_promotion\CouponAccessControlHandler",
- *     "views_data" = "Drupal\views\EntityViewsData",
+ *     "views_data" = "Drupal\commerce\CommerceEntityViewsData",
  *     "form" = {
  *       "add" = "Drupal\commerce_promotion\Form\CouponForm",
  *       "edit" = "Drupal\commerce_promotion\Form\CouponForm",
@@ -164,6 +164,18 @@ class Coupon extends ContentEntityBase implements CouponInterface {
     /** @var \Drupal\commerce_promotion\PromotionUsageInterface $usage */
     $usage = \Drupal::service('commerce_promotion.usage');
     $usage->deleteByCoupon($entities);
+    // Delete references to those coupons in promotions.
+    foreach ($entities as $coupon) {
+      $coupons_id[] = $coupon->id();
+    }
+    $promotions = \Drupal::entityTypeManager()->getStorage('commerce_promotion')->loadByProperties(['coupons' => $coupons_id]);
+    /** @var \Drupal\commerce_promotion\Entity\PromotionInterface $promotion */
+    foreach ($promotions as $promotion) {
+      foreach ($entities as $entity) {
+        $promotion->removeCoupon($entity);
+      }
+      $promotion->save();
+    }
   }
 
   /**

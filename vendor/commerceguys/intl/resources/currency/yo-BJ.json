@@ -115,7 +115,7 @@
 	"MAD": {
 		"name": "Dirami ti Orílɛ́ède Moroko"
 	},
-	"STD": {
+	"STN": {
 		"name": "Dobira ti Orílɛ́ède Sao tome Ati Pirisipe"
 	},
 	"DOP": {
@@ -325,7 +325,7 @@
 	"OMR": {
 		"name": "Omani Rial"
 	},
-	"MRO": {
+	"MRU": {
 		"name": "Ouguiya ti Orílɛ́ède Maritania"
 	},
 	"PKR": {
@@ -462,6 +462,9 @@
 		"name": "Uro",
 		"symbol": "€"
 	},
+	"UYW": {
+		"name": "Uruguayan Nominal Wage Index Unit"
+	},
 	"UYU": {
 		"name": "Uruguayan Peso"
 	},
@@ -471,7 +474,7 @@
 	"VUV": {
 		"name": "Vanuatu Vatu"
 	},
-	"VEF": {
+	"VES": {
 		"name": "Venezuelan Bolívar"
 	},
 	"VND": {

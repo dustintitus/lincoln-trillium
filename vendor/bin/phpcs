@@ -1,25 +1,10 @@
-#!/usr/bin/env php
-<?php
-/**
- * PHP_CodeSniffer tokenizes PHP code and detects violations of a
- * defined set of coding standards.
- *
- * PHP version 5
- *
- * @category  PHP
- * @package   PHP_CodeSniffer
- * @author    Greg Sherwood <gsherwood@squiz.net>
- * @author    Marc McIntyre <mmcintyre@squiz.net>
- * @copyright 2006-2014 Squiz Pty Ltd (ABN 77 084 670 600)
- * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
- * @link      http://pear.php.net/package/PHP_CodeSniffer
- */
+#!/usr/bin/env sh
 
-if (is_file(dirname(__FILE__).'/../CodeSniffer/CLI.php') === true) {
-    include_once dirname(__FILE__).'/../CodeSniffer/CLI.php';
-} else {
-    include_once 'PHP/CodeSniffer/CLI.php';
-}
+dir=$(cd "${0%[/\\]*}" > /dev/null; cd "../squizlabs/php_codesniffer/bin" && pwd)
 
-$cli = new PHP_CodeSniffer_CLI();
-$cli->runphpcs();
+if [ -d /proc/cygdrive ] && [[ $(which php) == $(readlink -n /proc/cygdrive)/* ]]; then
+   # We are in Cgywin using Windows php, so the path must be translated
+   dir=$(cygpath -m "$dir");
+fi
+
+"${dir}/phpcs" "$@"

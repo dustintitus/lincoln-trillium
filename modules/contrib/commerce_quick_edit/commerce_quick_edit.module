@@ -6,10 +6,23 @@
  */
 
 use Drupal\commerce_product\Entity\ProductType;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
-use Drupal\Core\Url;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function commerce_quick_edit_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.commerce_quick_edit':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides a modal form for quick product editing.') . '</p>';
+      return $output;
+  }
+}
 
 /**
  * Implements hook_entity_extra_field_info().
@@ -42,7 +55,7 @@ function commerce_quick_edit_entity_view(array &$build, EntityInterface $entity,
       '#type' => 'link',
       '#title' => t('Quick edit'),
       '#url' => Url::fromRoute('commerce_quick_edit.product_edit', [
-        'id' => $entity->id()
+        'id' => $entity->id(),
       ]),
       '#attributes' => [
         'class' => [

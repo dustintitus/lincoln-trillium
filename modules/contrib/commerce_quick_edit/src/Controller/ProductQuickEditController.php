@@ -6,7 +6,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\OpenModalDialogCommand;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityFormBuilder;
+use Drupal\Core\Entity\EntityFormBuilderInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -16,36 +16,44 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class ProductQuickEditController extends ControllerBase {
 
   /**
+   * Entity type manager.
+   *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
   /**
-   * @var \Drupal\Core\Entity\EntityFormBuilder
+   * Entity form builder.
+   *
+   * @var \Drupal\Core\Entity\EntityFormBuilderInterface
    */
   protected $entityFormBuilder;
 
   /**
+   * Config factory.
+   *
    * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $configFactory;
 
   /**
-   * QuickNoteController constructor.
+   * ProductQuickEditController constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   * @param \Drupal\Core\Entity\EntityFormBuilder $entity_form_builder
+   *   Entity type manager.
+   * @param \Drupal\Core\Entity\EntityFormBuilderInterface $entity_form_builder
+   *   Entity form builder.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   Config factory.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, EntityFormBuilder $entity_form_builder, ConfigFactoryInterface $config_factory) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, EntityFormBuilderInterface $entity_form_builder, ConfigFactoryInterface $config_factory) {
     $this->entityTypeManager = $entity_type_manager;
     $this->entityFormBuilder = $entity_form_builder;
     $this->configFactory = $config_factory;
   }
 
   /**
-   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
-   *
-   * @return static
+   * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
@@ -58,9 +66,14 @@ class ProductQuickEditController extends ControllerBase {
   /**
    * Open product edit form in a modal.
    *
-   * @param integer $id
+   * @param int $id
+   *   Product ID.
    *
    * @return \Drupal\Core\Ajax\AjaxResponse
+   *   JSON response object.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function openModalForm($id) {
     $product_entity = $this->entityTypeManager

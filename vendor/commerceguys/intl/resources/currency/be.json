@@ -87,7 +87,7 @@
 	"HUF": {
 		"name": "венгерскі форынт"
 	},
-	"VEF": {
+	"VES": {
 		"name": "венесуальскі балівар"
 	},
 	"HTG": {
@@ -130,7 +130,7 @@
 	"DJF": {
 		"name": "джыбуційскі франк"
 	},
-	"STD": {
+	"STN": {
 		"name": "добра Сан-Тамэ і Прынсіпі"
 	},
 	"USD": {
@@ -282,7 +282,7 @@
 	"MUR": {
 		"name": "маўрыкійская рупія"
 	},
-	"MRO": {
+	"MRU": {
 		"name": "маўрытанская ўгія"
 	},
 	"MXN": {
@@ -485,6 +485,9 @@
 	},
 	"SVC": {
 		"name": "Salvadoran Colón"
+	},
+	"UYW": {
+		"name": "Uruguayan Nominal Wage Index Unit"
 	},
 	"ZWL": {
 		"name": "Zimbabwean Dollar (2009)"

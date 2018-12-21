@@ -4,11 +4,10 @@ description: 'Provides activity logs for Commerce entities.'
 package: Commerce
 # core: 8.x
 dependencies:
-  - commerce
-  - user
+  - commerce:commerce
 
-# Information added by Drupal.org packaging script on 2017-12-06
-version: '8.x-2.2'
+# Information added by Drupal.org packaging script on 2018-10-31
+version: '8.x-2.11'
 core: '8.x'
 project: 'commerce'
-datestamp: 1512585809
+datestamp: 1541002987

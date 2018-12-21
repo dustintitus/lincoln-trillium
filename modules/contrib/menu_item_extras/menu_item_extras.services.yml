@@ -20,3 +20,5 @@ services:
       - { name: module_install.uninstall_validator }
     arguments: ['@database', '@string_translation']
     lazy: true
+  menu_item_extras.utility:
+    class: Drupal\menu_item_extras\Utility\Utility

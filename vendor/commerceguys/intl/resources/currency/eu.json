@@ -299,7 +299,7 @@
 	"MAD": {
 		"name": "Marokoko dirhama"
 	},
-	"MRO": {
+	"MRU": {
 		"name": "Mauritaniako ouguiya"
 	},
 	"MUR": {
@@ -378,8 +378,8 @@
 	"SHP": {
 		"name": "Santa Helenako libera"
 	},
-	"STD": {
-		"name": "Sao Tomeko eta Principeko dobra"
+	"STN": {
+		"name": "Sao Tome eta Principeko dobra"
 	},
 	"RSD": {
 		"name": "Serbiako dinarra"
@@ -465,13 +465,16 @@
 	"UYU": {
 		"name": "Uruguaiko pesoa"
 	},
+	"UYW": {
+		"name": "Uruguayan Nominal Wage Index Unit"
+	},
 	"UZS": {
 		"name": "Uzbekistango soma"
 	},
 	"VUV": {
 		"name": "Vanuatuko vatua"
 	},
-	"VEF": {
+	"VES": {
 		"name": "Venezuelako bolivarra"
 	},
 	"VND": {

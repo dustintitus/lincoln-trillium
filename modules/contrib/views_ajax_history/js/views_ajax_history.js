@@ -2,7 +2,7 @@
 
   // Need to keep this to check if there are extra parameters in the original URL.
   var original = {
-    path: window.location.href,
+    path: window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '') + window.location.pathname,
     // @TODO integrate #1359798 without breaking history.js
     query: window.location.search || ''
   };
@@ -113,6 +113,21 @@
   };
 
   /**
+   * Parse a URL query string
+   *
+   * @param queryString
+   *   String containing the query to parse.
+   */
+  var parseQuery = function(queryString) {
+    var query = {};
+    $.map(queryString.split('&'), function(val) {
+      var s = val.split('=');
+      query[s[0]] = s[1];
+    });
+    return query;
+  };
+
+  /**
    * Unbind 'popstate' when adding a new state to avoid an infinite loop.
    *
    * We only use the 'popstate' event to trigger refresh on back of forward click.
@@ -203,7 +218,8 @@
    */
   Drupal.Ajax.prototype.beforeSubmit = function (form_values, element, options) {
     if (options.data.view_name) {
-      var url = original.path + (/\?/.test(original.path) ? '&' : '?') + element.formSerialize();
+      var url = original.path + '?' + element.formSerialize();
+      var currentQuery = parseQueryString(window.location.href);
 
       // copy selected values in history state
       $.each(form_values, function () {
@@ -218,8 +234,14 @@
         else {
           options.data[this.name] = this.value;
         }
+        // Remove exposed data from the current query to leave behind any
+        // non exposed form related query vars
+        if (currentQuery[this.name]) {
+          delete currentQuery[this.name];
+        }
       });
 
+      url += (/\?/.test(url) ? '&' : '?') + $.param(currentQuery);
       addState(options, url);
     }
     // Call the original Drupal method with the right context.
@@ -235,8 +257,9 @@
    *   jQuery.ajax options.
    */
   Drupal.Ajax.prototype.beforeSend = function (xmlhttprequest, options) {
-    // Check that the Ajax call is coming from a View.
-    if(typeof options.url != 'undefined' && options.url.indexOf('/views/ajax') != -1) {
+    var data = (typeof options.data === 'string') ? parseQuery(options.data) : {};
+
+    if (data.view_name && options.type !== 'GET') {
       // Override the URL to not contain any fields that were submitted.
       options.url = drupalSettings.views.ajax_path + '?' + Drupal.ajax.WRAPPER_FORMAT + '=drupal_ajax';
 

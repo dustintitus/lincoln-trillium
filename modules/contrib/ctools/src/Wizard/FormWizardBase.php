@@ -176,15 +176,6 @@ abstract class FormWizardBase extends FormBase implements FormWizardInterface {
   }
 
   /**
-   * The translated text of the "Previous" button's text.
-   *
-   * @return \Drupal\Core\StringTranslation\TranslatableMarkup
-   */
-  public function getPrevOp() {
-    return $this->t('Previous');
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function getNextParameters($cached_values) {
@@ -293,15 +284,8 @@ abstract class FormWizardBase extends FormBase implements FormWizardInterface {
         $this->machine_name = $cached_values['id'];
       }
       $this->getTempstore()->set($this->getMachineName(), $cached_values);
-      $next_parameters = $this->getNextParameters($cached_values);
       if (!$form_state->get('ajax')) {
-        $form_state->setRedirect($this->getRouteName(), $next_parameters);
-      }
-      else {
-        // Switch steps for ajax forms.
-        if (!empty($next_parameters['step'])) {
-          $this->step = $next_parameters['step'];
-        }
+        $form_state->setRedirect($this->getRouteName(), $this->getNextParameters($cached_values));
       }
     }
   }
@@ -325,17 +309,7 @@ abstract class FormWizardBase extends FormBase implements FormWizardInterface {
    */
   public function previous(array &$form, FormStateInterface $form_state) {
     $cached_values = $form_state->getTemporaryValue('wizard');
-    $prev_parameters = $this->getPreviousParameters($cached_values);
-    // Redirect for non ajax forms.
-    if (!$form_state->get('ajax')) {
-      $form_state->setRedirect($this->getRouteName(), $prev_parameters);
-    }
-    else {
-      // Switch step for ajax forms.
-      if (!empty($prev_parameters['step'])) {
-        $this->step = $prev_parameters['step'];
-      }
-    }
+    $form_state->setRedirect($this->getRouteName(), $this->getPreviousParameters($cached_values));
   }
 
   /**

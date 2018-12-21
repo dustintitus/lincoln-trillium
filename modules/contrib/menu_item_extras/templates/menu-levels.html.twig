@@ -19,17 +19,8 @@
 
     {% set rendered_content = item.content|without('') %}
     {% if rendered_content|render %}
-      {% set menu_dropdown_classes = [
-        'menu-dropdown',
-        'menu-dropdown-' ~ item.menu_level,
-        'menu-type-' ~ item.content['#view_mode'],
-      ] %}
-
-      <div{{ create_attribute().addClass(menu_dropdown_classes) }}>
-        {{ rendered_content }}
-      </div>
+      {{ rendered_content }}
     {% endif %}
-
   </li>
 {% endfor %}
 </ul>

@@ -12,6 +12,8 @@ class LoginDestinationToolbarLinkBuilder extends ToolbarLinkBuilder {
 
   /**
    * The decorated service.
+   *
+   * @var \Drupal\user\ToolbarLinkBuilder
    */
   protected $innerService;
 
@@ -40,7 +42,7 @@ class LoginDestinationToolbarLinkBuilder extends ToolbarLinkBuilder {
    *   The inner services response.
    */
   public function __call($method, array $args = []) {
-    return call_user_func_array(array($this->innerService, $method), $args);
+    return call_user_func_array([$this->innerService, $method], $args);
   }
 
   /**

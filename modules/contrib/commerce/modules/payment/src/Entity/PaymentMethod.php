@@ -30,6 +30,7 @@ use Drupal\profile\Entity\ProfileInterface;
  *     "access" = "Drupal\commerce_payment\PaymentMethodAccessControlHandler",
  *     "list_builder" = "Drupal\commerce_payment\PaymentMethodListBuilder",
  *     "storage" = "Drupal\commerce_payment\PaymentMethodStorage",
+ *     "views_data" = "Drupal\commerce\CommerceEntityViewsData",
  *     "form" = {
  *       "edit" = "Drupal\commerce_payment\Form\PaymentMethodEditForm",
  *       "delete" = "Drupal\commerce_payment\Form\PaymentMethodDeleteForm"
@@ -40,15 +41,15 @@ use Drupal\profile\Entity\ProfileInterface;
  *   },
  *   base_table = "commerce_payment_method",
  *   admin_permission = "administer commerce_payment_method",
- *   fieldable = TRUE,
  *   entity_keys = {
  *     "id" = "method_id",
  *     "uuid" = "uuid",
- *     "bundle" = "type"
+ *     "bundle" = "type",
+ *     "owner" = "uid",
+ *     "uid" = "uid",
  *   },
  *   links = {
  *     "collection" = "/user/{user}/payment-methods",
- *     "canonical" = "/user/{user}/payment-methods/{commerce_payment_method}/edit",
  *     "edit-form" = "/user/{user}/payment-methods/{commerce_payment_method}/edit",
  *     "delete-form" = "/user/{user}/payment-methods/{commerce_payment_method}/delete",
  *   },
@@ -114,7 +115,7 @@ class PaymentMethod extends ContentEntityBase implements PaymentMethodInterface 
    * {@inheritdoc}
    */
   public function getOwnerId() {
-    return $this->get('uid')->target_id;
+    return $this->getEntityKey('owner');
   }
 
   /**

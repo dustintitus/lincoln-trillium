@@ -80,6 +80,7 @@ class ProductVariationFieldInjectionTest extends ProductBrowserTestBase {
     $this->assertSession()->pageTextContains('Testing product variation field injection!');
     $this->assertSession()->pageTextContains('Price');
     $this->assertSession()->pageTextContains('$999.00');
+    $this->assertSession()->elementNotExists('css', 'div[data-quickedit-field-id="commerce_product_variation/*"]');
     // We hide the SKU by default.
     $this->assertSession()->pageTextNotContains('INJECTION-CYAN');
 
@@ -109,6 +110,37 @@ class ProductVariationFieldInjectionTest extends ProductBrowserTestBase {
     $this->assertSession()->pageTextNotContains($this->product->label() . ' - Cyan');
     $this->assertSession()->pageTextContains('INJECTION-CYAN');
     $this->assertSession()->pageTextContains('$999.00');
+  }
+
+  /**
+   * Tests that the default injected variation respects the URL context.
+   */
+  public function testInjectedVariationFromUrl() {
+    $this->drupalGet($this->product->toUrl());
+    // We hide the SKU by default.
+    $this->assertSession()->pageTextNotContains('INJECTION-CYAN');
+
+    /** @var \Drupal\Core\Entity\Entity\EntityViewDisplay $variation_view_display */
+    $variation_view_display = commerce_get_entity_display('commerce_product_variation', 'default', 'view');
+    $variation_view_display->removeComponent('title');
+    $variation_view_display->setComponent('attribute_color', [
+      'label' => 'above',
+      'type' => 'entity_reference_label',
+    ]);
+    $variation_view_display->setComponent('sku', [
+      'label' => 'hidden',
+      'type' => 'string',
+    ]);
+    $variation_view_display->save();
+
+    $this->drupalGet($this->product->toUrl());
+    $this->assertSession()->pageTextContains('INJECTION-CYAN');
+
+    $variations = $this->product->getVariations();
+    foreach ($variations as $variation) {
+      $this->drupalGet($variation->toUrl());
+      $this->assertSession()->pageTextContains($variation->label());
+    }
   }
 
 }

@@ -4,7 +4,7 @@ description: 'Provides configurable checkout flows.'
 package: Commerce
 # core: 8.x
 dependencies:
-  - commerce
+  - commerce:commerce
   - commerce:commerce_order
   - commerce:commerce_cart
 config_devel:
@@ -14,8 +14,8 @@ config_devel:
     - core.entity_view_mode.commerce_product_variation.summary
     - views.view.commerce_checkout_order_summary
 
-# Information added by Drupal.org packaging script on 2017-12-06
-version: '8.x-2.2'
+# Information added by Drupal.org packaging script on 2018-10-31
+version: '8.x-2.11'
 core: '8.x'
 project: 'commerce'
-datestamp: 1512585809
+datestamp: 1541002987

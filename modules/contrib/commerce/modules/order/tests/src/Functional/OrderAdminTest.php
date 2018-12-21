@@ -4,6 +4,7 @@ namespace Drupal\Tests\commerce_order\Functional;
 
 use Drupal\commerce_order\Adjustment;
 use Drupal\commerce_order\Entity\Order;
+use Drupal\commerce_order\Entity\OrderItem;
 use Drupal\commerce_price\Price;
 use Drupal\profile\Entity\Profile;
 
@@ -39,8 +40,6 @@ class OrderAdminTest extends OrderBrowserTestBase {
 
   /**
    * Tests creating/editing an Order.
-   *
-   * @group failing
    */
   public function testCreateOrder() {
     // Create an order through the add form.
@@ -98,17 +97,26 @@ class OrderAdminTest extends OrderBrowserTestBase {
       'billing_profile[0][profile][address][0][address][postal_code]' => '94043',
       'billing_profile[0][profile][address][0][address][locality]' => 'Mountain View',
       'billing_profile[0][profile][address][0][address][administrative_area]' => 'CA',
-      // Use an adjustment that is not locked by default.
+    ];
+    // There is no adjustment - the order should save successfully.
+    $this->submitForm($edit, 'Save');
+    $this->assertSession()->pageTextContains('The order has been successfully saved.');
+
+    // Use an adjustment that is not locked by default.
+    $this->clickLink('Edit');
+    $edit = [
       'adjustments[0][type]' => 'fee',
       'adjustments[0][definition][label]' => '',
       'adjustments[0][definition][amount][number]' => '2.00',
     ];
     $this->submitForm($edit, 'Save');
-    $this->assertSession()->pageTextContains('Label field is required.');
+    $this->assertSession()->pageTextContains('The adjustment label field is required.');
     $edit['adjustments[0][definition][label]'] = 'Test fee';
     $this->submitForm($edit, 'Save');
+    $this->assertSession()->pageTextContains('The order has been successfully saved.');
+
     $this->drupalGet('/admin/commerce/orders');
-    $order_number = $this->getSession()->getPage()->find('css', 'tr td.views-field-order-number');
+    $order_number = $this->getSession()->getPage()->findAll('css', 'tr td.views-field-order-number');
     $this->assertEquals(1, count($order_number), 'Order exists in the table.');
 
     $order = Order::load(1);
@@ -150,6 +158,50 @@ class OrderAdminTest extends OrderBrowserTestBase {
     $this->assertSession()->fieldValueEquals('adjustments[1][definition][label]', 'Handling fee');
     $this->assertSession()->optionExists('adjustments[2][type]', 'Custom');
     $this->assertSession()->optionNotExists('adjustments[2][type]', 'Test order adjustment type');
+  }
+
+  /**
+   * Tests editing an order after the customer was deleted.
+   */
+  public function testEditOrderWithDeletedCustomer() {
+    $customer = $this->drupalCreateUser();
+    // The profile is not associated with the customer to avoid #2995300.
+    $profile = Profile::create([
+      'type' => 'customer',
+      'address' => [
+        'country_code' => 'US',
+        'postal_code' => '53177',
+        'locality' => 'Milwaukee',
+        'address_line1' => 'Pabst Blue Ribbon Dr',
+        'administrative_area' => 'WI',
+        'given_name' => 'Frederick',
+        'family_name' => 'Pabst',
+      ],
+    ]);
+    $profile->save();
+    $order_item = OrderItem::create([
+      'type' => 'default',
+      'unit_price' => [
+        'number' => '999',
+        'currency_code' => 'USD',
+      ],
+    ]);
+    $order_item->save();
+    $order = Order::create([
+      'type' => 'default',
+      'state' => 'completed',
+      'uid' => $customer->id(),
+      'store_id' => $this->store,
+      'billing_profile' => $profile,
+      'order_items' => [$order_item],
+    ]);
+    $order->save();
+    $customer->delete();
+
+    $this->drupalGet($order->toUrl('edit-form'));
+    $this->assertSession()->statusCodeEquals(200);
+    $this->submitForm([], 'Save');
+    $this->assertSession()->pageTextContains('The order has been successfully saved.');
   }
 
   /**
@@ -202,18 +254,12 @@ class OrderAdminTest extends OrderBrowserTestBase {
    * Tests that an admin can view an order's details.
    */
   public function testAdminOrderView() {
-    $order_item = $this->createEntity('commerce_order_item', [
-      'type' => 'default',
-      'unit_price' => [
-        'number' => '999',
-        'currency_code' => 'USD',
-      ],
-    ]);
+    // Start from an order without any order items.
+    /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
     $order = $this->createEntity('commerce_order', [
       'type' => 'default',
       'store_id' => $this->store->id(),
       'mail' => $this->loggedInUser->getEmail(),
-      'order_items' => [$order_item],
       'state' => 'draft',
       'uid' => $this->loggedInUser,
     ]);
@@ -222,6 +268,10 @@ class OrderAdminTest extends OrderBrowserTestBase {
     $this->drupalGet($order->toUrl()->toString());
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->pageTextContains($this->loggedInUser->getEmail());
+
+    // Confirm that the order item table is showing the empty text.
+    $this->assertSession()->pageTextContains('There are no order items yet.');
+    $this->assertSession()->pageTextNotContains('Subtotal');
 
     // Confirm that the transition buttons are visible and functional.
     $workflow = $order->getState()->getWorkflow();
@@ -232,6 +282,23 @@ class OrderAdminTest extends OrderBrowserTestBase {
     $this->click('input.js-form-submit#edit-place');
     $this->assertSession()->buttonNotExists('Place order');
     $this->assertSession()->buttonNotExists('Cancel order');
+
+    // Add an order item, confirm that it is displayed.
+    $order_item = $this->createEntity('commerce_order_item', [
+      'type' => 'default',
+      'unit_price' => [
+        'number' => '999',
+        'currency_code' => 'USD',
+      ],
+    ]);
+    $order->setItems([$order_item]);
+    $order->save();
+
+    $this->drupalGet($order->toUrl()->toString());
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->pageTextNotContains('There are no order items yet.');
+    $this->assertSession()->pageTextContains('$999.00');
+    $this->assertSession()->pageTextContains('Subtotal');
 
     // Logout and check that anonymous users cannot see the order admin screen
     // and receive a 403 error code.

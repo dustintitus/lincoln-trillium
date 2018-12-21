@@ -371,7 +371,7 @@
 	"MAD": {
 		"name": "ಮೊರೊಕನ್ ದಿರ್‌ಹಮ್"
 	},
-	"MRO": {
+	"MRU": {
 		"name": "ಮೌರೀಶಿಯನಿಯನ್ ಒಗಿಯ"
 	},
 	"MMK": {
@@ -415,7 +415,7 @@
 		"name": "ವಿಯೆಟ್ನಾಮೀಸ್ ಡಾಂಗ್",
 		"symbol": "₫"
 	},
-	"VEF": {
+	"VES": {
 		"name": "ವೆನಿಜುಲಿಯನ್ ಬೊಲಿವರ್"
 	},
 	"LKR": {
@@ -427,7 +427,7 @@
 	"WST": {
 		"name": "ಸಮೋನ್ ತಲಾ"
 	},
-	"STD": {
+	"STN": {
 		"name": "ಸಾವೊ ಟೋಮ್ ಮತ್ತು ಪ್ರಿನ್ಸಿಪ್ ದೊಬ್ರಾ"
 	},
 	"SGD": {
@@ -487,6 +487,9 @@
 	},
 	"SVC": {
 		"name": "Salvadoran Colón"
+	},
+	"UYW": {
+		"name": "Uruguayan Nominal Wage Index Unit"
 	},
 	"ZWL": {
 		"name": "Zimbabwean Dollar (2009)"

@@ -318,8 +318,8 @@
 	"MDL": {
 		"name": "Moldova Leyi"
 	},
-	"MRO": {
-		"name": "Moritanya Ouguiyası"
+	"MRU": {
+		"name": "Moritanya Ugiyası"
 	},
 	"MZN": {
 		"name": "Mozambik Metikali"
@@ -378,7 +378,7 @@
 	"WST": {
 		"name": "Samoa Talası"
 	},
-	"STD": {
+	"STN": {
 		"name": "São Tomé ve Príncipe Dobrası"
 	},
 	"SCR": {
@@ -458,13 +458,16 @@
 	"UYU": {
 		"name": "Uruguay Pesosu"
 	},
+	"UYW": {
+		"name": "Uruguayan Nominal Wage Index Unit"
+	},
 	"JOD": {
 		"name": "Ürdün Dinarı"
 	},
 	"VUV": {
 		"name": "Vanuatu Vatusu"
 	},
-	"VEF": {
+	"VES": {
 		"name": "Venezuela Bolivarı"
 	},
 	"VND": {

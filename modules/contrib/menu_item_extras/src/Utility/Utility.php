@@ -2,6 +2,8 @@
 
 namespace Drupal\menu_item_extras\Utility;
 
+use Drupal\Component\Utility\Unicode;
+
 /**
  * Utility functions specific to menu_item_extras.
  */
@@ -26,6 +28,54 @@ class Utility {
       return TRUE;
     }
     return FALSE;
+  }
+
+  /**
+   * Sanitize string.
+   *
+   * @param string $string
+   *   Input string.
+   *
+   * @return string
+   *   Sanitized string.
+   */
+  public static function sanitizeMachineName($string) {
+    $to_replace = [' ', '-', '.'];
+    $string = str_replace(
+      $to_replace,
+      array_fill(0, count($to_replace), '_'),
+      Unicode::strtolower($string)
+    );
+    $string = preg_replace('/[^A-Za-z0-9\_]/', '', $string);
+    return self::limitUnderscores($string);
+  }
+
+  /**
+   * Suggestion builder, based on recieved args.
+   *
+   * @param string $str1
+   *   Argument for string building.
+   * @param string $str2
+   *   Add arguments as more as you need.
+   *
+   * @return string
+   *   Prepared suggestion string.
+   */
+  public static function suggestion($str1, $str2 = '') {
+    return self::limitUnderscores(implode('__', func_get_args()));
+  }
+
+  /**
+   * Filter more than 2 underscores in the row.
+   *
+   * @param string $str
+   *   Input string.
+   *
+   * @return null|string
+   *   Filtered string.
+   */
+  public static function limitUnderscores($str) {
+    return preg_replace('/__+/', '__', $str);
   }
 
 }

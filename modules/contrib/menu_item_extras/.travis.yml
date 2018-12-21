@@ -26,7 +26,7 @@ env:
     - PATH="$PATH:$HOME/.composer/vendor/bin"
 
     # Configuration variables.
-    - DRUPAL_TI_CORE_BRANCH="8.4.0"
+    - DRUPAL_TI_CORE_BRANCH="8.4.4"
     - DRUPAL_TI_MODULE_NAME="menu_item_extras"
     - DRUPAL_TI_SIMPLETEST_GROUP="menu_item_extras"
 
@@ -104,13 +104,13 @@ before_install:
   - composer global require "lionsad/drupal_ti:1.*"
   - drupal-ti before_install
   # Codesniffer and Coder
+
+install:
+  - drupal-ti install
   - composer global require "drupal/coder:^8.2"
   # Symlinks for Codesniffer
   - ln -s ~/.composer/vendor/drupal/coder/coder_sniffer/Drupal ~/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal
   - ln -s ~/.composer/vendor/drupal/coder/coder_sniffer/DrupalPractice ~/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/DrupalPractice
-
-install:
-  - drupal-ti install
 
 before_script:
   - drupal-ti before_script

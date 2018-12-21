@@ -820,6 +820,13 @@ class EuropeanUnionVat extends LocalTaxTypeBase {
             ['number' => '0.12', 'start_date' => '2011-01-01'],
           ],
         ],
+        [
+          'id' => 'super_reduced',
+          'label' => $labels['super_reduced'],
+          'percentages' => [
+            ['number' => '0.05', 'start_date' => '2018-01-01'],
+          ],
+        ],
       ],
     ]);
     $zones['mt'] = new TaxZone([
@@ -1107,6 +1114,7 @@ class EuropeanUnionVat extends LocalTaxTypeBase {
     return new TaxZone([
       'id' => 'ic',
       'label' => $this->t('Intra-Community Supply'),
+      'display_label' => $this->t('Intra-Community Supply'),
       'territories' => [
         // This territory won't match, but it doesn't need to.
         ['country_code' => 'EU'],

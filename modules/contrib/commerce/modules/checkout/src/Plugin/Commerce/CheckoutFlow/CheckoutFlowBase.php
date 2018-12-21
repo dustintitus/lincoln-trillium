@@ -125,12 +125,15 @@ abstract class CheckoutFlowBase extends PluginBase implements CheckoutFlowInterf
    * {@inheritdoc}
    */
   public function redirectToStep($step_id) {
-    $this->order->set('checkout_step', $step_id);
-    if ($step_id == 'complete') {
-      $transition = $this->order->getState()->getWorkflow()->getTransition('place');
-      $this->order->getState()->applyTransition($transition);
+    $available_step_ids = array_keys($this->getVisibleSteps());
+    if (!in_array($step_id, $available_step_ids)) {
+      throw new \InvalidArgumentException(sprintf('Invalid step ID "%s" passed to redirectToStep().', $step_id));
     }
+
+    $this->order->set('checkout_step', $step_id);
+    $this->onStepChange($step_id);
     $this->order->save();
+
     throw new NeedsRedirectException(Url::fromRoute('commerce_checkout.form', [
       'commerce_order' => $this->order->id(),
       'step' => $step_id,
@@ -152,7 +155,7 @@ abstract class CheckoutFlowBase extends PluginBase implements CheckoutFlowInterf
       ],
       'complete' => [
         'label' => $this->t('Complete'),
-        'next_label' => $this->t('Pay and complete purchase'),
+        'next_label' => $this->t('Complete checkout'),
         'has_sidebar' => FALSE,
       ],
     ];
@@ -291,19 +294,43 @@ abstract class CheckoutFlowBase extends PluginBase implements CheckoutFlowInterf
   public function submitForm(array &$form, FormStateInterface $form_state) {
     if ($next_step_id = $this->getNextStepId($form['#step_id'])) {
       $this->order->set('checkout_step', $next_step_id);
+      $this->onStepChange($next_step_id);
+
       $form_state->setRedirect('commerce_checkout.form', [
         'commerce_order' => $this->order->id(),
         'step' => $next_step_id,
       ]);
-
-      if ($next_step_id == 'complete') {
-        // Place the order.
-        $transition = $this->order->getState()->getWorkflow()->getTransition('place');
-        $this->order->getState()->applyTransition($transition);
-      }
     }
 
     $this->order->save();
+  }
+
+  /**
+   * Reacts to the current step changing.
+   *
+   * Called before saving the order and redirecting.
+   *
+   * Handles the following logic
+   * 1) Locks the order before the payment page,
+   * 2) Unlocks the order when leaving the payment page
+   * 3) Places the order before the complete page.
+   *
+   * @param string $step_id
+   *   The new step ID.
+   */
+  protected function onStepChange($step_id) {
+    // Lock the order while on the 'payment' checkout step. Unlock elsewhere.
+    if ($step_id == 'payment') {
+      $this->order->lock();
+    }
+    elseif ($step_id != 'payment') {
+      $this->order->unlock();
+    }
+    // Place the order.
+    if ($step_id == 'complete' && $this->order->getState()->value == 'draft') {
+      $transition = $this->order->getState()->getWorkflow()->getTransition('place');
+      $this->order->getState()->applyTransition($transition);
+    }
   }
 
   /**

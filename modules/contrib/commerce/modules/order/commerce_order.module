@@ -5,10 +5,16 @@
  * Defines the Order entity and associated features.
  */
 
-use Drupal\entity\BundleFieldDefinition;
 use Drupal\commerce_order\Entity\OrderTypeInterface;
+use Drupal\commerce_order\Plugin\Field\FieldFormatter\PriceCalculatedFormatter;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\entity\BundleFieldDefinition;
+use Drupal\field\FieldStorageConfigInterface;
+use Drupal\profile\Entity\ProfileTypeInterface;
 
 /**
  * Implements hook_theme().
@@ -54,6 +60,17 @@ function commerce_order_local_tasks_alter(&$definitions) {
   if (isset($definitions[$id])) {
     $definitions[$id]['title'] = t('Address book');
   }
+}
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ *
+ * Replaces the commerce_price PriceCalculatedFormatter with
+ * the expanded commerce_order one.
+ */
+function commerce_order_field_formatter_info_alter(array &$info) {
+  $info['commerce_price_calculated']['class'] = PriceCalculatedFormatter::class;
+  $info['commerce_price_calculated']['provider'] = 'commerce_order';
 }
 
 /**
@@ -181,4 +198,55 @@ function commerce_order_mail($key, &$message, $params) {
   $message['from'] = $params['from'];
   $message['subject'] = $params['subject'];
   $message['body'][] = $params['body'];
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ *
+ * Forbids the profile 'address' field from being deletable.
+ * This is an alternative to locking the field which still leaves
+ * the field editable.
+ */
+function commerce_order_field_storage_config_access(FieldStorageConfigInterface $field_storage, $operation) {
+  if ($field_storage->id() == 'profile.address' && $operation == 'delete') {
+    return AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ *
+ * Forbids the "customer" profile type from being deletable.
+ */
+function commerce_order_profile_type_access(ProfileTypeInterface $profile_type, $operation, AccountInterface $account) {
+  if ($profile_type->id() === 'customer' && $operation === 'delete') {
+    return AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_entity_operation_alter().
+ *
+ * Hides the "Storage settings" operation for the profile 'address' field.
+ */
+function commerce_order_entity_operation_alter(array &$operations, EntityInterface $entity) {
+  if ($entity->getEntityTypeId() == 'field_config' && $entity->id() == 'profile.customer.address') {
+    unset($operations['storage-settings']);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for 'field_config_edit_form'.
+ *
+ * Hides the 'Available countries' setting for the profile 'address' field.
+ * The setting is unused because in Commerce it is taken from the store.
+ */
+function commerce_order_form_field_config_edit_form_alter(array &$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Field\FieldConfigInterface $entity */
+  $entity = $form_state->getFormObject()->getEntity();
+  if ($entity->id() == 'profile.customer.address') {
+    $form['settings']['available_countries']['#access'] = FALSE;
+  }
 }

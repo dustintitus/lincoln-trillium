@@ -1,0 +1,275 @@
+diff --git a/composer.json b/composer.json
+index 339bfba..232190b 100644
+--- a/composer.json
++++ b/composer.json
+@@ -1,5 +1,8 @@
+ {
+   "name": "drupal/login_destination",
+   "description": "The Login Destination module add possibility customize the destination that the user is redirected to after login.",
+-  "type": "drupal-module"
++  "type": "drupal-module",
++  "require-dev": {
++    "drupal/admin_toolbar": "^1.23"
++  }
+ }
+diff --git a/login_destination.info.yml b/login_destination.info.yml
+index 922ef12..9e6658a 100644
+--- a/login_destination.info.yml
++++ b/login_destination.info.yml
+@@ -4,3 +4,6 @@ description: Add possibility customize the destination that the user is redirect
+ package: User
+ core: 8.x
+ configure: login_destination.settings
++
++test_dependencies:
++  - admin_toolbar:admin_toolbar_tools
+diff --git a/login_destination.module b/login_destination.module
+index 3fa5a08..da1033f 100644
+--- a/login_destination.module
++++ b/login_destination.module
+@@ -72,19 +72,18 @@ function login_destination_toolbar_alter(&$items) {
+   $items['user']['tray']['user_links']['#cache']['max-age'] = 0;
+ 
+   if (\Drupal::currentUser()->isAnonymous()) {
+-    $url_login = Url::fromRoute('user.login');
+-    // Change route name, since route "user.page" always redirects to "user.login".
+-    $items['user']['tray']['user_links']['#links']['login']['url'] = $url_login;
+     $url = &$items['user']['tray']['user_links']['#links']['login']['url'];
+-  }
+-  else {
+-    $url = &$items['user']['tray']['user_links']['#links']['logout']['url'];
+-  }
+-  // Get current path.
+-  $current = \Drupal::service('path.current')->getPath();
+ 
+-  // Add current param to be able to evaluate previous page.
+-  $url->setOptions(['query' => ['current' => $current]]);
++    // Change route name, since route "user.page" always redirects to
++    // "user.login".
++    $url = Url::fromRoute('user.login');
++
++    // Get current path.
++    $current = \Drupal::service('path.current')->getPath();
++
++    // Add current param to be able to evaluate previous page.
++    $url->setOptions(['query' => ['current' => $current]]);
++  }
+ }
+ 
+ /**
+diff --git a/login_destination.services.yml b/login_destination.services.yml
+index 0524818..effe992 100644
+--- a/login_destination.services.yml
++++ b/login_destination.services.yml
+@@ -2,3 +2,8 @@ services:
+   login_destination.manager:
+     class: Drupal\login_destination\LoginDestinationManager
+     arguments: ['@entity_type.manager', '@path.alias_manager', '@path.matcher', '@path.current', '@config.factory', '@request_stack']
++  login_destination.toolbar_link_builder:
++    class: Drupal\login_destination\LoginDestinationToolbarLinkBuilder
++    decorates: user.toolbar_link_builder
++    decoration_priority: 5
++    arguments: ['@login_destination.toolbar_link_builder.inner', '@current_user']
+diff --git a/src/LoginDestinationToolbarLinkBuilder.php b/src/LoginDestinationToolbarLinkBuilder.php
+new file mode 100644
+index 0000000..0d70306
+--- /dev/null
++++ b/src/LoginDestinationToolbarLinkBuilder.php
+@@ -0,0 +1,69 @@
++<?php
++
++namespace Drupal\login_destination;
++
++use Drupal\Core\Session\AccountProxyInterface;
++use Drupal\user\ToolbarLinkBuilder;
++
++/**
++ * ToolbarLinkBuilder fills out the placeholders generated in user_toolbar().
++ */
++class LoginDestinationToolbarLinkBuilder extends ToolbarLinkBuilder {
++
++  /**
++   * The decorated service.
++   *
++   * @var \Drupal\user\ToolbarLinkBuilder
++   */
++  protected $innerService;
++
++  /**
++   * ToolbarHandler constructor.
++   *
++   * @param \Drupal\user\ToolbarLinkBuilder $inner_service
++   *   The decorated service.
++   * @param \Drupal\Core\Session\AccountProxyInterface $account
++   *   The current user.
++   */
++  public function __construct(ToolbarLinkBuilder $inner_service, AccountProxyInterface $account) {
++    $this->innerService = $inner_service;
++    parent::__construct($account);
++  }
++
++  /**
++   * Pass any undefined method calls onto the inner service.
++   *
++   * @param string $method
++   *   The method being called.
++   * @param array $args
++   *   The arguments passed to the method.
++   *
++   * @return mixed
++   *   The inner services response.
++   */
++  public function __call($method, array $args = []) {
++    return call_user_func_array([$this->innerService, $method], $args);
++  }
++
++  /**
++   * Lazy builder callback for rendering toolbar links.
++   *
++   * @return array
++   *   A renderable array as expected by the renderer service.
++   */
++  public function renderToolbarLinks() {
++    $build = $this->innerService->renderToolbarLinks();
++
++    if ($this->account->getAccount()->isAuthenticated()) {
++      $url = &$build['#links']['logout']['url'];
++
++      $current = \Drupal::service('path.current')->getPath();
++
++      // Add current param to be able to evaluate previous page.
++      $url->setOptions(['query' => ['current' => $current]]);
++    }
++
++    return $build;
++  }
++
++}
+diff --git a/tests/src/Functional/InstallTest.php b/tests/src/Functional/InstallTest.php
+new file mode 100644
+index 0000000..4c3594d
+--- /dev/null
++++ b/tests/src/Functional/InstallTest.php
+@@ -0,0 +1,85 @@
++<?php
++
++namespace Drupal\Tests\login_destination\Functional;
++
++use Drupal\Tests\BrowserTestBase;
++
++/**
++ * Tests module installation.
++ *
++ * @group login_destination
++ */
++class InstallTest extends BrowserTestBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  public static $modules = [];
++
++  /**
++   * Module handler to ensure installed modules.
++   *
++   * @var \Drupal\Core\Extension\ModuleHandlerInterface
++   */
++  public $moduleHandler;
++
++  /**
++   * Module installer.
++   *
++   * @var \Drupal\Core\Extension\ModuleInstallerInterface
++   */
++  public $moduleInstaller;
++
++  /**
++   * {@inheritdoc}
++   */
++  public function setUp() {
++    parent::setUp();
++    $this->moduleHandler = $this->container->get('module_handler');
++    $this->moduleInstaller = $this->container->get('module_installer');
++  }
++
++  /**
++   * Tests that the module is installable.
++   */
++  public function testInstallation() {
++    $this->assertFalse($this->moduleHandler->moduleExists('login_destination'));
++    $this->assertTrue($this->moduleInstaller->install(['login_destination']));
++  }
++
++  /**
++   * Tests that the module is installable with admin_toolbar_tools.
++   */
++  public function testInstallationWithAdminToolbar() {
++    $this->assertFalse($this->moduleHandler->moduleExists('admin_toolbar'));
++    $this->assertFalse($this->moduleHandler->moduleExists('admin_toolbar_tools'));
++    $this->assertFalse($this->moduleHandler->moduleExists('login_destination'));
++    $this->assertTrue($this->moduleInstaller->install([
++      'admin_toolbar',
++      'admin_toolbar_tools',
++      'login_destination',
++    ]));
++
++    // Workaround https://www.drupal.org/node/2021959
++    // See \Drupal\Core\Test\FunctionalTestSetupTrait::rebuildContainer.
++    unset($this->moduleHandler);
++    $this->rebuildContainer();
++    $this->moduleHandler = $this->container->get('module_handler');
++
++    // Ensure that all specified modules were installed.
++    $this->assertTrue($this->moduleHandler->moduleExists('admin_toolbar'));
++    $this->assertTrue($this->moduleHandler->moduleExists('admin_toolbar_tools'));
++    $this->assertTrue($this->moduleHandler->moduleExists('login_destination'));
++
++    // Login as admin and ensure that there are no errors.
++    $admin = $this->drupalCreateUser([
++      'access toolbar',
++      'access administration pages',
++    ]);
++    $this->drupalLogin($admin);
++
++    // Assert that expanded links are present in the HTML.
++    $this->assertRaw('class="toolbar-icon toolbar-icon-user-admin-index"');
++  }
++
++}
+diff --git a/tests/src/Functional/UninstallTest.php b/tests/src/Functional/UninstallTest.php
+new file mode 100644
+index 0000000..e6ca9b9
+--- /dev/null
++++ b/tests/src/Functional/UninstallTest.php
+@@ -0,0 +1,31 @@
++<?php
++
++namespace Drupal\Tests\login_destination\Functional;
++
++use Drupal\Tests\BrowserTestBase;
++
++/**
++ * Tests module uninstallation.
++ *
++ * @group login_destination
++ */
++class UninstallTest extends BrowserTestBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  public static $modules = ['login_destination'];
++
++  /**
++   * Tests module uninstallation.
++   */
++  public function testUninstall() {
++    // Confirm that Login Destination has been installed.
++    $module_handler = $this->container->get('module_handler');
++    $this->assertTrue($module_handler->moduleExists('login_destination'));
++
++    // Uninstall Login Destination.
++    $this->assertTrue($this->container->get('module_installer')->uninstall(['login_destination']));
++  }
++
++}

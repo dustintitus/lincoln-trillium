@@ -10,6 +10,7 @@ use Drupal\commerce_price\Exception\CurrencyMismatchException;
 use Drupal\commerce_price\Price;
 use Drupal\profile\Entity\Profile;
 use Drupal\Tests\commerce\Kernel\CommerceKernelTestBase;
+use Drupal\user\UserInterface;
 
 /**
  * Tests the Order entity.
@@ -38,6 +39,7 @@ class OrderTest extends CommerceKernelTestBase {
     'state_machine',
     'commerce_product',
     'commerce_order',
+    'commerce_order_test',
   ];
 
   /**
@@ -96,6 +98,10 @@ class OrderTest extends CommerceKernelTestBase {
    * @covers ::getSubtotalPrice
    * @covers ::recalculateTotalPrice
    * @covers ::getTotalPrice
+   * @covers ::getTotalPaid
+   * @covers ::setTotalPaid
+   * @covers ::getBalance
+   * @covers ::isPaid
    * @covers ::getState
    * @covers ::getRefreshState
    * @covers ::setRefreshState
@@ -135,29 +141,39 @@ class OrderTest extends CommerceKernelTestBase {
     $another_order_item->save();
     $another_order_item = $this->reloadEntity($another_order_item);
 
+    /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
     $order = Order::create([
       'type' => 'default',
       'state' => 'completed',
+      'store_id' => $this->store->id(),
     ]);
     $order->save();
 
     $order->setOrderNumber(7);
     $this->assertEquals(7, $order->getOrderNumber());
+    $this->assertFalse($order->isPaid());
 
     $order->setStore($this->store);
     $this->assertEquals($this->store, $order->getStore());
     $this->assertEquals($this->store->id(), $order->getStoreId());
     $order->setStoreId(0);
     $this->assertEquals(NULL, $order->getStore());
-    $order->setStoreId([$this->store->id()]);
+    $order->setStoreId($this->store->id());
     $this->assertEquals($this->store, $order->getStore());
     $this->assertEquals($this->store->id(), $order->getStoreId());
 
+    $this->assertInstanceOf(UserInterface::class, $order->getCustomer());
+    $this->assertTrue($order->getCustomer()->isAnonymous());
+    $this->assertEquals(0, $order->getCustomerId());
     $order->setCustomer($this->user);
     $this->assertEquals($this->user, $order->getCustomer());
     $this->assertEquals($this->user->id(), $order->getCustomerId());
-    $order->setCustomerId(0);
-    $this->assertEquals(NULL, $order->getCustomer());
+    $this->assertTrue($order->getCustomer()->isAuthenticated());
+    // Non-existent/deleted user ID.
+    $order->setCustomerId(888);
+    $this->assertInstanceOf(UserInterface::class, $order->getCustomer());
+    $this->assertTrue($order->getCustomer()->isAnonymous());
+    $this->assertEquals(888, $order->getCustomerId());
     $order->setCustomerId($this->user->id());
     $this->assertEquals($this->user, $order->getCustomer());
     $this->assertEquals($this->user->id(), $order->getCustomerId());
@@ -181,8 +197,8 @@ class OrderTest extends CommerceKernelTestBase {
     $order->addItem($another_order_item);
     $this->assertEquals([$order_item, $another_order_item], $order->getItems());
     $this->assertNotEmpty($order->hasItem($another_order_item));
-
     $this->assertEquals(new Price('8.00', 'USD'), $order->getTotalPrice());
+
     $adjustments = [];
     $adjustments[] = new Adjustment([
       'type' => 'custom',
@@ -195,70 +211,61 @@ class OrderTest extends CommerceKernelTestBase {
       'amount' => new Price('10.00', 'USD'),
       'locked' => TRUE,
     ]);
-    // Included adjustments do not affect the order total.
-    $adjustments[] = new Adjustment([
-      'type' => 'tax',
-      'label' => 'Tax',
-      'amount' => new Price('12.00', 'USD'),
-      'included' => TRUE,
-    ]);
     $order->addAdjustment($adjustments[0]);
     $order->addAdjustment($adjustments[1]);
-    $order->addAdjustment($adjustments[2]);
     $this->assertEquals($adjustments, $order->getAdjustments());
     $collected_adjustments = $order->collectAdjustments();
     $this->assertEquals($adjustments[0]->getAmount(), $collected_adjustments[0]->getAmount());
     $this->assertEquals($adjustments[1]->getAmount(), $collected_adjustments[1]->getAmount());
-    $this->assertEquals($adjustments[2]->getAmount(), $collected_adjustments[2]->getAmount());
     $order->removeAdjustment($adjustments[0]);
     $this->assertEquals(new Price('8.00', 'USD'), $order->getSubtotalPrice());
     $this->assertEquals(new Price('18.00', 'USD'), $order->getTotalPrice());
-    $this->assertEquals([$adjustments[1], $adjustments[2]], $order->getAdjustments());
+    $this->assertEquals([$adjustments[1]], $order->getAdjustments());
     $order->setAdjustments($adjustments);
     $this->assertEquals($adjustments, $order->getAdjustments());
     $this->assertEquals(new Price('17.00', 'USD'), $order->getTotalPrice());
-    // Add an adjustment to the second order item, confirm it's a part of the
-    // order total, multiplied by quantity.
-    $order->removeItem($another_order_item);
-    $order_item_adjustments = [];
-    $order_item_adjustments[] = new Adjustment([
-      'type' => 'fee',
-      'label' => 'Random fee',
-      'amount' => new Price('5.00', 'USD'),
-    ]);
-    $order_item_adjustments[] = new Adjustment([
-      'type' => 'fee',
-      'label' => 'Non-random fee',
-      'amount' => new Price('7.00', 'USD'),
-      'locked' => TRUE,
-    ]);
-    $multiplied_order_item_adjustments = [];
-    $multiplied_order_item_adjustments[] = new Adjustment([
+    // Confirm that locked adjustments persist after clear.
+    // Custom adjustments are locked by default.
+    $order->addAdjustment(new Adjustment([
       'type' => 'fee',
       'label' => 'Random fee',
       'amount' => new Price('10.00', 'USD'),
-    ]);
-    $multiplied_order_item_adjustments[] = new Adjustment([
-      'type' => 'fee',
-      'label' => 'Non-random fee',
-      'amount' => new Price('14.00', 'USD'),
-      'locked' => TRUE,
-    ]);
-    $another_order_item->setAdjustments($order_item_adjustments);
-    $order->addItem($another_order_item);
-    $this->assertEquals(new Price('41.00', 'USD'), $order->getTotalPrice());
-    $collected_adjustments = $order->collectAdjustments();
-    $this->assertEquals($multiplied_order_item_adjustments[0], $collected_adjustments[0]);
-    $this->assertEquals($multiplied_order_item_adjustments[1], $collected_adjustments[1]);
-    // Confirm that locked adjustments persist after clear.
-    // Custom adjustments are locked by default.
-    $order->setAdjustments($adjustments);
+    ]));
     $order->clearAdjustments();
-    unset($adjustments[2]);
-    unset($multiplied_order_item_adjustments[0]);
-    $this->assertEquals(array_merge($multiplied_order_item_adjustments, $adjustments), $order->collectAdjustments());
+    $this->assertEquals($adjustments, $order->getAdjustments());
+
+    $this->assertEquals(new Price('0', 'USD'), $order->getTotalPaid());
+    $this->assertEquals(new Price('17.00', 'USD'), $order->getBalance());
+    $this->assertFalse($order->isPaid());
+
+    $order->setTotalPaid(new Price('7.00', 'USD'));
+    $this->assertEquals(new Price('7.00', 'USD'), $order->getTotalPaid());
+    $this->assertEquals(new Price('10.00', 'USD'), $order->getBalance());
+    $this->assertFalse($order->isPaid());
+
+    $order->setTotalPaid(new Price('17.00', 'USD'));
+    $this->assertEquals(new Price('17.00', 'USD'), $order->getTotalPaid());
+    $this->assertEquals(new Price('0', 'USD'), $order->getBalance());
+    $this->assertTrue($order->isPaid());
+
+    $order->setTotalPaid(new Price('27.00', 'USD'));
+    $this->assertEquals(new Price('27.00', 'USD'), $order->getTotalPaid());
+    $this->assertEquals(new Price('-10.00', 'USD'), $order->getBalance());
+    $this->assertTrue($order->isPaid());
 
     $this->assertEquals('completed', $order->getState()->value);
+
+    // Confirm that free orders are considered paid after placement.
+    $order->addAdjustment(new Adjustment([
+      'type' => 'custom',
+      'label' => '100% off',
+      'amount' => new Price('-17.00', 'USD'),
+    ]));
+    $order->setTotalPaid(new Price('0', 'USD'));
+    $this->assertTrue($order->getTotalPrice()->isZero());
+    $this->assertTrue($order->isPaid());
+    $order->set('state', 'draft');
+    $this->assertFalse($order->isPaid());
 
     $order->setRefreshState(Order::REFRESH_ON_SAVE);
     $this->assertEquals(Order::REFRESH_ON_SAVE, $order->getRefreshState());
@@ -281,6 +288,141 @@ class OrderTest extends CommerceKernelTestBase {
 
     $order->setCompletedTime(635879900);
     $this->assertEquals(635879900, $order->getCompletedTime());
+
+    // Confirm that saving the order clears an invalid customer ID.
+    $order->setCustomerId(888);
+    $order->save();
+    $this->assertEquals(0, $order->getCustomerId());
+  }
+
+  /**
+   * Tests the handling of legacy order item adjustments on adjustment clear.
+   *
+   * @covers ::clearAdjustments
+   * @covers ::collectAdjustments
+   */
+  public function testHandlingLegacyOrderItemAdjustments() {
+    /** @var \Drupal\commerce_order\Entity\OrderItemInterface $order_item */
+    $order_item = OrderItem::create([
+      'type' => 'test',
+      'quantity' => '2',
+      'unit_price' => new Price('10.00', 'USD'),
+      'adjustments' => [
+        new Adjustment([
+          'type' => 'custom',
+          'label' => '10% off',
+          'amount' => new Price('-1.00', 'USD'),
+          'percentage' => '0.1',
+        ]),
+        new Adjustment([
+          'type' => 'fee',
+          'label' => 'Random fee',
+          'amount' => new Price('2.00', 'USD'),
+        ]),
+      ],
+      'uses_legacy_adjustments' => TRUE,
+    ]);
+    $order_item->save();
+
+    $order = Order::create([
+      'type' => 'default',
+      'order_items' => [$order_item],
+      'state' => 'draft',
+    ]);
+
+    // Confirm that legacy adjustments are multiplied by quantity.
+    $adjustments = $order->collectAdjustments();
+    $this->assertCount(2, $adjustments);
+    $this->assertEquals('-2.00', $adjustments[0]->getAmount()->getNumber());
+    $this->assertEquals('4.00', $adjustments[1]->getAmount()->getNumber());
+
+    // Confirm that the legacy order item adjustments are converted on clear.
+    $order->clearAdjustments();
+    $order_items = $order->getItems();
+    $order_item = reset($order_items);
+    $adjustments = $order_item->getAdjustments();
+
+    $this->assertFalse($order_item->usesLegacyAdjustments());
+    $this->assertCount(1, $adjustments);
+    $this->assertEquals('-2.00', $adjustments[0]->getAmount()->getNumber());
+
+    // The order item adjustments are no longer multiplied by quantity.
+    $this->assertEquals($adjustments, $order->collectAdjustments());
+  }
+
+  /**
+   * Tests the order total recalculation logic.
+   *
+   * @covers ::recalculateTotalPrice
+   */
+  public function testTotalCalculation() {
+    $order = Order::create([
+      'type' => 'default',
+      'state' => 'completed',
+    ]);
+    $order->save();
+
+    /** @var \Drupal\commerce_order\Entity\OrderItemInterface $order_item */
+    $order_item = OrderItem::create([
+      'type' => 'test',
+      'quantity' => '2',
+      'unit_price' => new Price('2.00', 'USD'),
+    ]);
+    $order_item->save();
+    $order_item = $this->reloadEntity($order_item);
+    /** @var \Drupal\commerce_order\Entity\OrderItemInterface $another_order_item */
+    $another_order_item = OrderItem::create([
+      'type' => 'test',
+      'quantity' => '1',
+      'unit_price' => new Price('3.00', 'USD'),
+    ]);
+    $another_order_item->save();
+    $another_order_item = $this->reloadEntity($another_order_item);
+
+    $adjustments = [];
+    $adjustments[0] = new Adjustment([
+      'type' => 'tax',
+      'label' => 'Tax',
+      'amount' => new Price('100.00', 'USD'),
+      'included' => TRUE,
+    ]);
+    $adjustments[1] = new Adjustment([
+      'type' => 'tax',
+      'label' => 'Tax',
+      'amount' => new Price('2.121', 'USD'),
+      'source_id' => 'us_sales_tax',
+    ]);
+    $adjustments[2] = new Adjustment([
+      'type' => 'tax',
+      'label' => 'Tax',
+      'amount' => new Price('5.344', 'USD'),
+      'source_id' => 'us_sales_tax',
+    ]);
+
+    // Included adjustments do not affect the order total.
+    $order->addAdjustment($adjustments[0]);
+    $order_item->addAdjustment($adjustments[1]);
+    $another_order_item->addAdjustment($adjustments[2]);
+    $order->setItems([$order_item, $another_order_item]);
+    $order->save();
+    /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
+    $order = $this->reloadEntity($order);
+
+    $collected_adjustments = $order->collectAdjustments();
+    $this->assertCount(3, $collected_adjustments);
+    $this->assertEquals($adjustments[1], $collected_adjustments[0]);
+    $this->assertEquals($adjustments[2], $collected_adjustments[1]);
+    $this->assertEquals($adjustments[0], $collected_adjustments[2]);
+    // The total will be correct only if the adjustments were correctly
+    // combined, and rounded.
+    $this->assertEquals(new Price('14.47', 'USD'), $order->getTotalPrice());
+
+    // Test handling deleted order items + non-inclusive adjustments.
+    $order->addAdjustment($adjustments[1]);
+    $order_item->delete();
+    $another_order_item->delete();
+    $order->recalculateTotalPrice();
+    $this->assertNull($order->getTotalPrice());
   }
 
   /**
@@ -356,6 +498,50 @@ class OrderTest extends CommerceKernelTestBase {
     $order_without_customer->setCustomer($customer);
     $order_without_customer->save();
     $this->assertEquals($customer->getEmail(), $order_without_customer->getEmail());
+  }
+
+  /**
+   * Tests that the paid event is dispatched when the balance reaches zero.
+   */
+  public function testPaidEvent() {
+    /** @var \Drupal\commerce_order\Entity\OrderItemInterface $order_item */
+    $order_item = OrderItem::create([
+      'type' => 'test',
+      'quantity' => '2',
+      'unit_price' => new Price('10.00', 'USD'),
+    ]);
+    $order_item->save();
+    $order = Order::create([
+      'type' => 'default',
+      'store_id' => $this->store->id(),
+      'order_items' => [$order_item],
+      'state' => 'draft',
+    ]);
+    $order->save();
+    $this->assertNull($order->getData('order_test_called'));
+
+    $order->setTotalPaid(new Price('20.00', 'USD'));
+    $order->save();
+    $this->assertEquals(1, $order->getData('order_test_called'));
+
+    // Confirm that the event is not dispatched the second time the balance
+    // reaches zero.
+    $order->setTotalPaid(new Price('10.00', 'USD'));
+    $order->save();
+    $order->setTotalPaid(new Price('20.00', 'USD'));
+    $order->save();
+    $this->assertEquals(1, $order->getData('order_test_called'));
+
+    // Confirm that the event is dispatched for orders created as paid.
+    $another_order = Order::create([
+      'type' => 'default',
+      'store_id' => $this->store->id(),
+      'order_items' => [$order_item],
+      'total_paid' => new Price('20.00', 'USD'),
+      'state' => 'draft',
+    ]);
+    $another_order->save();
+    $this->assertEquals(1, $another_order->getData('order_test_called'));
   }
 
 }

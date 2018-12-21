@@ -89,6 +89,9 @@ class CouponRedemptionForm extends FormElement {
 
     $element = [
       '#tree' => TRUE,
+      '#attached' => [
+        'library' => ['commerce_promotion/coupon_redemption_form'],
+      ],
       '#theme' => 'commerce_coupon_redemption_form',
       '#prefix' => '<div id="' . $wrapper_id . '">',
       '#suffix' => '</div>',
@@ -100,6 +103,11 @@ class CouponRedemptionForm extends FormElement {
       '#title' => $element['#title'],
       '#description' => $element['#description'],
       '#access' => !$cardinality_reached,
+      // Chrome autofills this field with the address line 1, and ignores
+      // autocomplete => 'off', but respects 'new-password'.
+      '#attributes' => [
+        'autocomplete' => 'new-password',
+      ],
     ];
     $element['apply'] = [
       '#type' => 'submit',

@@ -3,6 +3,7 @@
 namespace Drupal\commerce_store\Entity;
 
 use CommerceGuys\Addressing\AddressFormat\AddressField;
+use CommerceGuys\Addressing\AddressFormat\FieldOverride;
 use Drupal\address\AddressInterface;
 use Drupal\commerce_price\Entity\CurrencyInterface;
 use Drupal\user\UserInterface;
@@ -27,11 +28,12 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   handlers = {
  *     "event" = "Drupal\commerce_store\Event\StoreEvent",
  *     "storage" = "Drupal\commerce_store\StoreStorage",
- *     "access" = "Drupal\commerce\EntityAccessControlHandler",
- *     "permission_provider" = "Drupal\commerce\EntityPermissionProvider",
+ *     "access" = "Drupal\entity\EntityAccessControlHandler",
+ *     "query_access" = "Drupal\entity\QueryAccess\QueryAccessHandler",
+ *     "permission_provider" = "Drupal\entity\EntityPermissionProvider",
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\commerce_store\StoreListBuilder",
- *     "views_data" = "Drupal\views\EntityViewsData",
+ *     "views_data" = "Drupal\commerce\CommerceEntityViewsData",
  *     "form" = {
  *       "default" = "Drupal\commerce_store\Form\StoreForm",
  *       "add" = "Drupal\commerce_store\Form\StoreForm",
@@ -39,7 +41,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm"
  *     },
  *     "route_provider" = {
- *       "default" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
+ *       "default" = "Drupal\entity\Routing\AdminHtmlRouteProvider",
  *       "delete-multiple" = "Drupal\entity\Routing\DeleteMultipleRouteProvider",
  *     },
  *     "translation" = "Drupal\content_translation\ContentTranslationHandler"
@@ -48,14 +50,15 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   data_table = "commerce_store_field_data",
  *   admin_permission = "administer commerce_store",
  *   permission_granularity = "bundle",
- *   fieldable = TRUE,
  *   translatable = TRUE,
  *   entity_keys = {
  *     "id" = "store_id",
+ *     "uuid" = "uuid",
  *     "bundle" = "type",
  *     "label" = "name",
  *     "langcode" = "langcode",
- *     "uuid" = "uuid"
+ *     "owner" = "uid",
+ *     "uid" = "uid",
  *   },
  *   links = {
  *     "canonical" = "/store/{commerce_store}",
@@ -106,7 +109,7 @@ class Store extends ContentEntityBase implements StoreInterface {
    * {@inheritdoc}
    */
   public function getOwnerId() {
-    return $this->get('uid')->target_id;
+    return $this->getEntityKey('owner');
   }
 
   /**
@@ -263,19 +266,17 @@ class Store extends ContentEntityBase implements StoreInterface {
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    // Disable the name and organization fields on the store address.
-    $disabled_fields = [
-      AddressField::GIVEN_NAME,
-      AddressField::ADDITIONAL_NAME,
-      AddressField::FAMILY_NAME,
-      AddressField::ORGANIZATION,
-    ];
     $fields['address'] = BaseFieldDefinition::create('address')
       ->setLabel(t('Address'))
       ->setDescription(t('The store address.'))
       ->setCardinality(1)
       ->setRequired(TRUE)
-      ->setSetting('fields', array_diff(AddressField::getAll(), $disabled_fields))
+      ->setSetting('field_overrides', [
+        AddressField::GIVEN_NAME => ['override' => FieldOverride::HIDDEN],
+        AddressField::ADDITIONAL_NAME => ['override' => FieldOverride::HIDDEN],
+        AddressField::FAMILY_NAME => ['override' => FieldOverride::HIDDEN],
+        AddressField::ORGANIZATION => ['override' => FieldOverride::HIDDEN],
+      ])
       ->setDisplayOptions('form', [
         'type' => 'address_default',
         'settings' => [
@@ -296,6 +297,17 @@ class Store extends ContentEntityBase implements StoreInterface {
       ])
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
+
+    $fields['path'] = BaseFieldDefinition::create('path')
+      ->setLabel(t('URL alias'))
+      ->setDescription(t('The store URL alias.'))
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'path',
+        'weight' => 30,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setCustomStorage(TRUE);
 
     return $fields;
   }

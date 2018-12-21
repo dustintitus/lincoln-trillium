@@ -3,8 +3,6 @@
 namespace Drupal\Tests\commerce_cart\Functional;
 
 use Drupal\Tests\commerce_order\Functional\OrderBrowserTestBase;
-use Drupal\user\Entity\Role;
-use Drupal\user\RoleInterface;
 
 /**
  * Tests the cart page.
@@ -41,7 +39,7 @@ class CartTest extends OrderBrowserTestBase {
    */
   public static $modules = [
     'commerce_cart',
-    'node',
+    'commerce_checkout',
   ];
 
   /**
@@ -79,20 +77,19 @@ class CartTest extends OrderBrowserTestBase {
       'variations' => [$variation],
     ]);
     $this->variations[] = $variation;
-    $this->cart = \Drupal::service('commerce_cart.cart_provider')->createCart('default', $this->store);
+    $this->cart = \Drupal::service('commerce_cart.cart_provider')->createCart('default');
     $this->cartManager = \Drupal::service('commerce_cart.cart_manager');
-  }
 
-  /**
-   * Test the cart page.
-   */
-  public function testCartPage() {
-    $this->drupalLogin($this->adminUser);
-
+    // Add both variations to the cart.
     foreach ($this->variations as $variation) {
       $this->cartManager->addEntity($this->cart, $variation);
     }
+  }
 
+  /**
+   * Test the basic functioning of the cart page.
+   */
+  public function testCartPage() {
     $this->drupalGet('cart');
     // Confirm the presence of the order total summary.
     $this->assertSession()->elementTextContains('css', '.order-total-line', 'Subtotal');
@@ -114,19 +111,43 @@ class CartTest extends OrderBrowserTestBase {
     $this->assertSession()->elementTextContains('css', '.order-total-line', 'Total');
     $this->assertSession()->pageTextContains('$3,048.00');
 
+    // Confirm that setting the quantity to 0 removes an item.
+    $values = [
+      'edit_quantity[0]' => 0,
+      'edit_quantity[1]' => 3,
+    ];
+    $this->submitForm($values, t('Update cart'));
+    $this->assertSession()->pageTextContains(t('Your shopping cart has been updated.'));
+    $this->assertSession()->fieldExists('edit-edit-quantity-0');
+    $this->assertSession()->fieldNotExists('edit-edit-quantity-1');
+    $this->assertSession()->pageTextContains('$1,050.00');
+
     // Confirm the presence and functioning of the Remove button.
     $this->assertSession()->buttonExists('Remove');
     $this->submitForm([], t('Remove'));
-    $this->submitForm([], t('Remove'));
     $this->assertSession()->pageTextContains(t('Your shopping cart is empty.'));
+  }
 
-    // Test that cart is denied for user without permission.
-    Role::load(RoleInterface::ANONYMOUS_ID)
-      ->revokePermission('access cart')
-      ->save();
-    $this->drupalLogout();
+  /**
+   * Tests the Checkout button added by commerce_checkout.
+   */
+  public function testCheckoutButton() {
     $this->drupalGet('cart');
-    $this->assertSession()->statusCodeEquals(403);
+    // Confirm that the "Checkout" button redirects and updates the cart.
+    $this->assertSession()->buttonExists('Checkout');
+    $values = [
+      'edit_quantity[0]' => 2,
+      'edit_quantity[1]' => 3,
+    ];
+    $this->submitForm($values, t('Checkout'));
+    $this->assertSession()->addressEquals('checkout/1/order_information');
+    $this->assertSession()->pageTextNotContains(t('Your shopping cart has been updated.'));
+
+    $this->drupalGet('cart');
+    $this->assertSession()->fieldValueEquals('edit-edit-quantity-0', 2);
+    $this->assertSession()->fieldValueEquals('edit-edit-quantity-1', 3);
+    $this->assertSession()->elementTextContains('css', '.order-total-line', 'Total');
+    $this->assertSession()->pageTextContains('$3,048.00');
   }
 
 }

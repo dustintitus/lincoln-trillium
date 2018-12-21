@@ -16,6 +16,7 @@ use Drupal\entity_browser\FieldWidgetDisplayManager;
 use Drupal\image\Entity\ImageStyle;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Entity browser file widget.
@@ -86,9 +87,11 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
    *   The entity display repository service.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler service.
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeManagerInterface $entity_type_manager, EventDispatcherInterface $event_dispatcher, FieldWidgetDisplayManager $field_display_manager, ConfigFactoryInterface $config_factory, EntityDisplayRepositoryInterface $display_repository, ModuleHandlerInterface $module_handler) {
-    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $entity_type_manager, $event_dispatcher, $field_display_manager, $module_handler);
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeManagerInterface $entity_type_manager, EventDispatcherInterface $event_dispatcher, FieldWidgetDisplayManager $field_display_manager, ConfigFactoryInterface $config_factory, EntityDisplayRepositoryInterface $display_repository, ModuleHandlerInterface $module_handler, AccountInterface $current_user) {
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $entity_type_manager, $event_dispatcher, $field_display_manager, $module_handler, $current_user);
     $this->entityTypeManager = $entity_type_manager;
     $this->fieldDisplayManager = $field_display_manager;
     $this->configFactory = $config_factory;
@@ -110,7 +113,8 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
       $container->get('plugin.manager.entity_browser.field_widget_display'),
       $container->get('config.factory'),
       $container->get('entity_display.repository'),
-      $container->get('module_handler')
+      $container->get('module_handler'),
+      $container->get('current_user')
     );
   }
 
@@ -235,7 +239,7 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
 
     // Add the remaining columns.
     $current['#header'][] = $this->t('Metadata');
-    $current['#header'][] = ['data' => $this->t('Operations'), 'colspan' => 2];
+    $current['#header'][] = ['data' => $this->t('Operations'), 'colspan' => 3];
     $current['#header'][] = $this->t('Order', [], ['context' => 'Sort order']);
 
     /** @var \Drupal\file\FileInterface[] $entities */
@@ -243,8 +247,15 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
       // Check to see if this entity has an edit form. If not, the edit button
       // will only throw an exception.
       if (!$entity->getEntityType()->getFormClass('edit')) {
-        $can_edit = FALSE;
+        $edit_button_access = FALSE;
       }
+      elseif ($has_file_entity) {
+        $edit_button_access = $can_edit && $entity->access('update', $this->currentUser);
+      }
+
+      // The "Replace" button will only be shown if this setting is enabled in
+      // the widget, and there is only one entity in the current selection.
+      $replace_button_access = $this->getSetting('field_widget_replace') && (count($entities) === 1);
 
       $entity_id = $entity->id();
 
@@ -349,8 +360,26 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
           '#attributes' => [
             'data-entity-id' => $entity->getEntityTypeId() . ':' . $entity->id(),
             'data-row-id' => $delta,
+            'class' => ['edit-button'],
           ],
-          '#access' => $can_edit,
+          '#access' => $edit_button_access,
+        ],
+        'replace_button' => [
+          '#type' => 'submit',
+          '#value' => $this->t('Replace'),
+          '#ajax' => [
+            'callback' => [get_class($this), 'updateWidgetCallback'],
+            'wrapper' => $details_id,
+          ],
+          '#submit' => [[get_class($this), 'removeItemSubmit']],
+          '#name' => $field_machine_name . '_replace_' . $entity_id . '_' . md5(json_encode($field_parents)),
+          '#limit_validation_errors' => [array_merge($field_parents, [$field_machine_name, 'target_id'])],
+          '#attributes' => [
+            'data-entity-id' => $entity->getEntityTypeId() . ':' . $entity->id(),
+            'data-row-id' => $delta,
+            'class' => ['replace-button'],
+          ],
+          '#access' => $replace_button_access,
         ],
         'remove_button' => [
           '#type' => 'submit',
@@ -365,6 +394,7 @@ class FileBrowserWidget extends EntityReferenceBrowserWidget {
           '#attributes' => [
             'data-entity-id' => $entity->getEntityTypeId() . ':' . $entity->id(),
             'data-row-id' => $delta,
+            'class' => ['remove-button'],
           ],
           '#access' => (bool) $widget_settings['field_widget_remove'],
         ],

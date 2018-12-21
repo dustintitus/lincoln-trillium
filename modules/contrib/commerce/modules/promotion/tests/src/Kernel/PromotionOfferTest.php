@@ -90,7 +90,6 @@ class PromotionOfferTest extends CommerceKernelTestBase {
    * Tests order percentage off.
    */
   public function testOrderPercentageOff() {
-    // Use addOrderItem so the total is calculated.
     $order_item = OrderItem::create([
       'type' => 'test',
       'quantity' => '2',
@@ -118,14 +117,22 @@ class PromotionOfferTest extends CommerceKernelTestBase {
     ]);
     $promotion->save();
 
-    /** @var \Drupal\commerce\Plugin\Field\FieldType\PluginItem $offer_field */
-    $offer_field = $promotion->get('offer')->first();
-    $this->assertEquals('0.10', $offer_field->target_plugin_configuration['percentage']);
-
     $promotion->apply($this->order);
-    $this->assertEquals(1, count($this->order->getAdjustments()));
-    $this->assertEquals(new Price('36.00', 'USD'), $this->order->getTotalPrice());
+    $this->order->recalculateTotalPrice();
+    $order_items = $this->order->getItems();
+    $order_item = reset($order_items);
+    $adjustments = $order_item->getAdjustments();
+    $this->assertEquals(1, count($adjustments));
+    /** @var \Drupal\commerce_order\Adjustment $adjustment */
+    $adjustment = reset($adjustments);
 
+    $this->assertEquals(0, count($this->order->getAdjustments()));
+    $this->assertEquals(1, count($order_item->getAdjustments()));
+    $this->assertEquals(new Price('40.00', 'USD'), $order_item->getTotalPrice());
+    $this->assertEquals(new Price('36.00', 'USD'), $order_item->getAdjustedTotalPrice());
+    $this->assertEquals(new Price('-4.00', 'USD'), $adjustment->getAmount());
+    $this->assertEquals('0.1', $adjustment->getPercentage());
+    $this->assertEquals(new Price('36.00', 'USD'), $this->order->getTotalPrice());
   }
 
   /**
@@ -163,19 +170,39 @@ class PromotionOfferTest extends CommerceKernelTestBase {
     $this->order->state = 'draft';
     $this->order->save();
     $this->order = $this->reloadEntity($this->order);
+    $order_items = $this->order->getItems();
+    $order_item = reset($order_items);
+    $adjustments = $order_item->getAdjustments();
+    $this->assertEquals(1, count($adjustments));
+    /** @var \Drupal\commerce_order\Adjustment $adjustment */
+    $adjustment = reset($adjustments);
 
-    // Offer amount larger than the order total.
-    $this->assertEquals(1, count($this->order->getAdjustments()));
-    $this->assertEquals(new Price('-20.00', 'USD'), $this->order->getAdjustments()[0]->getAmount());
+    // Offer amount larger than the order subtotal.
+    $this->assertEquals(0, count($this->order->getAdjustments()));
+    $this->assertEquals(1, count($order_item->getAdjustments()));
+    $this->assertEquals(new Price('20.00', 'USD'), $order_item->getTotalPrice());
+    $this->assertEquals(new Price('0.00', 'USD'), $order_item->getAdjustedTotalPrice());
+    $this->assertEquals(new Price('-20.00', 'USD'), $adjustment->getAmount());
     $this->assertEquals(new Price('0.00', 'USD'), $this->order->getTotalPrice());
 
-    // Offer amount smaller than the order total.
+    // Offer amount smaller than the order subtotal.
     $order_item->setQuantity(2);
     $order_item->save();
     $this->order->save();
     $this->order = $this->reloadEntity($this->order);
-    $this->assertEquals(1, count($this->order->getAdjustments()));
-    $this->assertEquals(new Price('-25.00', 'USD'), $this->order->getAdjustments()[0]->getAmount());
+    $order_items = $this->order->getItems();
+    $order_item = reset($order_items);
+    $adjustments = $order_item->getAdjustments();
+    $this->assertEquals(1, count($adjustments));
+    /** @var \Drupal\commerce_order\Adjustment $adjustment */
+    $adjustment = reset($adjustments);
+
+    // Offer amount larger than the order subtotal.
+    $this->assertEquals(0, count($this->order->getAdjustments()));
+    $this->assertEquals(1, count($order_item->getAdjustments()));
+    $this->assertEquals(new Price('40.00', 'USD'), $order_item->getTotalPrice());
+    $this->assertEquals(new Price('15.00', 'USD'), $order_item->getAdjustedTotalPrice());
+    $this->assertEquals(new Price('-25.00', 'USD'), $adjustment->getAmount());
     $this->assertEquals(new Price('15.00', 'USD'), $this->order->getTotalPrice());
   }
 
@@ -224,24 +251,18 @@ class PromotionOfferTest extends CommerceKernelTestBase {
     ]);
     $promotion->save();
 
-    /** @var \Drupal\commerce\Plugin\Field\FieldType\PluginItem $offer_field */
-    $offer_field = $promotion->get('offer')->first();
-    $this->assertEquals('0.50', $offer_field->target_plugin_configuration['percentage']);
-
     $this->container->get('commerce_order.order_refresh')->refresh($this->order);
     $this->order = $this->reloadEntity($this->order);
     $order_item = $this->reloadEntity($order_item);
-
     $adjustments = $order_item->getAdjustments();
     $this->assertEquals(1, count($adjustments));
     /** @var \Drupal\commerce_order\Adjustment $adjustment */
     $adjustment = reset($adjustments);
-    // Adjustment for 50% of the order item total.
-    $this->assertEquals(new Price('-5.00', 'USD'), $adjustment->getAmount());
-    $this->assertEquals('0.50', $adjustment->getPercentage());
-    // Adjustments don't affect total order item price, but the order's total.
-    $this->assertEquals(new Price('20.00', 'USD'), $order_item->getTotalPrice());
 
+    $this->assertEquals(new Price('20.00', 'USD'), $order_item->getTotalPrice());
+    $this->assertEquals(new Price('10.00', 'USD'), $order_item->getAdjustedTotalPrice());
+    $this->assertEquals(new Price('-10.00', 'USD'), $adjustment->getAmount());
+    $this->assertEquals('0.50', $adjustment->getPercentage());
     $this->order->recalculateTotalPrice();
     $this->assertEquals(new Price('10.00', 'USD'), $this->order->getTotalPrice());
   }
@@ -268,7 +289,7 @@ class PromotionOfferTest extends CommerceKernelTestBase {
 
     $order_item = OrderItem::create([
       'type' => 'default',
-      'quantity' => '1',
+      'quantity' => '2',
       'unit_price' => $variation->getPrice(),
       'purchased_entity' => $variation->id(),
     ]);
@@ -294,18 +315,16 @@ class PromotionOfferTest extends CommerceKernelTestBase {
     ]);
     $promotion->save();
 
-    /** @var \Drupal\commerce\Plugin\Field\FieldType\PluginItem $offer_field */
-    $offer_field = $promotion->get('offer')->first();
-    $this->assertEquals('15.00', $offer_field->target_plugin_configuration['amount']['number']);
-
     $this->container->get('commerce_order.order_refresh')->refresh($this->order);
     $this->order = $this->reloadEntity($this->order);
     /** @var \Drupal\commerce_order\Entity\OrderItemInterface $order_item */
     $order_item = $this->reloadEntity($order_item);
 
-    // Offer amount larger than the order item price.
+    // Offer amount larger than the order item total price.
     $this->assertEquals(1, count($order_item->getAdjustments()));
-    $this->assertEquals(new Price('-10.00', 'USD'), $order_item->getAdjustments()[0]->getAmount());
+    $this->assertEquals(new Price('20.00', 'USD'), $order_item->getTotalPrice());
+    $this->assertEquals(new Price('0.00', 'USD'), $order_item->getAdjustedTotalPrice());
+    $this->assertEquals(new Price('-20.00', 'USD'), $order_item->getAdjustments()[0]->getAmount());
 
     // Offer amount smaller than the order item unit price.
     $variation->setPrice(new Price('20', 'USD'));
@@ -314,7 +333,9 @@ class PromotionOfferTest extends CommerceKernelTestBase {
     $this->order = $this->reloadEntity($this->order);
     $order_item = $this->reloadEntity($order_item);
     $this->assertEquals(1, count($order_item->getAdjustments()));
-    $this->assertEquals(new Price('-15.00', 'USD'), $order_item->getAdjustments()[0]->getAmount());
+    $this->assertEquals(new Price('40.00', 'USD'), $order_item->getTotalPrice());
+    $this->assertEquals(new Price('10.00', 'USD'), $order_item->getAdjustedTotalPrice());
+    $this->assertEquals(new Price('-30.00', 'USD'), $order_item->getAdjustments()[0]->getAmount());
   }
 
 }

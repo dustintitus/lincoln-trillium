@@ -107,7 +107,14 @@ class LinkWithAttributesWidget extends LinkWidget implements ContainerFactoryPlu
         foreach ($plugin_definitions[$attribute] as $property => $value) {
           $element['options']['attributes'][$attribute]['#' . $property] = $value;
         }
-        $element['options']['attributes'][$attribute]['#default_value'] = isset($attributes[$attribute]) ? $attributes[$attribute] : '';
+
+        // Set the default value, in case of a class that is stored as array,
+        // convert it back to a string.
+        $default_value = isset($attributes[$attribute]) ? $attributes[$attribute] : '';
+        if ($attribute === 'class' && is_array($default_value)) {
+          $default_value = implode(' ', $default_value);
+        }
+        $element['options']['attributes'][$attribute]['#default_value'] = $default_value;
       }
     }
     return $element;
@@ -130,6 +137,25 @@ class LinkWithAttributesWidget extends LinkWidget implements ContainerFactoryPlu
       '#description' => $this->t('Select the attributes to allow the user to edit.'),
     ];
     return $element;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
+    // Convert a class string to an array so that it can be merged reliable.
+    foreach ($values as $delta => $value) {
+      if (isset($value['options']['attributes']['class']) && is_string($value['options']['attributes']['class'])) {
+        $values[$delta]['options']['attributes']['class'] = explode(' ', $value['options']['attributes']['class']);
+      }
+    }
+
+    return array_map(function (array $value) {
+      $value['options']['attributes'] = array_filter($value['options']['attributes'], function ($attribute) {
+        return $attribute !== "";
+      });
+      return $value;
+    }, $values);
   }
 
   /**

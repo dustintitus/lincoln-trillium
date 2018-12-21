@@ -15,7 +15,7 @@
 	"ETB": {
 		"name": "bir"
 	},
-	"VEF": {
+	"VES": {
 		"name": "bolívar venezolano"
 	},
 	"BOB": {
@@ -96,7 +96,7 @@
 	"MAD": {
 		"name": "dírham marroquí"
 	},
-	"STD": {
+	"STN": {
 		"name": "dobra"
 	},
 	"AUD": {
@@ -458,8 +458,11 @@
 	"MNT": {
 		"name": "tugrik"
 	},
-	"MRO": {
+	"MRU": {
 		"name": "uguiya"
+	},
+	"UYW": {
+		"name": "unidad previsional uruguayo"
 	},
 	"VUV": {
 		"name": "vatu"

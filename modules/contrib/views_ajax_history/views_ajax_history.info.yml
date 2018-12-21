@@ -6,8 +6,8 @@ package: Views
 dependencies:
   - views
 
-# Information added by Drupal.org packaging script on 2016-08-02
-version: '8.x-1.x-dev'
+# Information added by Drupal.org packaging script on 2018-08-27
+version: '8.x-1.0'
 core: '8.x'
 project: 'views_ajax_history'
-datestamp: 1470177687
+datestamp: 1535376604

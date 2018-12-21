@@ -147,7 +147,7 @@ class MenuLinkTreeHandler implements MenuLinkTreeHandlerInterface {
       if (isset($item['original_link'])) {
         $content['#item'] = $item;
         $content['entity'] = $this->getMenuLinkItemEntity($item['original_link']);
-        $content['content'] = $this->getMenuLinkItemContent($content['entity'], $menu_level, $show_item_link);
+        $content['content'] = $content['entity'] ? $this->getMenuLinkItemContent($content['entity'], $menu_level, $show_item_link) : NULL;
         $content['menu_level'] = $menu_level;
       }
       // Process subitems.
