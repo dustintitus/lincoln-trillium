@@ -3,8 +3,9 @@
 namespace Drupal\Tests\media_entity_browser\FunctionalJavascript;
 
 use Drupal\FunctionalJavascriptTests\JavascriptTestBase;
-use Drupal\media_entity\Entity\Media;
-use Drupal\media_entity\Entity\MediaBundle;
+use Drupal\media\Entity\Media;
+use Drupal\media\Entity\MediaType;
+use Drupal\Tests\media\Functional\MediaFunctionalTestCreateMediaTypeTrait;
 
 /**
  * A test for the media entity browser.
@@ -13,13 +14,14 @@ use Drupal\media_entity\Entity\MediaBundle;
  */
 class MediaEntityBrowserTest extends JavascriptTestBase {
 
+  use MediaFunctionalTestCreateMediaTypeTrait;
   /**
    * Modules to install.
    *
    * @var array
    */
   public static $modules = [
-    'media_entity',
+    'media',
     'entity_browser',
     'media_entity_browser',
     'video_embed_media',
@@ -32,12 +34,11 @@ class MediaEntityBrowserTest extends JavascriptTestBase {
   public function setUp() {
     parent::setUp();
     $this->drupalLogin($this->drupalCreateUser(array_keys($this->container->get('user.permissions')->getPermissions())));
-    MediaBundle::create([
+    $this->createMediaType([
       'label' => 'Video',
-      'id' => 'video',
-      'description' => 'Video bundle.',
-      'type' => 'video_embed_field',
-    ])->save();
+      'bundle' => 'video',
+    ], 'video_embed_field');
+
     Media::create([
       'bundle' => 'video',
       'field_media_video_embed_field' => [['value' => 'https://www.youtube.com/watch?v=XgYu7-DQjDQ']],

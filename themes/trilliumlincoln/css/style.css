@@ -1652,6 +1652,7 @@ a {
         padding: 1em 5em; }
     #trilliumlincoln-modal .modal-dialog .modal-content .modal-body,
     #trilliumlincoln-close-modal .modal-dialog .modal-content .modal-body {
+      overflow: hidden !important;
       text-align: center;
       padding: 15px 30px 30px 30px; }
       #trilliumlincoln-modal .modal-dialog .modal-content .modal-body h2,
@@ -1728,6 +1729,7 @@ a {
 #trilliumlincoln-close-modal .modal-dialog .modal-content .modal-footer {
   padding-bottom: 30px; }
 #trilliumlincoln-close-modal .modal-dialog .modal-content .modal-body {
+  overflow: hidden !important;
   padding-top: 0px;
   padding-bottom: 0px; }
   #trilliumlincoln-close-modal .modal-dialog .modal-content .modal-body h2 {
@@ -1757,6 +1759,7 @@ a {
       box-shadow: none;
       border: none; }
       #modal-box .modal-dialog .modal-content .modal-body {
+        overflow: hidden !important;
         width: 100%;
         height: 100%; }
         #modal-box .modal-dialog .modal-content .modal-body.load-image::before {

@@ -40,6 +40,7 @@ dependencies:
     - field.field.commerce_product.car.field_lease_36_term_rate
     - field.field.commerce_product.car.field_lease_39_term_rate
     - field.field.commerce_product.car.field_lease_48_term_rate
+    - field.field.commerce_product.car.field_prevent_automatic_update
     - field.field.commerce_product.car.field_residual_24_term_rate
     - field.field.commerce_product.car.field_residual_36_term_rate
     - field.field.commerce_product.car.field_residual_39_term_rate
@@ -207,6 +208,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   body: true
   created: true
@@ -235,6 +244,7 @@ hidden:
   field_car_type: true
   field_car_vin: true
   field_car_year: true
+  field_prevent_automatic_update: true
   stores: true
   uid: true
   variations: true

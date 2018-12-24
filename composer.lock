@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c88b92a0361293db953a08a4d70b0bd",
+    "content-hash": "8424bcacd3af466f7cb969f71bdf0baf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2124,17 +2124,17 @@
         },
         {
             "name": "drupal/entity_browser",
-            "version": "1.6.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_browser",
-                "reference": "8.x-1.6"
+                "reference": "8.x-2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-1.6.zip",
-                "reference": "8.x-1.6",
-                "shasum": "ed80f338cc002e188df21967cf2222a01a88f90c"
+                "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "683a7a252c947433c7b78bb838d6d8973c13cf77"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -2142,18 +2142,17 @@
             "require-dev": {
                 "drupal/ctools": "*",
                 "drupal/inline_entity_form": "*",
-                "drupal/media_entity": "*",
                 "drupal/paragraphs": "*",
                 "drupal/token": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-1.x": "1.x-dev",
+                    "dev-2.x": "2.x-dev",
                     "dev-8.x-1.x": "8.1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.6",
+                    "version": "8.x-2.0",
                     "datestamp": "1536328684",
                     "security-coverage": {
                         "status": "covered",
@@ -2792,6 +2791,71 @@
             "time": "2018-01-01T11:13:09+00:00"
         },
         {
+            "name": "drupal/media_entity_browser",
+            "version": "2.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/media_entity_browser",
+                "reference": "8.x-2.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_entity_browser-8.x-2.0-alpha1.zip",
+                "reference": "8.x-2.0-alpha1",
+                "shasum": "d0de87059165dc7cda4ed1832b13c5846be9386b"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/entity_browser": "*"
+            },
+            "require-dev": {
+                "drupal/ctools": "*",
+                "drupal/entity_browser": "^2",
+                "drupal/video_embed_field": "^2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0-alpha1",
+                    "datestamp": "1510532885",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Sam152",
+                    "homepage": "https://www.drupal.org/user/1485048"
+                },
+                {
+                    "name": "benjy",
+                    "homepage": "https://www.drupal.org/user/1852732"
+                },
+                {
+                    "name": "larowlan",
+                    "homepage": "https://www.drupal.org/user/395439"
+                },
+                {
+                    "name": "rikki_iki",
+                    "homepage": "https://www.drupal.org/user/1068918"
+                }
+            ],
+            "description": "This module provides an Entity Browser for Media Entity.",
+            "homepage": "https://www.drupal.org/project/media_entity_browser",
+            "support": {
+                "source": "http://cgit.drupalcode.org/media_entity_browser"
+            }
+        },
+        {
             "name": "drupal/menu_block",
             "version": "1.5.0",
             "source": {
@@ -3249,29 +3313,30 @@
         },
         {
             "name": "drupal/simple_sitemap",
-            "version": "2.12.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/simple_sitemap",
-                "reference": "8.x-2.12"
+                "reference": "8.x-3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-2.12.zip",
-                "reference": "8.x-2.12",
-                "shasum": "fe1c1a636adfba8358399a5a1ccdf20685066573"
+                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-3.0.zip",
+                "reference": "8.x-3.0",
+                "shasum": "9c3d1fb78d4693dd4f3258e8870b173650c828cd"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "~8.0",
+                "ext-xmlwriter": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-2.x": "2.x-dev"
+                    "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.12",
-                    "datestamp": "1542505221",
+                    "version": "8.x-3.0",
+                    "datestamp": "1544876325",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3295,12 +3360,11 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "Sam Becker (Sam152)",
-                    "homepage": "https://www.drupal.org/u/sam152",
-                    "role": "Co-maintainer"
+                    "name": "gbyte.co",
+                    "homepage": "https://www.drupal.org/user/2381352"
                 }
             ],
-            "description": "Simple XML sitemap creates a standard conform XML sitemap of your content.",
+            "description": "Creates a standard conform hreflang XML sitemap of the site content and provides a framework for developing other sitemap types.",
             "homepage": "https://drupal.org/project/simple_sitemap",
             "support": {
                 "source": "https://cgit.drupalcode.org/simple_sitemap",
@@ -3760,17 +3824,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "5.0.0-rc31",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/webform",
-                "reference": "8.x-5.0-rc31"
+                "reference": "8.x-5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0-rc31.zip",
-                "reference": "8.x-5.0-rc31",
-                "shasum": "85424f80ea3336e9562063b8cc88875ed2595692"
+                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0.zip",
+                "reference": "8.x-5.0",
+                "shasum": "bcd62f539a58549c2323b9d17d47a73e8a8e0917"
             },
             "require": {
                 "drupal/core": "*"
@@ -3793,11 +3857,11 @@
                     "dev-5.x": "5.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-5.0-rc31",
-                    "datestamp": "1545138180",
+                    "version": "8.x-5.0",
+                    "datestamp": "1545656285",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "drush": {

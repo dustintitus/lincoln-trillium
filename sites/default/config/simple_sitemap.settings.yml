@@ -14,3 +14,4 @@ enabled_entity_types:
   - commerce_product
 _core:
   default_config_hash: vFARRSP9-YgEArfDNYmRSg0cNFOgZPxqziffIalgLbU
+default_variant: default

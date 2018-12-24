@@ -5,7 +5,7 @@ dependencies:
   config:
     - views.view.media_entity_browser
   module:
-    - media_entity_image
+    - media
     - views
 name: media_entity_browser_image
 label: 'Media Entity Browser Image'
@@ -23,14 +23,14 @@ widgets:
   cbc5bcad-9c20-4f46-be70-8bcfeaac05b8:
     settings:
       extensions: 'jpg jpeg png gif'
-      media_bundle: image
       upload_location: 'public://'
       multiple: true
       submit_text: 'Select files'
+      media_type: image
     uuid: cbc5bcad-9c20-4f46-be70-8bcfeaac05b8
     weight: 1
     label: Upload
-    id: media_entity_image_upload
+    id: media_image_upload
   fec3cd29-8ba6-4b34-ad24-fa3702c50b75:
     settings:
       view: media_entity_browser

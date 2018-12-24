@@ -1,0 +1,18 @@
+uuid: e20bd6f1-8216-4149-a5fa-f168ac1973d3
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.bp_accordion_expand
+field_name: bp_accordion_expand
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

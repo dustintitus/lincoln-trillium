@@ -52,7 +52,6 @@ dependencies:
     - commerce_price
     - datetime
     - field_group
-    - inline_entity_form
     - paragraphs
     - path
     - svg_image
@@ -442,19 +441,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  variations:
-    type: inline_entity_form_complex
-    weight: 5
-    settings:
-      form_mode: default
-      label_singular: ''
-      label_plural: ''
-      allow_new: true
-      allow_existing: true
-      match_operator: STARTS_WITH
-      override_labels: false
-    third_party_settings: {  }
-    region: content
 hidden:
   field_car_body_style: true
   field_car_category: true
@@ -463,3 +449,4 @@ hidden:
   field_car_number_of_doors: true
   field_car_total_length: true
   field_car_traction: true
+  variations: true

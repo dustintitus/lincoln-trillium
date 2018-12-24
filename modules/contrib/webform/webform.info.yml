@@ -15,8 +15,8 @@ test_dependencies:
   - 'select2:select2'
   - 'token:token'
 
-# Information added by Drupal.org packaging script on 2018-12-18
-version: '8.x-5.0-rc31'
+# Information added by Drupal.org packaging script on 2018-12-24
+version: '8.x-5.0'
 core: '8.x'
 project: 'webform'
-datestamp: 1545138427
+datestamp: 1545656296

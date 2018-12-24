@@ -52,9 +52,8 @@ module:
   link_attributes: 0
   linkit: 0
   login_destination: 0
-  media_entity: 0
+  media: 0
   media_entity_browser: 0
-  media_entity_image: 0
   menu_block: 0
   menu_item_extras: 0
   menu_link_attributes: 0

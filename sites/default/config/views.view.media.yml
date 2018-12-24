@@ -5,7 +5,7 @@ dependencies:
   config:
     - image.style.thumbnail
   module:
-    - media_entity
+    - media
     - svg_image
     - user
 _core:

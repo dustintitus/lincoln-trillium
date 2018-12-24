@@ -11,6 +11,14 @@ use Drupal\views\Plugin\views\cache\CachePluginBase;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 
 /**
+ * Remove 'media_entity' from the system schema list.
+ */
+function trilliumlincoln_utility_update_8002() {
+  $schema_store = \Drupal::keyValue('system.schema');
+  $schema_store->delete('media_entity');
+}
+
+/**
  * Implements hook_form_commerce_product_form_alter() for node edit form.
 **/
 function trilliumlincoln_utility_form_commerce_product_form_alter(&$form, FormStateInterface $form_state, $form_id) {
