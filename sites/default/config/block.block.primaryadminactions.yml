@@ -1,0 +1,27 @@
+uuid: fbd278ef-d379-43bd-b76c-bd8c1e959968
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - trilliumlincoln
+id: primaryadminactions
+theme: trilliumlincoln
+region: content
+weight: -14
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      staff: staff
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

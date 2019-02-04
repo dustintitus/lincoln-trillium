@@ -16,7 +16,7 @@ third_party_settings:
 id: webform_2
 theme: trilliumlincoln
 region: content
-weight: 0
+weight: -4
 provider: null
 plugin: webform_block
 settings:
@@ -26,6 +26,7 @@ settings:
   label_display: '0'
   webform_id: test_drive
   default_data: ''
+  redirect: false
 visibility:
   request_path:
     id: request_path

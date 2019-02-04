@@ -17,7 +17,7 @@ third_party_settings:
 id: views_block__edit_content_block_1
 theme: trilliumlincoln
 region: content
-weight: 0
+weight: -6
 provider: null
 plugin: 'views_block:edit_content-block_1'
 settings:

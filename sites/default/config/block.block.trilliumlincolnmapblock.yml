@@ -8,9 +8,6 @@ dependencies:
     - trilliumlincoln_map
   theme:
     - trilliumlincoln
-third_party_settings:
-  block_class:
-    classes: ''
 id: trilliumlincolnmapblock
 theme: trilliumlincoln
 region: content_bottom

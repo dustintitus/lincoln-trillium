@@ -11,13 +11,10 @@ dependencies:
     - views
   theme:
     - trilliumlincoln
-third_party_settings:
-  block_class:
-    classes: ''
 id: views_block__quick_vehicle_edit_block_1
 theme: trilliumlincoln
 region: content
-weight: 0
+weight: -5
 provider: null
 plugin: 'views_block:quick_vehicle_edit-block_1'
 settings:

@@ -16,7 +16,7 @@ third_party_settings:
 id: webform
 theme: trilliumlincoln
 region: content
-weight: -6
+weight: -7
 provider: null
 plugin: webform_block
 settings:
@@ -26,6 +26,7 @@ settings:
   label_display: visible
   webform_id: contact_us
   default_data: ''
+  redirect: false
 visibility:
   request_path:
     id: request_path

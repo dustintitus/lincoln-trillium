@@ -9,9 +9,6 @@ dependencies:
     - block_content
   theme:
     - trilliumlincoln
-third_party_settings:
-  block_class:
-    classes: ''
 id: comingsoonmodel
 theme: trilliumlincoln
 region: footer_bottom

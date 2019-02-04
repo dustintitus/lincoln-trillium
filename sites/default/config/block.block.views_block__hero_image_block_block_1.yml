@@ -10,9 +10,6 @@ dependencies:
     - views
   theme:
     - trilliumlincoln
-third_party_settings:
-  block_class:
-    classes: ''
 id: views_block__hero_image_block_block_1
 theme: trilliumlincoln
 region: highlighted
