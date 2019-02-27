@@ -41,6 +41,9 @@
         font-size: em(45);
       }
     }
+    p + h2{
+      margin-top: 50px;
+    }
     .content {
       .field--name-body {
         font-family: $font-family-base;

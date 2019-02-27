@@ -485,6 +485,8 @@ a {
       .region-content .node-content .node-title,
       .region-content .node-content h2 {
         font-size: 2.8125em; } }
+  .region-content .node-content p + h2 {
+    margin-top: 50px; }
   .region-content .node-content .content .field--name-body {
     font-family: ProximaNova, sans-serif;
     line-height: 1.19355;
@@ -1589,7 +1591,7 @@ a {
 
 .paragraph--type--text-block {
   line-height: 1.17857;
-  padding-bottom: 45px; }
+  padding-bottom: 75px; }
   .paragraph--type--text-block .field--name-field-p__text-block__title {
     font-weight: bold;
     text-align: center;
@@ -1599,6 +1601,7 @@ a {
     font-size: 0.875em; }
 
 .paragraph--type--text-blocks {
+  margin-top: 50px;
   margin-bottom: 50px; }
 
 .nav-tabs {
