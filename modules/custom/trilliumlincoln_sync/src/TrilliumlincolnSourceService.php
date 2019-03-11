@@ -29,7 +29,7 @@ class TrilliumlincolnSourceService {
 
     if (!empty($files)) {
       foreach($files as $file){
-        $created_time = filemtime($file->uri);
+        $created_time = filectime($file->uri);
         $files_created[$created_time] = $file;
       }
     }

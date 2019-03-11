@@ -171,14 +171,18 @@
           cookieClass = getCookie('productListViewMode');
           if( getWindowWidth() < 768 ){
             if(self.hasClass("list")) {
-              self.removeClass('list').addClass("grid");  
+              self.removeClass('list').addClass("grid");
             }
           } 
           if( getWindowWidth() >= 768 && (cookieClass === "list" || cookieClass === "grid")){
             if(!self.hasClass(cookieClass)) {
               self.removeClass('list grid').addClass(cookieClass);  
             }
-          } 
+          }
+
+          if(self.hasClass('grid') && getWindowWidth() >= 480){
+            Drupal.behaviors.view_product_list.teaserCarDescription();
+          }
         }).trigger('resize');;
 
         var btnGrid = self.find('.product-list--grid');
@@ -187,19 +191,44 @@
 
         btnGrid.on('click', function(e){
           self.addClass('grid').removeClass('list');
+          Drupal.behaviors.view_product_list.teaserCarDescription();
           setViewMode('grid');
         });
 
         btnList.on('click', function(e){
           self.addClass('list').removeClass('grid');
+          Drupal.behaviors.view_product_list.teaserCarDescriptionResetHeight();
           setViewMode('list');
         });
 
         function setViewMode(viewMode){
           setCookie('productListViewMode', viewMode, {expires: 86400});
         }
-
       });
+
+      if($('.view-product-list').hasClass('grid') && getWindowWidth() >= 480){
+        Drupal.behaviors.view_product_list.teaserCarDescription();
+      }
+
+      if (getWindowWidth() < 480) {
+        Drupal.behaviors.view_product_list.teaserCarDescriptionResetHeight();
+      }
+    },
+    teaserCarDescription: function(){
+      var maxHeight = 0;
+      var $rows = $('.view-product-list').find('.view-content .views-row');
+
+      $rows.each(function(index, el) {
+        var $body = $(el).find('.product .field--name-body');
+        var curHeight = $body.css('height', 'auto').height();
+        if (curHeight > maxHeight) {
+          maxHeight = curHeight;
+        }
+      });
+      $rows.find('.product').css('height', maxHeight + 300 + 'px');
+    },
+    teaserCarDescriptionResetHeight: function(){
+      $('.view-product-list').find('.view-content .views-row .product').css('height', 'auto');
     }
   };
 

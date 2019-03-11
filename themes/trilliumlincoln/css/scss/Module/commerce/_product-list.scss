@@ -28,7 +28,7 @@
 				padding-right: 15px;
 			}
 			.field--name-body {
-						max-height: 14px*6;
+						// max-height: 14px*6;
 			}
 			.product-link-wrapper{
 				text-align: right;
@@ -56,7 +56,7 @@
 				}
 				.product{
 					@include respond($xs){
-						height: 450px;
+						// height: 450px;
 					}
 					position: relative;
 					.col-3 {
@@ -67,7 +67,7 @@
 						}
 					}
 					.field--name-body {
-						max-height: 14px*10;
+						// max-height: 14px*10;
 						overflow: hidden;
 					}
 				}

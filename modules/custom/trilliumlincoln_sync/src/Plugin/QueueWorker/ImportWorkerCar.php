@@ -129,6 +129,7 @@ class ImportWorkerCar extends ImportWorkerBase {
         'sku' => $item['stock_number'],
         'status' => 1, // The product status. 0 for disabled, 1 for enabled.
         'price' => $price,
+        'product_id' => $entity->id(),
         'field_note' => t('Call for price')
       ]);
       $variation->save();

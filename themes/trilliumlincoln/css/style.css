@@ -2005,8 +2005,6 @@ a {
   .view-product-list.list .view-content .field--name-price {
     text-align: right;
     padding-right: 15px; }
-  .view-product-list.list .view-content .field--name-body {
-    max-height: 84px; }
   .view-product-list.list .view-content .product-link-wrapper {
     text-align: right; }
     .view-product-list.list .view-content .product-link-wrapper .btn {
@@ -2033,15 +2031,11 @@ a {
     .view-product-list.grid .view-content .views-row .product {
       position: relative; }
       @media (min-width: 480px) {
-        .view-product-list.grid .view-content .views-row .product {
-          height: 450px; } }
-      @media (min-width: 480px) {
         .view-product-list.grid .view-content .views-row .product .col-3 {
           position: absolute;
           width: 100%;
           bottom: 25px; } }
       .view-product-list.grid .view-content .views-row .product .field--name-body {
-        max-height: 140px;
         overflow: hidden; }
     .view-product-list.grid .view-content .views-row .field--name-title {
       margin-top: 10px;

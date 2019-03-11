@@ -89,9 +89,9 @@ function trilliumlincoln_preprocess_field(&$variables){
       $field_body = $element['#object']->get('body')->getValue();
       if (!empty($field_body[0]['value'])) {
         $body = Unicode::truncate($field_body[0]['value'], 340, false, true);
-        $body = strip_tags($body);
+        $body = strip_tags($body, '<br><p>');
         $body = preg_replace("/[\n\r]/","", $body);
-        $variables['items'][0]['content']['#text'] = Markup::create('<p>' . $body . '</p>');
+        $variables['items'][0]['content']['#text'] = Markup::create($body);
       }
     }
   }
