@@ -37,21 +37,12 @@ function trilliumlincoln_utility_form_commerce_product_form_alter(&$form, FormSt
  * Implements hook_entity_presave.
 **/
 function trilliumlincoln_utility_entity_presave(Drupal\Core\Entity\EntityInterface $entity){
-  if ($entity->getEntityTypeId() == 'commerce_product'){
-    $variation = $entity->getDefaultVariation();
-    if (!empty($variation)) {
-      $sku = $variation->getSku();
-      if (!empty($sku)) {
-        $entity->set('field_car_stock_number', $sku);
-      }
-    }
-  }
-
   if ($entity->getEntityTypeId() == 'commerce_product_variation'){
     $sku = $entity->getSku();
     if (!empty($sku)) {
-      $product = $entity->getProduct();
-      if (!empty($product)) {
+      $product_id = $entity->getProductId();
+      if (!empty($product_id)) {
+        $product = \Drupal\commerce_product\Entity\Product::load($product_id);
         $product->set('field_car_stock_number', $sku);
         $product->save();
       }
