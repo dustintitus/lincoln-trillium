@@ -1,6 +1,6 @@
 .form-contact.block {
 	// margin-top: 20px;
-	background-color: $c-brown;
+	//background-color: $c-brown;
 	padding-bottom: 20px;
 	@include respond($sm){
 		padding-bottom: 75px;
@@ -11,13 +11,22 @@
 		margin-bottom: 15px;
 	}
 	.webform-submission-form {
-		max-width: 660px;
-		padding-left: 10px;
-		padding-right: 10px;
+		max-width: 100%;
+		//padding-left: 10px;
+		//padding-right: 10px;
 		margin: 0 auto;
 		position: relative;
 		.alert{
-			max-width: 444px;
+			// max-width: 444px;
+			max-width: 100%;
+		}
+		&:before,
+		&:after{
+			content: " ";
+			display: table;
+		}
+		&:after{
+			clear: both;
 		}
 	}
 	
@@ -30,21 +39,29 @@
 		}
 
 	}
-	.form-item-full-name, .form-item-email-address{
+	.form-item-full-name{
 		@include respond($sm){
-			width: 218px;
 			float: left;
 			margin-right: 9px;
+			width: calc(50% - 5px);
+		}
+	}
+	.form-item-email-address{
+		@include respond($sm){
+			float: left;
+			width: calc(50% - 5px);
 		}
 	}
 	.form-item-message {
 		@include respond($sm){
-			width: 445px;
+			//width: 445px;
+			width: 100%;
 		}
 	}
 	.captcha{
 		@include respond($sm){
 			width: 445px;
+			float: left;
 		}
 		.form-type-textfield{
 			@include respond($sm){
@@ -61,7 +78,8 @@
 		padding: 0 10px;
 		color: $c-white;
 		@include respond($sm){
-			display: block;
+			//display: block;
+			display: none;
 		}
 		@include respond($md){
 			
@@ -74,11 +92,14 @@
 			margin: 0;
 		}
 		@include respond($sm){
-			position: absolute;
-			left: 455px;
-			bottom: 96px;
-			margin: 0;
-			padding-left: 10px;
+			//position: absolute;
+			//left: 455px;
+			//bottom: 96px;
+			//margin: 0;
+			//padding-left: 10px;
+			position: relative;
+			margin-top: 20px;
+			float: right;
 		}
 	}
 	.form-item-communication {		
@@ -88,8 +109,9 @@
 		@include respond($sm){
 			position: absolute;
 			margin: 0;
-			bottom: -52px;
-			max-width: 600px;
+			top: 100%;
+			padding-top: 10px; 
+			//max-width: 600px;
 			padding-left: 37px;
 		}
 		.form-checkbox {
@@ -99,8 +121,10 @@
 			}
 		}			
 		.control-label {
-			font-size: em(12);
-			color: $c-white;
+			font-size: em(16);
+			line-height: 1.25;
+			letter-spacing: 0.6px;
+			color: $c-black;
 			padding: 0;
 			position: relative;
 			&::before {
@@ -114,7 +138,7 @@
 				left: -26px;
 
 				border: 1px solid #cccccc;
-				border-radius: 50%;
+
 				background-color: #fff;
 				transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
 			}			

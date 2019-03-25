@@ -1,7 +1,11 @@
 nid_list:
-  - 1
-  - 9
-  - 17
+  0: 1
+  1: 9
+  2: 17
+  4: 24
+  5: 25
+  7: 23
+  8: 27
 translation_sync: true
 search: false
 _core:

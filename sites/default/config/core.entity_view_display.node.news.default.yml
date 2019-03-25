@@ -1,0 +1,30 @@
+uuid: e1111946-acb4-4438-a99b-d84f92cf2190
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news.body
+    - field.field.node.news.field_hero_image
+    - node.type.news
+  module:
+    - text
+    - user
+id: node.news.default
+targetEntityType: node
+bundle: news
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_hero_image: true

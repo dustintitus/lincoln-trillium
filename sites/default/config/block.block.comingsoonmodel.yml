@@ -5,7 +5,6 @@ dependencies:
   content:
     - 'block_content:basic:bbc38427-a6f9-46e0-8870-74b9b9bf8d95'
   module:
-    - block_class
     - block_content
   theme:
     - trilliumlincoln

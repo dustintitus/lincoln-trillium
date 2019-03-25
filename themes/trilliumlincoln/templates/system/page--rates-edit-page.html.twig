@@ -52,9 +52,10 @@
  */
  #}
  {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+ {% set hero_class = show_hero ? ' hero-image' : '' %}
   {# Navbar #}
 
-  <header class="header" role="banner">
+  <header class="header{{ hero_class }}" role="banner">
     <div class="{{ container }}">
       <div class="row">
 
@@ -71,6 +72,18 @@
           {% endblock %}
         {% endif %}
 
+        {% if page.navigation_top %}
+          {% block navbar_top %}
+          <div id="navbar-top">
+              <div class="wrapper">
+                <div class="col-sm-11 col-sm-push-05" role="heading">
+                  {{ page.navigation_top }}
+                </div>
+              </div>
+          </div>
+          {% endblock %}
+        {% endif %}
+        
         {% if page.navigation or page.navigation_collapsible %}
           {% block navbar %}
             {%

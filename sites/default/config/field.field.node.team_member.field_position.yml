@@ -1,0 +1,21 @@
+uuid: 9b7fb9e3-7959-4736-b3e4-a47cb9022f05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_position
+    - node.type.team_member
+  module:
+    - text
+id: node.team_member.field_position
+field_name: field_position
+entity_type: node
+bundle: team_member
+label: Position
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

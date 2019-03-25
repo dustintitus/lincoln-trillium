@@ -17,7 +17,18 @@ use Drupal\Component\Utility\Xss;
 use Drupal\Component\Utility\Unicode;
 
 function trilliumlincoln_preprocess_page(&$variables) {
+  $variables['show_hero'] = 0;
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  if (!empty($variables['page']['highlighted'])) {
+    $highlighted = drupal_render($variables['page']['highlighted'])->__toString();
+    if (!empty($variables['page']['highlighted']['trilliumlincolnmapblock'])) {
+       $variables['show_hero'] = 1;
+    }
+    $highlighted = trim(strip_tags($highlighted,'<img>'));
+    if (!empty($highlighted)) {
+      $variables['show_hero'] = 1;
+    }
+  }
 }
 
 function trilliumlincoln_theme_suggestions_block_alter(array &$suggestions, array $variables) {

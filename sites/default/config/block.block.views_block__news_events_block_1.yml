@@ -1,0 +1,30 @@
+uuid: 2a9c39a6-9ccf-418d-9f98-1f850ccfdef5
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.news_events
+  module:
+    - system
+    - views
+  theme:
+    - trilliumlincoln
+id: views_block__news_events_block_1
+theme: trilliumlincoln
+region: highlighted
+weight: -11
+provider: null
+plugin: 'views_block:news_events-block_1'
+settings:
+  id: 'views_block:news_events-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /news
+    negate: false
+    context_mapping: {  }

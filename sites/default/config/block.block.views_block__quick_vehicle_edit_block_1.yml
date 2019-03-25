@@ -5,7 +5,6 @@ dependencies:
   config:
     - views.view.quick_vehicle_edit
   module:
-    - block_class
     - system
     - user
     - views
@@ -14,7 +13,7 @@ dependencies:
 id: views_block__quick_vehicle_edit_block_1
 theme: trilliumlincoln
 region: content
-weight: -5
+weight: -6
 provider: null
 plugin: 'views_block:quick_vehicle_edit-block_1'
 settings:

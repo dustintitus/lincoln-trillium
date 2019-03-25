@@ -3,28 +3,27 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_class
     - system
     - trilliumlincoln_map
   theme:
     - trilliumlincoln
 id: trilliumlincolnmapblock
 theme: trilliumlincoln
-region: content_bottom
-weight: -12
+region: highlighted
+weight: -15
 provider: null
 plugin: trilliumlincoln_map_custom_block
 settings:
   id: trilliumlincoln_map_custom_block
   label: 'Visit Us'
   provider: trilliumlincoln_map
-  label_display: visible
-  message: 'We are located at 4589 Industrial Pkwy, Alliston, ON L9R 1W1'
+  label_display: '0'
+  message: 'Trillium Lincoln is located at 4589 Industrial Pkwy in Alliston.'
   lat: '44.162004'
   lng: '-79.828266'
 visibility:
   request_path:
     id: request_path
-    pages: "<front>\r\n/about\r\n/assistance"
+    pages: "/location-hours\r\n"
     negate: false
     context_mapping: {  }

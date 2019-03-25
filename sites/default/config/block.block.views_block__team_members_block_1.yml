@@ -1,0 +1,30 @@
+uuid: e4a40f65-949f-45ef-a613-b184e7d95dfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.team_members
+  module:
+    - system
+    - views
+  theme:
+    - trilliumlincoln
+id: views_block__team_members_block_1
+theme: trilliumlincoln
+region: content
+weight: -4
+provider: null
+plugin: 'views_block:team_members-block_1'
+settings:
+  id: 'views_block:team_members-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /meet-team
+    negate: false
+    context_mapping: {  }

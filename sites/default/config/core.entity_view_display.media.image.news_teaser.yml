@@ -1,0 +1,37 @@
+uuid: c87e7b6f-bbca-4791-8d8d-24715bdd1d25
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.news_teaser
+    - field.field.media.image.field_original_image
+    - image.style.520x520
+    - media.type.image
+  module:
+    - field_formatter_class
+    - svg_image
+id: media.image.news_teaser
+targetEntityType: media
+bundle: image
+mode: news_teaser
+content:
+  field_original_image:
+    type: image
+    weight: 0
+    region: content
+    label: above
+    settings:
+      image_style: 520x520
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

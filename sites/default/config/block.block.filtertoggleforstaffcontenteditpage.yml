@@ -5,7 +5,6 @@ dependencies:
   content:
     - 'block_content:basic:54f53cb9-c0c9-4de9-a13a-1d230d73f02a'
   module:
-    - block_class
     - block_content
     - system
     - user
@@ -14,7 +13,7 @@ dependencies:
 id: filtertoggleforstaffcontenteditpage
 theme: trilliumlincoln
 region: content
-weight: -11
+weight: -12
 provider: null
 plugin: 'block_content:54f53cb9-c0c9-4de9-a13a-1d230d73f02a'
 settings:

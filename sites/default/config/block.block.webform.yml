@@ -16,20 +16,20 @@ third_party_settings:
 id: webform
 theme: trilliumlincoln
 region: content
-weight: -7
+weight: -8
 provider: null
 plugin: webform_block
 settings:
   id: webform_block
   label: 'Contact Us'
   provider: webform
-  label_display: visible
+  label_display: '0'
   webform_id: contact_us
   default_data: ''
   redirect: false
 visibility:
   request_path:
     id: request_path
-    pages: "/assistance\r\n<front>"
+    pages: "/assistance\r\n/contact\r\n<front>"
     negate: false
     context_mapping: {  }

@@ -1,0 +1,27 @@
+uuid: 40a7ec0c-da99-4e3f-a4b1-acbc49714446
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.top-menu
+  module:
+    - menu_block
+  theme:
+    - trilliumlincoln
+id: topmenu
+theme: trilliumlincoln
+region: navigation_top
+weight: 0
+provider: null
+plugin: 'menu_block:top-menu'
+settings:
+  id: 'menu_block:top-menu'
+  label: 'Top menu'
+  provider: menu_block
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand: 0
+  parent: 'top-menu:'
+  suggestion: top_menu
+visibility: {  }

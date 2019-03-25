@@ -16,7 +16,7 @@ third_party_settings:
 id: contactus
 theme: trilliumlincoln
 region: content
-weight: -8
+weight: -9
 provider: null
 plugin: 'block_content:57660c8c-bed1-48e8-b4f6-399d91b23b29'
 settings:
@@ -30,6 +30,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/about\r\n/assistance"
+    pages: /assistance
     negate: false
     context_mapping: {  }

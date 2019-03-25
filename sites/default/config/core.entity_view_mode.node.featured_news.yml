@@ -1,0 +1,10 @@
+uuid: e668d69e-7dec-4ecf-94c3-02f2feae4a4f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.featured_news
+label: 'Featured News'
+targetEntityType: node
+cache: true

@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_class
     - system
   theme:
     - trilliumlincoln
@@ -12,7 +11,7 @@ _core:
 id: trilliumlincoln_messages
 theme: trilliumlincoln
 region: highlighted
-weight: -7
+weight: -9
 provider: null
 plugin: system_messages_block
 settings:

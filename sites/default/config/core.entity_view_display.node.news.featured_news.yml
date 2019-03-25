@@ -1,0 +1,37 @@
+uuid: 6fca8c7e-a3a2-400a-a234-76119aefc852
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured_news
+    - field.field.node.news.body
+    - field.field.node.news.field_hero_image
+    - node.type.news
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.news.featured_news
+targetEntityType: node
+bundle: news
+mode: featured_news
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 1
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  field_hero_image:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    region: content
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+hidden:
+  links: true

@@ -5,7 +5,6 @@ dependencies:
   content:
     - 'block_content:callout:c3415d63-e96b-4e48-837e-2ab007cd3d47'
   module:
-    - block_class
     - block_content
     - system
   theme:
@@ -13,7 +12,7 @@ dependencies:
 id: callouthome
 theme: trilliumlincoln
 region: content
-weight: -10
+weight: -11
 provider: null
 plugin: 'block_content:c3415d63-e96b-4e48-837e-2ab007cd3d47'
 settings:

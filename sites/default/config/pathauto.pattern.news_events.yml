@@ -1,0 +1,22 @@
+uuid: fdcf8cf6-fc49-4e95-a47a-2e814edbec48
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: news_events
+label: 'News & Events'
+type: 'canonical_entities:node'
+pattern: '[node:content-type]/[node:title]'
+selection_criteria:
+  f38eef61-3fc4-41d4-bdde-61310594187e:
+    id: node_type
+    bundles:
+      news: news
+    negate: false
+    context_mapping:
+      node: node
+    uuid: f38eef61-3fc4-41d4-bdde-61310594187e
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -5,7 +5,6 @@ dependencies:
   config:
     - views.view.hero_image_block_product_
   module:
-    - block_class
     - system
     - views
   theme:
@@ -13,7 +12,7 @@ dependencies:
 id: views_block__hero_image_block_product__block_1
 theme: trilliumlincoln
 region: highlighted
-weight: -10
+weight: -13
 provider: null
 plugin: 'views_block:hero_image_block_product_-block_1'
 settings:

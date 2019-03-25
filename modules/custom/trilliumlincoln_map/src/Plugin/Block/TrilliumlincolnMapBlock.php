@@ -80,10 +80,10 @@ class TrilliumlincolnMapBlock extends BlockBase {
     $build = array(
       '#type' => 'markup',
       '#markup' => '
-      <div class="trilliumlincoln_map-message">'.$config['message'].'</div>
       <div id="map"></div>
+      <div class="trilliumlincoln_map-message">'.$config['message'].'</div>
       <div class="trilliumlincoln_map-button-wrapper">
-      <a target="_blank" class="btn btn-info btn-lg btn-block" href="https://maps.google.com/?q='.$lat.','.$lng.'&ll='.$lat.','.$lng.'&z=14">OUR LOCATION</a>
+      <a target="_blank" class="btn btn-info btn-lg btn-block" href="https://maps.google.com/?q='.$lat.','.$lng.'&ll='.$lat.','.$lng.'&z=14">GET DIRECTIONS</a>
       </div>',
       '#attached' => array(
         'library' => array(

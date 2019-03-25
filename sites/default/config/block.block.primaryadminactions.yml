@@ -9,7 +9,7 @@ dependencies:
 id: primaryadminactions
 theme: trilliumlincoln
 region: content
-weight: -14
+weight: -15
 provider: null
 plugin: local_actions_block
 settings:

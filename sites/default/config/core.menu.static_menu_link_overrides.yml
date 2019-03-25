@@ -1,9 +1,9 @@
 definitions:
   standard__front_page:
-    enabled: true
-    menu_name: main
+    menu_name: top-menu
     parent: ''
-    expanded: false
     weight: -49
+    expanded: false
+    enabled: true
 _core:
   default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM

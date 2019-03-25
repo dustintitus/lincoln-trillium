@@ -7,6 +7,8 @@ dependencies:
     - field.field.paragraph.hero_image.field_subtitle
     - field.field.paragraph.hero_image.field_title
     - paragraphs.paragraphs_type.hero_image
+  module:
+    - field_formatter_class
 id: paragraph.hero_image.default
 targetEntityType: paragraph
 bundle: hero_image
@@ -18,7 +20,9 @@ content:
     settings:
       view_mode: teaser
       link: false
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     type: entity_reference_entity_view
     region: content
   field_subtitle:
