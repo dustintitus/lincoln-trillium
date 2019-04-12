@@ -193,6 +193,44 @@
 					}
 				}
 			}
+      .photo{
+        position: relative;
+        .description{
+          transition: all 0.5s ease;
+          //display: none;
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: rgba(220, 209, 189, 0.75);
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          font-weight: 600;
+          padding: 20px 20px;
+          overflow: hidden;
+          color: $c-brown;
+          font-size: 20px;
+          line-height: 24px;
+          @include respond($sm){
+            font-size: 14px;
+            line-height: 18px;
+          }
+          
+          .mCSB_container{
+            margin-right: 20px;
+            &.mCS_no_scrollbar_y{
+              margin-right: 0;
+            }
+          }
+        }
+        &:hover{
+          .description{
+            display: block;
+            opacity: 1;
+          }
+        }
+      }
 		}
 	}
 }

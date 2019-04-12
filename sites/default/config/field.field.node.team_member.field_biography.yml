@@ -1,0 +1,22 @@
+uuid: 6cda9c0d-300b-46ac-8b48-3e77ddd795ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_biography
+    - node.type.team_member
+  module:
+    - text
+id: node.team_member.field_biography
+field_name: field_biography
+entity_type: node
+bundle: team_member
+label: Biography
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

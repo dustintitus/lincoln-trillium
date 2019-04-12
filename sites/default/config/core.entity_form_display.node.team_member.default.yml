@@ -5,6 +5,8 @@ dependencies:
   config:
     - entity_browser.browser.media_entity_browser_image
     - field.field.node.team_member.body
+    - field.field.node.team_member.field_biography
+    - field.field.node.team_member.field_email
     - field.field.node.team_member.field_photo
     - field.field.node.team_member.field_position
     - node.type.team_member
@@ -32,6 +34,23 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_biography:
+    weight: 27
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
+  field_email:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
   field_photo:
     weight: 7
     settings:

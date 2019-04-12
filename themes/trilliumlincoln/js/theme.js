@@ -42,11 +42,18 @@
       $('#newSite').modal();
      }
   }
+  
+  
+  function ScrollMemberDescription(){
+    $('.member .description').mCustomScrollbar({autoExpandScrollbar:true});
+  }
 
   $(document).ready(function()
   {
+    ScrollMemberDescription();
     $('.company-logo').after('<img class="print-logo" style="display:none" src="' + drupalSettings.path.logoUrl +'" />');
     //setTimeout(tryPopup, 5000);
+    
   });
 
 })(jQuery);

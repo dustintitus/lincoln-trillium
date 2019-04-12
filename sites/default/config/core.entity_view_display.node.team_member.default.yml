@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.team_member.body
+    - field.field.node.team_member.field_biography
+    - field.field.node.team_member.field_email
     - field.field.node.team_member.field_photo
     - field.field.node.team_member.field_position
     - image.style.800_800
@@ -21,12 +23,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     region: content
   field_photo:
-    weight: 104
+    weight: 3
     label: visually_hidden
     settings:
       image_style: '800_800'
@@ -37,15 +39,17 @@ content:
     type: media_thumbnail
     region: content
   field_position:
-    weight: 103
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_biography: true
+  field_email: true

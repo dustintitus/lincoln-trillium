@@ -217,10 +217,10 @@ a {
 
 @media (min-width: 768px) {
   .col-sm-push-05 {
-    left: 4.1666666667%; }
+    left: 4.16667%; }
 
   .col-sm-offset-05, .contact-us-block .paragraph--type--text-callout .field--name-field-item > .field--item:nth-child(even) {
-    margin-left: 4.1666666667%; }
+    margin-left: 4.16667%; }
 
   .text-sm-center {
     text-align: center; }
@@ -288,16 +288,16 @@ a {
     width: 25%; }
 
   .product-single .product-accessory .field--name-field-car-accessory-price, .view-product-list .view-filters .views-exposed-form > .form-inline .form-actions {
-    width: 33.3333333333%; }
+    width: 33.33333%; }
 
   .product-single .product-content > .field, .view-product-list.list .view-content .views-row .col-2 {
     width: 50%; }
 
   .product-single .product-accessory .field--name-field-car-accessory-description, .view-product-list .view-filters .views-exposed-form > .form-inline .form-wrapper-filter {
-    width: 66.6666666667%; }
+    width: 66.66667%; }
 
   .contact-us-block .paragraph--type--text-callout .field--name-field-item > .field--item:nth-child(odd) {
-    margin-left: 16.6666666667%; } }
+    margin-left: 16.66667%; } }
 .container-fluid {
   width: 100%; }
 
@@ -490,7 +490,7 @@ a {
     margin-top: 50px; }
   .region-content .node-content .content .field--name-body {
     font-family: ProximaNova, sans-serif;
-    line-height: 1.1935483871;
+    line-height: 1.19355;
     letter-spacing: 0.01em;
     color: #2e201b;
     font-size: 0.875em; }
@@ -501,7 +501,7 @@ a {
       text-transform: uppercase;
       color: #F15F46;
       font-weight: bold;
-      line-height: 1.1935483871;
+      line-height: 1.19355;
       font-size: 0.875em;
       margin: 20px 0; }
       @media (min-width: 768px) {
@@ -543,7 +543,7 @@ a {
   text-transform: uppercase;
   color: #F15F46;
   font-weight: bold;
-  line-height: 1.1935483871;
+  line-height: 1.19355;
   font-size: 0.875em; }
   @media (min-width: 768px) {
     .sitemap .sitemap-box .content a {
@@ -590,6 +590,35 @@ a {
       @media (min-width: 992px) {
         .view-team-members .view-content .member .text-content .field--name-field-position {
           font-size: 24px; } }
+    .view-team-members .view-content .member .photo {
+      position: relative; }
+      .view-team-members .view-content .member .photo .description {
+        transition: all 0.5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(220, 209, 189, 0.75);
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        font-weight: 600;
+        padding: 20px 20px;
+        overflow: hidden;
+        color: #2e201b;
+        font-size: 20px;
+        line-height: 24px; }
+        @media (min-width: 768px) {
+          .view-team-members .view-content .member .photo .description {
+            font-size: 14px;
+            line-height: 18px; } }
+        .view-team-members .view-content .member .photo .description .mCSB_container {
+          margin-right: 20px; }
+          .view-team-members .view-content .member .photo .description .mCSB_container.mCS_no_scrollbar_y {
+            margin-right: 0; }
+      .view-team-members .view-content .member .photo:hover .description {
+        display: block;
+        opacity: 1; }
 
 .path-news .main-container .row .wrapper, .path-news .main-container .contact-us-block .paragraph--type--text-callout .field--name-field-item .wrapper, .contact-us-block .paragraph--type--text-callout .path-news .main-container .field--name-field-item .wrapper, .path-news .main-container .product-single .product-content .wrapper, .product-single .path-news .main-container .product-content .wrapper, .path-news .main-container .product-single .product-accessory > .paragraph .wrapper, .product-single .path-news .main-container .product-accessory > .paragraph .wrapper, .path-news .main-container .view-product-list.list .view-content .views-row .wrapper, .view-product-list.list .view-content .path-news .main-container .views-row .wrapper, .path-news .main-container .view-product-list.grid .view-content .wrapper, .view-product-list.grid .path-news .main-container .view-content .wrapper, .path-news .main-container .view-product-list .view-filters .views-exposed-form > .form-inline .wrapper, .view-product-list .view-filters .path-news .main-container .views-exposed-form > .form-inline .wrapper {
   padding: 0; }
@@ -674,16 +703,16 @@ a {
     letter-spacing: 0.028em;
     padding-top: 8px;
     font-size: 0.75em;
-    line-height: 1.3333333333;
+    line-height: 1.33333;
     text-align: right; }
     @media (min-width: 768px) {
       #block-contactinfo .field--name-body {
         font-size: 0.875em;
-        line-height: 1.4285714286; } }
+        line-height: 1.42857; } }
     @media (min-width: 992px) {
       #block-contactinfo .field--name-body {
         font-size: 1.125em;
-        line-height: 1.1111111111; } }
+        line-height: 1.11111; } }
     #block-contactinfo .field--name-body a {
       color: #707070; }
     #block-contactinfo .field--name-body .ford-link {
@@ -739,7 +768,7 @@ a {
       margin: 0 auto; }
     #block-callouthome .field--name-field-callout > .field--item .field--name-field-body {
       font-size: 1em;
-      line-height: 1.1951219512;
+      line-height: 1.19512;
       color: #5e504c;
       letter-spacing: 0.025em;
       text-align: center;
@@ -826,7 +855,7 @@ a {
         margin-bottom: 0px; } }
     @media (min-width: 768px) {
       .hours-block .field--name-field-text-callout > .field--item {
-        width: 33.3333333333%; } }
+        width: 33.33333%; } }
     .hours-block .field--name-field-text-callout > .field--item .paragraph--type--text-callout {
       padding: 0px;
       max-width: 320px;
@@ -856,7 +885,7 @@ a {
         .hours-block .field--name-field-text-callout > .field--item .paragraph--type--text-callout .field--name-field-item .paragraph--type--text-callout-item .field--name-field-description {
           display: inline-block;
           font-size: 0.875em;
-          line-height: 1.2142857143;
+          line-height: 1.21429;
           font-family: ProximaNova, sans-serif;
           color: #2F201C; }
         .hours-block .field--name-field-text-callout > .field--item .paragraph--type--text-callout .field--name-field-item .paragraph--type--text-callout-item .field--name-field-label {
@@ -888,7 +917,7 @@ a {
         margin: 0px;
         color: #2F201C;
         font-size: 0.875em;
-        line-height: 1.2142857143; }
+        line-height: 1.21429; }
     .trilliumlincoln-utility-payment-calculator-form .panel .panel-body {
       padding: 0px; }
       .trilliumlincoln-utility-payment-calculator-form .panel .panel-body p {
@@ -918,7 +947,7 @@ a {
         border-radius: 0px;
         color: #2F201C;
         font-size: 0.875em;
-        line-height: 1.2142857143;
+        line-height: 1.21429;
         padding: 4px 8px;
         height: auto;
         text-align: right;
@@ -943,7 +972,7 @@ a {
           border-radius: 0px;
           color: #2F201C;
           font-size: 0.875em;
-          line-height: 1.2142857143;
+          line-height: 1.21429;
           padding: 4px 8px; }
   .trilliumlincoln-utility-payment-calculator-form > .panel {
     background-color: #DFDCDB; }
@@ -954,7 +983,7 @@ a {
       color: #fff; }
       .trilliumlincoln-utility-payment-calculator-form > .panel > .panel-heading a.panel-title {
         font-size: 0.875em;
-        line-height: 1.2142857143;
+        line-height: 1.21429;
         padding: 13px 11px;
         margin: 0px;
         position: relative;
@@ -982,7 +1011,7 @@ a {
     background-color: #5E514D;
     color: #fff;
     font-size: 0.875em;
-    line-height: 1.2142857143;
+    line-height: 1.21429;
     padding: 6px 10px; }
     .trilliumlincoln-utility-payment-calculator-form .total-item span {
       float: right; }
@@ -1859,7 +1888,7 @@ a {
     width: 100%; }
     @media (min-width: 768px) {
       .contact-us-block .paragraph--type--text-callout .field--name-field-item > .field--item:nth-child(even) {
-        width: 41.6666666667%; } }
+        width: 41.66667%; } }
   .contact-us-block .paragraph--type--text-callout .field--name-field-item > .field--item .field--name-field-label, .contact-us-block .paragraph--type--text-callout .field--name-field-item > .field--item .field--name-field-description {
     letter-spacing: 0.04em;
     font-size: 1.25em; }
@@ -1921,7 +1950,7 @@ a {
       z-index: 100; } }
 
 .paragraph--type--text-block {
-  line-height: 1.1785714286;
+  line-height: 1.17857;
   padding-bottom: 75px; }
   .paragraph--type--text-block .field--name-field-p__text-block__title {
     font-weight: bold;
@@ -2207,7 +2236,7 @@ a {
 .product-single .field--name-price {
   font-weight: bold;
   font-size: 1.25em;
-  line-height: 0.8510638298;
+  line-height: 0.85106;
   margin-top: 6px;
   margin-bottom: 10px; }
 .product-single .field--name-field-note {
@@ -2230,7 +2259,7 @@ a {
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 0.875em;
-  line-height: 1.4285714286; }
+  line-height: 1.42857; }
   .product-single .product-content > .field--label, .product-single .product-accessory > .field--label {
     margin-bottom: 12px;
     font-weight: bold;
@@ -2352,7 +2381,7 @@ a {
         width: 50%; } }
     @media (min-width: 768px) {
       .view-product-list.grid .view-content .views-row {
-        width: 33.3333333333%; } }
+        width: 33.33333%; } }
     @media (max-width: 767px) {
       .view-product-list.grid .view-content .views-row:nth-child(2n+1) {
         clear: both; } }

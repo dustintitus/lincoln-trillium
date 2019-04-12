@@ -5,6 +5,7 @@ global-styling:
       fonts/fontface.css: {}
       css/style.css: {}
       css/print.css: { media: print }
+      css/jquery.mCustomScrollbar.min.css: {}
 
 global-scripts:
   js:
@@ -13,6 +14,7 @@ global-scripts:
     js/vendor/jquery.cycle2.carousel.min.js: {}
     js/vendor/js.cookie.js: {}
     js/vendor/jquery.resizeimagetoparent.js: {}
+    js/vendor/jquery.mCustomScrollbar.js: {}
     js/slider.js: {}
     js/commerce.js: {}
   dependencies:
