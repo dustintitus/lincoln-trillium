@@ -63,7 +63,7 @@
         {% if page.header %}
           {% block header %}   
             <div class="wrapper">
-              <div class="col-sm-11 col-sm-push-05" role="heading">
+              <div class="col-sm-12" role="heading">
                 <div class="row">
                   {{ page.header }}
                 </div>
@@ -76,7 +76,7 @@
           {% block navbar_top %}
           <div id="navbar-top">
               <div class="wrapper">
-                <div class="col-sm-11 col-sm-push-05" role="heading">
+                <div class="col-sm-12" role="heading">
                   {{ page.navigation_top }}
                 </div>
               </div>
@@ -96,7 +96,7 @@
 
             <div {{ navbar_attributes.addClass(navbar_classes) }} id="navbar">
               <div class="wrapper">
-                <div class="col-sm-11 col-sm-push-05" role="heading">
+                <div class="col-sm-12" role="heading">
                   <div class="navbar-header">
                     {# .btn-navbar is used as the toggle for collapsed navbar content #}
                     {% if page.navigation_collapsible %}
@@ -142,8 +142,7 @@
           {# Content #}
           {%
           set content_classes = [
-          'col-sm-10',
-          'col-sm-push-1'
+          'col-sm-12',
           ]
           %}
           <section{{ content_attributes.addClass(content_classes) }}>
@@ -196,7 +195,7 @@
     {% block footer_bottom %}
       <div class="row region-footer-bottom-wrapper">
         <div class="wrapper">
-          <div class="col-sm-10 col-sm-push-1">
+          <div class="col-sm-12">
             <div class="row">
               {{ page.footer_bottom }}
             </div>

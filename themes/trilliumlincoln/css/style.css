@@ -579,17 +579,23 @@ a {
     @media (min-width: 992px) {
       .view-team-members .view-content .member {
         margin-bottom: 50px; } }
-    .view-team-members .view-content .member .text-content h3 {
-      font-size: 24px; }
+    .view-team-members .view-content .member h3 {
+      margin: 0 0 5px;
+      font-size: 24px;
+      line-height: 30px; }
       @media (min-width: 992px) {
-        .view-team-members .view-content .member .text-content h3 {
-          font-size: 30px; } }
-    .view-team-members .view-content .member .text-content .field--name-field-position {
+        .view-team-members .view-content .member h3 {
+          font-size: 30px;
+          line-height: 36px; } }
+    .view-team-members .view-content .member .field--name-field-position {
+      margin: 0 0 5px;
+      display: block;
       font-size: 16px;
-      min-height: 75px; }
+      line-height: 20px; }
       @media (min-width: 992px) {
-        .view-team-members .view-content .member .text-content .field--name-field-position {
-          font-size: 24px; } }
+        .view-team-members .view-content .member .field--name-field-position {
+          font-size: 20px;
+          line-height: 24px; } }
     .view-team-members .view-content .member .photo {
       position: relative; }
       .view-team-members .view-content .member .photo .description {
@@ -601,7 +607,7 @@ a {
         background: rgba(220, 209, 189, 0.75);
         height: 100%;
         width: 100%;
-        text-align: center;
+        text-align: left;
         font-weight: 600;
         padding: 20px 20px;
         overflow: hidden;
