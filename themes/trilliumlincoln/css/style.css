@@ -698,6 +698,9 @@ a {
   font-size: 18px;
   line-height: 23px; }
 
+.paragraph--type--partner .field--type-image a {
+  display: inline-block; }
+
 #block-contactinfo {
   position: static; }
   #block-contactinfo .company-logo {

@@ -1,0 +1,40 @@
+uuid: 04620f06-4bcc-4ed5-b2a0-7c69ba87de43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.partner.field_callout_link_to
+    - field.field.paragraph.partner.field_image
+    - paragraphs.paragraphs_type.partner
+  module:
+    - field_formatter_class
+    - linked_field
+    - svg_image
+id: paragraph.partner.default
+targetEntityType: paragraph
+bundle: partner
+mode: default
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+      svg_attributes:
+        width: ''
+        height: ''
+      svg_render_as_image: 0
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+      linked_field:
+        linked: '1'
+        type: field
+        destination: field_callout_link_to
+        advanced:
+          target: _blank
+    type: image
+    region: content
+hidden:
+  field_callout_link_to: true

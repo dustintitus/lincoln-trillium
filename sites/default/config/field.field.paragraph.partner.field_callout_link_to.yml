@@ -1,0 +1,23 @@
+uuid: 0e1eb215-be1b-4d34-b515-dc91e15270c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_callout_link_to
+    - paragraphs.paragraphs_type.partner
+  module:
+    - link
+id: paragraph.partner.field_callout_link_to
+field_name: field_callout_link_to
+entity_type: paragraph
+bundle: partner
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

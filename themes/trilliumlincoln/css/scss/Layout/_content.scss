@@ -351,3 +351,10 @@
     line-height: 23px;
   }
 }
+.paragraph--type--partner{
+  .field--type-image{
+    a{
+      display: inline-block;
+    }
+  }
+}
