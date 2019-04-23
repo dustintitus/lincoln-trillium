@@ -11,11 +11,11 @@ dependencies:
     - trilliumlincoln
 third_party_settings:
   block_class:
-    classes: 'col-sm-offset-3 col-sm-2 footer-menu'
+    classes: 'col-sm-3 footer-menu'
 id: submenu_2
 theme: trilliumlincoln
 region: footer
-weight: -12
+weight: -16
 provider: null
 plugin: 'menu_block:sub-menu'
 settings:

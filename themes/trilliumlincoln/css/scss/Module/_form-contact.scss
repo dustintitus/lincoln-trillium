@@ -1,6 +1,6 @@
 .form-contact.block {
 	// margin-top: 20px;
-	//background-color: $c-brown;
+	background-color: $c-brown;
 	padding-bottom: 20px;
 	@include respond($sm){
 		padding-bottom: 75px;
@@ -11,14 +11,15 @@
 		margin-bottom: 15px;
 	}
 	.webform-submission-form {
-		max-width: 100%;
-		//padding-left: 10px;
-		//padding-right: 10px;
+		//max-width: 100%;
+		max-width: 800px;
+		padding-left: 10px;
+		padding-right: 10px;
 		margin: 0 auto;
 		position: relative;
 		.alert{
-			// max-width: 444px;
-			max-width: 100%;
+			max-width: 444px;
+			//max-width: 100%;
 		}
 		&:before,
 		&:after{
@@ -42,25 +43,31 @@
 	.form-item-full-name{
 		@include respond($sm){
 			float: left;
-			margin-right: 9px;
-			width: calc(50% - 5px);
+			margin-right: 10px;
+			width: 270px;
+			//width: calc(50% - 5px);
 		}
 	}
 	.form-item-email-address{
 		@include respond($sm){
+			width: 270px;
 			float: left;
-			width: calc(50% - 5px);
+			//width: calc(50% - 5px);
 		}
 	}
 	.form-item-message {
 		@include respond($sm){
-			//width: 445px;
-			width: 100%;
+			width: 550px;
+			//width: 100%;
+		}
+		textarea{
+			min-height: 180px;
+			height: 180px;
 		}
 	}
 	.captcha{
 		@include respond($sm){
-			width: 445px;
+			width: 550px;
 			float: left;
 		}
 		.form-type-textfield{
@@ -74,32 +81,35 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		left: 455px;		
+		left: 560px;		
 		padding: 0 10px;
 		color: $c-white;
+		font-size: em(18);
+		line-height: 22px;
+		font-weight: 300;
 		@include respond($sm){
-			//display: block;
-			display: none;
-		}
-		@include respond($md){
-			
+			display: block;
+			//display: none;
 		}
 	}
 	.form-actions {
-		text-align: right;		
-		.btn {
-		    padding: 10px 20px;
+		text-align: center;
+		padding: 20px 0 0;
+		.btn{
+			padding: 10px 20px;
 			margin: 0;
 		}
 		@include respond($sm){
-			//position: absolute;
-			//left: 455px;
-			//bottom: 96px;
-			//margin: 0;
+			text-align: right;
+			position: absolute;
+			left: 570px;
+			top: 180px;
+			margin: 0;
+			padding-top: 0;
 			//padding-left: 10px;
-			position: relative;
-			margin-top: 20px;
-			float: right;
+			//position: relative;
+			//margin-top: 20px;
+			//float: right;
 		}
 	}
 	.form-item-communication {		
@@ -121,10 +131,12 @@
 			}
 		}			
 		.control-label {
-			font-size: em(16);
+			font-size: em(12);
+			//font-size: em(16);
 			line-height: 1.25;
 			letter-spacing: 0.6px;
-			color: $c-black;
+			//color: $c-black;
+			color: $c-white;
 			padding: 0;
 			position: relative;
 			&::before {
@@ -143,5 +155,64 @@
 				transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
 			}			
 		}
-	}	
+	}
+	&.contact-page{
+		background-color: transparent;
+		.webform-submission-form {
+			max-width: 100%;
+		}
+		.form-actions {
+			@include respond($sm){
+				padding-left: 10px;
+				position: relative;
+				left: auto;
+				top: auto;
+				margin-top: 20px;
+				float: right;
+			}
+		}
+		.form-item-communication {		
+			left: 0;
+			padding-left: 27px;
+			padding-right: 10px;
+			@include respond($sm){
+				position: absolute;
+				margin: 0;
+				top: 100%;
+				padding-top: 10px; 
+				//max-width: 600px;
+				padding-left: 37px;
+			}
+			.form-checkbox {
+				visibility: hidden;
+				&:checked ~ .control-label::before{
+					background-color: $c-red;
+				}
+			}			
+			.control-label {
+				font-size: em(16);
+				color: $c-black;
+			}
+		}
+		.form-type-processed-text {
+			@include respond($sm){
+				display: none;
+			}
+		}
+		.form-item-full-name{
+			@include respond($sm){
+				width: calc(50% - 5px);
+			}
+		}
+		.form-item-email-address{
+			@include respond($sm){
+				width: calc(50% - 5px);
+			}
+		}
+		.form-item-message {
+			@include respond($sm){
+				width: 100%;
+			}
+		}
+	}
 }

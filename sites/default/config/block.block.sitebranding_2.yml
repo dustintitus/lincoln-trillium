@@ -1,0 +1,27 @@
+uuid: d82157da-2fef-4e45-94e4-cb1707cccb84
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - system
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: 'col-sm-4 hidden-xs'
+id: sitebranding_2
+theme: trilliumlincoln
+region: footer
+weight: -17
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: false
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

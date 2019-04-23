@@ -11,16 +11,16 @@ dependencies:
     - trilliumlincoln
 third_party_settings:
   block_class:
-    classes: 'col-sm-offset-1 col-sm-2 footer-menu'
+    classes: 'col-sm-2 footer-menu'
 id: footer_2
 theme: trilliumlincoln
 region: footer
-weight: -10
+weight: -14
 provider: null
 plugin: 'menu_block:footer'
 settings:
   id: 'menu_block:footer'
-  label: Assistance
+  label: Contact
   provider: menu_block
   label_display: visible
   level: 1

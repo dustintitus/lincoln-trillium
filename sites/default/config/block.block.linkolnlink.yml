@@ -11,7 +11,7 @@ dependencies:
     - trilliumlincoln
 third_party_settings:
   block_class:
-    classes: 'col-xs-12 col-sm-6'
+    classes: col-xs-6
 id: linkolnlink
 theme: trilliumlincoln
 region: header

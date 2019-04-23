@@ -1,4 +1,4 @@
-uuid: 5fc09ac5-73d3-4d04-ac58-57ce0e1c3102
+uuid: 6e7d3955-fe4b-4dee-96e7-78b3ec2309cb
 langcode: en
 status: true
 dependencies:
@@ -12,24 +12,24 @@ dependencies:
     - trilliumlincoln
 third_party_settings:
   block_class:
-    classes: form-contact
-id: webform
+    classes: 'form-contact contact-page'
+id: webform_3
 theme: trilliumlincoln
 region: content
-weight: -8
+weight: 0
 provider: null
 plugin: webform_block
 settings:
   id: webform_block
-  label: 'Contact Us'
+  label: 'Webform Contact'
   provider: webform
-  label_display: visible
+  label_display: '0'
   webform_id: contact_us
   default_data: ''
   redirect: false
 visibility:
   request_path:
     id: request_path
-    pages: "/assistance\r\n<front>"
+    pages: /contact
     negate: false
     context_mapping: {  }

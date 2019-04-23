@@ -358,3 +358,23 @@
     }
   }
 }
+
+.region-highlighted{
+  .block-trilliumlincoln-map{
+    position: relative;
+    #map{
+      margin-bottom: 56px; 
+    }
+    .trilliumlincoln_map-message{
+      position: absolute;
+      top: 400px;
+      left: 0;
+      width: 100%;
+      margin: 12px 0;
+      @include respond($sm){
+        margin: 20px 0;
+      }
+    }
+  }
+
+}

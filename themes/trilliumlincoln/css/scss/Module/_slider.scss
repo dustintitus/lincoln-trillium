@@ -54,18 +54,14 @@
       height: auto;
       padding: 0px;
       list-style: none;
-      background: rgba(46,32,27,0.2);
-      /* IE 6/7 */
-      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF);
-      /* IE8 */
-      -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
+      background: rgba(228, 220, 205, 1);
       @include respond($sm){
         background: none;
         position: unset;
       }
       .views-field {
-        max-width: 430px;
-        margin-left: auto;
+        //max-width: 430px;
+        //margin-left: auto;
       }
 
       .wrapper{
@@ -261,10 +257,14 @@
       font-size: em(40/2);
 
       line-height: (132/110);
-      color: $c-brown;
-      font-weight: bolder;
+      color: $c-brown-l;
+      font-weight: normal;
+      font-style: italic;
       @include respond($sm){
+        color: $c-brown;
+        font-style: normal;
         font-size: em(60/2);
+        font-weight: bolder;
       }
       @include respond($md){
         font-size: em(80/2);

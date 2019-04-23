@@ -16,7 +16,7 @@ third_party_settings:
 id: hoursblock
 theme: trilliumlincoln
 region: content_bottom
-weight: -13
+weight: -15
 provider: null
 plugin: 'block_content:12908d7a-5242-4ca5-9b65-902697ebc42a'
 settings:

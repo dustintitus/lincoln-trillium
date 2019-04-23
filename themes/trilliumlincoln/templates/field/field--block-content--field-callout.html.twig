@@ -57,13 +57,13 @@
   {% if multiple %}
     <div{{ attributes.addClass(classes, 'field--items row') }}>
       {% for item in items %}
-        <div{{ item.attributes.addClass('field--item col-xs-12 col-sm-4') }}>{{ item.content }}</div>
+        <div{{ item.attributes.addClass('field--item col-xs-6 col-sm-4') }}>{{ item.content }}</div>
       {% endfor %}
     </div>
   {% else %}
     {% for item in items %}
       <div class="row">
-        <div{{ attributes.addClass(classes, 'field--item col-xs-12 col-sm-4') }}>{{ item.content }}</div>
+        <div{{ attributes.addClass(classes, 'field--item col-xs-6 col-sm-4') }}>{{ item.content }}</div>
       </div>
     {% endfor %}
   {% endif %}
@@ -74,7 +74,7 @@
       <div class="field__items row">
     {% endif %}
     {% for item in items %}
-      <div{{ item.attributes.addClass('field--item col-xs-12 col-sm-4') }}>{{ item.content }}</div>
+      <div{{ item.attributes.addClass('field--item col-xs-6 col-sm-4') }}>{{ item.content }}</div>
     {% endfor %}
     {% if multiple %}
       </div>
