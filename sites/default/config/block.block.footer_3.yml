@@ -1,9 +1,9 @@
-uuid: 55d64e5c-743e-4090-8b53-7b65651d37ea
+uuid: 760afdbc-b11e-4f90-9df1-6a560eb2cf68
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.sub-menu
+    - system.menu.footer
   module:
     - block_class
     - menu_block
@@ -12,20 +12,20 @@ dependencies:
 third_party_settings:
   block_class:
     classes: 'col-sm-3 footer-menu'
-id: submenu_2
+id: footer_3
 theme: trilliumlincoln
 region: footer
 weight: -16
 provider: null
-plugin: 'menu_block:sub-menu'
+plugin: 'menu_block:footer'
 settings:
-  id: 'menu_block:sub-menu'
+  id: 'menu_block:footer'
   label: Menu
   provider: menu_block
   label_display: visible
   level: 1
   depth: 0
   expand: 0
-  parent: 'sub-menu:'
-  suggestion: sub_menu
+  parent: 'footer:menu_link_content:4fb8bb77-ccc0-47b7-84d7-07fd3fac62d8'
+  suggestion: footer
 visibility: {  }
