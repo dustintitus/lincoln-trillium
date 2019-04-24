@@ -815,14 +815,14 @@ a {
 #block-linkolnlink .field--name-body .company-logo {
   display: block;
   text-indent: -9999px;
-  background: url("../images/ico-lincoln.png") no-repeat;
+  background: url("../images/logo-lincoln.svg") no-repeat;
   width: 115px;
   height: 30px;
   background-size: 100% auto; }
   @media (min-width: 768px) {
     #block-linkolnlink .field--name-body .company-logo {
-      width: 192px;
-      height: 50px; } }
+      width: 175px;
+      height: 45px; } }
 
 #block-callouthome {
   padding-top: 25px; }
