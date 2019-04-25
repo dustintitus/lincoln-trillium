@@ -189,7 +189,7 @@
 			}
 			.field--name-field-position{
         margin: 0 0 5px;
-        display: block;
+        display: inline;
 				font-size: 16px;
         line-height: 20px;
 				@include respond($md){
@@ -197,6 +197,42 @@
           line-height: 24px;
 				}
 			}
+      .field--name-field-phone-ext{
+        display: inline;
+        position: relative;
+        margin-left: 5px;
+        padding-left: 10px;
+        font-size: 18px;
+        line-height: 22px;
+        white-space: pre;
+        &::after{
+          content:"";
+          position: absolute;
+          width: 10px;
+          height: 16px;
+          border-left: 2px solid #2E201B;
+          left: 0;
+          top: 2px;
+        }
+      }
+      
+      .field--name-field-email{
+        margin: 5px 0 10px 0;
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 500;
+        
+        a{
+          color: #2e201b;
+          position: relative;
+          &::before{
+            content: '\e804';
+            font-family: "icons";
+            font-size: 14px;
+            margin-right: 5px;
+          }
+        }
+      }
       .photo{
         position: relative;
         .description{

@@ -1,0 +1,19 @@
+uuid: 6e57a203-43d6-4e7a-8ff5-d7c68ed938de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_ext
+    - node.type.team_member
+id: node.team_member.field_phone_ext
+field_name: field_phone_ext
+entity_type: node
+bundle: team_member
+label: Phone
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

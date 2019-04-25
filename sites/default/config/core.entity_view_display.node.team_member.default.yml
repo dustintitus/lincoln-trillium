@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.team_member.body
     - field.field.node.team_member.field_biography
     - field.field.node.team_member.field_email
+    - field.field.node.team_member.field_phone_ext
     - field.field.node.team_member.field_photo
     - field.field.node.team_member.field_position
     - image.style.800_800
@@ -53,3 +54,4 @@ content:
 hidden:
   field_biography: true
   field_email: true
+  field_phone_ext: true

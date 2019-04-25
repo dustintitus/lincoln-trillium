@@ -1,5 +1,8 @@
 #block-contactinfo {
   position: static;
+  @include respond($sm){
+    padding-top: 40px; 
+  }
   .company-logo {
     max-width: 192px;
     img{
@@ -8,13 +11,13 @@
   }
   .field--name-body {
     color: $c-grey-2;
-    letter-spacing: 0.028em;
+    letter-spacing: 0;
     padding-top: 0;
     font-size: em(12);
     line-height: (16/12);
     text-align: right;
+    font-weight: 400; 
     @include respond($sm){
-      padding-top: 8px;
       font-size: em(14);
       line-height: (20/14);
     }
@@ -93,6 +96,10 @@
   }
 }
 #block-linkolnlink{
+  position: relative;
+  @include respond($sm){
+    //margin-top: 10px;
+  }
   .field--name-body {
     .company-logo{
       display: block;

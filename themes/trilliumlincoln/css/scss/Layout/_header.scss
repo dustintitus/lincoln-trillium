@@ -4,8 +4,9 @@
 		padding-top: 10px;
 		padding-bottom: 10px;
 		@include respond($sm){
-			padding-top: 60px;
-			padding-bottom: 20px;
+			//padding-top: 60px;
+			padding-top: 20px; 
+      padding-bottom: 20px;
 		}
 	}
 }

@@ -318,7 +318,7 @@ a {
     padding-bottom: 10px; }
     @media (min-width: 768px) {
       .header .region-header {
-        padding-top: 60px;
+        padding-top: 20px;
         padding-bottom: 20px; } }
 
 /******* FOOTER *******/
@@ -611,13 +611,42 @@ a {
           line-height: 36px; } }
     .view-team-members .view-content .member .field--name-field-position {
       margin: 0 0 5px;
-      display: block;
+      display: inline;
       font-size: 16px;
       line-height: 20px; }
       @media (min-width: 992px) {
         .view-team-members .view-content .member .field--name-field-position {
           font-size: 20px;
           line-height: 24px; } }
+    .view-team-members .view-content .member .field--name-field-phone-ext {
+      display: inline;
+      position: relative;
+      margin-left: 5px;
+      padding-left: 10px;
+      font-size: 18px;
+      line-height: 22px;
+      white-space: pre; }
+      .view-team-members .view-content .member .field--name-field-phone-ext::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 16px;
+        border-left: 2px solid #2E201B;
+        left: 0;
+        top: 2px; }
+    .view-team-members .view-content .member .field--name-field-email {
+      margin: 5px 0 10px 0;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 500; }
+      .view-team-members .view-content .member .field--name-field-email a {
+        color: #2e201b;
+        position: relative; }
+        .view-team-members .view-content .member .field--name-field-email a::before {
+          content: '\e804';
+          font-family: "icons";
+          font-size: 14px;
+          margin-right: 5px; }
     .view-team-members .view-content .member .photo {
       position: relative; }
       .view-team-members .view-content .member .photo .description {
@@ -739,20 +768,23 @@ a {
 
 #block-contactinfo {
   position: static; }
+  @media (min-width: 768px) {
+    #block-contactinfo {
+      padding-top: 40px; } }
   #block-contactinfo .company-logo {
     max-width: 192px; }
     #block-contactinfo .company-logo img {
       max-width: 100%; }
   #block-contactinfo .field--name-body {
     color: #707070;
-    letter-spacing: 0.028em;
+    letter-spacing: 0;
     padding-top: 0;
     font-size: 0.75em;
     line-height: 1.33333;
-    text-align: right; }
+    text-align: right;
+    font-weight: 400; }
     @media (min-width: 768px) {
       #block-contactinfo .field--name-body {
-        padding-top: 8px;
         font-size: 0.875em;
         line-height: 1.42857; } }
     @media (min-width: 992px) {
@@ -812,17 +844,19 @@ a {
         padding: 2px 3px !important;
         line-height: 14px; }
 
-#block-linkolnlink .field--name-body .company-logo {
-  display: block;
-  text-indent: -9999px;
-  background: url("../images/logo-lincoln.svg") no-repeat;
-  width: 115px;
-  height: 30px;
-  background-size: 100% auto; }
-  @media (min-width: 768px) {
-    #block-linkolnlink .field--name-body .company-logo {
-      width: 175px;
-      height: 45px; } }
+#block-linkolnlink {
+  position: relative; }
+  #block-linkolnlink .field--name-body .company-logo {
+    display: block;
+    text-indent: -9999px;
+    background: url("../images/logo-lincoln.svg") no-repeat;
+    width: 115px;
+    height: 30px;
+    background-size: 100% auto; }
+    @media (min-width: 768px) {
+      #block-linkolnlink .field--name-body .company-logo {
+        width: 175px;
+        height: 45px; } }
 
 #block-callouthome {
   padding-top: 25px; }
@@ -1247,7 +1281,22 @@ a {
     list-style: none;
     width: 100%; }
     #navbar-top .menu li {
-      line-height: 40px; }
+      line-height: 40px;
+      /*&.first{
+      	a{
+      		display: block;
+      		width: 20px;
+      		height: 20px;
+      		text-indent: -9999px;
+      		overflow: hidden;
+      		margin: 10px auto 10px;
+      		background: url("../images/ico-home.svg") no-repeat 0 0;
+      		width: 100% auto;
+      		@include respond($sm){
+      			margin-left: 30px;
+      		}
+      	}
+      }*/ }
       @media (min-width: 768px) {
         #navbar-top .menu li {
           float: left; } }
@@ -1279,18 +1328,6 @@ a {
             #navbar-top .menu li a.bg-red {
               padding: 0 20px;
               font-size: 20px; } }
-      #navbar-top .menu li.first a {
-        display: block;
-        width: 20px;
-        height: 20px;
-        text-indent: -9999px;
-        overflow: hidden;
-        margin: 10px auto 10px;
-        background: url("../images/ico-home.svg") no-repeat 0 0;
-        width: 100% auto; }
-        @media (min-width: 768px) {
-          #navbar-top .menu li.first a {
-            margin-left: 30px; } }
 
 .hero-image #navbar {
   position: absolute;

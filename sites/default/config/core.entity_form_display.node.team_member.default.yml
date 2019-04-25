@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.team_member.body
     - field.field.node.team_member.field_biography
     - field.field.node.team_member.field_email
+    - field.field.node.team_member.field_phone_ext
     - field.field.node.team_member.field_photo
     - field.field.node.team_member.field_position
     - node.type.team_member
@@ -50,6 +51,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: email_default
+    region: content
+  field_phone_ext:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_photo:
     weight: 7

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.team_member.body
     - field.field.node.team_member.field_biography
     - field.field.node.team_member.field_email
+    - field.field.node.team_member.field_phone_ext
     - field.field.node.team_member.field_photo
     - field.field.node.team_member.field_position
     - image.style.800_800
@@ -23,17 +24,25 @@ mode: teaser
 content:
   field_biography:
     type: text_default
-    weight: 3
+    weight: 4
     region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
   field_email:
-    type: basic_string
-    weight: 2
+    type: email_mailto
+    weight: 3
     region: content
     label: hidden
     settings: {  }
+    third_party_settings: {  }
+  field_phone_ext:
+    type: string
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
   field_photo:
     type: media_thumbnail
