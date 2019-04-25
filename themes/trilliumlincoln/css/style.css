@@ -639,6 +639,11 @@ a {
       font-size: 18px;
       line-height: 22px;
       font-weight: 500; }
+      @media (min-width: 992px) {
+        .view-team-members .view-content .member .field--name-field-email {
+          font-size: 14px;
+          line-height: 18px;
+          font-weight: 600; } }
       .view-team-members .view-content .member .field--name-field-email a {
         color: #2e201b;
         position: relative; }
