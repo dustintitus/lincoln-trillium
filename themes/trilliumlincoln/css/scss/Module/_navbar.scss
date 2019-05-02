@@ -222,11 +222,12 @@
           line-height: 40px;
 					text-align: center;					
 					vertical-align: top;
-					padding: 0 10px;
+					padding: 0;
 					text-transform: uppercase;					
 					transition: 0.3s;
 					position: relative;
 					&.bg-red {
+            padding: 0 10px;
             font-size: em(20);
 						background-color: $c-red;
 						//border-left-color: $c-red;
@@ -390,6 +391,7 @@
           display: none;
         }
       }
+      .hide-mobile,
       .app-link{
         display: none;
         @include respond($sm){
