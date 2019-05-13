@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Car Model'
 vid: car_model
 description: ''
-hierarchy: 0
 weight: 0

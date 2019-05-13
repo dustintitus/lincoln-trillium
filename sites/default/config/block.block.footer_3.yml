@@ -25,7 +25,7 @@ settings:
   label_display: visible
   level: 1
   depth: 0
-  expand: 0
-  parent: 'footer:menu_link_content:4fb8bb77-ccc0-47b7-84d7-07fd3fac62d8'
+  expand: 1
+  parent: 'footer:menu_link_content:14723dd7-b0a2-43aa-a8c0-9ddc444e7603'
   suggestion: footer
 visibility: {  }

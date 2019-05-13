@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Car Category'
 vid: car_category
 description: ''
-hierarchy: 0
 weight: 0

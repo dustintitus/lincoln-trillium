@@ -17,6 +17,7 @@ class ComposerStaticInitDrupal8
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'cf97c57bfe0f23854afd2f3818abb7a0' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/create_uploaded_file.php',
@@ -55,6 +56,7 @@ class ComposerStaticInitDrupal8
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Php70\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Iconv\\' => 23,
@@ -90,12 +92,20 @@ class ComposerStaticInitDrupal8
         array (
             'Masterminds\\' => 12,
         ),
+        'J' => 
+        array (
+            'JsonSchema\\' => 11,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'Goutte\\' => 7,
+        ),
+        'E' => 
+        array (
+            'Egulias\\EmailValidator\\' => 23,
         ),
         'D' => 
         array (
@@ -105,6 +115,7 @@ class ComposerStaticInitDrupal8
             'Drupal\\Component\\' => 17,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
+            'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
@@ -119,6 +130,7 @@ class ComposerStaticInitDrupal8
         ),
         'B' => 
         array (
+            'Brumann\\Polyfill\\' => 17,
             'Behat\\Mink\\Driver\\' => 18,
             'Behat\\Mink\\' => 11,
         ),
@@ -174,6 +186,10 @@ class ComposerStaticInitDrupal8
         'TYPO3\\PharStreamWrapper\\' => 
         array (
             0 => __DIR__ . '/..' . '/typo3/phar-stream-wrapper/src',
+        ),
+        'Symfony\\Polyfill\\Php72\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
         ),
         'Symfony\\Polyfill\\Php70\\' => 
         array (
@@ -287,6 +303,10 @@ class ComposerStaticInitDrupal8
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'JsonSchema\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -302,6 +322,10 @@ class ComposerStaticInitDrupal8
         'Goutte\\' => 
         array (
             0 => __DIR__ . '/..' . '/fabpot/goutte/Goutte',
+        ),
+        'Egulias\\EmailValidator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
         ),
         'Drupal\\Driver\\' => 
         array (
@@ -329,6 +353,10 @@ class ComposerStaticInitDrupal8
         'Doctrine\\Common\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
+        ),
+        'Doctrine\\Common\\Collections\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
         ),
         'Doctrine\\Common\\Cache\\' => 
         array (
@@ -364,6 +392,10 @@ class ComposerStaticInitDrupal8
         'CommerceGuys\\Addressing\\' => 
         array (
             0 => __DIR__ . '/..' . '/commerceguys/addressing/src',
+        ),
+        'Brumann\\Polyfill\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brumann/polyfill-unserialize/src',
         ),
         'Behat\\Mink\\Driver\\' => 
         array (
@@ -416,13 +448,13 @@ class ComposerStaticInitDrupal8
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
+            'PEAR' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/pear_exception',
+            ),
         ),
         'E' => 
         array (
-            'Egulias\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/egulias/email-validator/src',
-            ),
             'EasyRdf_' => 
             array (
                 0 => __DIR__ . '/..' . '/easyrdf/easyrdf/lib',
@@ -442,11 +474,25 @@ class ComposerStaticInitDrupal8
             array (
                 0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
             ),
-            'Doctrine\\Common\\Collections\\' => 
+        ),
+        'C' => 
+        array (
+            'Console' => 
             array (
-                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
+                0 => __DIR__ . '/..' . '/pear/console_getopt',
             ),
         ),
+        'A' => 
+        array (
+            'Archive_Tar' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/archive_tar',
+            ),
+        ),
+    );
+
+    public static $fallbackDirsPsr0 = array (
+        0 => __DIR__ . '/..' . '/pear/pear-core-minimal/src',
     );
 
     public static $classMap = array (
@@ -1022,6 +1068,7 @@ class ComposerStaticInitDrupal8
             $loader->prefixLengthsPsr4 = ComposerStaticInitDrupal8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitDrupal8::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitDrupal8::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInitDrupal8::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInitDrupal8::$classMap;
 
         }, null, ClassLoader::class);
