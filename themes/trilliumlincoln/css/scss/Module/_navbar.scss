@@ -1,7 +1,7 @@
 #navbar-top{
 	background-color: $c-brown;
 	position: relative;
-	z-index: 1001;
+	z-index: 401;
   display: none;
   @include respond($sm){
     display: block;

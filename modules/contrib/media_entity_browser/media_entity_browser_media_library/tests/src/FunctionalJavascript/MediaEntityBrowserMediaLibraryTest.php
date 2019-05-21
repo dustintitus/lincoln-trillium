@@ -1,17 +1,17 @@
 <?php
 
-namespace Drupal\Tests\media_entity_browser\FunctionalJavascript;
+namespace Drupal\Tests\media_entity_browser_media_library\FunctionalJavascript;
 
 use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 use Drupal\media\Entity\Media;
 use Drupal\Tests\media\Traits\MediaTypeCreationTrait;
 
 /**
- * A test for the media entity browser.
+ * A test for the media entity browser with media library.
  *
  * @group media_entity_browser
  */
-class MediaEntityBrowserTest extends WebDriverTestBase {
+class MediaEntityBrowserMediaLibraryTest extends WebDriverTestBase {
 
   use MediaTypeCreationTrait;
   /**
@@ -25,6 +25,8 @@ class MediaEntityBrowserTest extends WebDriverTestBase {
     'entity_browser',
     'entity_browser_entity_form',
     'media_entity_browser',
+    'media_entity_browser_media_library',
+    'media_library',
     'video_embed_media',
     'ctools',
   ];
@@ -50,18 +52,16 @@ class MediaEntityBrowserTest extends WebDriverTestBase {
    * Test the media entity browser.
    */
   public function testMediaBrowser() {
-    $this->drupalGet('entity-browser/iframe/media_entity_browser');
+    $this->drupalGet('entity-browser/iframe/media_entity_browser_media_library');
     $this->clickLink('Choose existing media');
     $this->assertSession()->assertWaitOnAjaxRequest();
 
-    $this->assertSession()->elementExists('css', '.view-media-entity-browser-view');
-    $this->assertSession()->elementExists('css', '.image-style-media-entity-browser-thumbnail');
+    $this->assertSession()->elementExists('css', '.media-library-view');
+    $this->assertSession()->elementExists('css', '.media-library-item__preview');
 
-    $this->assertSession()->elementNotExists('css', '.views-row.checked');
-    $this->getSession()->getPage()->find('css', '.views-row')->press();
-    $this->assertSession()->elementExists('css', '.views-row.checked');
-
-    $this->assertSession()->buttonExists('Select media');
+    $this->assertSession()->elementNotExists('css', '.js-click-to-select.checked');
+    $this->getSession()->getPage()->find('css', '.js-click-to-select')->press();
+    $this->assertSession()->elementExists('css', '.js-click-to-select.checked');
   }
 
 }

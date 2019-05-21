@@ -1,3 +1,175 @@
+.ui-widget-overlay{
+  background: #000;
+  opacity: 0.5;
+}
+.ui-dialog{
+  @include respond($sm){
+    width: 600px;
+    max-width: 600px;
+    min-width: 600px;
+  }
+}
+.ui-dialog[aria-describedby="trilliumlincoln-close-modal"],
+.ui-dialog[aria-describedby="trilliumlincoln-modal"]{
+  font-family: $font-family-base;
+  background-color: $c-brown;
+  padding: 0;
+  border: 5px solid $c-white;
+  .ui-widget-header{
+    background: transparent;
+    border: 0;
+    padding: 0 15px;
+    position: absolute;
+    z-index: 700;
+    width: 100%;
+    top: 15px;
+    .ui-dialog-title{
+      display: none;
+    }
+    .ui-dialog-titlebar-close{
+      width: 20px;
+      height: 20px;
+      position: relative;
+      opacity: 1;
+      border: 0;
+      float: right;
+      background: transparent;
+      text-shadow: none;
+      display: block;
+      margin: 0;
+      padding: 0;
+      color: $c-white;
+      &:hover{
+        color: $c-white;
+      }
+      &:before{
+        content: "x";
+        font-size: 21px;
+        font-family: $font-family-base;
+        position: absolute;
+        width: 20px;
+        text-align: center;
+        display: block;
+        line-height: 20px;
+        font-weight: 700;
+        top: 0;
+        left: 0;
+        color: $c-white;
+        text-indent: 0;
+      }
+      span{
+        display: none;
+      }
+    }
+  }
+  .ui-dialog-buttonpane{
+    clear: both;
+    margin: 0;
+    padding: 15px 30px 30px 30px;
+    border: none;
+    background: transparent;
+    .ui-dialog-buttonset{
+      float: none;
+    }
+    .webform-button--submit{
+      padding: 1em 4em;
+      margin: 0;
+      margin: 0 auto 0;
+      display: block;
+    }
+  }
+  .ui-dialog-content{
+    width: 600px;
+    overflow: hidden !important;
+    text-align: center;
+    padding: 15px 30px 0 30px;
+    .btn-info{
+      color: $c-white;
+      font-size: 14px;
+      line-height: 21px;
+    }
+    h2{
+      color: $c-white;
+      font-family: $font-family-base;
+      font-weight: 300;
+      font-size: em(60);
+    }
+    h3{
+      color: $c-white;
+      font-size: em(30);
+      font-family: MillerBItalic, sans-serif;
+      &:after{
+        content: '';
+        width: 25%;
+        display: block;
+        height: 6px;
+        background-color: $c-red;
+        margin: 16px auto 24px auto;
+      }
+    }
+    p{
+      color: $c-white;
+      font-family: $font-family-base;
+      font-weight: 300;
+      font-size: em(15);
+      letter-spacing: 0.5px;
+      line-height: 1.2em;
+    }
+    .button-section{
+      padding: 10px 0 0 0;
+      .btn-block{
+        display: inline-block;
+        margin: 5px 5px 0px 5px;
+      }
+    }
+    form{
+      margin-right: -3%;
+      .form-actions{
+        display: none;
+      }
+      .form-item{
+        margin-right: 3%;
+        &.form-type-textfield,
+        &.form-type-email,
+        &.form-type-tel{
+          @include respond($sm){
+            width: 47%;
+            float: left;
+          }
+        }
+        .form-control{
+          width: 100%;
+        }
+        .control-label{
+          margin-bottom: 5px;
+          width: 100%;
+          display: block;
+          text-align: left;
+          color: $c-white;
+          &.form-required{
+            &:after{
+              margin-left: 4px;
+            }
+          }
+        }
+        &.has-error{
+          .control-label{
+            color: #a94442;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ui-dialog[aria-describedby="trilliumlincoln-modal"]{
+  .ui-widget-header{
+    display: none;
+  }
+  .ui-dialog-content{
+    padding: 15px 30px 30px 30px;
+  }
+}
 #trilliumlincoln-modal,
 #trilliumlincoln-close-modal{
   .modal-dialog{

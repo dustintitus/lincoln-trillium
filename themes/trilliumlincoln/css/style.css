@@ -1275,7 +1275,7 @@ a {
 #navbar-top {
   background-color: #2e201b;
   position: relative;
-  z-index: 1001;
+  z-index: 401;
   display: none; }
   @media (min-width: 768px) {
     #navbar-top {
@@ -2197,6 +2197,168 @@ a {
     border-top-color: #2e201b;
     border-left-color: #2e201b;
     border-right-color: #2e201b; }
+
+.ui-widget-overlay {
+  background: #000;
+  opacity: 0.5; }
+
+@media (min-width: 768px) {
+  .ui-dialog {
+    width: 600px;
+    max-width: 600px;
+    min-width: 600px; } }
+
+.ui-dialog[aria-describedby="trilliumlincoln-close-modal"],
+.ui-dialog[aria-describedby="trilliumlincoln-modal"] {
+  font-family: ProximaNova, sans-serif;
+  background-color: #2e201b;
+  padding: 0;
+  border: 5px solid #fff; }
+  .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-widget-header,
+  .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header {
+    background: transparent;
+    border: 0;
+    padding: 0 15px;
+    position: absolute;
+    z-index: 700;
+    width: 100%;
+    top: 15px; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-widget-header .ui-dialog-title,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header .ui-dialog-title {
+      display: none; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-widget-header .ui-dialog-titlebar-close,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header .ui-dialog-titlebar-close {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      opacity: 1;
+      border: 0;
+      float: right;
+      background: transparent;
+      text-shadow: none;
+      display: block;
+      margin: 0;
+      padding: 0;
+      color: #fff; }
+      .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-widget-header .ui-dialog-titlebar-close:hover,
+      .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header .ui-dialog-titlebar-close:hover {
+        color: #fff; }
+      .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-widget-header .ui-dialog-titlebar-close:before,
+      .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header .ui-dialog-titlebar-close:before {
+        content: "x";
+        font-size: 21px;
+        font-family: ProximaNova, sans-serif;
+        position: absolute;
+        width: 20px;
+        text-align: center;
+        display: block;
+        line-height: 20px;
+        font-weight: 700;
+        top: 0;
+        left: 0;
+        color: #fff;
+        text-indent: 0; }
+      .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-widget-header .ui-dialog-titlebar-close span,
+      .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header .ui-dialog-titlebar-close span {
+        display: none; }
+  .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-buttonpane,
+  .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-buttonpane {
+    clear: both;
+    margin: 0;
+    padding: 15px 30px 30px 30px;
+    border: none;
+    background: transparent; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-buttonpane .ui-dialog-buttonset,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-buttonpane .ui-dialog-buttonset {
+      float: none; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-buttonpane .webform-button--submit,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-buttonpane .webform-button--submit {
+      padding: 1em 4em;
+      margin: 0;
+      margin: 0 auto 0;
+      display: block; }
+  .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content,
+  .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content {
+    width: 600px;
+    overflow: hidden !important;
+    text-align: center;
+    padding: 15px 30px 0 30px; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content .btn-info,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content .btn-info {
+      color: #fff;
+      font-size: 14px;
+      line-height: 21px; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content h2,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content h2 {
+      color: #fff;
+      font-family: ProximaNova, sans-serif;
+      font-weight: 300;
+      font-size: 3.75em; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content h3,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content h3 {
+      color: #fff;
+      font-size: 1.875em;
+      font-family: MillerBItalic, sans-serif; }
+      .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content h3:after,
+      .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content h3:after {
+        content: '';
+        width: 25%;
+        display: block;
+        height: 6px;
+        background-color: #f15e46;
+        margin: 16px auto 24px auto; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content p,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content p {
+      color: #fff;
+      font-family: ProximaNova, sans-serif;
+      font-weight: 300;
+      font-size: 0.9375em;
+      letter-spacing: 0.5px;
+      line-height: 1.2em; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content .button-section,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content .button-section {
+      padding: 10px 0 0 0; }
+      .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content .button-section .btn-block,
+      .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content .button-section .btn-block {
+        display: inline-block;
+        margin: 5px 5px 0px 5px; }
+    .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form,
+    .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form {
+      margin-right: -3%; }
+      .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-actions,
+      .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-actions {
+        display: none; }
+      .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-item,
+      .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item {
+        margin-right: 3%; }
+        @media (min-width: 768px) {
+          .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-item.form-type-textfield, .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-item.form-type-email, .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-item.form-type-tel,
+          .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item.form-type-textfield,
+          .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item.form-type-email,
+          .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item.form-type-tel {
+            width: 47%;
+            float: left; } }
+        .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-item .form-control,
+        .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item .form-control {
+          width: 100%; }
+        .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-item .control-label,
+        .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item .control-label {
+          margin-bottom: 5px;
+          width: 100%;
+          display: block;
+          text-align: left;
+          color: #fff; }
+          .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-item .control-label.form-required:after,
+          .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item .control-label.form-required:after {
+            margin-left: 4px; }
+        .ui-dialog[aria-describedby="trilliumlincoln-close-modal"] .ui-dialog-content form .form-item.has-error .control-label,
+        .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item.has-error .control-label {
+          color: #a94442; }
+
+.ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header {
+  display: none; }
+.ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content {
+  padding: 15px 30px 30px 30px; }
 
 #trilliumlincoln-modal .modal-dialog,
 #trilliumlincoln-close-modal .modal-dialog {
