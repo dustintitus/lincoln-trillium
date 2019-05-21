@@ -2355,10 +2355,12 @@ a {
         .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content form .form-item.has-error .control-label {
           color: #a94442; }
 
-.ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header {
-  display: none; }
-.ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content {
-  padding: 15px 30px 30px 30px; }
+.ui-dialog[aria-describedby="trilliumlincoln-modal"] {
+  z-index: 1000 !important; }
+  .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-widget-header {
+    display: none; }
+  .ui-dialog[aria-describedby="trilliumlincoln-modal"] .ui-dialog-content {
+    padding: 15px 30px 30px 30px; }
 
 #trilliumlincoln-modal .modal-dialog,
 #trilliumlincoln-close-modal .modal-dialog {

@@ -163,6 +163,7 @@
 }
 
 .ui-dialog[aria-describedby="trilliumlincoln-modal"]{
+  z-index: 1000 !important;
   .ui-widget-header{
     display: none;
   }
