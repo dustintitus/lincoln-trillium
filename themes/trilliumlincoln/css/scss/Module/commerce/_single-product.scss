@@ -3,7 +3,8 @@
     margin-bottom: 15px;
     padding: 2px 12px;
   }
-  &.product-sold{
+  &.product-sold,
+  &.product-time-to-shine{
     .product-carousel{
       .product-carousel-picture-wrapper{
         position: relative;
@@ -15,10 +16,29 @@
           left: 3px;
           width: 100px;
           height: 100px;
-          background: url(../images/sold.png) no-repeat 0 0;
           background-size: 100% auto;
+          background-position: 0% 0%;
+          background-repeat: no-repeat;
           position: absolute;
           z-index: 100;
+        }
+      }
+    }
+  }
+  &.product-sold{
+    .product-carousel{
+      .product-carousel-picture-wrapper{
+        &::before{
+          background-image: url(../images/sold.png);
+        }
+      }
+    }
+  }
+  &.product-time-to-shine{
+    .product-carousel{
+      .product-carousel-picture-wrapper{
+        &::before{
+          background-image: url(../images/time-to-shine.png);
         }
       }
     }
@@ -198,7 +218,8 @@
     }
   }
 }
-.product-sold{
+.product-sold,
+.product-time-to-shine{
   .field-car-images{
     position: relative;
     &::before{
@@ -208,10 +229,25 @@
       left: 0px;
       width: 100px;
       height: 100px;
-      background: url(../images/sold.png) no-repeat 0 0;
       background-size: 100% auto;
+      background-position: 0% 0%;
+      background-repeat: no-repeat;
       position: absolute;
       z-index: 100;
+    }
+  }
+}
+.product-sold{
+  .field-car-images{
+    &::before{
+      background-image: url(../images/sold.png);
+    }
+  }
+}
+.product-time-to-shine{
+  .field-car-images{
+    &::before{
+      background-image: url(../images/time-to-shine.png);
     }
   }
 }

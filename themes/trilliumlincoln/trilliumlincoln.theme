@@ -158,6 +158,44 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
   /** @var Drupal\commerce_product\Entity\ProductInterface $product */
   $product = $variables['elements']['#commerce_product'];
   $product_id = $product->id();
+
+  if ($variables['elements']['#view_mode'] == 'full' || $variables['elements']['#view_mode'] == 'teaser') {
+    $field_car_status = $product->get('field_car_status')->getValue();
+    if (isset($field_car_status[0]['value'])) {
+      if ($field_car_status[0]['value'] == 'sold') {
+        $variables['attributes']['class'][] = 'product-sold';
+      }
+      else{
+        $field_car_type = $product->get('field_car_type')->getValue();
+        $car_type_name = '';
+
+        $field_car_model = $product->get('field_car_model')->getValue();
+        $car_model_name = '';
+
+        $field_car_year = $product->get('field_car_year')->getValue();
+        $car_year = '';
+        if (isset($field_car_year[0]['value'])) {
+          $car_date = new DateTime($field_car_year[0]['value']);
+          $car_year = $car_date->format('Y');
+        }
+        if (isset($field_car_type[0]['target_id'])) {
+          $car_type_id = $field_car_type[0]['target_id'];
+          $car_type = Drupal\taxonomy\Entity\Term::load($car_type_id);
+          $car_type_name = mb_strtolower($car_type->getName());
+        }
+        if (isset($field_car_model[0]['target_id'])) {
+          $car_model_id = $field_car_model[0]['target_id'];
+          $car_model = Drupal\taxonomy\Entity\Term::load($car_model_id);
+          $car_model_name = mb_strtolower($car_model->getName());
+        }
+
+        if (($car_type_name == 'new' || $car_type_name == 'used') && $car_year == 2019 && ($car_model_name == 'mkc' || $car_model_name == 'mkz' || $car_model_name == 'continental' || $car_model_name == 'nautilus')) {
+          $variables['attributes']['class'][] = 'product-time-to-shine';
+        }
+      }
+    }
+  }
+
   if ($variables['elements']['#view_mode'] == 'full') {
     // get the view machine id
     $view = \Drupal\views\Views::getView('product_list');

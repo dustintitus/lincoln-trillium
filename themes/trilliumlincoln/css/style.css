@@ -2563,20 +2563,25 @@ a {
 .product-single .back-button {
   margin-bottom: 15px;
   padding: 2px 12px; }
-.product-single.product-sold .product-carousel .product-carousel-picture-wrapper {
+.product-single.product-sold .product-carousel .product-carousel-picture-wrapper, .product-single.product-time-to-shine .product-carousel .product-carousel-picture-wrapper {
   position: relative;
   overflow: hidden; }
-  .product-single.product-sold .product-carousel .product-carousel-picture-wrapper::before {
+  .product-single.product-sold .product-carousel .product-carousel-picture-wrapper::before, .product-single.product-time-to-shine .product-carousel .product-carousel-picture-wrapper::before {
     content: "";
     display: block;
     top: 0;
     left: 3px;
     width: 100px;
     height: 100px;
-    background: url(../images/sold.png) no-repeat 0 0;
     background-size: 100% auto;
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
     position: absolute;
     z-index: 100; }
+.product-single.product-sold .product-carousel .product-carousel-picture-wrapper::before {
+  background-image: url(../images/sold.png); }
+.product-single.product-time-to-shine .product-carousel .product-carousel-picture-wrapper::before {
+  background-image: url(../images/time-to-shine.png); }
 @media (min-width: 768px) {
   .product-single .first-col {
     padding-right: 10px; } }
@@ -2681,19 +2686,28 @@ a {
   .product-single .car-nav .next {
     float: right; }
 
-.product-sold .field-car-images {
+.product-sold .field-car-images,
+.product-time-to-shine .field-car-images {
   position: relative; }
-  .product-sold .field-car-images::before {
+  .product-sold .field-car-images::before,
+  .product-time-to-shine .field-car-images::before {
     content: "";
     display: block;
     top: 0;
     left: 0px;
     width: 100px;
     height: 100px;
-    background: url(../images/sold.png) no-repeat 0 0;
     background-size: 100% auto;
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
     position: absolute;
     z-index: 100; }
+
+.product-sold .field-car-images::before {
+  background-image: url(../images/sold.png); }
+
+.product-time-to-shine .field-car-images::before {
+  background-image: url(../images/time-to-shine.png); }
 
 .product-carousel {
   margin-left: -3px; }
