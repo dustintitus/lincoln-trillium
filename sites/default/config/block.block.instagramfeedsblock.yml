@@ -1,0 +1,26 @@
+uuid: bd5ffeff-0d12-4995-80c1-d0e0232c6ebd
+langcode: en
+status: true
+dependencies:
+  module:
+    - instawidget
+    - system
+  theme:
+    - trilliumlincoln
+id: instagramfeedsblock
+theme: trilliumlincoln
+region: content_bottom
+weight: 0
+provider: null
+plugin: instafeeds_block
+settings:
+  id: instafeeds_block
+  label: 'Instagram Feeds Block'
+  provider: instawidget
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

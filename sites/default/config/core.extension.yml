@@ -47,6 +47,7 @@ module:
   image: 0
   image_captcha: 0
   inline_entity_form: 0
+  instawidget: 0
   kint: 0
   link: 0
   link_attributes: 0

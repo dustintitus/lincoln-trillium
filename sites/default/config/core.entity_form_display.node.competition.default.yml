@@ -1,54 +1,61 @@
-uuid: a2172ac4-7574-4afe-bb39-bbe68f6f63f3
+uuid: 47bf4bdc-a484-468c-bec8-ae6bc42fe23f
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.body
-    - field.field.node.page.field_hero_image
-    - field.field.node.page.field_paragraph
-    - field.field.node.page.field_subtitle
-    - node.type.page
+    - field.field.node.competition.body
+    - field.field.node.competition.field_competition_image
+    - field.field.node.competition.field_competitor_model
+    - field.field.node.competition.field_feature
+    - field.field.node.competition.field_lincoln_image
+    - field.field.node.competition.field_lincoln_model
+    - field.field.node.competition.field_related_car
+    - image.style.thumbnail
+    - node.type.competition
   module:
     - paragraphs
     - path
+    - svg_image
     - text
-_core:
-  default_config_hash: sb0qCkzU_8mNq29NehYAU8jCBXWPLeX0UN8sYFVGVcw
-id: node.page.default
+id: node.competition.default
 targetEntityType: node
-bundle: page
+bundle: competition
 mode: default
 content:
   body:
     type: text_textarea_with_summary
     weight: 7
-    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
     weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_hero_image:
-    type: entity_reference_paragraphs
-    weight: 8
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: hero_image
-    third_party_settings: {  }
-    region: content
-  field_paragraph:
-    type: paragraphs
+  field_competition_image:
     weight: 10
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_competitor_model:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_feature:
+    type: entity_reference_paragraphs
+    weight: 12
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -56,21 +63,29 @@ content:
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: ''
-      closed_mode: summary
-      autocollapse: none
-      closed_mode_threshold: 0
-      features:
-        duplicate: duplicate
-        collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
     region: content
-  field_subtitle:
-    weight: 6
+  field_lincoln_image:
+    weight: 8
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_lincoln_model:
+    weight: 9
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_related_car:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   path:
     type: path
@@ -89,7 +104,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 6
     region: content
     third_party_settings: {  }
   sticky:
@@ -110,10 +125,10 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 1
-    region: content
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+    region: content
     third_party_settings: {  }
 hidden: {  }

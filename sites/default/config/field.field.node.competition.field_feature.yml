@@ -1,0 +1,100 @@
+uuid: fc3fc486-3085-4573-9534-826f8bbccd13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feature
+    - node.type.competition
+    - paragraphs.paragraphs_type.competition_feature
+  module:
+    - entity_reference_revisions
+id: node.competition.field_feature
+field_name: field_feature
+entity_type: node
+bundle: competition
+label: Feature
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      competition_feature: competition_feature
+    target_bundles_drag_drop:
+      bp_accordion:
+        weight: 25
+        enabled: false
+      bp_accordion_section:
+        weight: 26
+        enabled: false
+      bp_blank:
+        weight: 27
+        enabled: false
+      bp_block:
+        weight: 28
+        enabled: false
+      bp_carousel:
+        weight: 29
+        enabled: false
+      bp_column_wrapper:
+        weight: 30
+        enabled: false
+      bp_columns:
+        weight: 31
+        enabled: false
+      bp_columns_three_uneven:
+        weight: 32
+        enabled: false
+      bp_columns_two_uneven:
+        weight: 33
+        enabled: false
+      bp_image:
+        weight: 34
+        enabled: false
+      bp_modal:
+        weight: 35
+        enabled: false
+      bp_simple:
+        weight: 36
+        enabled: false
+      bp_tab_section:
+        weight: 37
+        enabled: false
+      bp_tabs:
+        weight: 38
+        enabled: false
+      bp_view:
+        weight: 39
+        enabled: false
+      callout:
+        weight: 40
+        enabled: false
+      car_accessory:
+        weight: 41
+        enabled: false
+      competition_feature:
+        enabled: true
+        weight: 42
+      hero_image:
+        weight: 43
+        enabled: false
+      partner:
+        weight: 44
+        enabled: false
+      text_block:
+        weight: 45
+        enabled: false
+      text_blocks:
+        weight: 46
+        enabled: false
+      text_callout:
+        weight: 47
+        enabled: false
+      text_callout_item:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

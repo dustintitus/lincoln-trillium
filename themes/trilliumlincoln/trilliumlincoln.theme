@@ -196,6 +196,23 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
     }
   }
 
+  if ($variables['elements']['#view_mode'] == 'teaser') {
+    $variables['compare_car'] = [
+      '#prefix' => '<div class="compare-car-container">',
+      '#suffix' => '</div>',
+      '#type' => 'checkbox',
+      '#name' => 'compare[' . $product_id . ']',
+      '#title' => t('Compare'),
+      '#attributes' => [
+        'data-id' => $product_id,
+        'class' => [
+          'compare-car-field'
+        ]
+      ],
+    ];
+    $variables['#attached']['library'][] = 'trilliumlincoln/trilliumlincoln.compare_car';
+  }
+
   if ($variables['elements']['#view_mode'] == 'full') {
     // get the view machine id
     $view = \Drupal\views\Views::getView('product_list');

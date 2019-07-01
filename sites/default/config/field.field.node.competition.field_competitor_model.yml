@@ -1,0 +1,19 @@
+uuid: 18d9748f-5671-4abd-9cf8-8893889a9af5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_competitor_model
+    - node.type.competition
+id: node.competition.field_competitor_model
+field_name: field_competitor_model
+entity_type: node
+bundle: competition
+label: 'Competitor Model'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

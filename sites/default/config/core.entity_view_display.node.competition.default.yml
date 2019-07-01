@@ -1,0 +1,102 @@
+uuid: 9b029ba6-80c6-4d6d-9c3c-f65ba4ab9f05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.competition.body
+    - field.field.node.competition.field_competition_image
+    - field.field.node.competition.field_competitor_model
+    - field.field.node.competition.field_feature
+    - field.field.node.competition.field_lincoln_image
+    - field.field.node.competition.field_lincoln_model
+    - field.field.node.competition.field_related_car
+    - image.style.400x300
+    - node.type.competition
+  module:
+    - entity_reference_revisions
+    - field_formatter_class
+    - svg_image
+    - text
+    - user
+id: node.competition.default
+targetEntityType: node
+bundle: competition
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_competition_image:
+    weight: 3
+    label: hidden
+    settings:
+      image_style: 400x300
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: image
+    region: content
+  field_competitor_model:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_feature:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    region: content
+  field_lincoln_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: 400x300
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: image
+    region: content
+  field_lincoln_model:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_related_car:
+    type: entity_reference_entity_id
+    weight: 7
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

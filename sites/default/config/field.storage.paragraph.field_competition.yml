@@ -1,0 +1,18 @@
+uuid: b0beb9fc-b8db-43f9-b8f1-fa70028a10ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_competition
+field_name: field_competition
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

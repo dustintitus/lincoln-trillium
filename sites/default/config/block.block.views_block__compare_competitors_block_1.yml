@@ -1,0 +1,34 @@
+uuid: 14d2ead7-431a-44e5-bf3a-63435633fb45
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.compare_competitors
+  module:
+    - block_class
+    - system
+    - views
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: blockcompare-competitors
+id: views_block__compare_competitors_block_1
+theme: trilliumlincoln
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:compare_competitors-block_1'
+settings:
+  id: 'views_block:compare_competitors-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /compare-competitors
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,49 @@
+uuid: ad147192-b1d8-4413-a905-a540ecc9f326
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.competition_feature.field_competition
+    - field.field.paragraph.competition_feature.field_lincoln
+    - field.field.paragraph.competition_feature.field_title
+    - paragraphs.paragraphs_type.competition_feature
+  module:
+    - field_formatter_class
+id: paragraph.competition_feature.default
+targetEntityType: paragraph
+bundle: competition_feature
+mode: default
+content:
+  field_competition:
+    weight: 2
+    label: hidden
+    settings:
+      format: yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: boolean
+    region: content
+  field_lincoln:
+    weight: 1
+    label: hidden
+    settings:
+      format: yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: boolean
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

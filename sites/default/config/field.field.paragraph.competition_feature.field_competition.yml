@@ -1,0 +1,23 @@
+uuid: 75616a38-f5b1-4efb-afc3-2b43b1ad5715
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_competition
+    - paragraphs.paragraphs_type.competition_feature
+id: paragraph.competition_feature.field_competition
+field_name: field_competition
+entity_type: paragraph
+bundle: competition_feature
+label: Competition
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

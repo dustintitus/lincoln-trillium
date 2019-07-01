@@ -225,7 +225,7 @@
           maxHeight = curHeight;
         }
       });
-      $rows.find('.product').css('height', maxHeight + 300 + 'px');
+      $rows.find('.product').css('height', maxHeight + 340 + 'px');
     },
     teaserCarDescriptionResetHeight: function(){
       $('.view-product-list').find('.view-content .views-row .product').css('height', 'auto');

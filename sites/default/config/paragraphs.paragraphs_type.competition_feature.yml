@@ -1,0 +1,9 @@
+uuid: 25f689b7-3421-4290-ab7e-d49b1f3c2b15
+langcode: en
+status: true
+dependencies: {  }
+id: competition_feature
+label: 'Competition Feature'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

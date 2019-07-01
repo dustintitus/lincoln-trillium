@@ -1,0 +1,22 @@
+uuid: 17f55c58-a7da-496d-853a-43df10e4f1a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.competition
+  module:
+    - text
+id: node.competition.body
+field_name: body
+entity_type: node
+bundle: competition
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

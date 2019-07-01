@@ -1,0 +1,28 @@
+uuid: f2413596-1e41-43af-a809-a6142472cec5
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.node.field_related_car
+    - node.type.competition
+id: node.competition.field_related_car
+field_name: field_related_car
+entity_type: node
+bundle: competition
+label: 'Related car'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:commerce_product'
+  handler_settings:
+    target_bundles:
+      car: car
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
