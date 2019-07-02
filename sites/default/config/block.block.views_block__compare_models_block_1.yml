@@ -1,0 +1,34 @@
+uuid: 6afb5d13-744b-4115-8c88-45b8e2e4ba6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.compare_models
+  module:
+    - block_class
+    - system
+    - views
+  theme:
+    - trilliumlincoln
+third_party_settings:
+  block_class:
+    classes: 'col-sm-4 compare-models'
+id: views_block__compare_models_block_1
+theme: trilliumlincoln
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:compare_models-block_1'
+settings:
+  id: 'views_block:compare_models-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /compare-models
+    negate: false
+    context_mapping: {  }

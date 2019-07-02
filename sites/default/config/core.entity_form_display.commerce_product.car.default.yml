@@ -6,6 +6,7 @@ dependencies:
     - commerce_product.commerce_product_type.car
     - field.field.commerce_product.car.body
     - field.field.commerce_product.car.field_car_accessory
+    - field.field.commerce_product.car.field_car_allow_comparison
     - field.field.commerce_product.car.field_car_body_style
     - field.field.commerce_product.car.field_car_category
     - field.field.commerce_product.car.field_car_color_long
@@ -175,6 +176,13 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
+    region: content
+  field_car_allow_comparison:
+    weight: 28
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_car_color_long:
     weight: 14

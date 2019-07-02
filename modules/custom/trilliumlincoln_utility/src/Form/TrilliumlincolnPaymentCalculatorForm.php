@@ -28,9 +28,11 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state, $product_id = NULL) {
     // Disable caching on this form.
     $form_state->setCached(FALSE);
+
+    $product = \Drupal\commerce_product\Entity\Product::load($product_id);
 
     $residual = [
       '24' => 0,
@@ -58,7 +60,7 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
     $hide_lease_section = FALSE;
     $hide_finance_section = FALSE;
     $default_finance_term = NULL;
-    if ($product = \Drupal::routeMatch()->getParameter('commerce_product')) {
+    if ($product) {
       $variations_field = $product->get('variations')->getValue();
       if (!empty($variations_field)) {
         $variation = ProductVariation::load($variations_field[0]['target_id']);
@@ -162,6 +164,9 @@ class TrilliumlincolnPaymentCalculatorForm extends FormBase {
       '#title' => $this->t('Payment Calculator'),
       '#collapsible' => TRUE, 
       '#collapsed' => TRUE,
+      '#attributes' => [
+        'id' => 'edit-payment-'.$product_id,
+      ],
       '#title_attributes' => [
         'class' => [
           'collapsed'

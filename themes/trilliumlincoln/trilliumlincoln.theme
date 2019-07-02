@@ -197,20 +197,39 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
   }
 
   if ($variables['elements']['#view_mode'] == 'teaser') {
-    $variables['compare_car'] = [
-      '#prefix' => '<div class="compare-car-container">',
-      '#suffix' => '</div>',
-      '#type' => 'checkbox',
-      '#name' => 'compare[' . $product_id . ']',
-      '#title' => t('Compare'),
-      '#attributes' => [
-        'data-id' => $product_id,
-        'class' => [
-          'compare-car-field'
-        ]
-      ],
-    ];
-    $variables['#attached']['library'][] = 'trilliumlincoln/trilliumlincoln.compare_car';
+    $field_allow_comparison = $product->get('field_car_allow_comparison')->getValue();
+    if (!empty($field_allow_comparison[0]['value'])) {
+      $variables['compare_car'] = [
+        //'#prefix' => '<div class="compare-car-container">',
+        //'#suffix' => '</div>',
+        '#type' => 'checkbox',
+        '#name' => 'compare[' . $product_id . ']',
+        '#title' => t('Compare'),
+        '#attributes' => [
+          'data-id' => $product_id,
+          'id' => 'compare-'.$product_id,
+          'class' => [
+            'compare-car-field'
+          ]
+        ],
+      ];
+      $variables['#attached']['library'][] = 'trilliumlincoln/trilliumlincoln.compare_car';
+    }
+
+  }
+
+  if ($variables['elements']['#view_mode'] == 'compare') {
+    $field_car_type = $product->get('field_car_type')->getValue();
+    if (isset($field_car_type[0]['target_id'])) {
+      $car_type_id = $field_car_type[0]['target_id'];
+      $car_type = Drupal\taxonomy\Entity\Term::load($car_type_id);
+      $car_type_name = $car_type->getName();
+
+      if ($car_type_name == 'New') {
+        $form = \Drupal::formBuilder()->getForm('\Drupal\trilliumlincoln_utility\Form\TrilliumlincolnPaymentCalculatorForm', $product_id);
+        $variables['calculator_form'] = $form;
+      }
+    }
   }
 
   if ($variables['elements']['#view_mode'] == 'full') {
@@ -260,7 +279,7 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
       $variables['back_button'] = $back_button;
 
       if ($car_type_name == 'New') {
-        $form = \Drupal::formBuilder()->getForm('\Drupal\trilliumlincoln_utility\Form\TrilliumlincolnPaymentCalculatorForm');
+        $form = \Drupal::formBuilder()->getForm('\Drupal\trilliumlincoln_utility\Form\TrilliumlincolnPaymentCalculatorForm',$product_id);
         $variables['calculator_form'] = $form;
       }
     }

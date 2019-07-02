@@ -1,0 +1,10 @@
+uuid: 4c202231-1455-4a02-b3bf-5ecc03b41efc
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+id: commerce_product.compare
+label: Compare
+targetEntityType: commerce_product
+cache: true

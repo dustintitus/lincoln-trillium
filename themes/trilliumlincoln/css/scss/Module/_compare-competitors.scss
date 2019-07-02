@@ -38,9 +38,19 @@
         @include respond($sm){
           width: 50%;
         }
+        &:after{
+          content: '\e259';
+          color: #2e201b;
+        }
         select{
           display: block;
           width: 100%;
+          border-radius: 0;
+          box-shadow: none;
+          height: auto;
+          padding: 5px 44px 5px 5px;
+          border-color: #5e504c;
+          text-transform: uppercase;
         }
       }
     }

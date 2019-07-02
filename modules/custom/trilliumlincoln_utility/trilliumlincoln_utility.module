@@ -198,6 +198,59 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
     $form[$competition_field]['#options'] = $options;
     unset($form[$competition_field]['#size']);
   }
+
+  if ($view->id() == 'compare_models') {
+
+    $display_id = $display['id'];
+    // Query product
+    $storage = Drupal::getContainer()->get('entity_type.manager')->getStorage('commerce_product');
+    $pids = $storage->getQuery();
+
+    // Gather published competition product and sort by title
+    $pids = $pids->condition('type', 'car')
+     ->condition('status', 1)
+     ->condition('field_car_allow_comparison', 1)
+     ->sort('title')
+     ->execute();
+
+    // If there are no product, move on
+    if (!$pids) {
+     return FALSE;
+    }
+
+    // Start building out the options for our select list
+    $options = [];
+    $products = $storage->loadMultiple($pids);
+
+    // Push titles into select list
+    //$options[1] = 'Model';
+    foreach ($products as $product) {
+      $options[$product->id()] = $product->getTitle();
+    }
+
+
+    if ($display_id == 'block_1') {
+      $compare_field = 'model_1';
+    }
+    if ($display_id == 'block_2') {
+      $compare_field = 'model_2';
+    }
+    if ($display_id == 'block_3') {
+      $compare_field = 'model_3';
+    }
+
+    $form[$compare_field]['#type'] = 'select';
+    $form[$compare_field]['#multiple'] = FALSE;
+
+
+    // Specify the empty option for our select list
+    $form[$compare_field]['#empty_option'] = t('MODEL');
+    $form[$compare_field]['#empty_value'] = 1;
+
+    // Add the $options from above to our select list
+    $form[$compare_field]['#options'] = $options;
+    unset($form[$compare_field]['#size']);
+  }
 }
 
 /**

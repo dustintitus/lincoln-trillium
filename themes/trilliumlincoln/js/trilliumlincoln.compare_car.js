@@ -2,6 +2,8 @@
   Drupal.behaviors.compare_car = {
     attach: function (context, settings) {
       $('.compare-car-container', context).once('compare-car').each(function () {
+        var id = $(this).find('.compare-car-field').attr('id');
+        $(this).find('label').attr('for', id);
         $(this).find('.compare-car-field').on('change', function(event) {
           var id = $(this).attr('data-id');
           var compare = false;

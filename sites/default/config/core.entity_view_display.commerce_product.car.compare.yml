@@ -1,9 +1,10 @@
-uuid: 6144a362-097e-48af-9b2d-1c5c6cf93159
+uuid: 4eda27b9-2916-4a4c-ba40-534970a9acda
 langcode: en
 status: true
 dependencies:
   config:
     - commerce_product.commerce_product_type.car
+    - core.entity_view_mode.commerce_product.compare
     - field.field.commerce_product.car.body
     - field.field.commerce_product.car.field_car_accessory
     - field.field.commerce_product.car.field_car_allow_comparison
@@ -47,18 +48,16 @@ dependencies:
     - field.field.commerce_product.car.field_residual_48_term_rate
     - field.field.commerce_product.car.stores
     - field.field.commerce_product.car.variations
-    - image.style.174x122
+    - image.style.400x300
   module:
-    - commerce_price
     - entity_reference_revisions
     - field_formatter_class
-    - options
     - svg_image
     - text
-id: commerce_product.car.default
+id: commerce_product.car.compare
 targetEntityType: commerce_product
 bundle: car
-mode: default
+mode: compare
 content:
   body:
     label: hidden
@@ -69,40 +68,42 @@ content:
     region: content
   field_car_accessory:
     type: entity_reference_revisions_entity_view
-    weight: 13
+    weight: 8
+    region: content
     label: above
     settings:
       view_mode: default
       link: ''
-    third_party_settings: {  }
-    region: content
+    third_party_settings:
+      field_formatter_class:
+        class: ''
   field_car_color_long:
-    weight: 4
-    label: inline
+    weight: 6
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_car_cylinders:
-    weight: 6
-    label: inline
+    weight: 7
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_car_engine_type:
-    weight: 8
-    label: inline
+    type: string
+    weight: 4
+    region: content
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-    region: content
   field_car_fuel_type:
     weight: 5
-    label: inline
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -112,71 +113,16 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: 174x122
-      image_link: file
-      svg_render_as_image: '1'
+      image_style: 400x300
+      image_link: ''
       svg_attributes:
         width: ''
         height: ''
+      svg_render_as_image: 0
     third_party_settings:
       field_formatter_class:
         class: ''
     type: image
-    region: content
-  field_car_interior_trim:
-    weight: 7
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_car_msrp:
-    weight: 14
-    label: inline
-    settings:
-      strip_trailing_zeroes: false
-      currency_display: symbol
-    third_party_settings: {  }
-    type: commerce_price_default
-    region: content
-  field_car_odometer_reading:
-    weight: 10
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_car_odometer_type:
-    weight: 9
-    label: inline
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  field_car_status:
-    weight: 15
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_key
-    region: content
-  field_car_stock_number:
-    type: string
-    weight: 11
-    region: content
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-  field_car_vin:
-    weight: 12
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
     region: content
   title:
     label: hidden
@@ -191,7 +137,7 @@ content:
     weight: 3
     label: hidden
     settings:
-      view_mode: default
+      view_mode: product_list
       link: false
     third_party_settings:
       field_formatter_class:
@@ -204,13 +150,20 @@ hidden:
   field_car_category: true
   field_car_dealership_id: true
   field_car_differential: true
+  field_car_interior_trim: true
   field_car_make: true
   field_car_model: true
+  field_car_msrp: true
   field_car_number_of_axles: true
   field_car_number_of_doors: true
+  field_car_odometer_reading: true
+  field_car_odometer_type: true
+  field_car_status: true
+  field_car_stock_number: true
   field_car_total_length: true
   field_car_traction: true
   field_car_type: true
+  field_car_vin: true
   field_car_year: true
   field_finance_36_term_rate: true
   field_finance_39_term_rate: true

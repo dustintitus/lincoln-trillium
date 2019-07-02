@@ -1,0 +1,240 @@
+.context-compare-models{
+  .region-content{
+    margin: 0 -15px;
+    .node-content{
+      .node-title{
+        text-align: center;
+      }
+    }
+  }  
+}
+
+.compare-models{
+  position: relative;
+  &:before{
+    content:"";
+    display:block;
+    width: 1px;
+    height: 100%;
+    background: #707070;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  &:last-child{
+    &:before{
+      display: none;
+    }
+  }
+}
+
+.view-compare-models{
+  .view-filters{
+    margin: 0;
+  }
+  .views-exposed-form{
+    background: #fff;
+    padding: 0 15px;
+    margin: 0 -15px;
+    .form-item{
+      float: none;
+      width: 100%;
+      label{
+        display: none;
+      }
+      .select-wrapper{
+        width: 100%;
+        &:after{
+          content: '\e259';
+          color: #2e201b;
+        }
+        select{
+          display: block;
+          width: 100%;
+          border-radius: 0;
+          box-shadow: none;
+          height: auto;
+          padding: 5px 44px 5px 5px;
+          border-color: #5e504c;
+          text-transform: uppercase;
+        }
+      }
+    }
+    .form-actions{
+      display: none;
+    }
+  }
+}
+
+
+.product-compare{
+  .field-car-images{
+    background: #fff;
+    padding: 25px 15px 25px;
+    margin: 0 -15px;
+    @include respond($sm){
+      padding-bottom: 45px;
+    }
+  }
+  .field--name-field-car-cylinders,
+  .field--name-field-car-color-long,
+  .field--name-field-car-fuel-type,
+  .field--name-field-car-engine-type{
+    position: relative;
+    text-align: center;
+    &:before{
+      content: "";
+      display: block;
+      margin: 0 auto 10px;
+      width: 92px;
+      height: 76px;
+      background: url(../images/icon-engine-type.svg) no-repeat 0 0;
+      background-size: 100% auto;
+      @include respond($sm){
+        margin-bottom: 20px;
+      }
+    }
+    .field--label{
+      display: inline-block;
+      min-width: 120px;
+      color: #707070;
+      font-weight: 300;
+      padding: 5px 20px;
+      border-bottom: 1px solid #707070;
+      line-height: 1.25;
+      font-size: em(16);
+      @include respond($sm){
+        font-size: em(20);
+      }
+    }
+    .field--item{
+      padding: 15px 0;
+      font-size: em(20);
+      line-height: (40/33);
+      color: #2E201B;
+      @include respond($sm){
+        font-size: em(33);
+        padding: 30px 0;
+      }
+    }
+  }
+  .field--name-field-car-fuel-type{
+    &:before{
+      width: 92px;
+      height: 76px;
+      background: url(../images/icon-fuel-type.svg) no-repeat 0 0;
+      background-size: 100% auto;
+    }
+  }
+  .field--name-field-car-color-long{
+    &:before{
+      width: 80px;
+      height: 88px;
+      background: url(../images/icon-color.svg) no-repeat 0 0;
+      background-size: 100% auto;
+    }
+  }
+  .field--name-field-car-cylinders{
+    &:before{
+      width: 74px;
+      height: 74px;
+      background: url(../images/icon-cylinders.svg) no-repeat 0 0;
+      background-size: 100% auto;
+    }
+  }
+  .car-action{
+    text-align: center;
+    background: #fff;
+    padding: 20px 16px;
+    margin: 0 -16px;
+    @include respond($sm){
+      padding-top:30px;
+      padding-bottom:30px;
+    }
+    .btn{
+      margin: 0 auto 0;
+    }
+  }
+  .field--name-field-car-accessory{
+    position: relative;
+    text-align: center;
+    &:before{
+      content: "";
+      display: block;
+      margin: 0 auto 10px;
+      width: 84px;
+      height: 92px;
+      background: url(../images/icon-accessory.svg) no-repeat 0 0;
+      background-size: 100% auto;
+      @include respond($sm){
+        margin-bottom: 20px;
+      }
+    }
+    > .field--label{
+      display: inline-block;
+      min-width: 120px;
+      color: #707070;
+      font-weight: 300;
+      padding: 5px 20px;
+      border-bottom: 1px solid #707070;
+      line-height: 1.25;
+      font-size: em(16);
+      @include respond($sm){
+        font-size: em(20);
+      }
+    }
+    .paragraph{
+      padding: 10px 0;
+      @include respond($sm){
+        padding: 20px 0;
+      }
+      .field--name-field-car-accessory-description{
+        font-size: em(20);
+        line-height: (40/33);
+        color: #2E201B;
+        @include respond($sm){
+          font-size: em(33);
+        }
+      }
+      .field--name-field-car-accessory-price{
+        color: #707070;
+        font-weight: 300;
+        padding: 3px 0;
+        &:before{
+          content: "$";
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .trilliumlincoln-utility-payment-calculator-form{
+    text-align: center;
+    background: #fff;
+    padding: 20px 16px;
+    margin: 0 -16px;
+    @include respond($sm){
+      padding-top:30px;
+      padding-bottom:30px;
+    }
+  }
+  .text-container{
+    text-align: center;
+    color: #707070;
+    h3{
+      font-weight: 700;
+      font-size: em(14);
+      margin: 0 0 20px;
+      color: #707070
+    }
+    p{
+      font-size: em(14);
+      margin: 0 0 20px;
+      color: #707070
+    }
+    .field--name-variations{
+      font-size: em(14);
+      color: #707070;
+      font-weight: 700;
+    }
+  }
+}

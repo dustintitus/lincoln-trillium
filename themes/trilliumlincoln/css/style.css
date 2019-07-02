@@ -2597,9 +2597,18 @@ a {
     @media (min-width: 768px) {
       .blockcompare-competitors .views-exposed-form .form-item .select-wrapper {
         width: 50%; } }
+    .blockcompare-competitors .views-exposed-form .form-item .select-wrapper:after {
+      content: '\e259';
+      color: #2e201b; }
     .blockcompare-competitors .views-exposed-form .form-item .select-wrapper select {
       display: block;
-      width: 100%; }
+      width: 100%;
+      border-radius: 0;
+      box-shadow: none;
+      height: auto;
+      padding: 5px 44px 5px 5px;
+      border-color: #5e504c;
+      text-transform: uppercase; }
 
 .node-content.competition > h2.node-title {
   margin: 0;
@@ -2673,6 +2682,213 @@ a {
       text-align: center; }
     .node-content.competition .paragraph--type--competition-feature .field.field--name-field-lincoln {
       color: #F15E46; }
+
+.context-compare-models .region-content {
+  margin: 0 -15px; }
+  .context-compare-models .region-content .node-content .node-title {
+    text-align: center; }
+
+.compare-models {
+  position: relative; }
+  .compare-models:before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: #707070;
+    position: absolute;
+    top: 0;
+    right: 0; }
+  .compare-models:last-child:before {
+    display: none; }
+
+.view-compare-models .view-filters {
+  margin: 0; }
+.view-compare-models .views-exposed-form {
+  background: #fff;
+  padding: 0 15px;
+  margin: 0 -15px; }
+  .view-compare-models .views-exposed-form .form-item {
+    float: none;
+    width: 100%; }
+    .view-compare-models .views-exposed-form .form-item label {
+      display: none; }
+    .view-compare-models .views-exposed-form .form-item .select-wrapper {
+      width: 100%; }
+      .view-compare-models .views-exposed-form .form-item .select-wrapper:after {
+        content: '\e259';
+        color: #2e201b; }
+      .view-compare-models .views-exposed-form .form-item .select-wrapper select {
+        display: block;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        height: auto;
+        padding: 5px 44px 5px 5px;
+        border-color: #5e504c;
+        text-transform: uppercase; }
+  .view-compare-models .views-exposed-form .form-actions {
+    display: none; }
+
+.product-compare .field-car-images {
+  background: #fff;
+  padding: 25px 15px 25px;
+  margin: 0 -15px; }
+  @media (min-width: 768px) {
+    .product-compare .field-car-images {
+      padding-bottom: 45px; } }
+.product-compare .field--name-field-car-cylinders,
+.product-compare .field--name-field-car-color-long,
+.product-compare .field--name-field-car-fuel-type,
+.product-compare .field--name-field-car-engine-type {
+  position: relative;
+  text-align: center; }
+  .product-compare .field--name-field-car-cylinders:before,
+  .product-compare .field--name-field-car-color-long:before,
+  .product-compare .field--name-field-car-fuel-type:before,
+  .product-compare .field--name-field-car-engine-type:before {
+    content: "";
+    display: block;
+    margin: 0 auto 10px;
+    width: 92px;
+    height: 76px;
+    background: url(../images/icon-engine-type.svg) no-repeat 0 0;
+    background-size: 100% auto; }
+    @media (min-width: 768px) {
+      .product-compare .field--name-field-car-cylinders:before,
+      .product-compare .field--name-field-car-color-long:before,
+      .product-compare .field--name-field-car-fuel-type:before,
+      .product-compare .field--name-field-car-engine-type:before {
+        margin-bottom: 20px; } }
+  .product-compare .field--name-field-car-cylinders .field--label,
+  .product-compare .field--name-field-car-color-long .field--label,
+  .product-compare .field--name-field-car-fuel-type .field--label,
+  .product-compare .field--name-field-car-engine-type .field--label {
+    display: inline-block;
+    min-width: 120px;
+    color: #707070;
+    font-weight: 300;
+    padding: 5px 20px;
+    border-bottom: 1px solid #707070;
+    line-height: 1.25;
+    font-size: 1em; }
+    @media (min-width: 768px) {
+      .product-compare .field--name-field-car-cylinders .field--label,
+      .product-compare .field--name-field-car-color-long .field--label,
+      .product-compare .field--name-field-car-fuel-type .field--label,
+      .product-compare .field--name-field-car-engine-type .field--label {
+        font-size: 1.25em; } }
+  .product-compare .field--name-field-car-cylinders .field--item,
+  .product-compare .field--name-field-car-color-long .field--item,
+  .product-compare .field--name-field-car-fuel-type .field--item,
+  .product-compare .field--name-field-car-engine-type .field--item {
+    padding: 15px 0;
+    font-size: 1.25em;
+    line-height: 1.21212;
+    color: #2E201B; }
+    @media (min-width: 768px) {
+      .product-compare .field--name-field-car-cylinders .field--item,
+      .product-compare .field--name-field-car-color-long .field--item,
+      .product-compare .field--name-field-car-fuel-type .field--item,
+      .product-compare .field--name-field-car-engine-type .field--item {
+        font-size: 2.0625em;
+        padding: 30px 0; } }
+.product-compare .field--name-field-car-fuel-type:before {
+  width: 92px;
+  height: 76px;
+  background: url(../images/icon-fuel-type.svg) no-repeat 0 0;
+  background-size: 100% auto; }
+.product-compare .field--name-field-car-color-long:before {
+  width: 80px;
+  height: 88px;
+  background: url(../images/icon-color.svg) no-repeat 0 0;
+  background-size: 100% auto; }
+.product-compare .field--name-field-car-cylinders:before {
+  width: 74px;
+  height: 74px;
+  background: url(../images/icon-cylinders.svg) no-repeat 0 0;
+  background-size: 100% auto; }
+.product-compare .car-action {
+  text-align: center;
+  background: #fff;
+  padding: 20px 16px;
+  margin: 0 -16px; }
+  @media (min-width: 768px) {
+    .product-compare .car-action {
+      padding-top: 30px;
+      padding-bottom: 30px; } }
+  .product-compare .car-action .btn {
+    margin: 0 auto 0; }
+.product-compare .field--name-field-car-accessory {
+  position: relative;
+  text-align: center; }
+  .product-compare .field--name-field-car-accessory:before {
+    content: "";
+    display: block;
+    margin: 0 auto 10px;
+    width: 84px;
+    height: 92px;
+    background: url(../images/icon-accessory.svg) no-repeat 0 0;
+    background-size: 100% auto; }
+    @media (min-width: 768px) {
+      .product-compare .field--name-field-car-accessory:before {
+        margin-bottom: 20px; } }
+  .product-compare .field--name-field-car-accessory > .field--label {
+    display: inline-block;
+    min-width: 120px;
+    color: #707070;
+    font-weight: 300;
+    padding: 5px 20px;
+    border-bottom: 1px solid #707070;
+    line-height: 1.25;
+    font-size: 1em; }
+    @media (min-width: 768px) {
+      .product-compare .field--name-field-car-accessory > .field--label {
+        font-size: 1.25em; } }
+  .product-compare .field--name-field-car-accessory .paragraph {
+    padding: 10px 0; }
+    @media (min-width: 768px) {
+      .product-compare .field--name-field-car-accessory .paragraph {
+        padding: 20px 0; } }
+    .product-compare .field--name-field-car-accessory .paragraph .field--name-field-car-accessory-description {
+      font-size: 1.25em;
+      line-height: 1.21212;
+      color: #2E201B; }
+      @media (min-width: 768px) {
+        .product-compare .field--name-field-car-accessory .paragraph .field--name-field-car-accessory-description {
+          font-size: 2.0625em; } }
+    .product-compare .field--name-field-car-accessory .paragraph .field--name-field-car-accessory-price {
+      color: #707070;
+      font-weight: 300;
+      padding: 3px 0; }
+      .product-compare .field--name-field-car-accessory .paragraph .field--name-field-car-accessory-price:before {
+        content: "$";
+        display: inline-block; }
+.product-compare .trilliumlincoln-utility-payment-calculator-form {
+  text-align: center;
+  background: #fff;
+  padding: 20px 16px;
+  margin: 0 -16px; }
+  @media (min-width: 768px) {
+    .product-compare .trilliumlincoln-utility-payment-calculator-form {
+      padding-top: 30px;
+      padding-bottom: 30px; } }
+.product-compare .text-container {
+  text-align: center;
+  color: #707070; }
+  .product-compare .text-container h3 {
+    font-weight: 700;
+    font-size: 0.875em;
+    margin: 0 0 20px;
+    color: #707070; }
+  .product-compare .text-container p {
+    font-size: 0.875em;
+    margin: 0 0 20px;
+    color: #707070; }
+  .product-compare .text-container .field--name-variations {
+    font-size: 0.875em;
+    color: #707070;
+    font-weight: 700; }
 
 .product-single .back-button {
   margin-bottom: 15px;
@@ -2876,6 +3092,10 @@ a {
     text-align: right; }
     .view-product-list.list .view-content .product-link-wrapper .btn {
       width: 100%; }
+    .view-product-list.list .view-content .product-link-wrapper .compare-car-container .form-item {
+      max-width: 200px;
+      margin: 0;
+      float: right; }
   .view-product-list.grid .view-content .views-row {
     position: relative;
     min-height: 1px;
@@ -2973,6 +3193,35 @@ a {
       font-weight: bold; }
     .view-product-list .view-content .product-link-wrapper .btn {
       min-width: 150px; }
+    .view-product-list .view-content .compare-car-container {
+      min-height: 46px;
+      padding: 10px 0; }
+      .view-product-list .view-content .compare-car-container .form-item {
+        position: relative;
+        float: none;
+        width: 100%;
+        overflow: hidden;
+        min-width: 150px;
+        max-width: 150px;
+        margin: 0 auto 0;
+        line-height: 26px;
+        padding: 0 10px;
+        background: #DBDBDB; }
+        .view-product-list .view-content .compare-car-container .form-item label {
+          display: inline-block;
+          padding: 0;
+          line-height: 26px;
+          padding: 0;
+          text-align: left;
+          text-transform: uppercase; }
+        .view-product-list .view-content .compare-car-container .form-item input {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          margin: 0;
+          transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          -webkit-transform: translateY(-50%); }
   .view-product-list .pagination > li > a, .view-product-list .pagination > li > span {
     color: #F15F46; }
   .view-product-list .pagination > .active > a,

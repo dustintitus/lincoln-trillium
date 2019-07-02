@@ -44,7 +44,9 @@
 	{{- product.variations -}}	
 	<div class="product-link-wrapper">
 		<a class="product-link btn btn-lg btn btn-info" href="{{- product_url -}}">{% trans %}DETAILS{% endtrans %}</a>
-		{{ compare_car }}
+		<div class="compare-car-container">
+			{{ compare_car }}
+		</div>
 	</div>
 </div>
 

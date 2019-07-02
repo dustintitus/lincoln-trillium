@@ -35,6 +35,13 @@
 				.btn {
 					width: 100%;
 				}
+				.compare-car-container{
+					.form-item{
+						max-width: 200px;
+						margin: 0;
+						float: right;
+					}
+				}
 			}
 		}
 	}
@@ -168,6 +175,39 @@
 		.product-link-wrapper{
 			.btn {
 				min-width: 150px;
+			}
+		}
+		.compare-car-container{
+			min-height: 46px;
+			padding: 10px 0;
+			.form-item{
+				position: relative;
+				float: none;
+				width: 100%;
+				overflow: hidden;
+				min-width: 150px;
+				max-width: 150px;
+				margin: 0 auto 0;
+				line-height: 26px;
+				padding: 0 10px;
+				background: #DBDBDB;
+				label{
+					display: inline-block;
+					padding: 0;
+					line-height: 26px;
+					padding:0;
+					text-align: left;
+					text-transform: uppercase;
+				}
+				input{
+					position: absolute;
+					top: 50%;
+					right: 10px;
+					margin: 0;
+					transform:translateY(-50%);
+					-ms-transform:translateY(-50%);
+					-webkit-transform:translateY(-50%);
+				}
 			}
 		}
 	}

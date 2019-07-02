@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{%
+  set product_classes = [
+    'product-compare'
+  ]
+%}
+<article{{ attributes.addClass(product_classes) }}>
+
+  <div class="field-car-images">
+    {% if product.field_car_images is defined %}
+      {{- product.field_car_images.0 -}}    
+    {% endif %} 
+  </div>
+
+  {{- product|without('title')
+    |without('field_car_images') 
+    |without('body') 
+    |without('variations')
+    |without('field_car_accessory')
+  -}}
+
+  <div class="car-action">
+    <a data-dialog-type="modal" href="{{ url('<front>') }}trilliumlincoln_utility/test_drive_modal_form?pid={{ product_entity.id }}" class="use-ajax btn btn-info btn-lg">BOOK A TEST DRIVE</a>
+  </div>
+
+  <div class="field--name-field-car-accessory">
+    {{- product.field_car_accessory -}}
+  </div>
+  {{- calculator_form -}}
+
+  <div class="text-container">
+    <h3>{{- product.title.0|raw -}}</h3>
+    {% if product.body %}
+      {{- product.body -}}
+    {% endif %} 
+    {{- product.variations -}}
+  </div>
+</article>
+

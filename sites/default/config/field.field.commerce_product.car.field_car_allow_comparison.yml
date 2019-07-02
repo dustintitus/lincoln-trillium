@@ -1,0 +1,23 @@
+uuid: ef33ad8f-9d37-4f21-9e5b-b0113f216806
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.car
+    - field.storage.commerce_product.field_car_allow_comparison
+id: commerce_product.car.field_car_allow_comparison
+field_name: field_car_allow_comparison
+entity_type: commerce_product
+bundle: car
+label: 'Allow Comparison'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
