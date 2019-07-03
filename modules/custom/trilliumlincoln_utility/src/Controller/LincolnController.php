@@ -96,7 +96,7 @@ class LincolnController extends ControllerBase {
     return $response;
   }
 
-      /**
+  /**
    * Callback for opening the modal form Email Sales.
    */
   public function openModalEmailSalesForm() {
@@ -158,6 +158,24 @@ class LincolnController extends ControllerBase {
     // Add an AJAX command to open a modal dialog with the form as the content.
     $response->addCommand(new OpenDialogCommand('#trilliumlincoln-close-modal', $webform->label(), $modal_form, ['modal' => true]));
 
+    return $response;
+  }
+
+  /**
+   * Callback for add to compare.
+   */
+  public function addProductToCompareAjax($pid){
+    $response = new AjaxResponse();
+
+    $tempstore = \Drupal::service('user.private_tempstore')->get('trilliumlincoln_utility');
+    $compare_cars = $tempstore->get('compare_cars');
+    if (empty($compare_cars)) $compare_cars = [];
+    if (($key = array_search($pid, $compare_cars)) !== false) {
+        unset($compare_cars[$key]);
+    } else {
+      array_push($compare_cars, $pid);
+    }
+    $tempstore->set('compare_cars',$compare_cars);
     return $response;
   }
 

@@ -199,9 +199,15 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
   if ($variables['elements']['#view_mode'] == 'teaser') {
     $field_allow_comparison = $product->get('field_car_allow_comparison')->getValue();
     if (!empty($field_allow_comparison[0]['value'])) {
+
+      $tempstore = \Drupal::service('user.private_tempstore')->get('trilliumlincoln_utility');
+      $compare_cars = $tempstore->get('compare_cars');
+
+      $options = ['absolute' => TRUE, 'attributes' => ['class' => 'use-ajax', 'data-dialog-type' => 'modal']];
+      $link_add = Link::createFromRoute('Add to compare', 'trilliumlincoln_utility.add_product_to_compare_ajax', ['pid' => $product_id], $options);
+
       $variables['compare_car'] = [
-        //'#prefix' => '<div class="compare-car-container">',
-        //'#suffix' => '</div>',
+        '#prefix' =>  $link_add->toString(),
         '#type' => 'checkbox',
         '#name' => 'compare[' . $product_id . ']',
         '#title' => t('Compare'),
@@ -213,6 +219,11 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
           ]
         ],
       ];
+
+      if (!empty($compare_cars) && in_array($product_id, $compare_cars)) {
+        $variables['compare_car']['#attributes']['checked'] = 'checked';
+      }
+
       $variables['#attached']['library'][] = 'trilliumlincoln/trilliumlincoln.compare_car';
     }
 

@@ -18,6 +18,15 @@ trilliumlincoln_utility.open_modal_test_drive:
   options:
     _admin_route: TRUE
 
+trilliumlincoln_utility.add_product_to_compare_ajax:
+  path: 'trilliumlincoln_utility/add_product_to_compare/{pid}'
+  defaults:
+    _controller: '\Drupal\trilliumlincoln_utility\Controller\LincolnController::addProductToCompareAjax'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE
+
 trilliumlincoln_utility.open_modal_email_sales:
   path: 'trilliumlincoln_utility/email_sales_modal_form'
   defaults:

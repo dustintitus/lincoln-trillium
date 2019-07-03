@@ -180,7 +180,11 @@
 		.compare-car-container{
 			min-height: 46px;
 			padding: 10px 0;
+			.use-ajax{
+				display: none;
+			}
 			.form-item{
+        text-align: left;
 				position: relative;
 				float: none;
 				width: 100%;

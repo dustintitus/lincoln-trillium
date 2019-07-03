@@ -266,6 +266,19 @@
   }
 
 
+  Drupal.behaviors.compare_models = {
+    attach: function (context, settings) {
+      $('.view-compare-models',context).once('compare-models').each(function () {
+        var $filters_forms =  $(this).find('.views-exposed-form');
+        var $select = $filters_forms.find('select');
+        var data_select = $select.data('selected');
+        if (data_select) {
+          $select.val(data_select).removeAttr('data-selected');
+        }
+      });
+    }
+  }
+
   function getCookie(name) {
     var matches = document.cookie.match(new RegExp(
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"

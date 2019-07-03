@@ -201,6 +201,9 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
 
   if ($view->id() == 'compare_models') {
 
+    $tempstore = \Drupal::service('user.private_tempstore')->get('trilliumlincoln_utility');
+    $compare_cars = $tempstore->get('compare_cars');
+
     $display_id = $display['id'];
     // Query product
     $storage = Drupal::getContainer()->get('entity_type.manager')->getStorage('commerce_product');
@@ -223,7 +226,6 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
     $products = $storage->loadMultiple($pids);
 
     // Push titles into select list
-    //$options[1] = 'Model';
     foreach ($products as $product) {
       $options[$product->id()] = $product->getTitle();
     }
@@ -231,6 +233,7 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
 
     if ($display_id == 'block_1') {
       $compare_field = 'model_1';
+
     }
     if ($display_id == 'block_2') {
       $compare_field = 'model_2';
@@ -245,11 +248,30 @@ function trilliumlincoln_utility_form_views_exposed_form_alter(&$form, FormState
 
     // Specify the empty option for our select list
     $form[$compare_field]['#empty_option'] = t('MODEL');
-    $form[$compare_field]['#empty_value'] = 1;
+    $form[$compare_field]['#empty_value'] =  1;
 
     // Add the $options from above to our select list
     $form[$compare_field]['#options'] = $options;
     unset($form[$compare_field]['#size']);
+
+
+    $model_1 = @$_REQUEST['model_1'];
+    $model_2 = @$_REQUEST['model_2'];
+    $model_3 = @$_REQUEST['model_3'];
+
+    if (!empty($compare_cars) && isset($compare_cars[0]) && $display_id == 'block_1' && is_null($model_1)) {
+      $form[$compare_field]['#default_value'] = $compare_cars[0];
+      $form[$compare_field]['#attributes'] = ['data-selected'=>$compare_cars[0]];
+    }
+    if (!empty($compare_cars) && isset($compare_cars[1])  && $display_id == 'block_2' && is_null($model_2)) {
+      $form[$compare_field]['#default_value'] = $compare_cars[1];
+      $form[$compare_field]['#attributes'] = ['data-selected'=>$compare_cars[1]];
+    }
+    if (!empty($compare_cars) && isset($compare_cars[2])  && $display_id == 'block_3' && is_null($model_3)) {
+      $form[$compare_field]['#default_value'] = $compare_cars[2];
+      $form[$compare_field]['#attributes'] = ['data-selected'=>$compare_cars[2]];
+    }
+
   }
 }
 
@@ -305,6 +327,29 @@ function trilliumlincoln_utility_views_query_alter(ViewExecutable $view, QueryPl
     }
 
     $_SESSION['search-car-filter'] = $exposed_value;
+  }
+
+  if ($view->id() == 'compare_models') {
+    $display_id = $view->current_display;
+    $tempstore = \Drupal::service('user.private_tempstore')->get('trilliumlincoln_utility');
+    $compare_cars = $tempstore->get('compare_cars');
+    $value = $query->where[1]['conditions'][3]['value'];
+
+    $model_1 = @$_REQUEST['model_1'];
+    $model_2 = @$_REQUEST['model_2'];
+    $model_3 = @$_REQUEST['model_3'];
+
+
+    if (!empty($compare_cars) && isset($compare_cars[0]) && $display_id == 'block_1' && is_null($model_1)) {
+      $query->where[1]['conditions'][3]['value'] = $compare_cars[0];
+    }
+    if (!empty($compare_cars) && isset($compare_cars[1]) && $display_id == 'block_2' && is_null($model_2)) {
+      $query->where[1]['conditions'][3]['value'] = $compare_cars[1];
+    }
+    if (!empty($compare_cars) && isset($compare_cars[2]) && $display_id == 'block_3' && is_null($model_3)) {
+      $query->where[1]['conditions'][3]['value'] = $compare_cars[2];
+    }
+
   }
 }
 

@@ -3196,7 +3196,10 @@ a {
     .view-product-list .view-content .compare-car-container {
       min-height: 46px;
       padding: 10px 0; }
+      .view-product-list .view-content .compare-car-container .use-ajax {
+        display: none; }
       .view-product-list .view-content .compare-car-container .form-item {
+        text-align: left;
         position: relative;
         float: none;
         width: 100%;
