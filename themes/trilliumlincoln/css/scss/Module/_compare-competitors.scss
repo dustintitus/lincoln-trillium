@@ -37,6 +37,7 @@
         float: right;
         @include respond($sm){
           width: 50%;
+          margin-top: 6px;
         }
         &:after{
           content: '\e259';

@@ -2596,7 +2596,8 @@ a {
     float: right; }
     @media (min-width: 768px) {
       .blockcompare-competitors .views-exposed-form .form-item .select-wrapper {
-        width: 50%; } }
+        width: 50%;
+        margin-top: 6px; } }
     .blockcompare-competitors .views-exposed-form .form-item .select-wrapper:after {
       content: '\e259';
       color: #2e201b; }
