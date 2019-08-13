@@ -1,0 +1,19 @@
+uuid: 0f6bfd41-8696-4f66-a577-ab94fbef0586
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lincoln_text
+    - paragraphs.paragraphs_type.competition_feature
+id: paragraph.competition_feature.field_lincoln_text
+field_name: field_lincoln_text
+entity_type: paragraph
+bundle: competition_feature
+label: Lincoln
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

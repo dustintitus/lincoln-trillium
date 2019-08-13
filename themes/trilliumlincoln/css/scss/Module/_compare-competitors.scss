@@ -140,9 +140,11 @@
       @include respond($sm){
         font-size: 20px;
       }
+      &.field--type-string,
       &.field--type-boolean{
         text-align: center;
       }
+      &.field--name-field-lincoln-text,
       &.field--name-field-lincoln{
         color: #F15E46;
       }

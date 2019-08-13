@@ -2679,9 +2679,9 @@ a {
     @media (min-width: 768px) {
       .node-content.competition .paragraph--type--competition-feature .field {
         font-size: 20px; } }
-    .node-content.competition .paragraph--type--competition-feature .field.field--type-boolean {
+    .node-content.competition .paragraph--type--competition-feature .field.field--type-string, .node-content.competition .paragraph--type--competition-feature .field.field--type-boolean {
       text-align: center; }
-    .node-content.competition .paragraph--type--competition-feature .field.field--name-field-lincoln {
+    .node-content.competition .paragraph--type--competition-feature .field.field--name-field-lincoln-text, .node-content.competition .paragraph--type--competition-feature .field.field--name-field-lincoln {
       color: #F15E46; }
 
 .context-compare-models .region-content {

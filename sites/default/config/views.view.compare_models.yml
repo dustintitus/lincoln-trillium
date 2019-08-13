@@ -9,6 +9,7 @@ dependencies:
     - better_exposed_filters
     - commerce
     - commerce_product
+    - user
 id: compare_models
 label: 'Compare models'
 module: views
@@ -25,8 +26,9 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'administer nodes'
       cache:
         type: tag
         options: {  }
@@ -229,6 +231,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - user.permissions
       tags: {  }
   block_1:
     display_plugin: block
@@ -357,6 +360,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - user.permissions
       tags: {  }
   block_2:
     display_plugin: block
@@ -485,6 +489,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - user.permissions
       tags: {  }
   block_3:
     display_plugin: block
@@ -613,4 +618,5 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - user.permissions
       tags: {  }

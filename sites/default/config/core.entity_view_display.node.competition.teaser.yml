@@ -27,4 +27,10 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  field_competition_image: true
+  field_competitor_model: true
+  field_feature: true
+  field_lincoln_image: true
+  field_lincoln_model: true
+  field_related_car: true

@@ -8,7 +8,6 @@ dependencies:
   module:
     - better_exposed_filters
     - node
-    - user
 id: compare_competitors
 label: 'Compare competitors'
 module: views
@@ -25,9 +24,8 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
-        options:
-          perm: 'access content'
+        type: none
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -266,7 +264,6 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags: {  }
   block_1:
     display_plugin: block
@@ -282,5 +279,4 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags: {  }

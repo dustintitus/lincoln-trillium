@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.competition_feature.field_competition
-    - field.field.paragraph.competition_feature.field_lincoln
+    - field.field.paragraph.competition_feature.field_competition_text
+    - field.field.paragraph.competition_feature.field_lincoln_text
     - field.field.paragraph.competition_feature.field_title
     - paragraphs.paragraphs_type.competition_feature
 id: paragraph.competition_feature.default
@@ -12,19 +12,21 @@ targetEntityType: paragraph
 bundle: competition_feature
 mode: default
 content:
-  field_competition:
+  field_competition_text:
     weight: 2
     settings:
-      display_label: true
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: boolean_checkbox
+    type: string_textfield
     region: content
-  field_lincoln:
+  field_lincoln_text:
     weight: 1
     settings:
-      display_label: true
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: boolean_checkbox
+    type: string_textfield
     region: content
   field_title:
     weight: 0

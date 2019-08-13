@@ -1,14 +1,17 @@
-uuid: b0beb9fc-b8db-43f9-b8f1-fa70028a10ee
+uuid: 9f8644ca-2287-4bbf-a9b8-70b9d1cfb928
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.field_competition
-field_name: field_competition
+id: paragraph.field_lincoln_text
+field_name: field_lincoln_text
 entity_type: paragraph
-type: boolean
-settings: {  }
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1
