@@ -3,8 +3,7 @@
 namespace Drupal\Tests\link_attributes\Functional;
 
 use Drupal\Tests\BrowserTestBase;
-use Drupal\Component\Utility\Unicode;
-use Drupal\field_ui\Tests\FieldUiTestTrait;
+use Drupal\Tests\field_ui\Traits\FieldUiTestTrait;
 
 /**
  * Tests link attributes functionality.
@@ -23,6 +22,7 @@ class LinkAttributesFieldTest extends BrowserTestBase {
     'link_attributes',
     'field_ui',
     'block',
+    'link_attributes_test_alterinfo',
   ];
 
   /**
@@ -45,6 +45,7 @@ class LinkAttributesFieldTest extends BrowserTestBase {
     $this->drupalLogin($this->adminUser);
     // Breadcrumb is required for FieldUiTestTrait::fieldUIAddNewField.
     $this->drupalPlaceBlock('system_breadcrumb_block');
+    \Drupal::state()->set('link_attributes_test_alterinfo.hook_link_attributes_plugin_alter', TRUE);
   }
 
   /**
@@ -75,6 +76,7 @@ class LinkAttributesFieldTest extends BrowserTestBase {
           'enabled_attributes' => [
             'rel' => TRUE,
             'class' => TRUE,
+            'target' => TRUE,
           ],
         ],
       ])
@@ -94,6 +96,13 @@ class LinkAttributesFieldTest extends BrowserTestBase {
     $attribute_class = 'field_' . $field_name . '[0][options][attributes][class]';
     $web_assert->fieldExists($attribute_class);
 
+    // Target attribute.
+    $attribute_target = 'field_' . $field_name . '[0][options][attributes][target]';
+    $web_assert->fieldExists($attribute_target);
+    $web_assert->fieldValueEquals($attribute_target, '_blank');
+
+    \Drupal::state()->set('link_attributes_test_alterinfo.hook_link_attributes_plugin_alter', FALSE);
+    \Drupal::service('plugin.manager.link_attributes')->clearCachedDefinitions();
     // Create a node.
     $edit = [
       'title[0][value]' => 'A multi field link test',
@@ -121,7 +130,51 @@ class LinkAttributesFieldTest extends BrowserTestBase {
       'class-four',
     ];
     $this->assertEquals($expected_link_two, $field_values[1]['options']['attributes']['class']);
+  }
 
+  /**
+   * Tests saving a node without any attributes enabled in the widget settings.
+   */
+  public function testWidgetWithoutAttributes() {
+    // Add a content type.
+    $type = $this->drupalCreateContentType();
+    $type_path = 'admin/structure/types/manage/' . $type->id();
+    $add_path = 'node/add/' . $type->id();
+
+    // Add a link field to the newly-created type.
+    $label = $this->randomMachineName();
+    $field_name = mb_strtolower($label);
+    $storage_settings = ['cardinality' => 'number', 'cardinality_number' => 2];
+    $this->fieldUIAddNewField($type_path, $field_name, $label, 'link', $storage_settings);
+
+    // Manually clear cache on the tester side.
+    \Drupal::service('entity_field.manager')->clearCachedFieldDefinitions();
+
+    \Drupal::entityTypeManager()
+      ->getStorage('entity_form_display')
+      ->load('node.' . $type->id() . '.default')
+      ->setComponent('field_' . $field_name, [
+        'type' => 'link_attributes',
+        'settings' => [
+          'enabled_attributes' => [],
+        ],
+      ])
+      ->save();
+
+    $this->drupalGet($add_path);
+    $web_assert = $this->assertSession();
+    // Link attributes.
+    $web_assert->elementExists('css', '.field--widget-link-attributes');
+    // Create a node.
+    $edit = [
+      'title[0][value]' => 'A multi field link test',
+      'field_' . $field_name . '[0][title]' => 'Link One',
+      'field_' . $field_name . '[0][uri]' => '<front>',
+    ];
+    $this->drupalPostForm($add_path, $edit, t('Save'));
+    $node = $this->drupalGetNodeByTitle($edit['title[0][value]']);
+    $this->drupalGet($node->toUrl()->toString());
+    $web_assert->linkExists('Link One');
   }
 
 }

@@ -1,8 +1,13 @@
+/**
+ * @file
+ * Contains views_ajax_history.js.
+ */
+
 (function ($, Drupal, drupalSettings) {
 
   // Need to keep this to check if there are extra parameters in the original URL.
   var original = {
-    path: window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '') + window.location.pathname,
+    path: window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + window.location.pathname,
     // @TODO integrate #1359798 without breaking history.js
     query: window.location.search || ''
   };
@@ -34,7 +39,7 @@
   };
 
   /**
-   * Modification of Drupal.Views.parseQueryString() to allow extracting multivalues fields
+   * Modification of Drupal.Views.parseQueryString() to allow extracting multivalues fields.
    *
    * @param query
    *   String, either a full url or just the query string.
@@ -47,19 +52,19 @@
     }
     var pairs = query.split('&');
     var pair, key, value;
-    for(var i in pairs) {
+    for (var i in pairs) {
       if (typeof(pairs[i]) == 'string') {
         pair = pairs[i].split('=');
         // Ignore the 'q' path argument, if present.
         if (pair[0] != 'q' && pair[1]) {
           key = decodeURIComponent(pair[0].replace(/\+/g, ' '));
           value = decodeURIComponent(pair[1].replace(/\+/g, ' '));
-          // field name ends with [], it's multivalues
+          // Field name ends with [], it's multivalues.
           if (/\[\]$/.test(key)) {
             if (!(key in args)) {
               args[key] = [value];
             }
-            // don't duplicate values
+            // Don't duplicate values.
             else if (!$.inArray(value, args[key]) !== -1) {
               args[key].push(value);
             }
@@ -74,7 +79,7 @@
   };
 
   /**
-   * Strip views values and duplicates from URL
+   * Strip views values and duplicates from URL.
    *
    * @param url
    *   String with the full URL to clean up.
@@ -94,33 +99,33 @@
     }
 
     $.each(args, function (name, value) {
-      // use values from viewArgs if they exists
+      // Use values from viewArgs if they exists.
       if (name in viewArgs) {
         value = viewArgs[name];
       }
       if ($.isArray(value)) {
         $.merge(query, $.map(value, function (sub) {
-          return name + '=' + sub;
+          return name + '=' + encodeURIComponent(sub);
         }));
       }
       else {
-        query.push(name + '=' + value);
+        query.push(name + '=' + encodeURIComponent(value));
       }
     });
 
-    url = url.split('?');
+    url = window.location.href.split('?');
     return url[0] + (query.length ? '?' + query.join('&') : '');
   };
 
   /**
-   * Parse a URL query string
+   * Parse a URL query string.
    *
    * @param queryString
    *   String containing the query to parse.
    */
-  var parseQuery = function(queryString) {
+  var parseQuery = function (queryString) {
     var query = {};
-    $.map(queryString.split('&'), function(val) {
+    $.map(queryString.split('&'), function (val) {
       var s = val.split('=');
       query[s[0]] = s[1];
     });
@@ -190,7 +195,7 @@
   };
 
   /**
-   * Override beforeSerialize to handle click on pager links
+   * Override beforeSerialize to handle click on pager links.
    *
    * @param $element
    *   jQuery DOM element
@@ -217,26 +222,55 @@
    *   Object containing AJAX options.
    */
   Drupal.Ajax.prototype.beforeSubmit = function (form_values, element, options) {
-    if (options.data.view_name) {
+    if (options && options.data && options.data.view_name) {
       var url = original.path + '?' + element.formSerialize();
       var currentQuery = parseQueryString(window.location.href);
 
-      // copy selected values in history state
+      // Remove the page number from the query string, as a new filter has been
+      // applied and should return new results.
+      if ($.inArray("page", Object.keys(currentQuery)) !== -1) {
+        delete currentQuery.page;
+      }
+
+      // Copy selected values in history state.
       $.each(form_values, function () {
-        // field name ending with [] is a multi value field
+        // Field name ending with [] is a multi value field.
         if (/\[\]$/.test(this.name)) {
           if (!options.data[this.name]) {
             options.data[this.name] = [];
           }
           options.data[this.name].push(this.value);
         }
-        // regular field
+        // Regular field.
         else {
           options.data[this.name] = this.value;
         }
-        // Remove exposed data from the current query to leave behind any
-        // non exposed form related query vars
+      });
+      // Remove exposed data from the current query to leave behind any
+      // non exposed form related query vars.
+      element.find('[name]').each(function () {
         if (currentQuery[this.name]) {
+          delete currentQuery[this.name];
+        }
+      });
+
+      // If the exposed form has checkboxes, we need to check if these are
+      // unchecked and if so, remove them from the url
+      element.find('input[type="checkbox"]').each(function (key, value) {
+        if (!form_values[this.name]) {
+          if (currentQuery[this.name]) {
+            delete currentQuery[this.name];
+          }
+          else if (options.data[this.name]) {
+            delete options.data[this.name];
+          }
+        }
+      });
+
+      // If the exposed form has a multiple select.
+      element.find('.form-select[multiple=multiple]').each(function (key, value) {
+        if ($(value).val().length === 0) {
+          delete options.data[this.name];
           delete currentQuery[this.name];
         }
       });
@@ -262,10 +296,9 @@
     if (data.view_name && options.type !== 'GET') {
       // Override the URL to not contain any fields that were submitted.
       options.url = drupalSettings.views.ajax_path + '?' + Drupal.ajax.WRAPPER_FORMAT + '=drupal_ajax';
-
-      // Call the original Drupal method with the right context.
-      beforeSend.apply(this, arguments);
     }
+    // Call the original Drupal method with the right context.
+    beforeSend.apply(this, arguments);
   }
 
 })(jQuery, Drupal, drupalSettings);
