@@ -59,6 +59,7 @@ module:
   menu_item_extras: 0
   menu_link_attributes: 0
   menu_ui: 0
+  metatag: 0
   node: 0
   options: 0
   page_cache: 0

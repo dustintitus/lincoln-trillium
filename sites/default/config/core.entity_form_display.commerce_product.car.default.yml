@@ -40,6 +40,7 @@ dependencies:
     - field.field.commerce_product.car.field_lease_36_term_rate
     - field.field.commerce_product.car.field_lease_39_term_rate
     - field.field.commerce_product.car.field_lease_48_term_rate
+    - field.field.commerce_product.car.field_meta_tags
     - field.field.commerce_product.car.field_prevent_automatic_update
     - field.field.commerce_product.car.field_residual_24_term_rate
     - field.field.commerce_product.car.field_residual_36_term_rate
@@ -53,6 +54,7 @@ dependencies:
     - commerce_price
     - datetime
     - field_group
+    - metatag
     - paragraphs
     - path
     - svg_image
@@ -89,7 +91,6 @@ third_party_settings:
       weight: 19
       format_type: fieldset
       format_settings:
-        label: 'Payment Calculator Fields'
         description: ''
         required_fields: true
         id: ''
@@ -373,6 +374,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
+  field_meta_tags:
+    weight: 29
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   field_prevent_automatic_update:
     weight: 1

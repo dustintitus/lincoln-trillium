@@ -1,0 +1,9 @@
+uuid: a36de13f-44d5-4269-a837-0f325f076490
+langcode: en
+status: true
+dependencies: {  }
+id: commerce_product__car
+label: 'Product: Cars'
+tags:
+  description: '[commerce_product:body:value]'
+  title: '[current-page:title] | [site:name]'
