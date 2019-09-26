@@ -192,6 +192,9 @@ function trilliumlincoln_preprocess_commerce_product(array &$variables) {
         // if (($car_type_name == 'new' || $car_type_name == 'used') && $car_year == 2019 && ($car_model_name == 'mkc' || $car_model_name == 'mkz' || $car_model_name == 'continental' || $car_model_name == 'nautilus')) {
         //   $variables['attributes']['class'][] = 'product-time-to-shine';
         // }
+        if ($car_year == 2019 && $car_model_name == 'mkc') {
+          $variables['attributes']['class'][] = 'product-special-savings';
+        }
       }
     }
   }

@@ -2894,10 +2894,10 @@ a {
 .product-single .back-button {
   margin-bottom: 15px;
   padding: 2px 12px; }
-.product-single.product-sold .product-carousel .product-carousel-picture-wrapper, .product-single.product-time-to-shine .product-carousel .product-carousel-picture-wrapper {
+.product-single.product-sold .product-carousel .product-carousel-picture-wrapper, .product-single.product-time-to-shine .product-carousel .product-carousel-picture-wrapper, .product-single.product-special-savings .product-carousel .product-carousel-picture-wrapper {
   position: relative;
   overflow: hidden; }
-  .product-single.product-sold .product-carousel .product-carousel-picture-wrapper::before, .product-single.product-time-to-shine .product-carousel .product-carousel-picture-wrapper::before {
+  .product-single.product-sold .product-carousel .product-carousel-picture-wrapper::before, .product-single.product-time-to-shine .product-carousel .product-carousel-picture-wrapper::before, .product-single.product-special-savings .product-carousel .product-carousel-picture-wrapper::before {
     content: "";
     display: block;
     top: 0;
@@ -2911,6 +2911,8 @@ a {
     z-index: 100; }
 .product-single.product-sold .product-carousel .product-carousel-picture-wrapper::before {
   background-image: url(../images/sold.png); }
+.product-single.product-special-savings .product-carousel .product-carousel-picture-wrapper::before {
+  background-image: url(../images/special-savings.png); }
 .product-single.product-time-to-shine .product-carousel .product-carousel-picture-wrapper::before {
   background-image: url(../images/time-to-shine.png); }
 @media (min-width: 768px) {
@@ -3018,10 +3020,12 @@ a {
     float: right; }
 
 .product-sold .field-car-images,
-.product-time-to-shine .field-car-images {
+.product-time-to-shine .field-car-images,
+.product-special-savings .field-car-images {
   position: relative; }
   .product-sold .field-car-images::before,
-  .product-time-to-shine .field-car-images::before {
+  .product-time-to-shine .field-car-images::before,
+  .product-special-savings .field-car-images::before {
     content: "";
     display: block;
     top: 0;
@@ -3036,6 +3040,9 @@ a {
 
 .product-sold .field-car-images::before {
   background-image: url(../images/sold.png); }
+
+.product-special-savings .field-car-images::before {
+  background-image: url(../images/special-savings.png); }
 
 .product-time-to-shine .field-car-images::before {
   background-image: url(../images/time-to-shine.png); }

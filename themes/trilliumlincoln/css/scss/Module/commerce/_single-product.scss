@@ -4,7 +4,8 @@
     padding: 2px 12px;
   }
   &.product-sold,
-  &.product-time-to-shine{
+  &.product-time-to-shine,
+  &.product-special-savings{
     .product-carousel{
       .product-carousel-picture-wrapper{
         position: relative;
@@ -30,6 +31,15 @@
       .product-carousel-picture-wrapper{
         &::before{
           background-image: url(../images/sold.png);
+        }
+      }
+    }
+  }
+  &.product-special-savings{
+    .product-carousel{
+      .product-carousel-picture-wrapper{
+        &::before{
+          background-image: url(../images/special-savings.png);
         }
       }
     }
@@ -219,7 +229,8 @@
   }
 }
 .product-sold,
-.product-time-to-shine{
+.product-time-to-shine,
+.product-special-savings{
   .field-car-images{
     position: relative;
     &::before{
@@ -241,6 +252,13 @@
   .field-car-images{
     &::before{
       background-image: url(../images/sold.png);
+    }
+  }
+}
+.product-special-savings{
+  .field-car-images{
+    &::before{
+      background-image: url(../images/special-savings.png);
     }
   }
 }
